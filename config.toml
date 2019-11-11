@@ -11,6 +11,7 @@ pygmentscodefences  = true
 
 [permalinks]
   post = "/:year/:title/"
+  page = "/:title/"
 
 [params]
   sitename = "Int Maker"
