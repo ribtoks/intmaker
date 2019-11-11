@@ -18,6 +18,10 @@
     {{ .Content }}
   </div>
 
+  <div style="margin-bottom: 20px;">
+      {{ partial "buymeacoffee.html" }}
+  </div>
+
   <div id=links>
     {{ if .PrevInSection }}
       <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}">&laquo; {{.PrevInSection.Title}}</a>
@@ -29,5 +33,4 @@
 </section>
 
 {{ partial "footer.html" . }}
-
 

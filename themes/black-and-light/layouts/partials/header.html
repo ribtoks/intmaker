@@ -1,3 +1,15 @@
+{{- $title := $.Site.Title -}}
+{{- $about :=  $.Site.Params.description -}}
+{{- if $.Title   -}} {{- $title = $.Title -}} {{- end -}}
+{{- if $.Content -}}
+  {{- $about = ($.Content | plainify | htmlUnescape ) -}}
+  {{- $about = (replaceRE "(?m)(\\r|\\n)" " " $about) -}}
+  {{- $about = (replaceRE " +"    " " $about) -}}
+  {{- $about = (replaceRE "^ +"  ""  $about) -}}
+  {{- $about = (replaceRE " +$"  ""  $about) -}}
+  {{- $about = (truncate 160  ""  $about) -}}
+{{- end -}}
+
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
@@ -8,9 +20,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     {{ if .Site.Params.description }}<meta name="description" content="{{ .Site.Params.description }}">{{ end }}
+    <meta property="og:title" content="{{$title}}" />
+    <meta property="og:locale" content="{{ $.Site.LanguageCode | default "en" }}" />
+    <meta property="og:description" content="{{$about}}" />
+    <meta property="og:url" content="{{$.Permalink}}" />
+    <meta property="og:site_name" content="Xpiks" />
+    <script type="application/ld+json">{"@type":"WebPage","headline":"{{$title}}","url":"{{$.Permalink}}","description":"{{$about}}","@context":"http://schema.org"}</script>
 
     {{ if not .Site.Params.disableWebFonts }}
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
     {{ end }}
 
     <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
@@ -32,6 +51,8 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
+
+    {{ partial "googleanalytics" . }}
   </head>
 
   <body>

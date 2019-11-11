@@ -3,20 +3,27 @@ title = "Int Maker"
 author = "Taras Kushnir"
 languagecode = "en"
 theme = "black-and-light"
+canonifyURLs = true
+enableRobotsTXT = true
 
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
+[permalinks]
+  post = "/:year/:title/"
+
 [params]
   sitename = "Int Maker"
   disableWebFonts = false
+  google_universal_analytics = "UA-10412407-14"
+  google_universal_analytics_cookiedomain = "auto"
 
 [[menu.main]]
     name = "About"
-    url  = ""
+    url  = "/about/"
 [[menu.main]]
     name = "Projects"
-    url  = ""
+    url  = "/projects/"
 [[menu.main]]
     name = "Resume"
-    url  = ""
+    url  = "/resume/"
