@@ -1,3 +1,22 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseurl = "https://intmaker.com/"
+title = "Int Maker"
+author = "Taras Kushnir"
+languagecode = "en"
+theme = "black-and-light"
+
+pygmentsstyle       = "bw"
+pygmentscodefences  = true
+
+[params]
+  sitename = "Int Maker"
+  disableWebFonts = false
+
+[[menu.main]]
+    name = "About"
+    url  = ""
+[[menu.main]]
+    name = "Projects"
+    url  = ""
+[[menu.main]]
+    name = "Resume"
+    url  = ""
