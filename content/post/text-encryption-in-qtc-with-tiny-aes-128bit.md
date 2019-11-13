@@ -100,4 +100,4 @@ namespace Encryption {
 #endif // AESQT_H
 ```
 
-I wrote <a href="https://github.com/Ribtoks/xpiks/blob/master/src/xpiks-tests/xpiks-tests-core/encryption_tests.cpp" target="_blank" rel="noopener" class="broken_link">a bunch of tests</a> against that functions so the solution is proven to be working. So if you're looking for really tiny encryption or AES implementation, use <a href="https://github.com/kokke/tiny-AES128-C" target="_blank" rel="noopener">tiny-AES-128</a>!
+I wrote <a href="https://github.com/ribtoks/xpiks/blob/master/src/xpiks-tests/xpiks-tests-core/encryption_tests.cpp" target="_blank">a bunch of tests</a> against that functions so the solution is proven to be working. So if you're looking for really tiny encryption or AES implementation, use <a href="https://github.com/kokke/tiny-AES128-C" target="_blank" rel="noopener">tiny-AES-128</a>!

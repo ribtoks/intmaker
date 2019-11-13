@@ -33,7 +33,7 @@ Mediawiki installation creates _/var/lib/mediawiki_ directory, in which almost e
 
 _XCache_ and _Intl_ are required for MediaWiki, PostgreSQL is better than MySQL, _sendmail_ and php mail extensions are needed for email confirmation from wiki.
 
-Then I suppose you should install _phpPgAdmin_ and go to _http://localhost/phpPgMyAdmin_ to properly configure one. At the moment, you won't be able to login using the default username-password combination (postgres:postgres). To do so, you should make a bit of DB console hacking and _/var/lib/pgsql/data/pg_hba.conf_ hacking (described in <a href="http://blog.milczarek.it/2012/09/install-postgresql-on-opensuse-12-1/" target="_blank" class="broken_link">this article</a>).
+Then I suppose you should install _phpPgAdmin_ and go to _http://localhost/phpPgMyAdmin_ to properly configure one. At the moment, you won't be able to login using the default username-password combination (postgres:postgres). To do so, you should make a bit of DB console hacking and _/var/lib/pgsql/data/pg_hba.conf_ hacking (described in <a href="http://blog.milczarek.it/2012/09/install-postgresql-on-opensuse-12-1/" target="_blank">this article</a>).
 
 After you're able to login to phpPgAdmin, you should create user for mediawiki db connection, say, _mediawiki_user_.
 
@@ -43,7 +43,7 @@ When you're done, go to _http://localhost/w/_ and start the wiki installation pr
 
 During installation choose PostgreSQL instead of MySQL. Enter username you've created in phpPgAdmin before. Then you would be asked for username and password for a MediaWiki user, so make sure you're remembered/backed them up, cause they are username-password of so-called _sysop_ user (e.g. main administrator of MediaWiki installation).
 
-After you would succeed with MediaWiki intallation, let's make this Wiki available outside of the VirtualBox. First, go to _/etc/apache2/vhosts.d/_ directory and create two files. One named _\_default\_vhost.conf_ (with an underscore before name to be the default VirtualHost entry - read more in the <a href="http://activedoc.opensuse.org/book/opensuse-reference/chapter-20-the-apache-http-server" target="_blank" class="broken_link">OpenSUSE apache docs</a> and <a href="http://httpd.apache.org/docs/2.2/vhosts/" target="_blank">Official apache docs</a>) with the following contents:
+After you would succeed with MediaWiki intallation, let's make this Wiki available outside of the VirtualBox. First, go to _/etc/apache2/vhosts.d/_ directory and create two files. One named _\_default\_vhost.conf_ (with an underscore before name to be the default VirtualHost entry - read more in the <a href="http://activedoc.opensuse.org/book/opensuse-reference/chapter-20-the-apache-http-server" target="_blank">OpenSUSE apache docs</a> and <a href="http://httpd.apache.org/docs/2.2/vhosts/" target="_blank">Official apache docs</a>) with the following contents:
 
 <pre><VirtualHost *:80>
     ServerName localhost

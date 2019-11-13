@@ -23,7 +23,7 @@ Today I'll tell you how to write a very simple OpenGL program on C# at Mono plat
 
 Several companies and organizations have developed their own collections of bindings for OpenGL under .NET (Mono), the leader of which is the Tao Framework. The Tao Framework for .NET is a collection of bindings to facilitate cross-platform media application development utilizing the .NET and Mono platforms. But I failed to use it properly under Linux, so I found Open ToolKit, that is a free, cross-platform OpenGL and OpenAL wrapper for C# and other .NET languages.
 
-To use it you should download it from <a href="http://www.opentk.com/" target="_blank" class="broken_link">official website of openTK</a> and extract from archive to your favorite location.  Create empty project in your favorite IDE. In Linux (currently OpenSUSE 12.3) I use MonoDevelop. In your project References section right click and add reference to _OpenTK.dll_ which you can find via _opentk/Binaries/OpenTK/Release_ path (and also add _System.Drawing.dll_ assembly reference for _Color_ stuff).
+To use it you should download it from <a href="http://www.opentk.com/" target="_blank">official website of openTK</a> and extract from archive to your favorite location. Create empty project in your favorite IDE. In Linux (currently OpenSUSE 12.3) I use MonoDevelop. In your project References section right click and add reference to _OpenTK.dll_ which you can find via _opentk/Binaries/OpenTK/Release_ path (and also add _System.Drawing.dll_ assembly reference for _Color_ stuff).
 
 Now add some .cs file to your solution and paste this code:
 

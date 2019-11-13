@@ -380,6 +380,14 @@
     }
   }
 
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
   .bmc-button img {
       width: 27px !important;
       margin: 0 0 10px 0 !important;

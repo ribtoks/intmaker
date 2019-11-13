@@ -9,18 +9,23 @@
     </div>
   {{ end }}
 
+  {{ if .Param "image" }}
   <div class="thumbnail-container">
       <a href="{{ .RelPermalink}}">
           <img src="{{ (printf "%s%s" "/img/" (.Param "image")) | relURL }}">
       </a>
   </div>
+  {{ end }}
+
   <div class="entry-content">
     {{ .Content }}
   </div>
 
+  {{ if eq .Kind "post" }}
   <div style="margin-bottom: 20px;">
       {{ partial "buymeacoffee.html" }}
   </div>
+  {{ end }}
 
   <div id=links>
     {{ if .PrevInSection }}

@@ -178,7 +178,7 @@ After you're done, relaunch TeamCity:
 service teamcity-script start
 ```
   
-Open your browser, go to the teamcity page and you should see TeamCity complaining about missing database. You'll have only one-button choice, so proceed. Now teamcity will try to create another database (many thanks to <a title="TeamCity and YouTrack on Ubuntu" href="http://jerryemilo.com/2012/12/29/teamcity-and-youtrack-on-ubuntu-12-10-quantal-quetzal/" target="_blank" class="broken_link">this tutorial</a>) but it will require an authorization key, which can be found at the end of <em>logs/teamcity-server.log</em> file in your TeamCity main directory. Copy it and paste in the browser textbox, press <em>Next</em> and now TeamCity should launch correctly with PostgreSQL in the backend.
+Open your browser, go to the teamcity page and you should see TeamCity complaining about missing database. You'll have only one-button choice, so proceed. Now teamcity will try to create another database (many thanks to <a title="TeamCity and YouTrack on Ubuntu" href="http://jerryemilo.com/2012/12/29/teamcity-and-youtrack-on-ubuntu-12-10-quantal-quetzal/" target="_blank">this tutorial</a>) but it will require an authorization key, which can be found at the end of <em>logs/teamcity-server.log</em> file in your TeamCity main directory. Copy it and paste in the browser textbox, press <em>Next</em> and now TeamCity should launch correctly with PostgreSQL in the backend.
 
 A plenty of useful links:
 
