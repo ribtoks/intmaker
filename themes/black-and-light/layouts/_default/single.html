@@ -21,12 +21,11 @@
     {{ .Content }}
   </div>
 
-  {{ if eq .Kind "post" }}
+  {{ if eq .Section "post" }}
+  {{ partial "social-sharing.html" }}
   <div style="margin-bottom: 20px;">
       {{ partial "buymeacoffee.html" }}
   </div>
-  {{ end }}
-
   <div id=links>
     {{ if .PrevInSection }}
       <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}">&laquo; {{.PrevInSection.Title}}</a>
@@ -35,6 +34,11 @@
       <a class="basic-alignment left" href="{{.NextInSection.Permalink}}">{{.NextInSection.Title}} &raquo;</a>
     {{ end }}
   </div>
+
+  {{ if $.Site.Params.disqus_comments }}
+  {{ partial "disqus.html" }}
+  {{ end }}
+  {{ end }}
 </section>
 
 {{ partial "footer.html" . }}

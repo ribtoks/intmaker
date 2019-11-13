@@ -12,7 +12,7 @@ This website is another iteration of developing my personal website, engineering
 
 My name is Taras Kushnir, originally I'm from Ukraine but I called many places "home". I'm a software engineer, architect and mentor. In my free time I climb mountains and [take pictures](https://500px.com/tkushnir).
 
-Occasionally I blog about my experience (or lack of one) with machine learning, cloud, creating and shipping desktop software, vim vs emacs, orchestrating distributed computations and handling highload.
+Occasionally I blog about my experience (or lack of one) with machine learning, cloud, desktop software, electonics, vim vs emacs, orchestrating distributed computations and handling highload.
 
 You're welcome to drop me a message at <a href="#" class="decorrated"
 data-s="."
