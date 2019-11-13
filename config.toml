@@ -17,7 +17,7 @@ pygmentscodefences  = true
   disableWebFonts = false
   google_universal_analytics = "UA-10412407-14"
   google_universal_analytics_cookiedomain = "auto"
-  disqus_shortname = "codejamming"
+  disqus_shortname = "intmaker"
   disqus_comments = true
 
 [[menu.main]]
