@@ -43,7 +43,7 @@
   </div>
 
   {{ if $.Site.Params.disqus_comments }}
-  {{ partial "disqus.html" }}
+  {{ partial "disqus.html" . }}
   {{ end }}
   {{ end }}
 </section>
