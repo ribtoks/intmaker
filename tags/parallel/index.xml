@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>parallel on Int Maker</title>
+    <link>https://intmaker.com/tags/parallel/</link>
+    <description>Recent content in parallel on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 29 Aug 2016 12:28:38 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/parallel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resources to learn and understand parallel programming. The hard way</title>
+      <link>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</link>
+      <pubDate>Mon, 29 Aug 2016 12:28:38 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s no way other than the hard way. &amp;copy;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Parallel programming is considered as not easy or even advanced topic by many programmers. It&amp;rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.&lt;/p&gt;
+
+&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
+
+&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

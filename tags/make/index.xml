@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>make on Int Maker</title>
+    <link>https://intmaker.com/tags/make/</link>
+    <description>Recent content in make on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Jun 2013 19:57:42 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/make/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Emacs for remote compilation and catch output</title>
+      <link>https://intmaker.com/2013/use-emacs-for-remote-compilation/</link>
+      <pubDate>Wed, 19 Jun 2013 19:57:42 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/use-emacs-for-remote-compilation/</guid>
+      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;rdquo;, I use a _buildremote.sh script with following contents
+#!&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;/bin/bash&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;ssh&amp;lt;/span&amp;gt; my_remote_machine &amp;quot;&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;source&amp;lt;/span&amp;gt; my_environment_file; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;cd&amp;lt;/span&amp;gt; my_build_directory; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;make&amp;lt;/span&amp;gt; my_target&amp;quot;  Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
+    </item>
+    
+  </channel>
+</rss>

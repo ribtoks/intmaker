@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Int Maker</title>
+    <link>https://intmaker.com/tags/linux/</link>
+    <description>Recent content in linux on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 02 Feb 2018 00:21:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fuller Stack Development</title>
+      <link>https://intmaker.com/2018/fuller-stack-development/</link>
+      <pubDate>Fri, 02 Feb 2018 00:21:09 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2018/fuller-stack-development/</guid>
+      <description>&lt;p&gt;That&amp;rsquo;s awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different &amp;ldquo;stack&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;I truly believe that software-only engineers somewhere deep inside are always dreaming of pilgrimage to the sacred temples of Hardware and Electronics. All those wires, volts, chips and firmware are just too interesting to avoid them when you only deal with computers above the Transport layer. Basically that&amp;rsquo;s how I was seduced to the dark side, on my own.&lt;/p&gt;
+
+&lt;p&gt;I has already been looking for a possibility to do something &amp;ldquo;forbidden&amp;rdquo; for quite some time. Words like soldering, Arduino, IO pins, &amp;ldquo;10K resistor before LED&amp;rdquo; were constantly spinning in my head but I didn&amp;rsquo;t have just any time for it. Luckily, this month my brother was going to visit me for a week so I decided it would be a perfect time to do some hacking together.&lt;/p&gt;
+
+&lt;p&gt;Apparently it was hard to come up with an idea of what exactly to do. Of course, I wanted to do something &amp;ldquo;special&amp;rdquo; right ahead but I had to admit I didn&amp;rsquo;t have any basic knowledge about that stuff. After some research I decided to start with something simple: to create first iteration of &amp;ldquo;smart home&amp;rdquo;. Particularly I wanted to know &lt;strong&gt;what temperature is in every room of the apartment I live in&lt;/strong&gt;. And plan to implement that was the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Arduino will read temperature with sensor DHT22 and send data with 433MHz module&lt;/li&gt;
+&lt;li&gt;Raspberry Pi will receive data with 433MHz module and save it to DB&lt;/li&gt;
+&lt;li&gt;Raspberry Pi will serve simple website where you can see the data&lt;/li&gt;
+&lt;li&gt;once that will work, create &amp;ldquo;real&amp;rdquo; sensor based on Arduino Mini&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Implementing autocomplete for English in C&#43;&#43;</title>
+      <link>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</link>
+      <pubDate>Sun, 27 Mar 2016 22:07:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
+      <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
+
+&lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;a href=&#34;http://dhruvbird.blogspot.com.ee/2010/09/very-fast-approach-to-search.html&#34; target=&#34;_blank&#34;&gt;good article&lt;/a&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;a href=&#34;https://github.com/duckduckgo/cpp-libface&#34; target=&#34;_blank&#34;&gt;on GitHub&lt;/a&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
+
+&lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How to keyword and upload photos/illustrations to microstocks</title>
+      <link>https://intmaker.com/2015/how-to-keyword-and-upload-photosillustrations-to-microstocks/</link>
+      <pubDate>Wed, 18 Nov 2015 14:20:07 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/how-to-keyword-and-upload-photosillustrations-to-microstocks/</guid>
+      <description>If you&amp;rsquo;re a photographer new to microstock photography, I highly reccomend you to embark this wonderful way of passive earning using your artworks. But I will suppose that you know what is this about and how basically use it. I would even suppose you&amp;rsquo;ve passed an exam on some stock agency and uploaded your first artworks. But did you know there&amp;rsquo;re plenty of stocks? And did you know it&amp;rsquo;s better to work with all major players of this industry?</description>
+    </item>
+    
+    <item>
+      <title>Building Hedgewars under OS X Yosemite</title>
+      <link>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</link>
+      <pubDate>Wed, 31 Dec 2014 13:23:20 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</guid>
+      <description>Ok, you considered to build Hedgewars by yourself. To be clear, I&amp;rsquo;m going to build 0.9.21 on 10.10 Yosemite on MacBook Pro with Retina. First of all, read official manual. After source code pull from Mercurial failed via hg command I considered downloading source on the Downloads page.
+As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&amp;rsquo;t resolve u_int16_t type and after some googling I&amp;rsquo;ve found it was a known issue and you should replace #include  with #include  under #elfif (defined(__APPLE__) &amp;amp;&amp;amp; defined(__MACH__)) in file _ogg/ostypes.</description>
+    </item>
+    
+    <item>
+      <title>How to process Nikon D5300 NEF and other unsupported RAW formats in Darktable</title>
+      <link>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</link>
+      <pubDate>Tue, 09 Sep 2014 12:26:07 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</guid>
+      <description>My favorite tool, Darktable, does not support new Nikon D5300 NEF format and, obviously, a lot of other RAW formats due to proprietary software for them. But there is a solution. There is a free tool from Adobe for Windows and Mac: DNG converter, which is free and converts a lot (almost all, I guess) of proprietary RAW formats to DNG (Digital NeGative - open lossless raw format. Complete list of supported RAW formats for DNG Converter.</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 8 on CentOS 6.4 from scratch</title>
+      <link>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</link>
+      <pubDate>Tue, 26 Nov 2013 16:22:43 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</guid>
+      <description>&lt;p&gt;In this post I&amp;rsquo;ll describe whole TeamCity installation process on a fresh CentOS (on the moment I&amp;rsquo;m writing it&amp;rsquo;s 6.4) for your private project or startup.&lt;/p&gt;
+
+&lt;p&gt;First, proceed to the &lt;a title=&#34;Download CentOS&#34; href=&#34;http://www.centos.org/modules/tinycontent/index.php?id=30&#34; target=&#34;_blank&#34;&gt;CentOS downloads page&lt;/a&gt; and download CentOS distro through &lt;em&gt;.iso&lt;/em&gt;, &lt;em&gt;.torrent&lt;/em&gt; or &lt;em&gt;whatever-you-like&lt;/em&gt; and start the installation process. If you&amp;rsquo;re familiar with any  linux distro installation, it won&amp;rsquo;t take you much time to complete the installation. I&amp;rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing &lt;em&gt;iptables, elinks and java (openjdk)&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;After the installation is over, login, add a user for yourself with &lt;em&gt;adduser&lt;/em&gt; and let&amp;rsquo;s start with TeamCity (maybe you&amp;rsquo;ll also consider adding yourself to the sudoers file).&lt;/p&gt;
+
+&lt;p&gt;First, create &lt;em&gt;/opt/jetbrains/&lt;/em&gt; directory and &lt;a title=&#34;Download teamcity&#34; href=&#34;http://www.jetbrains.com/teamcity/download/index.html&#34; target=&#34;_blank&#34;&gt;download latest TeamCity&lt;/a&gt; using &lt;em&gt;wget&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir /opt/jetbrains
+cd /opt/jetbrains
+wget http://download.jetbrains.com/teamcity/TeamCity-8.0.5.tar.gz
+tar -xpzf TeamCity-8.0.5.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now lets create a system user (e.g. no home directory) for TeamCity to resolve security issues correctly:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;adduser -r teamcity
+passwd teamcity
+chown -R teamcity:teamcity TeamCity&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We&amp;rsquo;ll use PostgreSQL for the internal database for TeamCity. So let&amp;rsquo;s install postgresql packages (8.4 for CentOS 6.4). For details of the PostgreSQL installation please refer to &lt;a title=&#34;PostgreSQL installation&#34; href=&#34;http://wiki.postgresql.org/wiki/YUM_Installation&#34; target=&#34;_blank&#34;&gt;official webpage&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum install postgresql
+service postgresql initdb
+chkconfig postgresql on&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Also edit the &lt;em&gt;/var/lib/pgsql/data/pg_hba.conf&lt;/em&gt; file to allow authorization from &lt;em&gt;localhost&lt;/em&gt;. Go to the end and replace &lt;em&gt;ident&lt;/em&gt; to &lt;em&gt;trust&lt;/em&gt; for &lt;em&gt;localhost&lt;/em&gt; in the configuration for hosts. Now lets create another user for the future TeamCity database and create a database for that user.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo -u postgres psql postgres
+password postgres
+sudo -u postgres createuser -D -A -P teamcity_user
+sudo -u postgres createdb -O teamcity_user teamcity_db&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;(D = Cannot create databases, A = Cannot add users, P = Force password prompt)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MediaWiki installation on a linux guest in the VirtualBox: how-to, tips &amp; tricks</title>
+      <link>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</link>
+      <pubDate>Fri, 22 Nov 2013 18:51:36 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve spend half of a day trying to get MediaWiki working on a VirtualBox for the internal project in the internal network. Looks like it&amp;rsquo;s done now and I want to share tips to help someone to spend less time in the future.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been installing and configuring MediaWiki 1.21 on the OpenSUSE 12.3, but all tips are valuable for any linux distro.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Simple OpenGL program on C# under Linux</title>
+      <link>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</link>
+      <pubDate>Wed, 19 Jun 2013 23:12:44 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</guid>
+      <description>&lt;p&gt;Today I&amp;rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&amp;rsquo;re going to get something like this:&lt;figure id=&#34;attachment_1031&#34; class=&#34;thumbnail wp-caption aligncenter&#34; style=&#34;width: 310px&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png&#34;&gt;&lt;img class=&#34; wp-image-1031 &#34; src=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png?w=300&#34; alt=&#34;OpenTK Game Window&#34; width=&#34;300&#34; height=&#34;241&#34; srcset=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png 400w, http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test-300x242.png 300w&#34; sizes=&#34;(max-width: 300px) 100vw, 300px&#34; /&gt;&lt;/a&gt;&lt;figcaption class=&#34;caption wp-caption-text&#34;&gt;Result of OpenGL app&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deploy on Int Maker</title>
+    <link>https://intmaker.com/tags/deploy/</link>
+    <description>Recent content in deploy on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 09 Jun 2018 00:23:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deploying native apps to macOS</title>
+      <link>https://intmaker.com/2018/deploy-to-macos/</link>
+      <pubDate>Sat, 09 Jun 2018 00:23:10 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2018/deploy-to-macos/</guid>
+      <description>Level 0: warming up Deploying anything anywhere has never been easy business. Deploying applications to desktop computers is no different. OS X (now macOS) had its own solution of &amp;ldquo;dll hell&amp;rdquo;: each application should be absolutely self contained. All the dependencies and dependencies of dependencies should be distributed within the &amp;ldquo;bundle&amp;rdquo; so apps won&amp;rsquo;t conflict with other apps because of missing or outdated libraries.
+Sounds good in theory, but what does it mean in practice?</description>
+    </item>
+    
+  </channel>
+</rss>

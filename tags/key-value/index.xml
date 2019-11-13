@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>key-value on Int Maker</title>
+    <link>https://intmaker.com/tags/key-value/</link>
+    <description>Recent content in key-value on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Sep 2017 11:30:44 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/key-value/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Key-Value storage for poor</title>
+      <link>https://intmaker.com/2017/key-value-storage-for-poor/</link>
+      <pubDate>Fri, 01 Sep 2017 11:30:44 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2017/key-value-storage-for-poor/</guid>
+      <description>Despite the hype about NoSql databases, sometimes it&amp;rsquo;s nice to have an embedded key-value storage available in your app. For example, I&amp;rsquo;m maintaining a cache of metadata of images in my cross-platform desktop app Xpiks and anyway I have to search by filepath to find the metadata. Besides that I have few more requirements specific to my project:
+ the database should be possible to embed directly into your app the license should allow linking with proprietary code (so to be either permissive MIT, BSD-like or LGPL) it should be cross-platform in a sense of Windows, macOS and Linux it should have a history of being used across various projects (sort of to be 5+ years old) it should be affordable to get, since I&amp;rsquo;m not a big company or any sort of company  So when I started looking for this sort of databases, first thing I found was Berkeley DB.</description>
+    </item>
+    
+  </channel>
+</rss>

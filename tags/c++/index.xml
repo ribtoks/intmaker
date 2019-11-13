@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c&#43;&#43; on Int Maker</title>
+    <link>https://intmaker.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Sep 2016 10:49:55 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Replacing QNetworkAccessManager for the great good</title>
+      <link>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</link>
+      <pubDate>Fri, 23 Sep 2016 10:49:55 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</guid>
+      <description>&lt;p&gt;Everybody using Qt for networking for small tasks will sometimes face oddities of &lt;code&gt;QNetworkAccessManager&lt;/code&gt;. This class aims to be useful and convenient while having few quite sensible drawbacks. First one of couse is inability to use it in blocking way. What you should do instead is to create instance of &lt;code&gt;QEventLoop&lt;/code&gt; and connect it&amp;rsquo;s &lt;code&gt;quit()&lt;/code&gt; signal with network manager.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QNetworkAccessManager networkManager;
+QEventLoop loop;
+QNetworkReply *netReply = networkManager.get(resource);
+connect(netReply, SIGNAL(finished()), &amp;amp;loop, SLOT(quit()));
+loop.exec();    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is overkill and overengineering of course. This inconveniency strikes also when you try to use it from background thread for downloading something - &lt;code&gt;QNetworkAccessManager&lt;/code&gt; needs an event loop and it will launch one more thread - it&amp;rsquo;s own to do all the operations required.&lt;/p&gt;
+
+&lt;p&gt;Also it has a lot of data, methods and abilities not needed for &amp;ldquo;everyday simple network operations&amp;rdquo; like querying some API or downloading files. I don&amp;rsquo;t know anybody who wasn&amp;rsquo;t looking for a substitude for it at least once. But fortunately the solution exists.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Resources to learn and understand parallel programming. The hard way</title>
+      <link>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</link>
+      <pubDate>Mon, 29 Aug 2016 12:28:38 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s no way other than the hard way. &amp;copy;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Parallel programming is considered as not easy or even advanced topic by many programmers. It&amp;rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.&lt;/p&gt;
+
+&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
+
+&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Classic Producer-Consumer in Qt/C&#43;&#43;</title>
+      <link>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</link>
+      <pubDate>Mon, 28 Mar 2016 15:44:38 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
+      <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
+
+&lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QWaitCondition m_WaitAnyItem;
+QMutex m_QueueMutex;
+QVector&amp;lt;T*&amp;gt; m_Queue;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;where T is type of messages we&amp;rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.&lt;/p&gt;
+
+&lt;p&gt;For Producer-Consumer usually we need methods &lt;code&gt;produce()&lt;/code&gt; and &lt;code&gt;consume()&lt;/code&gt;. Let&amp;rsquo;s see how we can implement them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Implementing autocomplete for English in C&#43;&#43;</title>
+      <link>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</link>
+      <pubDate>Sun, 27 Mar 2016 22:07:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
+      <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
+
+&lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;a href=&#34;http://dhruvbird.blogspot.com.ee/2010/09/very-fast-approach-to-search.html&#34; target=&#34;_blank&#34;&gt;good article&lt;/a&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;a href=&#34;https://github.com/duckduckgo/cpp-libface&#34; target=&#34;_blank&#34;&gt;on GitHub&lt;/a&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
+
+&lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tips and tricks to improve performance of your ACM solution</title>
+      <link>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</link>
+      <pubDate>Wed, 29 Jul 2015 12:21:32 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</guid>
+      <description>Here I gathered system-programming tricks that can improve performance of your solution in C++ dramatically!
+ Use scanf/printf functions for standard IO instead of cin/cout Memory-align buffers and structures to WORD size of your architecture (4 bytes for 32-bit and 8 bytes for 64-bit) Use arrays instead of linked lists (to use memory block caching) Avoid &amp;ldquo;if&amp;rdquo; stamements in loops If-clause should contain code, which is more likely to execute (if-condition == true) Use inlining for short functions Use objects allocated on stack but not on heap (local objects for functions instead of allocated with malloc/new) Use pre-calculated hardcoded data (e.</description>
+    </item>
+    
+    <item>
+      <title>Interesting issues and features of Qt programming</title>
+      <link>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</link>
+      <pubDate>Thu, 16 Jul 2015 16:17:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</guid>
+      <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.4 5.6)
+18.02 - QSettings interface in Qml transformed bool to string and was always true on deserialization
+18.02 - QByteArray returned from local scope crashed with heap corruption on return of function (destructor of QByteArray)
+Qt can delete your object in it&amp;rsquo;s gui loop. QObject should have CppManaged attribute and it should be set before returning object to UI code.</description>
+    </item>
+    
+    <item>
+      <title>Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</title>
+      <link>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</link>
+      <pubDate>Tue, 24 Feb 2015 15:12:39 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</guid>
+      <description>&lt;p&gt;Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&amp;hellip; What if you just &lt;strong&gt;need&lt;/strong&gt; to do it and the size is so much critical for you?&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;re &lt;a href=&#34;https://www.openssl.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;openSSL&lt;/a&gt; library and &lt;a href=&#34;http://www.cryptopp.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crypto++&lt;/a&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;a href=&#34;https://github.com/kokke/tiny-AES128-C&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tiny-AES.&lt;/a&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;a href=&#34;https://en.wikipedia.org/wiki/Block_cipher_modes_of_operation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CBC and ECB modes&lt;/a&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
+
+&lt;p&gt;You can find example under the hood.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>.NET String Dictionary vs string switch performance</title>
+      <link>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</link>
+      <pubDate>Wed, 18 Feb 2015 22:11:26 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</guid>
+      <description>&lt;p&gt;I had a simple task to map a collection of objects with string property. Map function should replace one string property to another from set of 5-6 strings. Existing solution used Dictionary initialized with those hard-coded values. Once upon a time I tried to compare Dictionary with &lt;em&gt;int&lt;/em&gt; keys to &lt;em&gt;int&lt;/em&gt; switch and int switch was FAR better. It was chess engine so performance mattered.&lt;/p&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&amp;rsquo;ed. You can find &lt;a href=&#34;https://github.com/Ribtoks/heap/blob/master/PerformanceTests/StringSwitchTest/StringSwitchTest/Program.cs&#34; target=&#34;_blank&#34;&gt;source code at Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Details below..&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Future of C&#43;&#43; presentation by Herb Sutter</title>
+      <link>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</link>
+      <pubDate>Thu, 10 Oct 2013 10:05:47 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</guid>
+      <description>http://channel9.msdn.com/Events/Build/2013/2-306</description>
+    </item>
+    
+    <item>
+      <title>Queem - open source computer chess in C#</title>
+      <link>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</link>
+      <pubDate>Mon, 26 Aug 2013 22:00:52 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</guid>
+      <description>I had an interview long time ago when I was young and just started programming. I had been showing my badly written battleship game to a skilled guy in his office. It was written in Delphi but with Pascal one-big-function style and it wasn&amp;rsquo;t double buffered so it has known rendering problems. I said then &amp;ldquo;You see, it is not a chess, but..&amp;rdquo;.
+In a few weeks I started writing my own chess.</description>
+    </item>
+    
+    <item>
+      <title>Simple OpenGL program on C# under Linux</title>
+      <link>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</link>
+      <pubDate>Wed, 19 Jun 2013 23:12:44 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</guid>
+      <description>&lt;p&gt;Today I&amp;rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&amp;rsquo;re going to get something like this:&lt;figure id=&#34;attachment_1031&#34; class=&#34;thumbnail wp-caption aligncenter&#34; style=&#34;width: 310px&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png&#34;&gt;&lt;img class=&#34; wp-image-1031 &#34; src=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png?w=300&#34; alt=&#34;OpenTK Game Window&#34; width=&#34;300&#34; height=&#34;241&#34; srcset=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png 400w, http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test-300x242.png 300w&#34; sizes=&#34;(max-width: 300px) 100vw, 300px&#34; /&gt;&lt;/a&gt;&lt;figcaption class=&#34;caption wp-caption-text&#34;&gt;Result of OpenGL app&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How to write template-like data structure in pure C</title>
+      <link>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</link>
+      <pubDate>Wed, 19 Jun 2013 20:53:22 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Problem&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;write type-independent data structure (say, red-black tree, dynamic array etc.) in pure C (which means you cannot use templates and any other features)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Solution&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;First of all, lets create an interface of our &amp;ldquo;&lt;em&gt;generic&lt;/em&gt;&amp;rdquo; (or &amp;ldquo;&lt;em&gt;template&lt;/em&gt;&amp;rdquo;) type. We can interpret &lt;code&gt;void*&lt;/code&gt; as this unknown type and build some interface functions. It definitely has to have a &lt;code&gt;constructor&lt;/code&gt; and &lt;code&gt;destructor&lt;/code&gt;. Also, it can have a &lt;code&gt;comparator&lt;/code&gt; and kind of &lt;code&gt;print&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;So, we can define it like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;* (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;ConstructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
+&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;DestructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
+&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;int&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;CompareFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*, &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
+&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;PrintFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
+
+&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;struct&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;FuncFactory_struct&amp;lt;/span&amp;gt;
+{
+   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;ConstructorFunc&amp;lt;/span&amp;gt; constructor;
+   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;CompareFunc&amp;lt;/span&amp;gt; compareFunc;
+   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;DestructorFunc&amp;lt;/span&amp;gt; destructorFunc;
+   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;PrintFunc&amp;lt;/span&amp;gt; printFunc;
+};
+
+&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;#define&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;FuncFactory&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;struct&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;FuncFactory_struct
+&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And about implementation details..&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Emacs 24.2 with Python and C&#43;&#43; bundle for Windows</title>
+      <link>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</link>
+      <pubDate>Sun, 10 Mar 2013 21:36:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Emacs 24.2 for Windows&lt;/li&gt;
+&lt;li&gt;CEDET-1.1&lt;/li&gt;
+&lt;li&gt;Auto-Complete 1.3.1&lt;/li&gt;
+&lt;li&gt;Custom themes (using tango in current zip)&lt;/li&gt;
+&lt;li&gt;Ocaml support (ocaml mode, eval and highlighting)&lt;/li&gt;
+&lt;li&gt;Git user interface 1.0 support (with git blame)&lt;/li&gt;
+&lt;li&gt;Ropemacs + Pylint + Flymake (Python IDE + static analysis)&lt;/li&gt;
+&lt;li&gt;Fixes for Cygwin, gnu and git pathes in Windows&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

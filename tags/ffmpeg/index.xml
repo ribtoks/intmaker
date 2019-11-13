@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ffmpeg on Int Maker</title>
+    <link>https://intmaker.com/tags/ffmpeg/</link>
+    <description>Recent content in ffmpeg on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 04 Jun 2017 13:26:08 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dependency-driven development: forced OSS contributions</title>
+      <link>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</link>
+      <pubDate>Sun, 04 Jun 2017 13:26:08 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</guid>
+      <description>&lt;p&gt;It is such a relief when you app just works. Moreover, when it is open. My pet project &lt;a href=&#34;https://github.com/ribtoks/xpiks&#34;&gt;Xpiks&lt;/a&gt; is not only an open-source project itself, but it also uses a lot of the other open-source technologies inside. Qt framework, zlib, hunspell - to name just a few. A big deal is to make them work together. A much bigger deal to make them work together across different platforms (Xpiks is announced as cross-platform for Windows, OS X and Linux). The least problems you can expect - is a tricky build process or somebody&amp;rsquo;s typo in the Makefile which breaks the-other-system&amp;rsquo;s build.&lt;/p&gt;
+
+&lt;p&gt;More often what you&amp;rsquo;ll encounter - is people building a huge pile of code working &lt;strong&gt;only&lt;/strong&gt; for their needs. Only for their server. Only for their version if libcurl. Only for x86 operating system. And then they open-source it to GitHub - much like a cemetery for projects with 1 star and 0 forks, decaying there until forgotten forever.&lt;/p&gt;
+
+&lt;p&gt;This is how the initial joy of finding an open-source technology you needed is being replaced by a constant frustration of not just a need to slightly tweak some header file or Makefile, but to go the sources, read them, understand everything inside and fix. This is what I have encountered many times and what I did as well.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unicode support for avformat_open_input in Windows</title>
+      <link>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</link>
+      <pubDate>Fri, 31 Mar 2017 13:59:09 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</guid>
+      <description>For those of us ever writing cross-platform application there has always been enough quires and quests to accomplish. Typical one is to correctly handle multibyte/unicode filepaths in Windows. And though they are handled pretty good in Qt, when you write your own library you have to do it yourself.
+Another level of quests is using third-party libraries which were not designed for cross-platform usage. For example if you wanted to use ffmpeg / libav libraries in Windows, you have to deal with lack of support of std::wstring parameters in the API.</description>
+    </item>
+    
+  </channel>
+</rss>

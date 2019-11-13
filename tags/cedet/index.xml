@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cedet on Int Maker</title>
+    <link>https://intmaker.com/tags/cedet/</link>
+    <description>Recent content in cedet on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Mar 2013 08:23:35 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/cedet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C&#43;&#43; dev via Emacs 24 in Windows 7 (visual studio includes)</title>
+      <link>https://intmaker.com/2013/c-dev-via-emacs-24-in-windows-7/</link>
+      <pubDate>Wed, 13 Mar 2013 08:23:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/c-dev-via-emacs-24-in-windows-7/</guid>
+      <description>Recently I had issue with CEDET 1.1: semantic was not able to parse header files from Visual Studio, when using
+(semantic-add-system-include &amp;ldquo;C:/Program Files/Microsoft Visual Studio 10.0/VS/Include&amp;rdquo; &amp;lsquo;c++-mode)
+But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve found some headers with defines, which are new to semantic, so you have to add them after this system include in your .el files:
+(defun windows-semantic-hook () (setq microsoft-base-dir &amp;quot;C:/Program Files (x86)/Microsoft Visual Studio 14.</description>
+    </item>
+    
+    <item>
+      <title>Emacs 24.2 with Python and C&#43;&#43; bundle for Windows</title>
+      <link>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</link>
+      <pubDate>Sun, 10 Mar 2013 21:36:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Emacs 24.2 for Windows&lt;/li&gt;
+&lt;li&gt;CEDET-1.1&lt;/li&gt;
+&lt;li&gt;Auto-Complete 1.3.1&lt;/li&gt;
+&lt;li&gt;Custom themes (using tango in current zip)&lt;/li&gt;
+&lt;li&gt;Ocaml support (ocaml mode, eval and highlighting)&lt;/li&gt;
+&lt;li&gt;Git user interface 1.0 support (with git blame)&lt;/li&gt;
+&lt;li&gt;Ropemacs + Pylint + Flymake (Python IDE + static analysis)&lt;/li&gt;
+&lt;li&gt;Fixes for Cygwin, gnu and git pathes in Windows&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

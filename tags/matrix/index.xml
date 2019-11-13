@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matrix on Int Maker</title>
+    <link>https://intmaker.com/tags/matrix/</link>
+    <description>Recent content in matrix on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 Jan 2014 20:55:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/matrix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Generation of spiral matrices</title>
+      <link>https://intmaker.com/2014/generating-spiral-matrices/</link>
+      <pubDate>Thu, 30 Jan 2014 20:55:20 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2014/generating-spiral-matrices/</guid>
+      <description>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
+1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9  After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
+    </item>
+    
+  </channel>
+</rss>

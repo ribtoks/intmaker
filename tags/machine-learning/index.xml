@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>machine learning on Int Maker</title>
+    <link>https://intmaker.com/tags/machine-learning/</link>
+    <description>Recent content in machine learning on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Mar 2019 00:16:27 +0300</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Inference of TensorFlow model without TensorFlow</title>
+      <link>https://intmaker.com/2019/tensorflow-inference/</link>
+      <pubDate>Fri, 01 Mar 2019 00:16:27 +0300</pubDate>
+      
+      <guid>https://intmaker.com/2019/tensorflow-inference/</guid>
+      <description>&lt;p&gt;Training of machine learning models is fun, but it&amp;rsquo;s a useless waste of energy if you are not going to use them afterwards. Usage patterns can be very different. In some case you are creating Software-as-a-Service where you run inference on your or somebodies cloud and return customers only the results. In others - you need to have the model itself on consumer devices (e.g. mobile phones) and run inference there.&lt;/p&gt;
+
+&lt;p&gt;If you were training model using popular framework &lt;a href=&#34;https://tensorflow.org&#34;&gt;TensorFlow&lt;/a&gt; you&amp;rsquo;re covered in a sense that there are number of options you can stick to. To name just a few: inference with Tensorflow from Python, C++ inference with native library (TensorFlow is written in C++ after all), C++ inference with Tensorflow Lite (inference on mobile phones and/or Raspberry Pi) with bindings to Java&amp;amp;co, TensorFlow Serving (production-quality C++ HTTP server for inference using TF native library).&lt;/p&gt;
+
+&lt;p&gt;When running on a server you can use whatever is more convenient so in this article I&amp;rsquo;m mostly concerned about second use-case where you need to run inference on consumer devices.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

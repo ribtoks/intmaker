@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dng on Int Maker</title>
+    <link>https://intmaker.com/tags/dng/</link>
+    <description>Recent content in dng on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Sep 2014 12:26:07 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/dng/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to process Nikon D5300 NEF and other unsupported RAW formats in Darktable</title>
+      <link>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</link>
+      <pubDate>Tue, 09 Sep 2014 12:26:07 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</guid>
+      <description>My favorite tool, Darktable, does not support new Nikon D5300 NEF format and, obviously, a lot of other RAW formats due to proprietary software for them. But there is a solution. There is a free tool from Adobe for Windows and Mac: DNG converter, which is free and converts a lot (almost all, I guess) of proprietary RAW formats to DNG (Digital NeGative - open lossless raw format. Complete list of supported RAW formats for DNG Converter.</description>
+    </item>
+    
+  </channel>
+</rss>

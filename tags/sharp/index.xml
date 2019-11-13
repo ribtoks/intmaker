@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sharp on Int Maker</title>
+    <link>https://intmaker.com/tags/sharp/</link>
+    <description>Recent content in sharp on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Aug 2013 22:00:52 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/sharp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Queem - open source computer chess in C#</title>
+      <link>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</link>
+      <pubDate>Mon, 26 Aug 2013 22:00:52 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</guid>
+      <description>I had an interview long time ago when I was young and just started programming. I had been showing my badly written battleship game to a skilled guy in his office. It was written in Delphi but with Pascal one-big-function style and it wasn&amp;rsquo;t double buffered so it has known rendering problems. I said then &amp;ldquo;You see, it is not a chess, but..&amp;rdquo;.
+In a few weeks I started writing my own chess.</description>
+    </item>
+    
+  </channel>
+</rss>

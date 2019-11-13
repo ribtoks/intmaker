@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>qml on Int Maker</title>
+    <link>https://intmaker.com/tags/qml/</link>
+    <description>Recent content in qml on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 22 Nov 2017 23:28:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/qml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ultimate ComboBox in QML</title>
+      <link>https://intmaker.com/2017/ultimate-combobox-in-qml/</link>
+      <pubDate>Wed, 22 Nov 2017 23:28:25 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2017/ultimate-combobox-in-qml/</guid>
+      <description>&lt;p&gt;Everybody who wanted to customize UI of &lt;code&gt;ComboBox&lt;/code&gt; in QML knows that it is only possible though crutches and hacks. Usually that&amp;rsquo;s not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Item {
+    id: comboBox
+    property alias model: dropDownItems.model
+
+    signal comboIndexChanged(int index);
+
+    Rectangle {
+        id: header
+        anchors.fill: parent
+        color: &amp;quot;gray&amp;quot;
+
+        Text { text: dropDownItems.currentItem.itemText }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: { comboBox.state = comboBox.state === &amp;quot;down&amp;quot; ? &amp;quot;&amp;quot; : &amp;quot;down&amp;quot; }
+        }
+    }
+
+    Rectangle {
+        id: dropDown
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: header.bottom
+        visible: false
+        height: 0
+        onActiveFocusChanged: { if (!activeFocus) { comboBox.state = &amp;quot;&amp;quot;; } }
+
+        ListView {
+            id: dropDownItems
+            anchors.fill: parent
+
+            delegate: Rectangle {
+                property alias itemText: modelData
+                height: 20
+                width: parent.width
+
+                Text { text: modelData }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        comboBox.state = &amp;quot;&amp;quot;
+                        if (index !== comboBox.selectedIndex) {
+                            comboBox.selectedIndex = index
+                            comboIndexChanged(index)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    states: State {
+        name: &amp;quot;down&amp;quot;;
+        PropertyChanges {
+            target: dropDown
+            height: 20 * dropDownItems.count
+            visible: true
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This approach has 2 big flaws.&lt;/p&gt;
+
+&lt;p&gt;The very first problem with this approach is &lt;code&gt;z-index&lt;/code&gt; management. You have to make sure that owner of your custom &lt;code&gt;ComboBox&lt;/code&gt; is on top of everything possible so I set &lt;code&gt;z: 100500&lt;/code&gt; every time I instantiated my object. But what if you have several instances which can overlap? Correct, you have to assign &lt;code&gt;z-index&lt;/code&gt; dynamically every time..&lt;/p&gt;
+
+&lt;p&gt;The other problem with this way is the focus management in QML apps which I personally find quite clumsy and raw (but of course it could be just my lack of skill). Simple enough, you want to click outside to close the dropdown and .. usually that&amp;rsquo;s just not possible without hacks. I&amp;rsquo;ve done horrible things to workaround this. I used to put huge &lt;code&gt;MouseArea&lt;/code&gt; elements everywhere to emit &lt;code&gt;closeComboBoxes()&lt;/code&gt; signal when it get&amp;rsquo;s clicked and all the &lt;code&gt;ComboBox&lt;/code&gt; in the area were subscribed to that signal.&lt;/p&gt;
+
+&lt;p&gt;So is there anything better?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Handling drag&#39;n&#39;drop of files in Qt under OS X</title>
+      <link>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</link>
+      <pubDate>Wed, 25 Nov 2015 18:00:02 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</guid>
+      <description>&lt;p&gt;If you ever tried to handle drag&amp;rsquo;n&amp;rsquo;drop files in your Qt application, you would usually come up with the code like the following.&lt;/p&gt;
+
+&lt;p&gt;First of all you will need a Drop Area somewhere in your application, which will handle drops&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DropArea {
+  anchors.fill: parent
+  onDropped: {
+    if (drop.hasUrls) {
+      var filesCount = yourCppModel.dropFiles(drop.urls)
+      console.log(filesCount + &#39; files added via drag&amp;amp;drop&#39;)
+    }
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Where &lt;em&gt;yourCppModel&lt;/em&gt; is a model exposed to Qml in main.cpp or wherever like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QQmlContext *rootContext = engine.rootContext();
+rootContext-&amp;gt;setContextProperty(&lt;span style=&#34;font-style:italic&#34;&gt;&amp;#34;yourCppModel&amp;#34;&lt;/span&gt;, &amp;amp;myCppModel);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and &lt;code&gt;int dropFiles(const QList&amp;lt;QUrl&amp;gt; &amp;amp;urls)&lt;/code&gt; is just an ordinary method exposed to QML via &lt;em&gt;&lt;code&gt;Q_INVOKABLE&lt;/code&gt;&lt;/em&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;You will sure notice everything works fine unless you&amp;rsquo;re working under OS X. In OS X instead of QUrls to local files you will get something like this: _ &lt;code&gt;file:///.file/id=6571367.2773272/&lt;/code&gt;_. There&amp;rsquo;s a bug in Qt for that and it even looks closed, but it still doesn&amp;rsquo;t work for me that&amp;rsquo;s why I&amp;rsquo;ve implemented my own helper using mixing of Objective-C and Qt-C++ code.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

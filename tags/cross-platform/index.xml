@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cross-platform on Int Maker</title>
+    <link>https://intmaker.com/tags/cross-platform/</link>
+    <description>Recent content in cross-platform on Int Maker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Sep 2017 11:30:44 +0000</lastBuildDate>
+    
+	<atom:link href="https://intmaker.com/tags/cross-platform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Key-Value storage for poor</title>
+      <link>https://intmaker.com/2017/key-value-storage-for-poor/</link>
+      <pubDate>Fri, 01 Sep 2017 11:30:44 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2017/key-value-storage-for-poor/</guid>
+      <description>Despite the hype about NoSql databases, sometimes it&amp;rsquo;s nice to have an embedded key-value storage available in your app. For example, I&amp;rsquo;m maintaining a cache of metadata of images in my cross-platform desktop app Xpiks and anyway I have to search by filepath to find the metadata. Besides that I have few more requirements specific to my project:
+ the database should be possible to embed directly into your app the license should allow linking with proprietary code (so to be either permissive MIT, BSD-like or LGPL) it should be cross-platform in a sense of Windows, macOS and Linux it should have a history of being used across various projects (sort of to be 5+ years old) it should be affordable to get, since I&amp;rsquo;m not a big company or any sort of company  So when I started looking for this sort of databases, first thing I found was Berkeley DB.</description>
+    </item>
+    
+    <item>
+      <title>Classic Producer-Consumer in Qt/C&#43;&#43;</title>
+      <link>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</link>
+      <pubDate>Mon, 28 Mar 2016 15:44:38 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
+      <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
+
+&lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QWaitCondition m_WaitAnyItem;
+QMutex m_QueueMutex;
+QVector&amp;lt;T*&amp;gt; m_Queue;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;where T is type of messages we&amp;rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.&lt;/p&gt;
+
+&lt;p&gt;For Producer-Consumer usually we need methods &lt;code&gt;produce()&lt;/code&gt; and &lt;code&gt;consume()&lt;/code&gt;. Let&amp;rsquo;s see how we can implement them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Implementing autocomplete for English in C&#43;&#43;</title>
+      <link>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</link>
+      <pubDate>Sun, 27 Mar 2016 22:07:35 +0000</pubDate>
+      
+      <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
+      <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
+
+&lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;a href=&#34;http://dhruvbird.blogspot.com.ee/2010/09/very-fast-approach-to-search.html&#34; target=&#34;_blank&#34;&gt;good article&lt;/a&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;a href=&#34;https://github.com/duckduckgo/cpp-libface&#34; target=&#34;_blank&#34;&gt;on GitHub&lt;/a&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
+
+&lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
