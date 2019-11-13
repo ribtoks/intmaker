@@ -2,6 +2,7 @@
 title: About
 date: 2019-11-11T09:07:11+00:00
 author: "Taras Kushnir"
+social: true
 categories:
   - Personal
 ---
@@ -10,7 +11,7 @@ Welcome to the Int Maker!
 
 This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
 
-My name is Taras Kushnir, originally I'm from Ukraine but I called many places "home". I'm a software engineer, architect and mentor. In my free time I climb mountains and [take pictures](https://500px.com/tkushnir).
+My name is Taras Kushnir, originally I'm from Ukraine but I called "home" many countries. I'm a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and [take pictures](https://500px.com/tkushnir).
 
 Occasionally I blog about my experience (or lack of one) with machine learning, cloud, desktop software, electonics, vim vs emacs, orchestrating distributed computations and handling highload.
 
