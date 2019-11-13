@@ -2,7 +2,6 @@ baseurl = "https://intmaker.com/"
 title = "Int Maker"
 author = "Taras Kushnir"
 languagecode = "en"
-theme = "black-and-light"
 canonifyURLs = true
 enableRobotsTXT = true
 
