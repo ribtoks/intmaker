@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://intmaker.com/about/</loc>
-    <lastmod>2019-11-11T09:07:11+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://intmaker.com/categories/</loc>
     <lastmod>2019-11-11T09:07:11+00:00</lastmod>
   </url>
@@ -1500,6 +1495,10 @@
   <url>
     <loc>https://intmaker.com/2012/developer-competencies-list/</loc>
     <lastmod>2012-10-07T15:39:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://intmaker.com/about/</loc>
   </url>
   
 </urlset>

@@ -12,17 +12,6 @@
     
     
     <item>
-      <title>About</title>
-      <link>https://intmaker.com/about/</link>
-      <pubDate>Mon, 11 Nov 2019 09:07:11 +0000</pubDate>
-      
-      <guid>https://intmaker.com/about/</guid>
-      <description>Welcome to the Int Maker!
-This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
-My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.</description>
-    </item>
-    
-    <item>
       <title>Projects</title>
       <link>https://intmaker.com/projects/</link>
       <pubDate>Mon, 11 Nov 2019 09:07:11 +0000</pubDate>
@@ -40,6 +29,17 @@ Xpiks is a keywording and uploading tool for microstock photographers, illustrat
       
       <guid>https://intmaker.com/resume/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://intmaker.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://intmaker.com/about/</guid>
+      <description>&amp;nbsp; Welcome to the Int Maker!
+This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
+My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.</description>
     </item>
     
   </channel>
