@@ -1,13 +1,13 @@
 ---
 title: About
-date: 2019-11-11T09:07:11+00:00
 author: "Taras Kushnir"
 social: true
 categories:
   - Personal
 ---
 
-Welcome to the Int Maker!
+<div>&nbsp;</div>
+<div id="avatar"></div>Welcome to the Int Maker!
 
 This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
 
