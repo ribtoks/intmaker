@@ -71,6 +71,8 @@ sudo vi /etc/sudoers.d/010_pi-nopasswd
 
 Editing sudoers is required to disallow passwordless `sudo` for all users: just change `NOPASSWD` to `PASSWD` for your new user and save the file.
 
+Also you may want to add use to group "video" so you will be able to read RaspberryPi temperature with command `/opt/vc/bin/vcgencmd measure_temp`. In order to do so, run `sudo usermod -aG video <username>`.
+
 What I also usually do is I configure `fail2ban` in order to restrict ssh attempts with wrong password.
 
 ```
