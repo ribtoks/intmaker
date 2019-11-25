@@ -6,7 +6,7 @@ permalink: /emacs-24-2-with-python-and-c-bundle-for-windows/
 categories:
   - Emacs
   - Programming
-tags:
+keywords:
   - binaries
   - c++
   - cedet

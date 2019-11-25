@@ -6,7 +6,7 @@ permalink: /teamcity-8-on-centos-6-4-from-scratch/
 categories:
   - Linux
   - Programming
-tags:
+keywords:
   - autostart
   - centos
   - config

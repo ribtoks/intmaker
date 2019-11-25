@@ -6,7 +6,7 @@ permalink: /how-to-pass-amazon-sde-interview/
 image: interview-288477.jpeg
 categories:
   - Programming
-tags:
+keywords:
   - amazon
   - deadline
   - development

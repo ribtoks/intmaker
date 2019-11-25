@@ -6,7 +6,7 @@ permalink: /c-dev-via-emacs-24-in-windows-7/
 categories:
   - Emacs
   - Programming
-tags:
+keywords:
   - autocomplete
   - cedet
   - Emacs

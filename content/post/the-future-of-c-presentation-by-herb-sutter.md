@@ -6,7 +6,7 @@ permalink: /the-future-of-c-presentation-by-herb-sutter/
 categories:
   - C++
   - Programming
-tags:
+keywords:
   - c++
   - herb
   - presentation

@@ -6,7 +6,7 @@ permalink: /net-string-dictionary-vs-string-switch-performance/
 image: goats-competition-dispute.jpg
 categories:
   - Programming
-tags:
+keywords:
   - .net
   - c++
   - dictionary

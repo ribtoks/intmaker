@@ -7,7 +7,7 @@ categories:
   - C++
   - Programming
   - Qt
-tags:
+keywords:
   - alternative
   - c++
   - curl

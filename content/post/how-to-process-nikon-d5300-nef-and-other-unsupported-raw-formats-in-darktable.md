@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/
 categories:
   - Linux
-tags:
+keywords:
   - 12 bit
   - 14 bit
   - adobe

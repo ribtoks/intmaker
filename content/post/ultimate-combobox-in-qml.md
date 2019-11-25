@@ -6,7 +6,7 @@ permalink: /ultimate-combobox-in-qml/
 categories:
   - Programming
   - Qt
-tags:
+keywords:
   - combobox
   - custom
   - qml

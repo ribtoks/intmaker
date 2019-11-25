@@ -6,7 +6,7 @@ permalink: /key-value-storage-for-poor/
 image: poor-761144.jpeg
 categories:
   - Programming
-tags:
+keywords:
   - berkeleydb
   - cross-platform
   - database

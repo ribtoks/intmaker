@@ -7,7 +7,7 @@ permalink: /resources-to-learn-and-understand-parallel-programming-the-hard-way/
 categories:
   - C++
   - Programming
-tags:
+keywords:
   - .net
   - book
   - c++

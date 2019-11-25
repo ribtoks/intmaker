@@ -7,7 +7,7 @@ tagazine-media:
   - 'a:7:{s:7:"primary";s:60:"http://latobcode.files.wordpress.com/2013/06/opentk_test.png";s:6:"images";a:1:{s:60:"http://latobcode.files.wordpress.com/2013/06/opentk_test.png";a:6:{s:8:"file_url";s:60:"http://latobcode.files.wordpress.com/2013/06/opentk_test.png";s:5:"width";i:400;s:6:"height";i:322;s:4:"type";s:5:"image";s:4:"area";i:128800;s:9:"file_path";b:0;}}s:6:"videos";a:0:{}s:11:"image_count";i:1;s:6:"author";s:8:"20401582";s:7:"blog_id";s:8:"53632187";s:9:"mod_stamp";s:19:"2013-06-19 21:15:57";}'
 categories:
   - Programming
-tags:
+keywords:
   - c++
   - csharp
   - linux

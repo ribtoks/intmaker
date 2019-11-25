@@ -8,7 +8,7 @@ tagazine-media:
 categories:
   - Emacs
   - Programming
-tags:
+keywords:
   - compilation
   - Emacs
   - make

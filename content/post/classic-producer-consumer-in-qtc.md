@@ -8,7 +8,7 @@ categories:
   - C++
   - Programming
   - Qt
-tags:
+keywords:
   - c++
   - consumer
   - cross-platform

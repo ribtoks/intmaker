@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/
 categories:
   - Linux
-tags:
+keywords:
   - apache
   - linux
   - mediawiki

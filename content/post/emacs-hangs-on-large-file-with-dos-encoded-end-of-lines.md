@@ -6,7 +6,7 @@ permalink: /emacs-hangs-on-large-file-with-dos-encoded-end-of-lines/
 categories:
   - Emacs
   - Programming
-tags:
+keywords:
   - dos
   - Emacs
   - eol

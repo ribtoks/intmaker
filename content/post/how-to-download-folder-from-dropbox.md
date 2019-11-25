@@ -6,7 +6,7 @@ permalink: /how-to-download-folder-from-dropbox/
 image: heavy.jpg
 categories:
   - Programming
-tags:
+keywords:
   - download
   - dropbox
   - javascript

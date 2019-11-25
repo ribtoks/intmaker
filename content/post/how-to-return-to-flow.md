@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 image: agenda-concept-development-7376.jpg
 categories:
   - Programming
-tags:
+keywords:
   - gtd
   - time management
 ---

@@ -7,7 +7,7 @@ image: letters-heap.jpeg
 categories:
   - C++
   - Programming
-tags:
+keywords:
   - autocomplete
   - c++
   - cross-platform

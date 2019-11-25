@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /configuring-a-user-for-restoredimported-database-in-ms-sql-server/
 categories:
   - Programming
-tags:
+keywords:
   - login
   - management studio
   - security

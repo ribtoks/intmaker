@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 image: tf-inference.jpg
 categories:
   - Programming
-tags:
+keywords:
   - machine learning
   - ml
   - tensorflow

@@ -7,7 +7,7 @@ tagazine-media:
   - 'a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";i:0;s:6:"author";s:8:"20401582";s:7:"blog_id";s:8:"53632187";s:9:"mod_stamp";s:19:"2013-08-26 20:13:21";}'
 categories:
   - Programming
-tags:
+keywords:
   - ai
   - c++
   - chess

@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /rails-development-environment-in-emacs-on-opensuse-linux/
 categories:
   - Linux
-tags:
+keywords:
   - config.el
   - Emacs
   - list

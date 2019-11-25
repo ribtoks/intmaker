@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 image: raspberry-pi.jpg
 categories:
   - Programming
-tags:
+keywords:
   - ads
   - raspberry
   - diy

@@ -7,7 +7,7 @@ image: speed-flights.jpeg
 categories:
   - C++
   - Programming
-tags:
+keywords:
   - acm
   - c++
   - contest

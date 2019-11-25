@@ -6,7 +6,7 @@ permalink: /generating-spiral-matrices/
 categories:
   - Programming
   - Ruby
-tags:
+keywords:
   - array
   - matrix
   - numbers

@@ -6,7 +6,7 @@ permalink: /migrate-wordpress-to-jekyll/
 image: carry.jpeg
 categories:
   - Programming
-tags:
+keywords:
   - wordpress
   - jekyll
   - ruby

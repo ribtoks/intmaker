@@ -8,7 +8,7 @@ categories:
   - C++
   - Embedded
   - Programming
-tags:
+keywords:
   - arduino
   - dht
   - embedded

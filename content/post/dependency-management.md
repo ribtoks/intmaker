@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 image: dependency.jpeg
 categories:
   - Programming
-tags:
+keywords:
   - oop
   - architecture
   - classes

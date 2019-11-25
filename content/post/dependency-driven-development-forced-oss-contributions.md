@@ -8,7 +8,7 @@ categories:
   - C++
   - Linux
   - Programming
-tags:
+keywords:
   - craftmanship
   - duckduckgo
   - ffmpeg

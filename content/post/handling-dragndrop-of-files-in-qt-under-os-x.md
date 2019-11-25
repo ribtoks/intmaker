@@ -6,7 +6,7 @@ permalink: /handling-dragndrop-of-files-in-qt-under-os-x/
 categories:
   - C++
   - Qt
-tags:
+keywords:
   - drag
   - drop
   - mac

@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /building-hedgewars-under-os-x-yosemite/
 categories:
   - Linux
-tags:
+keywords:
   - binary
   - build
   - download

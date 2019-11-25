@@ -42,6 +42,8 @@
     {{ end }}
   </div>
 
+  {{ partial "related.html" . }}
+
   {{ if $.Site.Params.disqus_comments }}
   {{ partial "disqus.html" . }}
   {{ end }}

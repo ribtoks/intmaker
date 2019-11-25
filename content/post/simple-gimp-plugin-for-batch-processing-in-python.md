@@ -6,7 +6,7 @@ permalink: /simple-gimp-plugin-for-batch-processing-in-python/
 categories:
   - Linux
   - Programming
-tags:
+keywords:
   - api
   - gimp
   - plug-in

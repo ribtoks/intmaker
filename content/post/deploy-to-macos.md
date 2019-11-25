@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 image: deploy-mac.jpg
 categories:
   - Programming
-tags:
+keywords:
   - macos
   - qt
   - native

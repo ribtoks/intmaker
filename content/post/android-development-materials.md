@@ -6,7 +6,7 @@ permalink: /android-development-materials/
 categories:
   - Android
   - Programming
-tags:
+keywords:
   - android
   - development
   - links

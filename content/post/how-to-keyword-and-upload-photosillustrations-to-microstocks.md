@@ -6,7 +6,7 @@ permalink: /how-to-keyword-and-upload-photosillustrations-to-microstocks/
 categories:
   - Linux
   - Uncategorized
-tags:
+keywords:
   - linux
   - mac
   - microstock

@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 permalink: /ruby-style-loops-in-c/
 categories:
   - Programming
-tags:
+keywords:
   - .net
   - csharp
   - downto
