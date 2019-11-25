@@ -159,7 +159,7 @@ As you can see deploying desktop apps on macOS is a total hassle as soon as you 
 
 ## References
 
-* [Xpiks deployment script](https://github.com/ribtoks/xpiks/blob/master/scripts/deploy/deploy_mac.sh)
+* [Xpiks deployment script](https://github.com/ribtoks/xpiks/blob/backports_1.5.3/scripts/deploy/deploy_mac.sh)
 * There's an awesome article about [dynamic loading in Linux](https://amir.rachum.com/blog/2016/09/17/shared-libraries/). It explains about `rpath`, `runpath` and other quirks.
 * [Linking and install names on OS X](https://www.mikeash.com/pyblog/friday-qa-2009-11-06-linking-and-install-names.html)
 * [Deploying Qt applications](https://doc.qt.io/qt-5/deployment.html).
