@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Int Maker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Sep 2019 20:55:23 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 08:19:03 -0800</lastBuildDate>
     
 	<atom:link href="https://intmaker.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Command-line SEO alternative to Screaming Frog Spider</title>
+      <link>https://intmaker.com/2019/command-line-seo/</link>
+      <pubDate>Wed, 27 Nov 2019 08:19:03 -0800</pubDate>
+      
+      <guid>https://intmaker.com/2019/command-line-seo/</guid>
+      <description>&lt;p&gt;Did you ever wanted to crawl a list of URLs and figure out which of them are alive? Or what number of external links any of them has? If you did, most probably &lt;a href=&#34;https://www.screamingfrog.co.uk/seo-spider/&#34;&gt;Screaming Frog SEO Spider&lt;/a&gt; was one of the popular choices. Bad news is that free version has a limitation to 500 URLs and paid version costs lots of money (around $150 per year). And worst is that 80% of that crawling functionality can be done in pure Bash.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How do I setup Raspberry Pi</title>

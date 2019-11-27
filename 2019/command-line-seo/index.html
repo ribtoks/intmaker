@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     
-    <meta property="og:title" content="How do I setup Raspberry Pi" />
+    <meta property="og:title" content="Command-line SEO alternative to Screaming Frog Spider" />
     <meta property="og:locale" content="en" />
-    <meta property="og:description" content="Somehow I end up breaking my Raspberry Pi all of the time. Today it was the sudoers file that I modified using nano instead of visudo and voila - I cannot be" />
-    <meta property="og:url" content="https://intmaker.com/2019/raspberrypi-setup/" />
+    <meta property="og:description" content="Did you ever wanted to crawl a list of URLs and figure out which of them are alive? Or what number of external links any of them has? If you did, most probably" />
+    <meta property="og:url" content="https://intmaker.com/2019/command-line-seo/" />
     <meta property="og:site_name" content="Xpiks" />
     
     
@@ -27,10 +27,10 @@
     <title>
       
       
-         How do I setup Raspberry Pi 
+         Command-line SEO alternative to Screaming Frog Spider 
       
     </title>
-    <link rel="canonical" href="https://intmaker.com/2019/raspberrypi-setup/">
+    <link rel="canonical" href="https://intmaker.com/2019/command-line-seo/">
 
     <style>
   * {
@@ -543,105 +543,53 @@
 <section id=content>
   
 
-  <h1> How do I setup Raspberry Pi </h1>
+  <h1> Command-line SEO alternative to Screaming Frog Spider </h1>
   
     <div id=sub-header>
-      September 2019 · 3 minute read
+      November 2019 · 2 minute read
     </div>
   
 
   
   <div class="thumbnail-container">
-      <a href="https://intmaker.com/2019/raspberrypi-setup/">
-          <img src="https://intmaker.com/img/raspberry-pi.jpg">
+      <a href="https://intmaker.com/2019/command-line-seo/">
+          <img src="https://intmaker.com/img/seo.jpg">
       </a>
   </div>
   
 
   <div class="entry-content">
-    <p>Somehow I end up breaking my Raspberry Pi all of the time. Today it was the sudoers file that I modified using <code>nano</code> instead of <code>visudo</code> and voila - I cannot be root anymore. Another time I simply forgot my user&rsquo;s password and apparently it&rsquo;s impossible to login via ssh anymore (I don&rsquo;t have spare physical screen and keyboard). So somehow it happens all of the time and I need to reimage SD card and setup everything from scratch. That&rsquo;s the reason I&rsquo;m writing this note - to future myself.</p>
+    <p>Did you ever wanted to crawl a list of URLs and figure out which of them are alive? Or what number of external links any of them has? If you did, most probably <a href="https://www.screamingfrog.co.uk/seo-spider/">Screaming Frog SEO Spider</a> was one of the popular choices. Bad news is that free version has a limitation to 500 URLs and paid version costs lots of money (around $150 per year). And worst is that 80% of that crawling functionality can be done in pure Bash.</p>
 
-<h3 id="prepare-sd-card">Prepare SD card</h3>
+<p>However, pure Bash has also some limitations, so I decided to spend a day and create a better tool, written in Go. Meet <a href="https://github.com/ribtoks/mink">mink</a>, a command-line SEO spider. Mink can crawl a list of URLs and extract useful metrics like HTTP status code, indexibility, number of external and internal links and many many others.</p>
 
-<h4 id="download-raspbian-image">Download raspbian image</h4>
+<h2 id="usage">Usage</h2>
 
-<p>First thing to do is to visit <a href="https://www.raspberrypi.org/">official website</a> and download latest Raspbian image.</p>
+<p>Here&rsquo;s a list of options:</p>
 
-<p>Then, verify hashsum using <code>shasum -a 256 2019-07-10-raspbian-buster-lite.zip</code> (under macOS).</p>
-
-<h4 id="flush-image-to-sd-card">Flush image to SD card</h4>
-
-<p>For that you need to know SD card disk number.</p>
-
-<pre><code>diskutil list
-diskutil unmountDisk /dev/disk2
-sudo dd bs=1m if=~/Downloads/Installs/2019-07-10-raspbian-buster-lite.img of=/dev/rdisk2 conv=sync
+<pre><code>Usage of mink:
+  -d int
+    	Maximum depth for crawling (default 1)
+  -f string
+    	Format of the output table|csv|tsv (default &quot;table&quot;)
+  -v	Write verbose logs
 </code></pre>
 
-<p>Then, when it will be automounted, create empty file with name &ldquo;ssh&rdquo; in <code>/boot</code> (that will be the only mounted device).</p>
+<p><code>mink</code> reads URLs from <code>STDIN</code> and writes reports to <code>STDOUT</code>. Report can be written in a form of a table, comma-separated values and tab-separated values.</p>
 
-<h3 id="system-setup">System setup</h3>
+<p>Probably most viable report format is CSV since you can do fancy things like <a href="https://www.youtube.com/watch?v=8f4YTubL6cM">resource page link building</a> in a Spreadsheet software like <a href="https://docs.google.com/">Google Docs</a> or <a href="https://www.libreoffice.org/">LibreOffice</a>.</p>
 
-<h4 id="initial">Initial</h4>
+<p>Here are some examples of usage. In order to crawl the whole website, you can do this:</p>
 
-<p>Now you can insert SD card to Raspberry Pi and turn it ON. I use network cable so I don&rsquo;t need to care about WiFi setup. It&rsquo;s much faster and much easier in my case.</p>
+<p><code>echo &quot;https://your-website.com&quot; | mink -d 1000 -f csv &gt; report.csv</code></p>
 
-<pre><code>ssh pi@192.168.1.170
-sudo raspi-config
-</code></pre>
+<p>whereas to crawl a file with an URL per line, do this instead:</p>
 
-<p>Go to &ldquo;Advanced&rdquo; and &ldquo;Expand filesystem&rdquo; - this is a first thing to do before downloading updates. Let&rsquo;s use all 32GB of the SD card instead of 2.2GB of the image we flushed.</p>
+<p><code>cat urls.txt | mink -f csv &gt; report.csv</code></p>
 
-<p>Then I install <a href="https://github.com/azlux/log2ram">log2ram</a> and modify the limits using <code>sudo vi /etc/log2ram.conf</code> to have at least 200MB of log space available. This is done to preserve the SD card from frequent writes.</p>
+<h2 id="contibuting">Contibuting</h2>
 
-<p>Now it&rsquo;s a good idea to reboot to make use of log2ram.</p>
-
-<h4 id="security">Security</h4>
-
-<p>I use some of the tricks described in <a href="https://www.raspberrypi.org/documentation/configuration/security.md">security</a> section. I mean changing the default user, using complex autogenerated password, restricting ssh access and things alike.</p>
-
-<pre><code>sudo adduser pihole
-sudo adduser pihole sudo
-</code></pre>
-
-<p>Now it should be possible to reconnect on SSH with <code>pihole</code> user.</p>
-
-<pre><code>sudo deluser -remove-home pi
-sudo vi /etc/sudoers.d/010_pi-nopasswd
-</code></pre>
-
-<p>Editing sudoers is required to disallow passwordless <code>sudo</code> for all users: just change <code>NOPASSWD</code> to <code>PASSWD</code> for your new user and save the file.</p>
-
-<p>Also you may want to add use to group &ldquo;video&rdquo; so you will be able to read RaspberryPi temperature with command <code>/opt/vc/bin/vcgencmd measure_temp</code>. In order to do so, run <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
-
-<p>What I also usually do is I configure <code>fail2ban</code> in order to restrict ssh attempts with wrong password.</p>
-
-<pre><code>sudo apt install fail2ban
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-sudo vi /etc/fail2ban/jail.local
-</code></pre>
-
-<p>As for the last command - modifying the config - it&rsquo;s just enough to find <code>[ssh]</code> section and set <code>enabled = true</code> and <code>maxretry = 6</code>.</p>
-
-<h4 id="update">Update</h4>
-
-<p>It will be a good idea to install all possible updates</p>
-
-<pre><code>sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get clean
-</code></pre>
-
-<h3 id="pi-hole">Pi-Hole</h3>
-
-<p>Now when the base system is ready, we can install Pi-Hole using commands that you can find in <a href="https://github.com/pi-hole/pi-hole">official GitHub repository</a>.</p>
-
-<pre><code>curl -sSL https://install.pi-hole.net | bash
-</code></pre>
-
-<p>After going through configuration steps, everything what is left to do is to setup static DNS in your router.</p>
-
-<p>I&rsquo;d like to state that Pi-Hole by itself is not enough for your privacy and security, but it&rsquo;s a good start.</p>
+<p><a href="https://github.com/ribtoks/mink">mink</a> is an open-source project so you can make it better too! Feel free to send a pull request or reach out to me if you have any feature requests.</p>
   </div>
 
   
@@ -657,10 +605,8 @@ sudo apt-get clean
   </div>
   <div id=links>
     
-      <a class="basic-alignment left" href="https://intmaker.com/2019/how-to-return-to-flow/">&laquo; How to return to the flow faster</a>
+      <a class="basic-alignment left" href="https://intmaker.com/2019/raspberrypi-setup/">&laquo; How do I setup Raspberry Pi</a>
     
-    
-      <a class="basic-alignment left" href="https://intmaker.com/2019/command-line-seo/">Command-line SEO alternative to Screaming Frog Spider &raquo;</a>
     
   </div>
 
