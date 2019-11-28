@@ -14,6 +14,8 @@ keywords:
   - dynamic
 ---
 
+This is part 1 of the deployment process overview. [Part 2]({{< relref "sign-for-macos" >}}) will cover code signing and notarization.
+
 ## Level 0: warming up
 
 Deploying anything anywhere has never been easy business. Deploying applications to desktop computers is no different. OS X (now macOS) had its own solution of ["dll hell"](https://en.wikipedia.org/wiki/DLL_Hell): each application should be absolutely self contained. All the dependencies and dependencies of dependencies should be distributed within the "bundle" so apps won't conflict with other apps because of missing or outdated libraries.
@@ -156,6 +158,8 @@ In order to do so you have to copy background file to `.background` directory of
 ## The end
 
 As you can see deploying desktop apps on macOS is a total hassle as soon as you have something more complex than `HelloWorld.app`. XCode/QtCreator can rule many things out to an extent but custom libraries, additional applications and others may require writing custom deployment scripts.
+
+Make sure to read [part 2]({{< relref "sign-for-macos" >}}) about signing and notarizing for macOS.
 
 ## References
 

@@ -31,9 +31,13 @@ First of all, I recommend to read a bunch of [official](https://developer.apple.
 
 Secondly, after you finished docs reading, here's the procedure I use (I will assume you already signed up for Developer program itself).
 
+<br />
+
 ### 1. Registration (usually done once)
 
 Go to [Apple Developer Portal](https://developer.apple.com) and create a new Bundle ID for your application. This should look like a reverse url (e.g. "com.mydomain.MyApp").
+
+<br />
 
 ### 2. Preparation (usually done once)
 
@@ -43,6 +47,8 @@ Go to [Apple Developer Portal](https://developer.apple.com) and create a new Bun
 4. Install certificates locally (double-click `.cer` file) but verify that it is installed in `Keychain Access -> Certificates`
 5. On the [Apple ID website](https://appleid.apple.com) create new app-specific password for notarization submission tool
 6. Create an item in Keychain with name "AC_PASSWORD" where login is iCloud ID and password is "app-specific password" from (5). This is done in order not to have an app-specific password in a plain-text in deploy script.
+
+<br />
 
 ### 3. Signing
 
@@ -80,6 +86,8 @@ Also I recommend to verify that your bundle is correctly signed:
 ```
 codesign --verbose --verify "${APP_BUNDLE}"
 ```
+
+<br />
 
 ### 4. Notarize the bundle
 
@@ -124,6 +132,8 @@ xcrun stapler validate "${APP_BUNDLE}"
 
 And even besides of that you should send your app to yourself in the email and check that it passes Gatekeeper.
 
+<br />
+
 ### 5. Rinse and repeat for .dmg
 
 Previous steps are good if you're distibuting your app in a zip archive. But the odds are you're using `.pkg` or `.dmg`. If you put your app into a `.dmg`, it will again become unsafe! So you need to repeat the previous exercise with the `.dmg`: sign it and notarize.
@@ -162,6 +172,8 @@ spctl -a -t open --context context:primary-signature -v "${DMG_PATH}"
 
 xcrun stapler validate "${DMG_PATH}"
 ```
+
+<br />
 
 ### The end
 
