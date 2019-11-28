@@ -33,7 +33,7 @@ Usage of mink:
 
 `mink` reads URLs from `STDIN` and writes reports to `STDOUT`. Report can be written in a form of a table, comma-separated values and tab-separated values.
 
-With `mink` you can understand if page is indexable by search engine or not: `mink` verifies http status code, canonical url, "noindex" headers and meta tags. Besides that you get many properties of the page like meta description, size, load speed, number of external and internal links and this list is only expanding.
+With `mink` you can understand if page is indexable by search engine or not: `mink` verifies http status code, canonical url, "noindex" headers and meta tags. Besides that you get many properties of the page like meta description, size, load speed, number of external and internal links and this list is only expanding. Also `mink` includes all the emails in can find on the pages it crawls.
 
 Here are some examples of usage. In order to crawl the whole website, you can do this:
 
