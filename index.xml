@@ -6,10 +6,21 @@
     <description>Recent content on Int Maker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Nov 2019 08:19:03 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 07:45:49 -0800</lastBuildDate>
     
 	<atom:link href="https://intmaker.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notarizing native apps for macOS: step by step guide</title>
+      <link>https://intmaker.com/2019/sign-for-macos/</link>
+      <pubDate>Thu, 28 Nov 2019 07:45:49 -0800</pubDate>
+      
+      <guid>https://intmaker.com/2019/sign-for-macos/</guid>
+      <description>This is a part 2 of the journey started in part 1.
+When you download an app from the internet on macOS, it adds an attribute com.apple.quarantine (you can see that using command xattr /path/to/MyApp.app). When you open such app, you will see a Gatekeeper greeting:
+Apple announced that all new software for macOS Catalina will need to be notarized. And that you won&amp;rsquo;t be able to open unnotarized software even bypassing Gatekeeper selecting &amp;ldquo;Open&amp;rdquo; from context menu.</description>
+    </item>
     
     <item>
       <title>Command-line SEO alternative to Screaming Frog Spider</title>
