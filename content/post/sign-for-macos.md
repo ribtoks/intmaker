@@ -29,7 +29,7 @@ Notarization is a virus scan of your app done by Apple. After the scan Apple cre
 
 First of all, I recommend to read a bunch of [official](https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution) [Apple](https://developer.apple.com/library/archive/technotes/tn2206/_index.html) [documentation](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html). You will need to codesign your app bundle with enabled hardened runtime, with correct entitelments file and then upload it to Apple and wait for the notarization to finish.
 
-Secondly, after you did, here's the procedure (I will assume you already signed up for Developer program itself).
+Secondly, after you finished docs reading, here's the procedure I use (I will assume you already signed up for Developer program itself).
 
 ### 1. Registration (usually done once)
 
