@@ -579,9 +579,13 @@
 
 <p>Secondly, after you finished docs reading, here&rsquo;s the procedure I use (I will assume you already signed up for Developer program itself).</p>
 
+<p><br /></p>
+
 <h3 id="1-registration-usually-done-once">1. Registration (usually done once)</h3>
 
 <p>Go to <a href="https://developer.apple.com">Apple Developer Portal</a> and create a new Bundle ID for your application. This should look like a reverse url (e.g. &ldquo;com.mydomain.MyApp&rdquo;).</p>
+
+<p><br /></p>
 
 <h3 id="2-preparation-usually-done-once">2. Preparation (usually done once)</h3>
 
@@ -593,6 +597,8 @@
 <li>On the <a href="https://appleid.apple.com">Apple ID website</a> create new app-specific password for notarization submission tool</li>
 <li>Create an item in Keychain with name &ldquo;AC_PASSWORD&rdquo; where login is iCloud ID and password is &ldquo;app-specific password&rdquo; from (5). This is done in order not to have an app-specific password in a plain-text in deploy script.</li>
 </ol>
+
+<p><br /></p>
 
 <h3 id="3-signing">3. Signing</h3>
 
@@ -627,6 +633,8 @@ find &quot;${APP_BUNDLE}&quot;/Contents/PlugIns -name &quot;*.dylib&quot; -exec 
 
 <pre><code>codesign --verbose --verify &quot;${APP_BUNDLE}&quot;
 </code></pre>
+
+<p><br /></p>
 
 <h3 id="4-notarize-the-bundle">4. Notarize the bundle</h3>
 
@@ -667,6 +675,8 @@ xcrun stapler validate &quot;${APP_BUNDLE}&quot;
 
 <p>And even besides of that you should send your app to yourself in the email and check that it passes Gatekeeper.</p>
 
+<p><br /></p>
+
 <h3 id="5-rinse-and-repeat-for-dmg">5. Rinse and repeat for .dmg</h3>
 
 <p>Previous steps are good if you&rsquo;re distibuting your app in a zip archive. But the odds are you&rsquo;re using <code>.pkg</code> or <code>.dmg</code>. If you put your app into a <code>.dmg</code>, it will again become unsafe! So you need to repeat the previous exercise with the <code>.dmg</code>: sign it and notarize.</p>
@@ -701,6 +711,8 @@ codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${DMG_PATH
 
 xcrun stapler validate &quot;${DMG_PATH}&quot;
 </code></pre>
+
+<p><br /></p>
 
 <h3 id="the-end">The end</h3>
 
