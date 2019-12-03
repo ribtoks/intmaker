@@ -175,6 +175,12 @@ xcrun stapler validate "${DMG_PATH}"
 
 <br />
 
+### Pitfalls
+
+It is possible that even after `spctl` and `xcrun` will report that your app is signed and notarized it still will be rejected by Gatekeeper. [It can happen](https://developer.apple.com/library/content/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG207) if an app uses an absolute @rpath or absolute path to link to a dynamic library.
+
+In order to see which path it is, run `otool -L /path/to/binary` and `otool -l /path/to/binary`. If you find any non-system library with absolute path, check for more details about how to fix this in [part 1]({{< relref "deploy-to-macos" >}}) (you need to use `install_name_tool`).
+
 ### The end
 
 Notarization process is definitely a pain the ass to already non-trivial deployment procedures and there's no workaround. The only way is to master it and create some automation around.
