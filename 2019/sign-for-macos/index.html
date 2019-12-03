@@ -546,7 +546,7 @@
   <h1> Notarizing native apps for macOS: step by step guide </h1>
   
     <div id=sub-header>
-      November 2019 · 5 minute read
+      November 2019 · 6 minute read
     </div>
   
 
@@ -713,6 +713,12 @@ xcrun stapler validate &quot;${DMG_PATH}&quot;
 </code></pre>
 
 <p><br /></p>
+
+<h3 id="pitfalls">Pitfalls</h3>
+
+<p>It is possible that even after <code>spctl</code> and <code>xcrun</code> will report that your app is signed and notarized it still will be rejected by Gatekeeper. <a href="https://developer.apple.com/library/content/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG207">It can happen</a> if an app uses an absolute @rpath or absolute path to link to a dynamic library.</p>
+
+<p>In order to see which path it is, run <code>otool -L /path/to/binary</code> and <code>otool -l /path/to/binary</code>. If you find any non-system library with absolute path, check for more details about how to fix this in <a href="https://intmaker.com/2018/deploy-to-macos/">part 1</a> (you need to use <code>install_name_tool</code>).</p>
 
 <h3 id="the-end">The end</h3>
 
