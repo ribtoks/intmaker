@@ -24,6 +24,10 @@ First thing to do is to visit [official website](https://www.raspberrypi.org/) a
 
 Then, verify hashsum using `shasum -a 256 2019-07-10-raspbian-buster-lite.zip` (under macOS).
 
+#### Extract image from the archive
+
+Run Unarchiver or 7zip and extract `.img` from `.zip`.
+
 #### Flush image to SD card
 
 For that you need to know SD card disk number.
