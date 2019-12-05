@@ -108,3 +108,41 @@ curl -sSL https://install.pi-hole.net | bash
 After going through configuration steps, everything what is left to do is to setup static DNS in your router.
 
 I'd like to state that Pi-Hole by itself is not enough for your privacy and security, but it's a good start.
+
+### Kanboard
+
+In order to install kanboard on raspberry pi, first install php with friends
+
+```
+sudo apt-get install php php-gd php-mbstring php-xml php-sqlite3
+```
+
+and git if it's not installed `sudo apt-get install git`.
+
+After this, extract fresh Kanboard in the `www/` directory:
+
+```
+cd /var/www/html/
+sudo git clone https://github.com/kanboard/kanboard.git
+cd kanboard
+sudo git checkout v1.2.12
+cd ..
+sudo chown -R www-data:www-data kanboard/data
+service apache2 restart
+```
+
+For kanboard I usually also install [kanboard tdg plugin]({{< relref "2019/how-to-return-to-flow" >}}) as a task-management system.
+
+```
+cd kanboard/plugins
+sudo wget https://github.com/ribtoks/kanboard-tdg-import/releases/download/v0.0.4/TdgImport-0.0.4.zip
+sudo unzip TdgImport-0.0.4.zip -d TdgImport
+```
+
+Ultimately, run
+
+```
+sudo service apache2 restart
+```
+
+and navigate to `http://ip-of-rpi/kanboard/`, login with `admin:admin` to kanboard and configure users and projects.
