@@ -546,7 +546,7 @@
   <h1> How do I setup Raspberry Pi </h1>
   
     <div id=sub-header>
-      September 2019 · 3 minute read
+      September 2019 · 4 minute read
     </div>
   
 
@@ -646,6 +646,40 @@ sudo apt-get clean
 <p>After going through configuration steps, everything what is left to do is to setup static DNS in your router.</p>
 
 <p>I&rsquo;d like to state that Pi-Hole by itself is not enough for your privacy and security, but it&rsquo;s a good start.</p>
+
+<h3 id="kanboard">Kanboard</h3>
+
+<p>In order to install kanboard on raspberry pi, first install php with friends</p>
+
+<pre><code>sudo apt-get install php php-gd php-mbstring php-xml php-sqlite3
+</code></pre>
+
+<p>and git if it&rsquo;s not installed <code>sudo apt-get install git</code>.</p>
+
+<p>After this, extract fresh Kanboard in the <code>www/</code> directory:</p>
+
+<pre><code>cd /var/www/html/
+sudo git clone https://github.com/kanboard/kanboard.git
+cd kanboard
+sudo git checkout v1.2.12
+cd ..
+sudo chown -R www-data:www-data kanboard/data
+service apache2 restart
+</code></pre>
+
+<p>For kanboard I usually also install <a href="https://intmaker.com/2019/how-to-return-to-flow/">kanboard tdg plugin</a> as a task-management system.</p>
+
+<pre><code>cd kanboard/plugins
+sudo wget https://github.com/ribtoks/kanboard-tdg-import/releases/download/v0.0.4/TdgImport-0.0.4.zip
+sudo unzip TdgImport-0.0.4.zip -d TdgImport
+</code></pre>
+
+<p>Ultimately, run</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>and navigate to <code>http://ip-of-rpi/kanboard/</code>, login with <code>admin:admin</code> to kanboard and configure users and projects.</p>
   </div>
 
   
