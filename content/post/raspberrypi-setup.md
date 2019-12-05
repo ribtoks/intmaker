@@ -131,7 +131,7 @@ sudo chown -R www-data:www-data kanboard/data
 service apache2 restart
 ```
 
-For kanboard I usually also install [kanboard tdg plugin]({{< relref "2019/how-to-return-to-flow" >}}) as a task-management system.
+For kanboard I usually also install [kanboard tdg plugin]({{< relref "post/how-to-return-to-flow" >}}) as a task-management system.
 
 ```
 cd kanboard/plugins
