@@ -10,7 +10,7 @@ These are the projects that I created in my free time. Some grown up big and som
 
 ## Xpiks
 
-[Website](https://xpiksapp.com) [GitHub](https://github.com/ribtoks/xpiks) [Facebook](https://facebook.com/xpiksapp)
+[Website](https://xpiksapp.com) [Facebook](https://facebook.com/xpiksapp)
 
 Xpiks is a keywording and uploading tool for microstock photographers, illustrators and videographers. It is a cross-platform desktop application written in Qt/QML that allows people to add metadata to artworks and upload them via FTP to a number of websites. Soon after it's creation it became a very popular tool and hit around _100k downloads_ as of now (2019).
 
@@ -19,6 +19,12 @@ Xpiks is a keywording and uploading tool for microstock photographers, illustrat
 [Website](https://focusbitapp.com)
 
 FocusBit is a cross platform personal productivity tool. It is a todo list and pomodoro timer together. FocusBit supports wide range of visual notifications about task progress, reminders and basic todo planning/reporting. It is also implemented in Qt/QML and is available across all platforms. Initially I used FocusBit only for my own needs and when I found how magically it works, moved it to a public project.
+
+## listing
+
+[GitHub](https://github.com/ribtoks/listing)
+
+Listing is an email marketing list self-hosted platform. It works using serverless architecture with AWS Lambda and Dynamod DB allowing you to manage email subscription list of hundred thousand subscribers almost free of charge. It's implemented using Go.
 
 ## Ministaller
 
