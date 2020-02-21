@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Int Maker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 Nov 2019 07:45:49 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 18:22:19 -0800</lastBuildDate>
     
 	<atom:link href="https://intmaker.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to self-host email marketing list if you are a developer</title>
+      <link>https://intmaker.com/2020/self-host-email-marketing/</link>
+      <pubDate>Thu, 20 Feb 2020 18:22:19 -0800</pubDate>
+      
+      <guid>https://intmaker.com/2020/self-host-email-marketing/</guid>
+      <description>Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I&amp;rsquo;m running few side projects and always wanted them to have their own subscribers list, but I&amp;rsquo;m not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever.</description>
+    </item>
     
     <item>
       <title>Notarizing native apps for macOS: step by step guide</title>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <meta property="og:title" content="How to self-host email marketing list if you are a developer" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more" />
+    <meta property="og:url" content="https://intmaker.com/2020/self-host-email-marketing/" />
+    <meta property="og:site_name" content="Xpiks" />
+    
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         How to self-host email marketing list if you are a developer 
+      
+    </title>
+    <link rel="canonical" href="https://intmaker.com/2020/self-host-email-marketing/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+    margin-bottom:25px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, time {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
+  .sharing-icons {
+      padding-left: 10px;
+      margin-bottom: 20px;
+  }
+
+  section.disqus {
+      margin-top: 100px;
+  }
+
+  .social-icons {
+      float: right;
+  }
+
+  .social-icons a {
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  @media (max-width: 30em) {
+      .social-icons {
+          float: left;
+          padding-top: 0px;
+      }
+  }
+
+  .bmc-button img {
+      width: 27px !important;
+      margin: 0 0 10px 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      vertical-align: middle !important;
+      display: inline !important;
+  }
+
+  .bmc-button {
+      line-height: 36px !important;
+      height:37px !important;
+      text-decoration: none !important;
+      display:inline-block !important;
+      color:#000000 !important;
+      background-color:#FFFFFF !important;
+      border-radius: 3px !important;
+      border: 1px solid transparent !important;
+      padding: 1px 9px !important;
+      font-size: 23px !important;
+      letter-spacing: 0.6px !important;
+      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      margin: 0 auto !important;
+      font-family:'Cookie', cursive !important;
+      -webkit-box-sizing: border-box !important;
+      box-sizing: border-box !important;
+      -o-transition: 0.3s all linear !important;
+      -webkit-transition: 0.3s all linear !important;
+      -moz-transition: 0.3s all linear !important;
+      -ms-transition: 0.3s all linear !important;
+      transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      text-decoration: none !important;
+      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      opacity: 0.85 !important;
+      color:#000000 !important;
+  }
+
+  #avatar {
+    background-image: url('/img/168_1.jpg');
+    
+     
+    width: 150px;
+    height: 150px;
+
+     
+    background-size: cover;
+
+     
+    background-position: top center;
+
+     
+    border-radius: 50%;
+
+	-webkit-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+
+	float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
+  }
+
+  .related-posts {
+      margin-top: 70px;
+  }
+</style>
+
+
+    
+
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-10412407-11', 'auto');  ga('send', 'pageview');  ga('set', 'anonymizeIp', true); </script>
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://intmaker.com/">Int Maker</a></h1>
+      <ul>
+        
+          <li><a href="https://intmaker.com/about/">About</a></li>
+        
+          <li><a href="https://intmaker.com/">Posts</a></li>
+        
+          <li><a href="https://intmaker.com/projects/">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  
+
+  <h1> How to self-host email marketing list if you are a developer </h1>
+  
+    <div id=sub-header>
+      February 2020 · 8 minute read
+    </div>
+  
+
+  
+  <div class="thumbnail-container">
+      <a href="https://intmaker.com/2020/self-host-email-marketing/">
+          <img src="https://intmaker.com/img/emails.png">
+      </a>
+  </div>
+  
+
+  <div class="entry-content">
+    
+
+<p>Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I&rsquo;m running few side projects and always wanted them to have their own subscribers list, but I&rsquo;m not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever. If you want to know how I achieved that, read on.</p>
+
+<!-- more -->
+
+<h2 id="the-search">The search</h2>
+
+<h3 id="paid-providers">Paid providers</h3>
+
+<p>So initially I decided I don&rsquo;t want to spend any time for managing server infrastructure or anything alike. I will just buy cheapest email marketing provider possible and will stay with it. I was slightly disappointed, that even &ldquo;cheapest&rdquo; ones were not cheap enough for me.</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Provider</strong></th>
+<th><strong>Free tier</strong></th>
+<th><strong>Price for 10k</strong></th>
+<th><strong>Alexa ranking</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://emailoctopus.com/pricing">EmailOctopus</a></td>
+<td>2500 contacts</td>
+<td>$20-30/month</td>
+<td>27,452</td>
+</tr>
+
+<tr>
+<td><a href="https://mailchimp.com/pricing/">MailChimp</a></td>
+<td>2500 contacts</td>
+<td>$74+/month</td>
+<td>440</td>
+</tr>
+
+<tr>
+<td><a href="https://moonmail.io/pricing/">MoonMail</a></td>
+<td>Self-hosted</td>
+<td>$149+/month</td>
+<td>171,413</td>
+</tr>
+
+<tr>
+<td><a href="https://www.mailerlite.com/pricing">MailerLite</a></td>
+<td>1000 contacts</td>
+<td>$50/month</td>
+<td>4,360</td>
+</tr>
+
+<tr>
+<td><a href="https://sendy.co/">Sendy</a></td>
+<td>Self-hosted</td>
+<td>$56 1-time fee</td>
+<td>27,195</td>
+</tr>
+
+<tr>
+<td><a href="https://madmimi.com/service_agreements/choose_plan">MadMimi</a></td>
+<td>-</td>
+<td>$42/month</td>
+<td>10,446</td>
+</tr>
+
+<tr>
+<td><a href="https://easysendy.com/pricing/email-campaigns/">EasySendy</a></td>
+<td>-</td>
+<td>$19/month</td>
+<td>75,410</td>
+</tr>
+</tbody>
+</table>
+
+<p>This looked slightly disappointing, given that cheaper providers had quite limited funtionality comparetively to more expensive ones. So my next logical step was to check how are free, OSS and self-hosted solutions doing.</p>
+
+<h3 id="free-oss-solutions">Free, OSS solutions</h3>
+
+<p>Quick googling revealed the following list: <a href="https://github.com/parkerj/tinycampaign">tinycampaign</a>, <a href="https://github.com/aniftyco/audience">audience</a>, <a href="https://github.com/freeCodeCamp/mail-for-good">mail-for-good</a>, <a href="https://github.com/vitorfs/colossus">colossus</a>.</p>
+
+<p>All these contenders have few cons for me:</p>
+
+<ul>
+<li>you need to run a web-server all of the time, which means you have to maintain it, install updates, provision certificates and so on. Also it is not free</li>
+<li>these solutions are all-in-one solutions, providing email templates, analytics, A/B testing and email sending</li>
+</ul>
+
+<p>It was quite demotivating. These solutions tried to implement everything instead of just email list. And I couldn&rsquo;t understand why do you need to run a web-server all of the time, given that in 2020 you have all the magic of serverless. But none of these systems took advantage of it. None, but one.</p>
+
+<p>So I found <a href="https://moonmail.io/">MoonMail</a> which looked like a system you would want to use. It was running on AWS stack on serverless architecture. No wasting resources, it supported email templates, analytics and A/B testing out of the box. <strong>It looked really clean and nice with only one problem: no documentation.</strong> <a href="https://github.com/MoonMail/MoonMail#getting-started">Install docs</a> looked simply insane. There&rsquo;re 10 services you have to deploy separately, half of which require exotic legacy serverless framework version and half uses new one. There&rsquo;s no documentation about which configs you should edit and which not. This is understandable because they want to sell it like EmailOctopus did, transitioning from open source software to SaaS. It&rsquo;s even not trivial to find GitHub link on their website.</p>
+
+<p>So I really had no choice but to create this system on my own.</p>
+
+<h2 id="the-project">The project</h2>
+
+<p>I spent a week and created first version of email marketing system that I called <em>Listing</em>. It manages arbitrary amount of subscription lists using few lambda functions written in Go. Subscriptions are stored in a DynamoDB table and are managed by a lambda function with endpoints <code>/subscribe</code>, <code>/unsubscribe</code>, <code>/confirm</code> and <code>/subscribers</code>. The last endpoint is protected with BasicAuth for &ldquo;admin&rdquo; access (export/import of subscribers). Bounces and Complaints are stored in additional DynamoDB table. This table is managed by another lambda function that is subscribed to SNS topic. AWS SES for a specific domain is a publisher to this SNS topic.</p>
+
+<p><em>Listing</em> uses so-called &ldquo;double-confirmation&rdquo; system where user has to confirm it&rsquo;s email even after entering it on your website and pressing &ldquo;Subscribe&rdquo; button. The reason is that this is way more reliable in terms of loyal audience building.</p>
+
+<p>Usage on the website is absolutely trivial. After lambda function is deployed, you get a nice <code>/subscribe</code> API that you can add to a form like this:</p>
+
+<pre><code>&lt;form action=&quot;https://abcdef123456.execute-api.us-east-1.amazonaws.com/prod/subscribe&quot; method=&quot;post&quot;&gt;
+  &lt;div&gt;
+      &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; placeholder=&quot;Your name&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+      &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Your email&quot; required&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+      &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
+  &lt;/div&gt;
+  &lt;input type=&quot;hidden&quot; id=&quot;newsletter&quot; name=&quot;newsletter&quot; value=&quot;NewsletterName&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h2 id="operation">Operation</h2>
+
+<p>Have I mentioned <em>Listing</em> can be deployed with only one command <code>serverless deploy</code>? After this it just works. But that&rsquo;s not all. <em>Listing</em> serves couple of ordinary http endpoints and while you can do all operations using <code>curl</code>, I created <code>listing-cli</code> command line application that simplifies it.</p>
+
+<p>For example, to subscribe to a newsletter, you can run:</p>
+
+<pre><code>listing-cli -mode subscribe -email foo@bar.com -newsletter NewsletterName -url https://qwerty12345.execute-api.us-east-1.amazonaws.com/dev
+</code></pre>
+
+<p>or to list all subscribers:</p>
+
+<pre><code>listing-cli -auth-token your-token-here -url &quot;https://qwerty12345.execute-api.us-east-1.amazonaws.com/dev&quot; -mode export -newsletter Listing1
+</code></pre>
+
+<p>One of the functions of <code>listing-cli</code> is import and export of the subscription list. You may want to do it for backups, when you move your database or to send actual emails.</p>
+
+<p>Even though in reality initial deployment is a little bit more compliated than <code>serverless deploy</code> (you have to create nice subscribed/unsubscribed pages and so on), this system is totally hassle-free and autonomous. Beside that it costs you nothing. AWS Lamda provides first 1 million invocations free each month and subscription lambda of <em>Listing</em> is small and fast. That means that most probably your marketing list will never grow so fast that you will ever have to pay for it.</p>
+
+<h2 id="sending-emails">Sending emails</h2>
+
+<p>There&rsquo;s one important piece left in this puzzle: <em>sending the actual emails</em>. If you never done that, here&rsquo;s what you need:</p>
+
+<ul>
+<li>email templates that will allow to personalize contents</li>
+<li>compute: smpt server that will send all those emails</li>
+<li>analytics: you may want to know how successful your campaign was</li>
+<li>software that will evaluate/execute those templates with your actual users and send the emails through your server</li>
+</ul>
+
+<h3 id="templates">Templates</h3>
+
+<p>Getting templates was actually the easiest part. I spent around an hour with <a href="http://mosaico.io/">mosaico</a> and <a href="https://beefree.io/">beefree</a> but didn&rsquo;t manage to compile a template that I would like. But I&rsquo;m not a designer either. So I ended up buying a pack on Themeforest for $20. Even though it&rsquo;s not free, it will stay with me for a while and it contains around 70 email variations from which I will have around 10 useful ones.</p>
+
+<h3 id="compute">Compute</h3>
+
+<p>Since we are leveraging AWS stack, it might be interesting to know why people actually use AWS SES (Simple Email Service) for emails. And the reaons is the price: you pay 10 cents for 1000 emails, but if you send emails from EC2 instance, first 60k emails per month are free. That ultimately means <strong>you can send 60k emails for free and then 10k emails for $1</strong>. That is not exactly free, but it is very close to it.</p>
+
+<p>So the goal is to somehow use AWS SES for our email sending. Systems like Moonmail, Sendy and EmailOctopus allow you to use SES as their backend for actual sending. But you still have to pay for the system itself.</p>
+
+<p><strong>Good news is that SES provides you with SMTP endpoint</strong> so if you just set it up on your local machine as outgoing server, you can send all emails from your favorite mail app. Of course, it&rsquo;s not what you would do if you have a 1000 of subscribers, but it allows to have a very neat automation around.</p>
+
+<h3 id="analytics">Analytics</h3>
+
+<p>Although I&rsquo;m not a fan of Google, but it&rsquo;s hard to beat their free Google Analytics tier. It allows 30 million events per property per month which is definitely more than enough for email campaigns.</p>
+
+<p>Usage of Google Analytics is also trivial. Just add a &ldquo;tracking pixel&rdquo; that implements <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide">Measurement Protocol</a> to the bottom of your email and you are done.</p>
+
+<pre><code>&lt;img src=&quot;https://www.google-analytics.com/collect?v=1&amp;tid=UA-12345678-90&amp;t=event&amp;ec=email&amp;ea=open&amp;cm=email&amp;ci=campaignID&quot;/&gt;
+</code></pre>
+
+<p>In order to track link clicks you can add something like <code>utm_source=email&amp;utm_campaign=YourCampaign</code> and hope that your subscribers don&rsquo;t use ClearURLs add-on in browser.</p>
+
+<h3 id="software">Software</h3>
+
+<p>This is the interesting part. <strong>So the goal was just to find a piece of software that would allow creating html templates and sending them to SMTP server.</strong> Initially I found <a href="https://github.com/rykov/paperboy">paperboy</a> and <a href="https://github.com/Circle-gg/thunder-mail">thunder mail</a> to be good candidates for the software. However, there are some limitations with them too. Paperboy has been sort-of-abandoned for some time and some useful features like emails preview were pending in branches. Thundermail required to write Javascript scripts in order to send the emails and I only wanted to create templates.</p>
+
+<p>Since the only functionality you actually need is to execute templates and send emails, I implemented this as well. I was inspired by paperboy system, but made it a little bit easier. Paperboy creates a project with hierarchy like <a href="https://gohugo.io/">hugo</a> does: <code>./contents/</code>, <code>./lists/</code>, <code>./layouts</code> and others. In <em>Listing</em> I&rsquo;m just passing template and subscribers list as parameters allowing user to organize the &ldquo;project&rdquo; on their own. Templates are ordinary Go templates so <strong>all functionality was already there and I only had to put it together</strong>. This is how <code>listing-send</code> helper was created.</p>
+
+<h2 id="workflow">Workflow</h2>
+
+<p>Typical workflow for <em>Listing</em> was to download all subscribers with <code>listing-cli</code> and then, after building a template offline, send the emails using <code>listing-send</code>. Of course you have to send test emails first and also to check if it works on mobile.</p>
+
+<p>I keep all campaigns and subscriber lists in Git so every campaign is actually reproducible.</p>
+
+<h2 id="afterword">Afterword</h2>
+
+<p>It was a great fun building <a href="https://github.com/ribtoks/listing">listing</a> and actually using it. Now my side-project Xpiks <a href="https://xpiksapp.com/blog/2020/newsletter/">has it&rsquo;s own marketing list</a> and I already sent my first newsletter to the first 100 subscribers! Except of the templates, I didn&rsquo;t pay a penny to this point and even though it looked like a bit of &ldquo;not-invented-here&rdquo; syndrome, it worked out well and paid off.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://github.com/ribtoks/listing">listing source code</a></li>
+<li><a href="https://github.com/ribtoks/listing/blob/master/docs/ENDPOINTS.md">Endpoints docs</a></li>
+<li><a href="https://github.com/ribtoks/listing/blob/master/docs/DEPLOYMENT.md">Deployment docs</a></li>
+</ul>
+
+  </div>
+
+  
+  <div class="sharing-icons">
+    Share:&nbsp;
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+  <div style="margin-bottom: 20px;">
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+
+  </div>
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://intmaker.com/2019/sign-for-macos/">&laquo; Notarizing native apps for macOS: step by step guide</a>
+    
+    
+  </div>
+
+  
+
+
+
+
+  
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+  
+  
+</section>
+
+  
+</body>
+</html>
+
+
