@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -560,18 +586,13 @@ QEventLoop loop;
 QNetworkReply *netReply = networkManager.get(resource);
 connect(netReply, SIGNAL(finished()), &amp;loop, SLOT(quit()));
 loop.exec();    
-</code></pre></div>
-<p>This is overkill and overengineering of course. This inconveniency strikes also when you try to use it from background thread for downloading something - <code>QNetworkAccessManager</code> needs an event loop and it will launch one more thread - it&rsquo;s own to do all the operations required.</p>
-
+</code></pre></div><p>This is overkill and overengineering of course. This inconveniency strikes also when you try to use it from background thread for downloading something - <code>QNetworkAccessManager</code> needs an event loop and it will launch one more thread - it&rsquo;s own to do all the operations required.</p>
 <p>Also it has a lot of data, methods and abilities not needed for &ldquo;everyday simple network operations&rdquo; like querying some API or downloading files. I don&rsquo;t know anybody who wasn&rsquo;t looking for a substitude for it at least once. But fortunately the solution exists.</p>
-
 <p>So what I came up with was <a href="https://curl.haxx.se/libcurl/">libcurl library</a>. F*cking stable over decades, simple and with backwards-compatible API (sign of good design) it is the library of choise of thousands of desktop, mobile or server-side solutions. This library has bindings to all possible languages and technologies one can imagine so you don&rsquo;t need to look further.</p>
-
 <p>To add it to the project, you need to download source code, build it and add it as linkage dependency to your own Qt project:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">INCLUDEPATH = <span style="font-style:italic">&#34;/path/to/libcurl/source/code&#34;</span>
-LIBS += -lcurl</code></pre></div>
-<p>Curl library has <a href="https://curl.haxx.se/libcurl/c/example.html">tons of examples</a> available to a fellow programmer and it won&rsquo;t take much time to copy-and-paste solutions to almost any problem you may encounter. Using libcurl will allow you to choose if you want to create a blocking calls or to do everything in thread controlled by you. You can read more on that by wonderful <a href="https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/">topic by Maya Posch</a>.</p>
-
+LIBS += -lcurl
+</code></pre></div><p>Curl library has <a href="https://curl.haxx.se/libcurl/c/example.html">tons of examples</a> available to a fellow programmer and it won&rsquo;t take much time to copy-and-paste solutions to almost any problem you may encounter. Using libcurl will allow you to choose if you want to create a blocking calls or to do everything in thread controlled by you. You can read more on that by wonderful <a href="https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/">topic by Maya Posch</a>.</p>
 <p>You can find working examples of replacement for <code>QNetworkAccessManager</code> for API calls named <code>SimpleCurlRequest</code> <a href="https://github.com/Ribtoks/xpiks/blob/master/src/xpiks-qt/Connectivity/simplecurlrequest.cpp">at GitHub as part of Xpiks project</a> and <a href="https://github.com/Ribtoks/xpiks/blob/master/src/xpiks-qt/Helpers/remoteconfig.cpp">it&rsquo;s usage</a>.</p>
   </div>
 

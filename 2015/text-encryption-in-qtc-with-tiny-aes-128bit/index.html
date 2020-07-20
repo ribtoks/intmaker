@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,14 +587,10 @@
 
   <div class="entry-content">
     <p>Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&hellip; What if you just <strong>need</strong> to do it and the size is so much critical for you?</p>
-
-<p>There&rsquo;re <a href="https://www.openssl.org/" target="_blank" rel="noopener">openSSL</a> library and <a href="http://www.cryptopp.com/" target="_blank" rel="noopener">Crypto++</a> library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&rsquo;t want to sacrifice the size but still need encryption. Meet <a href="https://github.com/kokke/tiny-AES128-C" target="_blank" rel="noopener">tiny-AES.</a> It&rsquo;s really small AES 128-bit library which does encryption in <a href="https://en.wikipedia.org/wiki/Block_cipher_modes_of_operation" target="_blank" rel="noopener">CBC and ECB modes</a>. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.</p>
-
+<p>There&rsquo;re <!-- raw HTML omitted -->openSSL<!-- raw HTML omitted --> library and <!-- raw HTML omitted -->Crypto++<!-- raw HTML omitted --> library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&rsquo;t want to sacrifice the size but still need encryption. Meet <!-- raw HTML omitted -->tiny-AES.<!-- raw HTML omitted --> It&rsquo;s really small AES 128-bit library which does encryption in <!-- raw HTML omitted -->CBC and ECB modes<!-- raw HTML omitted -->. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.</p>
 <p>You can find example under the hood.</p>
-
 <p>Tiny-AES is not super-strong, it implements AES, it&rsquo;s build for ARMs.. but it works! It&rsquo;s easy to adopt to any C++ project. Here&rsquo;s how I implemented encryption in my small Qt C++ project.</p>
-
-<p>Key for AES-128 should be 128 bit length, so I used MD5 hashing to get exactly 128 bit buffer for AES key. Cypher-text should be 16 bit aligned, so I use my own inlined alignment function (which could be macro etc.). Also I used <em>utf8()</em> method of QString to get pointer to underlying <em>ushort*</em> buffer and to encode directly it.</p>
+<p>Key for AES-128 should be 128 bit length, so I used MD5 hashing to get exactly 128 bit buffer for AES key. Cypher-text should be 16 bit aligned, so I use my own inlined alignment function (which could be macro etc.). Also I used <em>utf8()</em> method of QString to get pointer to underlying _ushort*_ buffer and to encode directly it.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">#ifndef AESQT_H
 </span><span style="">#define AESQT_H
 </span><span style=""></span>
@@ -577,7 +599,7 @@
 </span><span style=""></span>
 <span style="font-weight:bold">namespace</span> Encryption {
 
-    <span style="font-weight:bold">const</span> uint8_t iv[] = { 0xf0, 0xe1, 0xd2, 0xc3, 0xb4, 0xa5, 0x96, 
+    <span style="font-weight:bold">const</span> <span style="">uint8_t</span> iv[] = { 0xf0, 0xe1, 0xd2, 0xc3, 0xb4, 0xa5, 0x96, 
               0x87, 0x78, 0x69, 0x5a, 0x4b, 0x3c, 0x2d, 0x5e, 0xaf };
 
     <span style="font-weight:bold">inline</span> <span style="">int</span> getAlignedSize(<span style="">int</span> currSize, <span style="">int</span> alignment) {
@@ -603,9 +625,9 @@
         inputData.resize(encryptionLength);
         <span style="font-weight:bold">for</span> (<span style="">int</span> i = length; i &lt; encryptionLength; i++) { inputData[i] = 0; }
 
-        <span style="font-weight:bold">struct</span> AES_ctx ctx;
-        AES_init_ctx_iv(&amp;ctx, (<span style="font-weight:bold">const</span> uint8_t*)keyData.data(), iv);
-        AES_CBC_encrypt_buffer(&amp;ctx, (uint8_t*)inputData.data(), encryptionLength);
+        <span style="font-weight:bold">struct</span> <span style="font-weight:bold">AES_ctx</span> ctx;
+        AES_init_ctx_iv(&amp;ctx, (<span style="font-weight:bold">const</span> <span style="">uint8_t</span>*)keyData.data(), iv);
+        AES_CBC_encrypt_buffer(&amp;ctx, (<span style="">uint8_t</span>*)inputData.data(), encryptionLength);
 
         QString hex = QString::fromLatin1(inputData.toHex());
         <span style="font-weight:bold">return</span> hex;
@@ -625,9 +647,9 @@
         encodedText.resize(encryptionLength);
         <span style="font-weight:bold">for</span> (<span style="">int</span> i = encodedOriginalSize; i &lt; encryptionLength; i++) { encodedText[i] = 0; }
 
-        <span style="font-weight:bold">struct</span> AES_ctx ctx;
-        AES_init_ctx_iv(&amp;ctx, (<span style="font-weight:bold">const</span> uint8_t*)keyData.data(), iv);
-        AES_CBC_decrypt_buffer(&amp;ctx, (uint8_t*)encodedText.data(), encryptionLength);
+        <span style="font-weight:bold">struct</span> <span style="font-weight:bold">AES_ctx</span> ctx;
+        AES_init_ctx_iv(&amp;ctx, (<span style="font-weight:bold">const</span> <span style="">uint8_t</span>*)keyData.data(), iv);
+        AES_CBC_decrypt_buffer(&amp;ctx, (<span style="">uint8_t</span>*)encodedText.data(), encryptionLength);
 
         encodedText.append(<span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\0\0</span><span style="font-style:italic">&#34;</span>);
         <span style="">void</span> *data = encodedText.data();
@@ -638,8 +660,7 @@
 }
 
 <span style="">#endif </span><span style="font-style:italic">// AESQT_H
-</span></code></pre></div>
-<p>I wrote <a href="https://github.com/ribtoks/xpiks/blob/master/src/xpiks-tests/xpiks-tests-core/encryption_tests.cpp" target="_blank">a bunch of tests</a> against that functions so the solution is proven to be working. So if you&rsquo;re looking for really tiny encryption or AES implementation, use <a href="https://github.com/kokke/tiny-AES128-C" target="_blank" rel="noopener">tiny-AES-128</a>!</p>
+</span></code></pre></div><p>I wrote <!-- raw HTML omitted -->a bunch of tests<!-- raw HTML omitted --> against that functions so the solution is proven to be working. So if you&rsquo;re looking for really tiny encryption or AES implementation, use <!-- raw HTML omitted -->tiny-AES-128<!-- raw HTML omitted -->!</p>
   </div>
 
   

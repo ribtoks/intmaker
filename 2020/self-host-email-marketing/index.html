@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -560,18 +586,11 @@
   
 
   <div class="entry-content">
-    
-
-<p>Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I&rsquo;m running few side projects and always wanted them to have their own subscribers list, but I&rsquo;m not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever. If you want to know how I achieved that, read on.</p>
-
-<!-- more -->
-
+    <p>Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I&rsquo;m running few side projects and always wanted them to have their own subscribers list, but I&rsquo;m not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever. If you want to know how I achieved that, read on.</p>
+<!-- raw HTML omitted -->
 <h2 id="the-search">The search</h2>
-
 <h3 id="paid-providers">Paid providers</h3>
-
 <p>So initially I decided I don&rsquo;t want to spend any time for managing server infrastructure or anything alike. I will just buy cheapest email marketing provider possible and will stay with it. I was slightly disappointed, that even &ldquo;cheapest&rdquo; ones were not cheap enough for me.</p>
-
 <table>
 <thead>
 <tr>
@@ -581,7 +600,6 @@
 <th><strong>Alexa ranking</strong></th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="https://emailoctopus.com/pricing">EmailOctopus</a></td>
@@ -589,42 +607,36 @@
 <td>$20-30/month</td>
 <td>27,452</td>
 </tr>
-
 <tr>
 <td><a href="https://mailchimp.com/pricing/">MailChimp</a></td>
 <td>2500 contacts</td>
 <td>$74+/month</td>
 <td>440</td>
 </tr>
-
 <tr>
 <td><a href="https://moonmail.io/pricing/">MoonMail</a></td>
 <td>Self-hosted</td>
 <td>$149+/month</td>
 <td>171,413</td>
 </tr>
-
 <tr>
 <td><a href="https://www.mailerlite.com/pricing">MailerLite</a></td>
 <td>1000 contacts</td>
 <td>$50/month</td>
 <td>4,360</td>
 </tr>
-
 <tr>
 <td><a href="https://sendy.co/">Sendy</a></td>
 <td>Self-hosted</td>
 <td>$56 1-time fee</td>
 <td>27,195</td>
 </tr>
-
 <tr>
 <td><a href="https://madmimi.com/service_agreements/choose_plan">MadMimi</a></td>
 <td>-</td>
 <td>$42/month</td>
 <td>10,446</td>
 </tr>
-
 <tr>
 <td><a href="https://easysendy.com/pricing/email-campaigns/">EasySendy</a></td>
 <td>-</td>
@@ -633,34 +645,21 @@
 </tr>
 </tbody>
 </table>
-
 <p>This looked slightly disappointing, given that cheaper providers had quite limited funtionality comparetively to more expensive ones. So my next logical step was to check how are free, OSS and self-hosted solutions doing.</p>
-
 <h3 id="free-oss-solutions">Free, OSS solutions</h3>
-
 <p>Quick googling revealed the following list: <a href="https://github.com/parkerj/tinycampaign">tinycampaign</a>, <a href="https://github.com/aniftyco/audience">audience</a>, <a href="https://github.com/freeCodeCamp/mail-for-good">mail-for-good</a>, <a href="https://github.com/vitorfs/colossus">colossus</a>.</p>
-
 <p>All these contenders have few cons for me:</p>
-
 <ul>
 <li>you need to run a web-server all of the time, which means you have to maintain it, install updates, provision certificates and so on. Also it is not free</li>
 <li>these solutions are all-in-one solutions, providing email templates, analytics, A/B testing and email sending</li>
 </ul>
-
 <p>It was quite demotivating. These solutions tried to implement everything instead of just email list. And I couldn&rsquo;t understand why do you need to run a web-server all of the time, given that in 2020 you have all the magic of serverless. But none of these systems took advantage of it. None, but one.</p>
-
 <p>So I found <a href="https://moonmail.io/">MoonMail</a> which looked like a system you would want to use. It was running on AWS stack on serverless architecture. No wasting resources, it supported email templates, analytics and A/B testing out of the box. <strong>It looked really clean and nice with only one problem: no documentation.</strong> <a href="https://github.com/MoonMail/MoonMail#getting-started">Install docs</a> looked simply insane. There&rsquo;re 10 services you have to deploy separately, half of which require exotic legacy serverless framework version and half uses new one. There&rsquo;s no documentation about which configs you should edit and which not. This is understandable because they want to sell it like EmailOctopus did, transitioning from open source software to SaaS. It&rsquo;s even not trivial to find GitHub link on their website.</p>
-
 <p>So I really had no choice but to create this system on my own.</p>
-
 <h2 id="the-project">The project</h2>
-
 <p>I spent a week and created first version of email marketing system that I called <em>Listing</em>. It manages arbitrary amount of subscription lists using few lambda functions written in Go. Subscriptions are stored in a DynamoDB table and are managed by a lambda function with endpoints <code>/subscribe</code>, <code>/unsubscribe</code>, <code>/confirm</code> and <code>/subscribers</code>. The last endpoint is protected with BasicAuth for &ldquo;admin&rdquo; access (export/import of subscribers). Bounces and Complaints are stored in additional DynamoDB table. This table is managed by another lambda function that is subscribed to SNS topic. AWS SES for a specific domain is a publisher to this SNS topic.</p>
-
 <p><em>Listing</em> uses so-called &ldquo;double-confirmation&rdquo; system where user has to confirm it&rsquo;s email even after entering it on your website and pressing &ldquo;Subscribe&rdquo; button. The reason is that this is way more reliable in terms of loyal audience building.</p>
-
 <p>Usage on the website is absolutely trivial. After lambda function is deployed, you get a nice <code>/subscribe</code> API that you can add to a form like this:</p>
-
 <pre><code>&lt;form action=&quot;https://abcdef123456.execute-api.us-east-1.amazonaws.com/prod/subscribe&quot; method=&quot;post&quot;&gt;
   &lt;div&gt;
       &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; placeholder=&quot;Your name&quot;&gt;
@@ -673,78 +672,42 @@
   &lt;/div&gt;
   &lt;input type=&quot;hidden&quot; id=&quot;newsletter&quot; name=&quot;newsletter&quot; value=&quot;NewsletterName&quot;&gt;
 &lt;/form&gt;
-</code></pre>
-
-<h2 id="operation">Operation</h2>
-
+</code></pre><h2 id="operation">Operation</h2>
 <p>Have I mentioned <em>Listing</em> can be deployed with only one command <code>serverless deploy</code>? After this it just works. But that&rsquo;s not all. <em>Listing</em> serves couple of ordinary http endpoints and while you can do all operations using <code>curl</code>, I created <code>listing-cli</code> command line application that simplifies it.</p>
-
 <p>For example, to subscribe to a newsletter, you can run:</p>
-
 <pre><code>listing-cli -mode subscribe -email foo@bar.com -newsletter NewsletterName -url https://qwerty12345.execute-api.us-east-1.amazonaws.com/dev
-</code></pre>
-
-<p>or to list all subscribers:</p>
-
+</code></pre><p>or to list all subscribers:</p>
 <pre><code>listing-cli -auth-token your-token-here -url &quot;https://qwerty12345.execute-api.us-east-1.amazonaws.com/dev&quot; -mode export -newsletter Listing1
-</code></pre>
-
-<p>One of the functions of <code>listing-cli</code> is import and export of the subscription list. You may want to do it for backups, when you move your database or to send actual emails.</p>
-
+</code></pre><p>One of the functions of <code>listing-cli</code> is import and export of the subscription list. You may want to do it for backups, when you move your database or to send actual emails.</p>
 <p>Even though in reality initial deployment is a little bit more compliated than <code>serverless deploy</code> (you have to create nice subscribed/unsubscribed pages and so on), this system is totally hassle-free and autonomous. Beside that it costs you nothing. AWS Lamda provides first 1 million invocations free each month and subscription lambda of <em>Listing</em> is small and fast. That means that most probably your marketing list will never grow so fast that you will ever have to pay for it.</p>
-
 <h2 id="sending-emails">Sending emails</h2>
-
 <p>There&rsquo;s one important piece left in this puzzle: <em>sending the actual emails</em>. If you never done that, here&rsquo;s what you need:</p>
-
 <ul>
 <li>email templates that will allow to personalize contents</li>
 <li>compute: smpt server that will send all those emails</li>
 <li>analytics: you may want to know how successful your campaign was</li>
 <li>software that will evaluate/execute those templates with your actual users and send the emails through your server</li>
 </ul>
-
 <h3 id="templates">Templates</h3>
-
 <p>Getting templates was actually the easiest part. I spent around an hour with <a href="http://mosaico.io/">mosaico</a> and <a href="https://beefree.io/">beefree</a> but didn&rsquo;t manage to compile a template that I would like. But I&rsquo;m not a designer either. So I ended up buying a pack on Themeforest for $20. Even though it&rsquo;s not free, it will stay with me for a while and it contains around 70 email variations from which I will have around 10 useful ones.</p>
-
 <h3 id="compute">Compute</h3>
-
 <p>Since we are leveraging AWS stack, it might be interesting to know why people actually use AWS SES (Simple Email Service) for emails. And the reaons is the price: you pay 10 cents for 1000 emails, but if you send emails from EC2 instance, first 60k emails per month are free. That ultimately means <strong>you can send 60k emails for free and then 10k emails for $1</strong>. That is not exactly free, but it is very close to it.</p>
-
 <p>So the goal is to somehow use AWS SES for our email sending. Systems like Moonmail, Sendy and EmailOctopus allow you to use SES as their backend for actual sending. But you still have to pay for the system itself.</p>
-
 <p><strong>Good news is that SES provides you with SMTP endpoint</strong> so if you just set it up on your local machine as outgoing server, you can send all emails from your favorite mail app. Of course, it&rsquo;s not what you would do if you have a 1000 of subscribers, but it allows to have a very neat automation around.</p>
-
 <h3 id="analytics">Analytics</h3>
-
 <p>Although I&rsquo;m not a fan of Google, but it&rsquo;s hard to beat their free Google Analytics tier. It allows 30 million events per property per month which is definitely more than enough for email campaigns.</p>
-
 <p>Usage of Google Analytics is also trivial. Just add a &ldquo;tracking pixel&rdquo; that implements <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide">Measurement Protocol</a> to the bottom of your email and you are done.</p>
-
 <pre><code>&lt;img src=&quot;https://www.google-analytics.com/collect?v=1&amp;tid=UA-12345678-90&amp;t=event&amp;ec=email&amp;ea=open&amp;cm=email&amp;ci=campaignID&quot;/&gt;
-</code></pre>
-
-<p>In order to track link clicks you can add something like <code>utm_source=email&amp;utm_campaign=YourCampaign</code> and hope that your subscribers don&rsquo;t use ClearURLs add-on in browser.</p>
-
+</code></pre><p>In order to track link clicks you can add something like <code>utm_source=email&amp;utm_campaign=YourCampaign</code> and hope that your subscribers don&rsquo;t use ClearURLs add-on in browser.</p>
 <h3 id="software">Software</h3>
-
 <p>This is the interesting part. <strong>So the goal was just to find a piece of software that would allow creating html templates and sending them to SMTP server.</strong> Initially I found <a href="https://github.com/rykov/paperboy">paperboy</a> and <a href="https://github.com/Circle-gg/thunder-mail">thunder mail</a> to be good candidates for the software. However, there are some limitations with them too. Paperboy has been sort-of-abandoned for some time and some useful features like emails preview were pending in branches. Thundermail required to write Javascript scripts in order to send the emails and I only wanted to create templates.</p>
-
 <p>Since the only functionality you actually need is to execute templates and send emails, I implemented this as well. I was inspired by paperboy system, but made it a little bit easier. Paperboy creates a project with hierarchy like <a href="https://gohugo.io/">hugo</a> does: <code>./contents/</code>, <code>./lists/</code>, <code>./layouts</code> and others. In <em>Listing</em> I&rsquo;m just passing template and subscribers list as parameters allowing user to organize the &ldquo;project&rdquo; on their own. Templates are ordinary Go templates so <strong>all functionality was already there and I only had to put it together</strong>. This is how <code>listing-send</code> helper was created.</p>
-
 <h2 id="workflow">Workflow</h2>
-
 <p>Typical workflow for <em>Listing</em> was to download all subscribers with <code>listing-cli</code> and then, after building a template offline, send the emails using <code>listing-send</code>. Of course you have to send test emails first and also to check if it works on mobile.</p>
-
 <p>I keep all campaigns and subscriber lists in Git so every campaign is actually reproducible.</p>
-
 <h2 id="afterword">Afterword</h2>
-
 <p>It was a great fun building <a href="https://github.com/ribtoks/listing">listing</a> and actually using it. Now my side-project Xpiks <a href="https://xpiksapp.com/blog/2020/newsletter/">has it&rsquo;s own marketing list</a> and I already sent my first newsletter to the first 100 subscribers! Except of the templates, I didn&rsquo;t pay a penny to this point and even though it looked like a bit of &ldquo;not-invented-here&rdquo; syndrome, it worked out well and paid off.</p>
-
 <p>Links:</p>
-
 <ul>
 <li><a href="https://github.com/ribtoks/listing">listing source code</a></li>
 <li><a href="https://github.com/ribtoks/listing/blob/master/docs/ENDPOINTS.md">Endpoints docs</a></li>

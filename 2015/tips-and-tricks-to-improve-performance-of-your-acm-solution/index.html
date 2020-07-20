@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,7 +587,6 @@
 
   <div class="entry-content">
     <p>Here I gathered system-programming tricks that can improve performance of your solution in C++ dramatically!</p>
-
 <ul>
 <li>Use <em>scanf/printf</em> functions for standard IO instead of <em>cin/cout</em></li>
 <li><em>Memory-align</em> buffers and structures to WORD size of your architecture (4 bytes for 32-bit and 8 bytes for 64-bit)</li>

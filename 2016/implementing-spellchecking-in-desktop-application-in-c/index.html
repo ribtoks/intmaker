@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,14 +587,10 @@
 
   <div class="entry-content">
     <p>When user is supposed to enter significant amount of text in your application, it&rsquo;s better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where <a href="https://hunspell.github.io/">Hunspell</a> comes handy. It&rsquo;s an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I&rsquo;ll discuss how to integrate it to C++/Qt project.</p>
-
 <p>First of all, you should download Hunspell source code and try to build it for your platform. You can take a look at README for the instructions. Once you&rsquo;re done, it&rsquo;s time to link just built library with your project. Also you should add Hunspell include files to your include path in order to use the API.</p>
-
 <p>After you&rsquo;re done, let&rsquo;s include C++ Hunspell API to your header and add following variable to your class</p>
-
 <p><code>Hunspell *m_Hunspell;</code></p>
-
-<p>Constructor of Hunspell class takes paths to DIC and AFF files (wordlist and affix files). If you&rsquo;re building cross-platform solution, it will be useful to know, that to handle utf-8 paths in Windows, you need to prefix paths to DIC and AFF files with &ldquo;\?\&ldquo;. Loading code in my Qt project looks like this:</p>
+<p>Constructor of Hunspell class takes paths to DIC and AFF files (wordlist and affix files). If you&rsquo;re building cross-platform solution, it will be useful to know, that to handle utf-8 paths in Windows, you need to prefix paths to DIC and AFF files with &ldquo;\?&quot;. Loading code in my Qt project looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">#ifdef Q_OS_WIN
 </span><span style=""></span><span style="font-style:italic">// specific Hunspell handling of UTF-8 encoded pathes
 </span><span style="font-style:italic"></span>affPath = <span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\\\\</span><span style="font-style:italic">?</span><span style="font-weight:bold;font-style:italic">\\</span><span style="font-style:italic">&#34;</span> + QDir::toNativeSeparators(affPath);
@@ -586,9 +608,7 @@ dicPath = <span style="font-style:italic">&#34;</span><span style="font-weight:b
     LOG_DEBUG &lt;&lt; <span style="font-style:italic">&#34;Error in Hunspell with AFF&#34;</span> &lt;&lt; affPath &lt;&lt; <span style="font-style:italic">&#34;and DIC&#34;</span> &lt;&lt; dicPath;
     m_Hunspell = NULL;
 }
-</code></pre></div>
-<p>In this code except of instantiating Hunspell class we also get right Codec to query the dictionary. Now you can use API&rsquo;s of <code>Hunspell</code> class to access spellchecking API. To get real AFF and DIC files, you can check out a number of open source projects which use spellchecking and hunspell - e.g. OpenOffice.</p>
-
+</code></pre></div><p>In this code except of instantiating Hunspell class we also get right Codec to query the dictionary. Now you can use API&rsquo;s of <code>Hunspell</code> class to access spellchecking API. To get real AFF and DIC files, you can check out a number of open source projects which use spellchecking and hunspell - e.g. OpenOffice.</p>
 <p>The most common operation is, of course, to check if particular word is spelled OK or not:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">bool</span> isSpellingCorrect(<span style="font-weight:bold">const</span> QString &amp;word) <span style="font-weight:bold">const</span> {
 <span style="">bool</span> isOk = false;
@@ -600,9 +620,7 @@ dicPath = <span style="font-style:italic">&#34;</span><span style="font-weight:b
 }
 <span style="font-weight:bold">return</span> isOk;
 }
-</code></pre></div>
-<p>This demonstrates also usage of <code>Codec</code> retrieved before.</p>
-
+</code></pre></div><p>This demonstrates also usage of <code>Codec</code> retrieved before.</p>
 <p>Besides of checking spelling, it&rsquo;s useful to provide user with corrections for the particular word. <code>Hunspell</code> class has API for this and it can be used like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QStringList suggestCorrections(<span style="font-weight:bold">const</span> QString &amp;word) {
     QStringList suggestions;
@@ -625,11 +643,8 @@ dicPath = <span style="font-style:italic">&#34;</span><span style="font-weight:b
 
     <span style="font-weight:bold">return</span> suggestions;
 }
-</code></pre></div>
-<p>This code demonstrates usage of <code>suggest()</code> API of Hunspell object. Also useful tip would be to check case of the suggestion, since Hunspell can correct you word like &ldquo;europe&rdquo; with &ldquo;Europe&rdquo; and stuff like that.</p>
-
+</code></pre></div><p>This code demonstrates usage of <code>suggest()</code> API of Hunspell object. Also useful tip would be to check case of the suggestion, since Hunspell can correct you word like &ldquo;europe&rdquo; with &ldquo;Europe&rdquo; and stuff like that.</p>
 <p>If you&rsquo;re going to check spelling on the fly it might be a good idea to combine this approach with <a href="http://code.jamming.com.ua/classic-producer-consumer-in-qtc/">producer-consumer implemented in Qt</a>. So your app&rsquo;s UI will be responsive while background worker will serve spelling requests.</p>
-
 <p>That&rsquo;s all folks.</p>
   </div>
 

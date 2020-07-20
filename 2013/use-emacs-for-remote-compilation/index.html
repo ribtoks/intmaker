@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -554,14 +580,11 @@
   
 
   <div class="entry-content">
-    <p>Just a small tip. I have souced and makefile on remote  machine and I&rsquo;m trying to compile it on my local machine, but I don&rsquo;t have the compiler and environment. So when I run &ldquo;<em>M-x compile</em>&rdquo;, I use a _build<em>remote.sh</em> script with following contents</p>
-
+    <p>Just a small tip. I have souced and makefile on remote  machine and I&rsquo;m trying to compile it on my local machine, but I don&rsquo;t have the compiler and environment. So when I run &ldquo;<em>M-x compile</em>&quot;, I use a <em>build_remote.sh</em> script with following contents</p>
 <pre><code>#!&lt;span style=&quot;color:#003366;&quot;&gt;/bin/bash&lt;/span&gt;
 &lt;span style=&quot;color:#003366;&quot;&gt;ssh&lt;/span&gt; my_remote_machine &quot;&lt;span style=&quot;color:#003366;&quot;&gt;source&lt;/span&gt; my_environment_file; &lt;span style=&quot;color:#003366;&quot;&gt;cd&lt;/span&gt; my_build_directory; &lt;span style=&quot;color:#003366;&quot;&gt;make&lt;/span&gt; my_target&quot;
 </code></pre>
-
 <p>Remember, that <code>ssh</code> command are executed not in your common environment, so you have to import it before execution of main commands (I use <em>source</em> command with some script to configure environment)</p>
-
 <p>Then Emacs <code>*compilation*</code> buffer would receive stdout from remote make and you even would be able to navigate through compiler errors in your local code (if you have correct paths)</p>
 
   </div>

@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,11 +581,8 @@
 
   <div class="entry-content">
     <p>Recently I had issue with CEDET 1.1: semantic was not able to parse header files from Visual Studio, when using</p>
-
 <p><em>(semantic-add-system-include &ldquo;C:/Program Files/Microsoft Visual Studio 10.0/VS/Include&rdquo; &lsquo;c++-mode)</em></p>
-
 <p>But after looking through Visual Stuio headers in Studio itself, I&rsquo;ve found some headers with defines, which are new to semantic, so you have to add them after this system include in your <em>.el</em> files:</p>
-
 <pre><code>(defun windows-semantic-hook ()
   (setq microsoft-base-dir 
         &quot;C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include&quot;)

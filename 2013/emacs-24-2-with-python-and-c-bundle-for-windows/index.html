@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,7 +581,6 @@
 
   <div class="entry-content">
     <p>I&rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:</p>
-
 <ul>
 <li>Emacs 24.2 for Windows</li>
 <li>CEDET-1.1</li>
@@ -566,23 +591,19 @@
 <li>Ropemacs + Pylint + Flymake (Python IDE + static analysis)</li>
 <li>Fixes for Cygwin, gnu and git pathes in Windows</li>
 </ul>
-
 <p>Known issues:</p>
-
 <ul>
 <li>c++ header parsing fails sometimes (in Windows on headers without extension)</li>
 <li>some issues with python <em>autocomplete</em> and modules with relative pathes</li>
 <li>have to set <em>ocaml-program</em> each time to run ocaml</li>
-<li><c-tab> Does not work in <em>c++-mode</em> for <em>semantic-complete-self-insert</em> (inserts Unicode char)</li>
+<li><!-- raw HTML omitted --> Does not work in <em>c++-mode</em> for <em>semantic-complete-self-insert</em> (inserts Unicode char)</li>
 </ul>
-
 <p>How to install:</p>
-
 <ol>
-<li>Download zip archive from <a title="Emacs 24.2 for Windows with c++ and python support" href="http://ge.tt/4JjpBha/v/0" target="_blank">ge.tt</a></li>
+<li>Download zip archive from <!-- raw HTML omitted -->ge.tt<!-- raw HTML omitted --></li>
 <li>Unzip to some directory</li>
 <li>Go to <em>bin/</em> directory and edit <em>startemacs.bat</em> file - remove <em>-debug-init</em> parameter at your option</li>
-<li>If your python installation path is not <em>C:Python27</em>, go to <em>config/.emacs.d/</em> directory and edit <em>python-config.el</em> file - find _PYMACS<em>PYTHON</em> variable and make it correct (for your Windows + python installation)</li>
+<li>If your python installation path is not <em>C:Python27</em>, go to <em>config/.emacs.d/</em> directory and edit <em>python-config.el</em> file - find <em>PYMACS_PYTHON</em> variable and make it correct (for your Windows + python installation)</li>
 <li>To add or change some c++ system include directories, go to <em>config/.emacs.d/ribtoks-cpp.el</em> file, find <em>semantic-add-system-include</em> call and change include path to yours</li>
 <li>&hellip;</li>
 <li>Profit, now you can launch Emacs with <strong><em>bin/startemacs.bat</em></strong></li>

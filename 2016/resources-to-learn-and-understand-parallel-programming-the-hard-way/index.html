@@ -10,7 +10,7 @@
     
     <meta property="og:title" content="Resources to learn and understand parallel programming. The hard way" />
     <meta property="og:locale" content="en" />
-    <meta property="og:description" content="There’s no way other than the hard way. © Parallel programming is considered as not easy or even advanced topic by many programmers. It’s the starting point for" />
+    <meta property="og:description" content="There’s no way other than the hard way. (c) Parallel programming is considered as not easy or even advanced topic by many programmers. It’s the starting point" />
     <meta property="og:url" content="https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/" />
     <meta property="og:site_name" content="Xpiks" />
     
@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,28 +587,22 @@
 
   <div class="entry-content">
     <blockquote>
-<p>There&rsquo;s no way other than the hard way. &copy;</p>
+<p>There&rsquo;s no way other than the hard way. (c)</p>
 </blockquote>
-
 <p>Parallel programming is considered as not easy or even advanced topic by many programmers. It&rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.</p>
-
 <p>In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.</p>
-
 <p>So I will go now through all the resources which I find more or less useful. I&rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &ldquo;easier&rdquo; things.</p>
-
 <ul>
 <li><strong>Robert Krten - <em>&ldquo;Getting Started with QNX Neutrino 2&rdquo;</em></strong>. Several first chapters are especially good at explaining how do mutexes and semaphores work. Other chapters of the book are in-depth details of how the real-time operating system works and for those who are interested this can be valuable too - to understand how the processes and threads relate to each other and how they are scheduled and managed by the OS.
-
 <ul>
-<li><span class="fontstyle0"><strong>Allen B. Downey - <em>&ldquo;The little book of semaphores&rdquo;</em></strong>. This book is an invaluable list of classical synchronization problems </span> with their solutions on python-like pseudocode. All solutions are based on semaphores as a basic synchronization primitive. The book explains how to solve trivial problems like rendezvous or barrier and what caveats you can expect there and later going on to some really advanced problems like Santa-Claus problem or search-insert-delete problem.</li>
+<li><!-- raw HTML omitted --><!-- raw HTML omitted -->Allen B. Downey - <!-- raw HTML omitted -->&quot;The little book of semaphores&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->. This book is an invaluable list of classical synchronization problems <!-- raw HTML omitted --> with their solutions on python-like pseudocode. All solutions are based on semaphores as a basic synchronization primitive. The book explains how to solve trivial problems like rendezvous or barrier and what caveats you can expect there and later going on to some really advanced problems like Santa-Claus problem or search-insert-delete problem.</li>
 <li><strong>Jeffrey Richter - <em>&ldquo;CLR via C# 4.5&rdquo;</em></strong>. This book from .NET world contains valuable chapters about Threading and synchronization. It helps to understand differences in volatility in C++ and C#, memory fences, context switching in Windows and everything related. Aforementioned chapters help to see wider picture than just from the low-level side.</li>
-<li><strong>Paul McKenney - &ldquo;<em>Is Parallel Programming hard, and, if so, what can you do about it?</em>&ldquo;</strong>. A true gem from the Linux kernel developers. This book will reveal to you low-level synchronization problems and their solutions as well as high-level design of data structures used in Linux kernel. The book can be considered as Advanced and requires fair amount of time to understand some topics. After reading this book you will know what RCU is and why it is so important as well as design of several reliable almost lock-free data structures and algorithms.</li>
+<li><strong>Paul McKenney - &ldquo;<em>Is Parallel Programming hard, and, if so, what can you do about it?</em>&quot;</strong>. A true gem from the Linux kernel developers. This book will reveal to you low-level synchronization problems and their solutions as well as high-level design of data structures used in Linux kernel. The book can be considered as Advanced and requires fair amount of time to understand some topics. After reading this book you will know what RCU is and why it is so important as well as design of several reliable almost lock-free data structures and algorithms.</li>
 <li><strong>Sergey Babkin - <em>&ldquo;The practice of parallel programming&rdquo;</em>.</strong> By far the most advanced material I&rsquo;ve read on the topic, this book focuses on practical applications of all theory for major platforms (*nix, Windows). Author dives into how to tackle problems such as implementing missing synchronization primitives, implementing message queues, multithreaded program exit, multiplexing of socket IO and others. All topics contain working pieces of &ldquo;production-ready&rdquo; code in C++.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>Personally I find books like &ldquo;Parallel programming in C++/C#/Python&rdquo; not quite useful since they are more skill-based and 95% can be found in the official documentation by people knowing what they are looking for.</p>
-
 <p>If you know any other interesing and valuable books on the topic, you&rsquo;re more than welcome to post them in the comments.</p>
   </div>
 

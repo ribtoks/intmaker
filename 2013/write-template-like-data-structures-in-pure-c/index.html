@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,15 +581,10 @@
 
   <div class="entry-content">
     <p><em>Problem</em>:</p>
-
 <p>write type-independent data structure (say, red-black tree, dynamic array etc.) in pure C (which means you cannot use templates and any other features)</p>
-
 <p><em>Solution</em>:</p>
-
-<p>First of all, lets create an interface of our &ldquo;<em>generic</em>&rdquo; (or &ldquo;<em>template</em>&rdquo;) type. We can interpret <code>void*</code> as this unknown type and build some interface functions. It definitely has to have a <code>constructor</code> and <code>destructor</code>. Also, it can have a <code>comparator</code> and kind of <code>print</code> function.</p>
-
+<p>First of all, lets create an interface of our &ldquo;<em>generic</em>&rdquo; (or &ldquo;<em>template</em>&quot;) type. We can interpret <code>void*</code> as this unknown type and build some interface functions. It definitely has to have a <code>constructor</code> and <code>destructor</code>. Also, it can have a <code>comparator</code> and kind of <code>print</code> function.</p>
 <p>So, we can define it like this:</p>
-
 <pre><code>&lt;span style=&quot;color:#000080;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* (*&lt;span style=&quot;color:#008080;&quot;&gt;ConstructorFunc&lt;/span&gt;)(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
 &lt;span style=&quot;color:#000080;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt; (*&lt;span style=&quot;color:#008080;&quot;&gt;DestructorFunc&lt;/span&gt;)(&lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
 &lt;span style=&quot;color:#000080;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;int&lt;/span&gt; (*&lt;span style=&quot;color:#008080;&quot;&gt;CompareFunc&lt;/span&gt;)(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*, &lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
@@ -580,11 +601,8 @@
 &lt;span style=&quot;color:#000080;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color:#008080;&quot;&gt;FuncFactory&lt;/span&gt; &lt;span style=&quot;color:#000080;&quot;&gt;struct&lt;/span&gt; &lt;span style=&quot;color:#3366ff;&quot;&gt;FuncFactory_struct
 &lt;/span&gt;
 </code></pre>
-
 <p>And about implementation details..</p>
-
 <p>Lets assume we have to implement this for some integral type (like <code>int</code>) and more complicated one (say, <code>string</code>). So, we have to define them and then build our <code>Factory</code> structure and fill with these functions:</p>
-
 <pre><code>&lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* StringConstructor(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
 /*
 &lt; 0 === [line1 &lt; line2] 
@@ -600,9 +618,7 @@
 &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt; IntegerDestructor(&lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
 &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt; IntegerPrinter(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;*);
 </code></pre>
-
 <p>We can now write implementation of this declarations. Each implementation will use <code>malloc</code> and <code>free</code> for <code>void*</code> memory management and then cast it to appropriate type:</p>
-
 <pre><code>&lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* IntegerConstructor(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* from)
 {
    &lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;int&lt;/span&gt;* data = (&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;int&lt;/span&gt;*)from;
@@ -634,9 +650,7 @@
    printf(&lt;span style=&quot;color:#993300;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, (*a));
 }
 </code></pre>
-
 <p>And for String:</p>
-
 <pre><code>&lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* StringConstructor(&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;void&lt;/span&gt;* data)
 {
    &lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;char&lt;/span&gt;* from = (&lt;span style=&quot;color:#000080;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;char&lt;/span&gt;*) data;
@@ -667,9 +681,7 @@
    printf(str);
 }
 </code></pre>
-
 <p>And I&rsquo;ll provide some example of usage. Lets assume we have some tree structure and we have a task to implement  search of a value. Before usage we have to initialize our functions factory. We can just use function names as function pointers.</p>
-
 <pre><code>&lt;span style=&quot;color:#003366;&quot;&gt;void&lt;/span&gt; InitIntegerFactoryStruct(&lt;span style=&quot;color:#008080;&quot;&gt;FuncFactory&lt;/span&gt;* factory)
 {
    InitFactoryStruct(factory,
@@ -684,9 +696,7 @@
 InitIntegerFactoryStruct(&amp;integerFunctions);
 integerTree = CreateAVLTree(&amp;integerFunctions);
 </code></pre>
-
 <p>And usage:</p>
-
 <pre><code>&lt;span style=&quot;color:#003366;&quot;&gt;struct&lt;/span&gt; &lt;span style=&quot;color:#008080;&quot;&gt;AVL_tree_struct&lt;/span&gt;
 {
    &lt;span style=&quot;color:#008080;&quot;&gt;TreeNode&lt;/span&gt;* root;

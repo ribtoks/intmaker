@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,11 +587,8 @@
 
   <div class="entry-content">
     <p>I had a simple task to map a collection of objects with string property. Map function should replace one string property to another from set of 5-6 strings. Existing solution used Dictionary initialized with those hard-coded values. Once upon a time I tried to compare Dictionary with <em>int</em> keys to <em>int</em> switch and int switch was FAR better. It was chess engine so performance mattered.</p>
-
-<p>Now it&rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&rsquo;ed. You can find <a href="https://github.com/Ribtoks/heap/blob/master/PerformanceTests/StringSwitchTest/StringSwitchTest/Program.cs" target="_blank">source code at Github</a>.</p>
-
+<p>Now it&rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&rsquo;ed. You can find <!-- raw HTML omitted -->source code at Github<!-- raw HTML omitted -->.</p>
 <p>Details below..</p>
-
 <p>I can show two Map methods for the reference here:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="font-weight:bold">private</span> <span style="font-weight:bold">static</span> <span style="">string</span> MapStringBySwitch(<span style="">string</span> line)
         {
@@ -585,8 +608,7 @@
                     <span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;default value here&#34;</span>;
             }
         }
-</code></pre></div>
-<p>Dictionary method is here:</p>
+</code></pre></div><p>Dictionary method is here:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="font-weight:bold">private</span> <span style="font-weight:bold">static</span> <span style="font-weight:bold">readonly</span> IDictionary&lt;String, String&gt; BoobsTypeNameMap =
             <span style="font-weight:bold">new</span> Dictionary&lt;String, String&gt;
             {
@@ -610,15 +632,10 @@
 
             <span style="font-weight:bold">return</span> result;
         }
-</code></pre></div>
-<p>Null comparison should be in the original, so I preserved it. Null-check added about 100 milliseconds to Dictionary Map on my machine.</p>
-
+</code></pre></div><p>Null comparison should be in the original, so I preserved it. Null-check added about 100 milliseconds to Dictionary Map on my machine.</p>
 <p>Results:</p>
-
-<p>In Debug version Map with Dictionary took around 750 milliseconds on my machine. In Release version Dictionary Map took around 650 milliseconds. I used method <a href="https://msdn.microsoft.com/en-us/library/bb347013%28v=vs.110%29.aspx" target="_blank">TryGetValue()</a> which is, I guess, the most efficient (Remember to minus 100 milliseconds if you do not need null check).</p>
-
+<p>In Debug version Map with Dictionary took around 750 milliseconds on my machine. In Release version Dictionary Map took around 650 milliseconds. I used method <!-- raw HTML omitted -->TryGetValue()<!-- raw HTML omitted --> which is, I guess, the most efficient (Remember to minus 100 milliseconds if you do not need null check).</p>
 <p>In Debug version Map with switch took around 450 milliseconds on my machine which is not far better than dictionary and is more complex to actually write (Dictionary is more programmer-friendly than giant switch). In Release version Map with switch took around 250 milliseconds which is 3 times faster than Dictionary Map in Debug and <strong>2.5 times faster than Dictionary Map</strong> in Release.</p>
-
 <p>So, if your goal is to build quick app, use such a low-level optimizations.</p>
   </div>
 

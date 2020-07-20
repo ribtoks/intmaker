@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,19 +587,14 @@
 
   <div class="entry-content">
     <p>When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&rsquo;ll try to answer both questions.</p>
-
-<p>As for the algorithm, SO gives us hints about tries, segment trees and others. You can find <a href="http://dhruvbird.blogspot.com.ee/2010/09/very-fast-approach-to-search.html" target="_blank">good article</a> about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it <a href="https://github.com/duckduckgo/cpp-libface" target="_blank">on GitHub</a>. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on <code>libuv</code> and joyent <code>http-parser</code>, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - <code>libuv</code> and <code>cpp-libface</code> itself fails to compile in Windows which is bad in case you&rsquo;re building cross-platform solution.</p>
-
+<p>As for the algorithm, SO gives us hints about tries, segment trees and others. You can find <!-- raw HTML omitted -->good article<!-- raw HTML omitted --> about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it <!-- raw HTML omitted -->on GitHub<!-- raw HTML omitted -->. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on <code>libuv</code> and joyent <code>http-parser</code>, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - <code>libuv</code> and <code>cpp-libface</code> itself fails to compile in Windows which is bad in case you&rsquo;re building cross-platform solution.</p>
 <p>You can find out how to built FACE into your cross-platform C++ application below.</p>
-
-<p>Here comes my fork: <a href="https://github.com/Ribtoks/cpp-libface" target="_blank">library version of cpp-libface</a>. I&rsquo;ve removed dependencies on <code>libuv</code> and <code>http-parser</code>. For Windows, one would need also <code>mman</code> - memory-mapped files IO. The only such thing I was able to find was <code>mman-win32</code> - cygwin port of mman from *nix&rsquo;es. After puking thousands of warning, VS compiler did it&rsquo;s job and in real life <code>mman-win32</code> worked so it&rsquo;s ready at least for testing. I&rsquo;ve created two Makefiles: for Windows and OS X/Linux. After building you will get library FACE (<code>libface.lib</code> or <code>libface.a</code>) and PoC executable for testing of auto-completion through the command line.</p>
-
+<p>Here comes my fork: <!-- raw HTML omitted -->library version of cpp-libface<!-- raw HTML omitted -->. I&rsquo;ve removed dependencies on <code>libuv</code> and <code>http-parser</code>. For Windows, one would need also <code>mman</code> - memory-mapped files IO. The only such thing I was able to find was <code>mman-win32</code> - cygwin port of mman from *nix&rsquo;es. After puking thousands of warning, VS compiler did it&rsquo;s job and in real life <code>mman-win32</code> worked so it&rsquo;s ready at least for testing. I&rsquo;ve created two Makefiles: for Windows and OS X/Linux. After building you will get library FACE (<code>libface.lib</code> or <code>libface.a</code>) and PoC executable for testing of auto-completion through the command line.</p>
 <p>As for the interface of libface, I have left only two methods:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-public:" data-lang="public:">    bool import(const char *ac_file);
-    vp_t prompt(std::string prefix, uint_t n = 16);</code></pre></div>
-<p>one of which allows you to import a file and another - generate completion suggestions.</p>
-
-<p>But it&rsquo;s only half of the story. Also you need source for completion. Library FACE is able to digest TSV files (Tab-Separated Values) where first column is frequency of phrase/word and second column - phrase/word itself. After searching through the internet for some time I&rsquo;ve found <a href="https://github.com/mozilla-b2g/gaia/tree/master/apps/keyboard/js/imes/latin/dictionaries" target="_blank">frequency tables for different languages</a> for Android. There are in the XML with simple structure and simple Ruby script written in 5 minutes transformed them into TSV:</p>
+<pre><code class="language-public:" data-lang="public:">    bool import(const char *ac_file);
+    vp_t prompt(std::string prefix, uint_t n = 16);
+</code></pre><p>one of which allows you to import a file and another - generate completion suggestions.</p>
+<p>But it&rsquo;s only half of the story. Also you need source for completion. Library FACE is able to digest TSV files (Tab-Separated Values) where first column is frequency of phrase/word and second column - phrase/word itself. After searching through the internet for some time I&rsquo;ve found <!-- raw HTML omitted -->frequency tables for different languages<!-- raw HTML omitted --> for Android. There are in the XML with simple structure and simple Ruby script written in 5 minutes transformed them into TSV:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">require <span style="font-style:italic">&#39;nokogiri&#39;</span>
 doc = File.open(ARGV.first) { |f| Nokogiri::XML(f) }
 
@@ -589,8 +610,8 @@ doc.xpath(<span style="font-style:italic">&#39;//w&#39;</span>).each <span style
 
 tsv_file.close
 
-puts <span style="font-style:italic">&#34;Done&#34;</span></code></pre></div>
-<p>Now everything is ready and you can easily integrate library FACE into your C++ solution and fed it with tsv dicts.</p>
+puts <span style="font-style:italic">&#34;Done&#34;</span>
+</code></pre></div><p>Now everything is ready and you can easily integrate library FACE into your C++ solution and fed it with tsv dicts.</p>
   </div>
 
   

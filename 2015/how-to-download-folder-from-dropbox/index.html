@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,9 +587,7 @@
 
   <div class="entry-content">
     <p>If you face a problem to download folder from Dropbox which contains tons of files, no known browser extension can help you. Dropbox moves each file download to it&rsquo;s separate page and you can&rsquo;t do it directly.</p>
-
 <p>When I faced this problem I knew I would need to create my own solution and quick googling just confirmed that.</p>
-
 <p>I opened javascript console and extracted all links from the folder. Then I replaced &ldquo;dl=0&rdquo; to &ldquo;dl=1&rdquo; to get actual download link.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> links = document.querySelectorAll(<span style="font-style:italic">&#34;div.filename a&#34;</span>)
 <span style="font-weight:bold">var</span> processed = Array.prototype.map.call(links, 
@@ -571,15 +595,10 @@
     <span style="font-weight:bold">return</span> link[<span style="font-style:italic">&#34;href&#34;</span>].replace(<span style="font-style:italic">&#34;dl=0&#34;</span>, <span style="font-style:italic">&#34;dl=1&#34;</span>); 
 })
 console.log(processed.join(<span style="font-style:italic">&#34;\n&#34;</span>))
-</code></pre></div>
-<p>After I copied those to file <em>links_to_download</em>. If your <em>processed</em> array is too big, you can print it to console by chunks, using <code>slice(start, end)</code> method from Javascript. Now the problem is to download them.</p>
-
+</code></pre></div><p>After I copied those to file <em>links_to_download</em>. If your <em>processed</em> array is too big, you can print it to console by chunks, using <code>slice(start, end)</code> method from Javascript. Now the problem is to download them.</p>
 <p>I came up with <em>wget</em> for such problem. Linux and OS X users should have wget available (OS X users can install it via e.g. homebrew). Windows users have to download it separately, install and add to the <em>PATH</em> environmental variable. Additionaly I used <em>-trust-server-names</em> and <em>-content-disposition</em> parameters to save real filenames instead of dropbox hashed url. Then I faced a problem that it fails to download a file on first request and request timeout is quite big so I&rsquo;ve set it to 5 seconds. Now it makes several timed-out requests, but they quickly resolve to the successful one.</p>
-
 <pre><code>wget --content-disposition --trust-server-names --timeout=5 -i links_to_download
-</code></pre>
-
-<p>Also in order to download via https in Windows you probably will need to use &ldquo;<em>-no-check-certificate</em>&rdquo;.</p>
+</code></pre><p>Also in order to download via https in Windows you probably will need to use &ldquo;<em>-no-check-certificate</em>&quot;.</p>
 
   </div>
 

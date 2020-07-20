@@ -10,7 +10,7 @@
     
     <meta property="og:title" content="Simple OpenGL program on C# under Linux" />
     <meta property="og:locale" content="en" />
-    <meta property="og:description" content="Today I’ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we’re going to get something like this:Result of OpenGL app" />
+    <meta property="og:description" content="Today I’ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we’re going to get something like this:Result of OpenGL appSeveral" />
     <meta property="og:url" content="https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/" />
     <meta property="og:site_name" content="Xpiks" />
     
@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -554,14 +580,10 @@
   
 
   <div class="entry-content">
-    <p>Today I&rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&rsquo;re going to get something like this:<figure id="attachment_1031" class="thumbnail wp-caption aligncenter" style="width: 310px"></p>
-
-<p><a href="http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png"><img class=" wp-image-1031 " src="http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png?w=300" alt="OpenTK Game Window" width="300" height="241" srcset="http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png 400w, http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test-300x242.png 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><figcaption class="caption wp-caption-text">Result of OpenGL app</figcaption></figure></p>
-
+    <p>Today I&rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&rsquo;re going to get something like this:<!-- raw HTML omitted --></p>
+<p><a href="http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png"><!-- raw HTML omitted --></a><!-- raw HTML omitted -->Result of OpenGL app<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>Several companies and organizations have developed their own collections of bindings for OpenGL under .NET (Mono), the leader of which is the Tao Framework. The Tao Framework for .NET is a collection of bindings to facilitate cross-platform media application development utilizing the .NET and Mono platforms. But I failed to use it properly under Linux, so I found Open ToolKit, that is a free, cross-platform OpenGL and OpenAL wrapper for C# and other .NET languages.</p>
-
-<p>To use it you should download it from <a href="http://www.opentk.com/" target="_blank">official website of openTK</a> and extract from archive to your favorite location. Create empty project in your favorite IDE. In Linux (currently OpenSUSE 12.3) I use MonoDevelop. In your project References section right click and add reference to <em>OpenTK.dll</em> which you can find via <em>opentk/Binaries/OpenTK/Release</em> path (and also add <em>System.Drawing.dll</em> assembly reference for <em>Color</em> stuff).</p>
-
+<p>To use it you should download it from <!-- raw HTML omitted -->official website of openTK<!-- raw HTML omitted --> and extract from archive to your favorite location. Create empty project in your favorite IDE. In Linux (currently OpenSUSE 12.3) I use MonoDevelop. In your project References section right click and add reference to <em>OpenTK.dll</em> which you can find via <em>opentk/Binaries/OpenTK/Release</em> path (and also add <em>System.Drawing.dll</em> assembly reference for <em>Color</em> stuff).</p>
 <p>Now add some .cs file to your solution and paste this code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="font-weight:bold">using</span> <span style="font-weight:bold">System</span>;
 
@@ -636,8 +658,7 @@
 		}
 	}
 }
-</code></pre></div>
-<p>Code is quite self-explanatory. We use code in <em>OnRenderFrame</em> to draw main picture and some helpful stuff like <em>OnResize</em> to handle window resizing well. <em>Main()</em> method just creates the window and runs it. Now you can run it and get window with colored triangle.</p>
+</code></pre></div><p>Code is quite self-explanatory. We use code in <em>OnRenderFrame</em> to draw main picture and some helpful stuff like <em>OnResize</em> to handle window resizing well. <em>Main()</em> method just creates the window and runs it. Now you can run it and get window with colored triangle.</p>
   </div>
 
   

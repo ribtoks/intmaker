@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,9 +581,7 @@
 
   <div class="entry-content">
     <p><a href="http://blog.naiznoiz.com/2009/03/c-loops-ruby-style" title="Ruby style loops in C#">Ruby style loops in C#</a></p>
-
 <p>Simple and useful solution to use ruby-like loops in C#. Also, you can add extensions</p>
-
 <pre><code>public struct MyInt
 {
     public delegate void Loop(int i);

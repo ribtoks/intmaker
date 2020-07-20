@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,9 +581,7 @@
 
   <div class="entry-content">
     <p>If you ever tried to handle drag&rsquo;n&rsquo;drop files in your Qt application, you would usually come up with the code like the following.</p>
-
 <p>First of all you will need a Drop Area somewhere in your application, which will handle drops</p>
-
 <pre><code>DropArea {
   anchors.fill: parent
   onDropped: {
@@ -567,16 +591,11 @@
     }
  }
 }
-</code></pre>
-
-<p>Where <em>yourCppModel</em> is a model exposed to Qml in main.cpp or wherever like this:</p>
+</code></pre><p>Where <em>yourCppModel</em> is a model exposed to Qml in main.cpp or wherever like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QQmlContext *rootContext = engine.rootContext();
 rootContext-&gt;setContextProperty(<span style="font-style:italic">&#34;yourCppModel&#34;</span>, &amp;myCppModel);
-</code></pre></div>
-<p>and <code>int dropFiles(const QList&lt;QUrl&gt; &amp;urls)</code> is just an ordinary method exposed to QML via <em><code>Q_INVOKABLE</code></em> attribute.</p>
-
+</code></pre></div><p>and <code>int dropFiles(const QList&lt;QUrl&gt; &amp;urls)</code> is just an ordinary method exposed to QML via <em><code>Q_INVOKABLE</code></em> attribute.</p>
 <p>You will sure notice everything works fine unless you&rsquo;re working under OS X. In OS X instead of QUrls to local files you will get something like this: _ <code>file:///.file/id=6571367.2773272/</code>_. There&rsquo;s a bug in Qt for that and it even looks closed, but it still doesn&rsquo;t work for me that&rsquo;s why I&rsquo;ve implemented my own helper using mixing of Objective-C and Qt-C++ code.</p>
-
 <p>I&rsquo;ve added a <code>osxnshelper.h</code> and <code>osxnshelper.mm</code> source file with helper method to my project:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">#include</span> <span style="">&lt;Foundation/Foundation.h&gt;</span><span style="">
 </span><span style="">#include</span> <span style="">&lt;QUrl&gt;</span><span style="">
@@ -588,9 +607,7 @@ QUrl fromNSUrl(<span style="font-weight:bold">const</span> QUrl &amp;url) {
     QString qtString = QString::fromNSString(path);
     <span style="font-weight:bold">return</span> QUrl::fromLocalFile(qtString);
 }
-</code></pre></div>
-<p>and added it into the .pro file with conditional define:</p>
-
+</code></pre></div><p>and added it into the .pro file with conditional define:</p>
 <pre><code>macx {
 OBJECTIVE_SOURCES += \
     osxnsurlhelper.mm
@@ -598,9 +615,7 @@ OBJECTIVE_SOURCES += \
 LIBS += -framework Foundation
 HEADERS += osxnsurlhelper.h
 }
-</code></pre>
-
-<p>Now I&rsquo;m able to use this helper in my actual <code>dropFiles()</code> method:</p>
+</code></pre><p>Now I&rsquo;m able to use this helper in my actual <code>dropFiles()</code> method:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">int</span> MySuperCppModel::dropFiles(<span style="font-weight:bold">const</span> QList&lt;QString&gt; &amp;urls)
 {
     QList&lt;QString&gt; localUrls;
@@ -615,8 +630,7 @@ HEADERS += osxnsurlhelper.h
 <span style="">#endif
 </span><span style=""></span>    <span style="font-style:italic">// ......
 </span><span style="font-style:italic"></span>}
-</code></pre></div>
-<p>That&rsquo;s it. Now it works perfectly.</p>
+</code></pre></div><p>That&rsquo;s it. Now it works perfectly.</p>
   </div>
 
   

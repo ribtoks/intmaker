@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -560,36 +586,20 @@
   
 
   <div class="entry-content">
-    
-
-<p>This is a part 2 of the journey started in <a href="https://intmaker.com/2018/deploy-to-macos/">part 1</a>.</p>
-
+    <p>This is a part 2 of the journey started in <a href="https://intmaker.com/2018/deploy-to-macos/">part 1</a>.</p>
 <p>When you download an app from the internet on macOS, it adds an attribute <code>com.apple.quarantine</code> (you can see that using command <code>xattr /path/to/MyApp.app</code>). When you open such app, you will see a Gatekeeper greeting:</p>
-
-<p><img src="https://intmaker.com/img/gatekeeper-promt.png" alt="Gatekeeper promt" /></p>
-
+<p><img src="https://intmaker.com/img/gatekeeper-promt.png" alt="Gatekeeper promt"></p>
 <p>Apple <a href="https://developer.apple.com/news/?id=04102019a">announced</a> that all new software for macOS Catalina will need to be notarized. And that you won&rsquo;t be able to open unnotarized software even bypassing Gatekeeper selecting &ldquo;Open&rdquo; from context menu. Now every developer should pay $99 per year to get Apple Developer certificate and therefore - making there apps paid too. But this is a topic for a different discussion.</p>
-
 <h2 id="so-what-is-notarization">So what is notarization?</h2>
-
 <p>Notarization is a virus scan of your app done by Apple. After the scan Apple creates a &ldquo;report&rdquo; (also called ticket) that your app is safe (that&rsquo;s only when you passed notarization). After that you can distribute your app with the report and Gatekeeper will let you through.</p>
-
 <h2 id="how-to-notarize-an-app">How to notarize an app?</h2>
-
 <p>First of all, I recommend to read a bunch of <a href="https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution">official</a> <a href="https://developer.apple.com/library/archive/technotes/tn2206/_index.html">Apple</a> <a href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html">documentation</a>. You will need to codesign your app bundle with enabled hardened runtime, with correct entitelments file and then upload it to Apple and wait for the notarization to finish.</p>
-
 <p>Secondly, after you finished docs reading, here&rsquo;s the procedure I use (I will assume you already signed up for Developer program itself).</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h3 id="1-registration-usually-done-once">1. Registration (usually done once)</h3>
-
 <p>Go to <a href="https://developer.apple.com">Apple Developer Portal</a> and create a new Bundle ID for your application. This should look like a reverse url (e.g. &ldquo;com.mydomain.MyApp&rdquo;).</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h3 id="2-preparation-usually-done-once">2. Preparation (usually done once)</h3>
-
 <ol>
 <li>Create a <a href="https://help.apple.com/developer-account/#/devbfa00fef7">certificate signing request</a>: for Developer ID Application using <code>Keychain Access -&gt; Certificate Assistant -&gt; Request a certificate from certificate authority</code></li>
 <li>In the &ldquo;Common Name&rdquo; enter &ldquo;Name Surname Dev Cert&rdquo; etc. and in the email - apple id</li>
@@ -598,18 +608,12 @@
 <li>On the <a href="https://appleid.apple.com">Apple ID website</a> create new app-specific password for notarization submission tool</li>
 <li>Create an item in Keychain with name &ldquo;AC_PASSWORD&rdquo; where login is iCloud ID and password is &ldquo;app-specific password&rdquo; from (5). This is done in order not to have an app-specific password in a plain-text in deploy script.</li>
 </ol>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h3 id="3-signing">3. Signing</h3>
-
 <p>As for the Build part of your C++ app, you need to build for <code>release</code> and <code>x86_64</code> architecture. Also you need to include correct debug symbols: add <code>CFLAGS += -gdwarf-2</code> and <code>CXXFLAGS += -gdwarf-2</code> to your favorite build/project tool.</p>
-
 <p>Then after the app is built, you need to create a <code>.app</code> bundle, including all dependent libraries and frameworks. You can read more about it in the <a href="https://intmaker.com/2018/deploy-to-macos/">previous part</a>.</p>
-
 <p>After you have the bundle, you need to codesign all libraries, plugins and frameworks.
-In the script below <code>${DEVELOPER_ID}</code> is your Apple Developer ID e.g. &ldquo;Developer ID Application: Name Surname (QWERTY123)&ldquo;.</p>
-
+In the script below <code>${DEVELOPER_ID}</code> is your Apple Developer ID e.g. &ldquo;Developer ID Application: Name Surname (QWERTY123)&quot;.</p>
 <pre><code>CODESIGN_OPTIONS=&quot;-f --timestamp --verbose=4 --options=runtime -i ${BUNDLE_ID} --entitlements ${ENTITLEMENTS_PATH}&quot;
 echo &quot;Signing the frameworks...&quot;
 for FRAMEWORK in $(ls &quot;${APP_BUNDLE}&quot;/Contents/Frameworks | grep framework | sed 's/\.framework//')
@@ -623,26 +627,14 @@ find &quot;${APP_BUNDLE}&quot;/Contents/Frameworks -name &quot;*.dylib&quot; -ex
 
 echo &quot;Signing the plugins...&quot;
 find &quot;${APP_BUNDLE}&quot;/Contents/PlugIns -name &quot;*.dylib&quot; -exec codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; '{}' \;
-</code></pre>
-
-<p>Only after this is done you can codesign main executable.</p>
-
+</code></pre><p>Only after this is done you can codesign main executable.</p>
 <pre><code>codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${APP_BUNDLE}&quot;
-</code></pre>
-
-<p>Also I recommend to verify that your bundle is correctly signed:</p>
-
+</code></pre><p>Also I recommend to verify that your bundle is correctly signed:</p>
 <pre><code>codesign --verbose --verify &quot;${APP_BUNDLE}&quot;
-</code></pre>
-
-<p><br /></p>
-
+</code></pre><p><!-- raw HTML omitted --></p>
 <h3 id="4-notarize-the-bundle">4. Notarize the bundle</h3>
-
 <p>Now you need to notarize the bundle. Apple provides you with <code>altool</code> that is capable of sending a notarization request, but it cannot send a directory (remember that <code>.app</code> is just a suffix, in reality your bundle is a simple directory). So first you need to create a zip archive.</p>
-
 <p>Also <code>altool</code> will access your app-specific password in the keychain using a special syntax.</p>
-
 <pre><code>NOTARIZE_APP_PATH=&quot;${APP_NAME}.app&quot;
 NOTARIZE_ZIP_PATH=&quot;${APP_NAME}.zip&quot;
 
@@ -655,76 +647,42 @@ xcrun altool --notarize-app \
                --username &quot;${APPLE_ID}&quot; \
                --password &quot;@keychain:AC_PASSWORD&quot; \
                --file &quot;${NOTARIZE_ZIP_PATH}&quot;
-</code></pre>
-
-<p>Last command, if completed successfully, will print you out a UUID of your notarization request. You can check it&rsquo;s status using another command:</p>
-
+</code></pre><p>Last command, if completed successfully, will print you out a UUID of your notarization request. You can check it&rsquo;s status using another command:</p>
 <pre><code>xcrun altool --notarization-info &quot;${REQUEST_UUID}&quot; -u &quot;${APPLE_ID}&quot; --password &quot;@keychain:AC_PASSWORD&quot;
-</code></pre>
-
-<p>After you verified that Apple notarized your app, you need to stapple the notarization ticket to your app.</p>
-
+</code></pre><p>After you verified that Apple notarized your app, you need to stapple the notarization ticket to your app.</p>
 <pre><code>xcrun stapler staple &quot;${APP_BUNDLE}&quot;
-</code></pre>
-
-<p><del>From now on</del> As long as you pay Apple for the Developer Certififcate, this particular Bundle should pass Gatekeeper. You can actually verify that:</p>
-
+</code></pre><p><del>From now on</del> As long as you pay Apple for the Developer Certififcate, this particular Bundle should pass Gatekeeper. You can actually verify that:</p>
 <pre><code>spctl --assess --verbose --type execute --ignore-cache --no-cache &quot;${APP_BUNDLE}&quot;
 
 xcrun stapler validate &quot;${APP_BUNDLE}&quot;
-</code></pre>
-
-<p>And even besides of that you should send your app to yourself in the email and check that it passes Gatekeeper.</p>
-
-<p><br /></p>
-
+</code></pre><p>And even besides of that you should send your app to yourself in the email and check that it passes Gatekeeper.</p>
+<p><!-- raw HTML omitted --></p>
 <h3 id="5-rinse-and-repeat-for-dmg">5. Rinse and repeat for .dmg</h3>
-
 <p>Previous steps are good if you&rsquo;re distibuting your app in a zip archive. But the odds are you&rsquo;re using <code>.pkg</code> or <code>.dmg</code>. If you put your app into a <code>.dmg</code>, it will again become unsafe! So you need to repeat the previous exercise with the <code>.dmg</code>: sign it and notarize.</p>
-
 <p>If you don&rsquo;t know how to create a <code>.dmg</code>, check out <a href="https://intmaker.com/2018/deploy-to-macos/">part 1</a>.</p>
-
 <p>To sign the dmg use:</p>
-
 <pre><code>CODESIGN_OPTIONS=&quot;-f --verbose=4 --options=runtime&quot;
 
 codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${DMG_PATH}&quot;
-</code></pre>
-
-<p>However, you don&rsquo;t need to archive it since <code>.dmg</code> is a single file, not a directory. So you can notarize it as is:</p>
-
+</code></pre><p>However, you don&rsquo;t need to archive it since <code>.dmg</code> is a single file, not a directory. So you can notarize it as is:</p>
 <pre><code>xcrun altool --notarize-app \
                -t osx \
                --primary-bundle-id &quot;${BUNDLE_ID}&quot; \
                --username &quot;${APPLE_ID}&quot; \
                --password &quot;@keychain:AC_PASSWORD&quot; \
                --file &quot;${DMG_PATH}&quot;
-</code></pre>
-
-<p>After it&rsquo;s done you need to staple the notarization ticket too:</p>
-
+</code></pre><p>After it&rsquo;s done you need to staple the notarization ticket too:</p>
 <pre><code>xcrun stapler staple &quot;${DMG_PATH}&quot;
-</code></pre>
-
-<p>Don&rsquo;t forget to verify everything:</p>
-
+</code></pre><p>Don&rsquo;t forget to verify everything:</p>
 <pre><code>spctl -a -t open --context context:primary-signature -v &quot;${DMG_PATH}&quot;
 
 xcrun stapler validate &quot;${DMG_PATH}&quot;
-</code></pre>
-
-<p><br /></p>
-
+</code></pre><p><!-- raw HTML omitted --></p>
 <h3 id="pitfalls">Pitfalls</h3>
-
 <p>It is possible that even after <code>spctl</code> and <code>xcrun</code> will report that your app is signed and notarized it still will be rejected by Gatekeeper. <a href="https://developer.apple.com/library/content/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG207">It can happen</a> if an app uses an absolute @rpath or absolute path to link to a dynamic library.</p>
-
 <p>In order to see which path it is, run <code>otool -L /path/to/binary</code> and <code>otool -l /path/to/binary</code>. If you find any non-system library with absolute path, check for more details about how to fix this in <a href="https://intmaker.com/2018/deploy-to-macos/">part 1</a> (you need to use <code>install_name_tool</code>).</p>
-
 <h3 id="the-end">The end</h3>
-
 <p>Notarization process is definitely a pain the ass to already non-trivial deployment procedures and there&rsquo;s no workaround. The only way is to master it and create some automation around.</p>
-
 <p>Please let me know if you were able to repeat this guide and create your notarized apps.</p>
 
   </div>

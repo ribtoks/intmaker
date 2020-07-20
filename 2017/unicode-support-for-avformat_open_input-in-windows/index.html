@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,7 +587,6 @@
 
   <div class="entry-content">
     <p>For those of us ever writing cross-platform application there has always been enough quires and quests to accomplish. Typical one is to correctly handle multibyte/unicode filepaths in Windows. And though they are handled pretty good in Qt, when you write your own library you have to do it yourself.</p>
-
 <p>Another level of quests is using third-party libraries which were not designed for cross-platform usage. For example if you wanted to use ffmpeg / libav libraries in Windows, you have to deal with lack of support of <code>std::wstring</code> parameters in the API. One way to deal with it - arrange a custom IO using <code>AVFormatContext</code> and handle file paths by yourself. I have found a wonderful article and code example of how to do it in the <a href="https://mw.gl/posts/ffmpeg_custom_io/">blog of Marika Wei</a>. Slightly adapted, the solution will handle all Windows paths</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-weight:bold">struct</span> {
 <span style="">#ifdef _WIN32
@@ -570,7 +595,7 @@
 </span><span style=""></span>    std::string m_FilePath;
 <span style="">#endif
 </span><span style=""></span>    AVIOContext *m_IOCtx;
-    uint8_t *m_Buffer; <span style="font-style:italic">// internal buffer for ffmpeg
+    <span style="">uint8_t</span> *m_Buffer; <span style="font-style:italic">// internal buffer for ffmpeg
 </span><span style="font-style:italic"></span>    <span style="">int</span> m_BufferSize;
     FILE *m_File;
 }

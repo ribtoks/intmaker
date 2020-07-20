@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -560,16 +586,10 @@
   
 
   <div class="entry-content">
-    
-
-<p>This is part 1 of the deployment process overview. <a href="https://intmaker.com/2019/sign-for-macos/">Part 2</a> will cover code signing and notarization.</p>
-
+    <p>This is part 1 of the deployment process overview. <a href="https://intmaker.com/2019/sign-for-macos/">Part 2</a> will cover code signing and notarization.</p>
 <h2 id="level-0-warming-up">Level 0: warming up</h2>
-
 <p>Deploying anything anywhere has never been easy business. Deploying applications to desktop computers is no different. OS X (now macOS) had its own solution of <a href="https://en.wikipedia.org/wiki/DLL_Hell">&ldquo;dll hell&rdquo;</a>: each application should be absolutely self contained. All the dependencies and dependencies of dependencies should be distributed within the &ldquo;bundle&rdquo; so apps won&rsquo;t conflict with other apps because of missing or outdated libraries.</p>
-
 <p>Sounds good in theory, but what does it mean in practice? You have to collect all the dependencies somehow and fit them into your &ldquo;bundle&rdquo;. Bundle structure usually looks like this:</p>
-
 <pre><code>HelloWorld.app/
 - Contents/
   - Frameworks/
@@ -578,11 +598,8 @@
   - Resources/
   - PlugIns/
 </code></pre>
-
 <p>Bundle is just a directory with suffix &ldquo;.app&rdquo; which magically converts it to the &ldquo;bundle&rdquo; where real executable is inside <code>Contents/MacOS/</code> directory, its library dependencies live in <code>Frameworks/</code> directory and other resources in other appropriate places (<code>Resources/</code> or <code>PlugIns</code>).</p>
-
 <p>To understand which dependencies does your <code>HelloWorld</code> executable have, you can use <code>otool</code> command line utility (part of XCode) with parameter <code>-L</code>:</p>
-
 <pre><code>&gt; otool -L HelloWorld.app/Contents/MacOS/HelloWorld
 
     @rpath/QtNetwork.framework/Versions/5/QtNetwork 
@@ -593,11 +610,8 @@
     /usr/lib/libSystem.B.dylib 
     .....
 </code></pre>
-
 <p>It lists all dependencies of your app and their &ldquo;install names&rdquo;. You may ask what is <code>@rpath</code>? It&rsquo;s a special variable (a friend of <code>@executable_path</code> and <code>@loader_path</code>) that means a list of locations where the dynamic linker can find dependent dylib at runtime. Items in list usually are set by a linker and can overriden in a number of ways (e.g. by <code>install_name_tool</code> or with environmental <code>DYLD_LIBRARY_PATH</code> variable). For native applications it could be <code>/usr/lib</code>. For Qt applications it could be <code>/path/to/Qt5.6.2/5.6/clang_64/lib</code> or anything alike.</p>
-
 <p>You can learn this path also using <code>otool</code> but this time with parameter <code>-l</code> and checking for <code>LC_RPATH</code> block:</p>
-
 <pre><code>&gt; otool -l HelloWorld.app/Contents/MacOS/HelloWorld
 
     ......
@@ -607,37 +621,22 @@
       path /Users/user/Qt5.6.2/5.6/clang_64/lib (offset 12)
     ......
 </code></pre>
-
 <p>Also <code>otool -l</code> is pretty useful command to learn how does your application start anyway. How does it know it&rsquo;s depedencies and so on (yes, they are all just listed in your app).</p>
-
 <p>So your user&rsquo;s computer probably will not have same path as the one on your computer so you have to change it. Remember bundle structure couple of passages above? All the libraries should live in <code>Frameworks/</code> directory so your application <code>@rpath</code> will point to <code>Frameworks/</code> and will be able to start using the libraries that come along.</p>
-
 <p>In order to change <code>@rpath</code> (and other sections) you need <code>install_name_tool</code> utility (also comes with XCode) so in the end your app&rsquo;s <code>@rpath</code> will have at least one entry of <code>@executable_path/../Frameworks/</code> (where <code>@executable_path</code> is another magic variable with self-descriptive name).</p>
-
 <h3 id="qt-world">Qt world</h3>
-
 <p>If you&rsquo;re bundling a Qt app you can make use of <code>macdeployqt</code> utility which comes with Qt distribution and it can pretty much pack all the frameworks and libraries required for your app and missing in <code>/usr/lib/</code>.</p>
-
 <pre><code>macdeployqt HelloWorld.app -executable=&quot;HelloWorld.app/Contents/MacOS/HelloWorld&quot; -qmldir=../src/
 </code></pre>
-
 <p>This command will bundle all the dependencies of the executable passed to it via command line. In addition this app will change <code>@rpath</code> using <code>install_name_tool</code> and will produce ready to deploy bundle. Although this will only work if your application depends on some system and Qt libraries and nothing else.</p>
-
 <h2 id="level-1-additional-files">Level 1: additional files</h2>
-
 <p>If your application depends on other resources (icon, videos, dictionaries etc.) that are not compiled into the executable, you also have to ship them using <code>Resources/</code> directory. I recommend creating a deployment script that will do that for you of course because doing it manually every time is very error-prone.</p>
-
 <p>Deployment as easy as:</p>
-
 <pre><code>cp /path/to/your/file HelloWorld.app/Contents/Resources/
 </code></pre>
-
 <h2 id="level-2-custom-libraries">Level 2: custom libraries</h2>
-
 <p>This is harder. Simple copying library or framework to <code>Frameworks/</code> in order to deploy it is not enough. Your executable will look for the library in the place that was set by the linker and chances are it&rsquo;s not <code>@rpath</code>, but something like <code>/usr/local/lib/mycustomname.dylib</code>. Things get more complicated if the library requires other dynamic libraries so you will need to deploy transitive dependencies as well.</p>
-
 <p>Bottom line is: in order to deploy custom libraries you have to first copy them to <code>Frameworks/</code>, fix library load path in your app and fix the librarie&rsquo;s <code>LC_LOAD_DYLIB</code> sections (like <code>LC_RPATH</code> but for dynamically linked libraries) where its own dependencies are listed. Rough example:</p>
-
 <pre><code># copy library to Frameworks
 cp /path/to/library.dylib HelloWorld.app/Contents/Frameworks/
 
@@ -647,15 +646,10 @@ install_name_tool -change &quot;/previous/link/path/to/library.dylib&quot; &quot
 # and dependencies of dependencies of the library (repeat for every $depend_lib)
 install_name_tool -change &quot;/usr/local/lib/$depend_lib&quot; &quot;@loader_path/$depend_lib&quot; &quot;$lib&quot;
 </code></pre>
-
 <p>Previous link path to the dependent library can be learned using <code>otool -L</code> command against your executable as well as library dependencies. If you put all the dependencies on the same level together then they can be referred as <code>@loader_path/dependentlibrary.dylib</code> where <code>@loader_path</code> is magical variable expanded to the path of the library which caused current library to be loaded.</p>
-
 <h2 id="level-3-additional-applications">Level 3: additional applications</h2>
-
 <p>Say you need some additional application like a <a href="https://github.com/ribtoks/xpiks/blob/master/src/recoverty/README.md">crash handler</a> to be deployed alongside with your main one. If you were skimming this post thoroughly then you know the answer: you copy its dependencies to <code>Frameworks/</code> and tweak <code>@rpath</code> using <code>install_name_tool</code>.</p>
-
 <p>To be more precise first you need to choose where exactly your app will be with regards to the main app. Usually it&rsquo;s put alongside with it in the <code>Contents/MacOS</code> directory like this:</p>
-
 <pre><code>HelloWorld.app/
   - Contents/
     - Frameworks/
@@ -669,20 +663,13 @@ install_name_tool -change &quot;/usr/local/lib/$depend_lib&quot; &quot;@loader_p
           - Frameworks/
           - Resources/
 </code></pre>
-
 <p>Of course you can first create a fully self-contained bundle of your other app, but this will only increase total size of the main bundle. If you want your other app to have an icon you will anyway need to create a bundle, but no need to copy dependencies in there.</p>
-
 <p>What makes more sense is to reuse dependencies of the main app as much as possible (usually they cover smaller one). In order to do so you will need to tweak <code>@rpath</code> of the smaller executable to point to <code>Frameworks/</code> directory of the parent. Also sounds like a job for <code>install_name_tool</code> and a fresh couple of lines in your deployment script like this:</p>
-
 <pre><code>install_name_tool -add_rpath &quot;@executable_path/../../../../Frameworks&quot; &quot;${ADDITIONAL_APP}/Contents/MacOS/OtherAppName&quot;
 </code></pre>
-
 <h3 id="qt-world-1">Qt world</h3>
-
 <p>If your small additional application is also a Qt application (which is likely if the main one is) then above is not enough. Problem is that Qt apps need also platform-specific plugins and resources shipped alongside with them. If your main app already has them deployed using <code>macdeployqt</code> then you can reuse them using <code>qt.conf</code> file. This is a magical file that <code>QApplication</code>-descendent classes look for in order to learn about the environment, parameters, paths to plugins and resources and what not.</p>
-
 <p>So to reuse resources and platform-specific plugins of the main app you would need to create a <code>qt.conf</code> in <code>Resources/</code> directory of the dependent app with relative paths like this:</p>
-
 <pre><code>&gt; cat &lt;&lt; EOF &gt; &quot;${ADDITIONAL_APP}/Contents/Resources/qt.conf&quot;
 [Paths]
 Plugins = ../../../PlugIns
@@ -690,37 +677,23 @@ Imports = ../../../Resources/qml
 Qml2Imports = ../../../Resources/qml
 EOF
 </code></pre>
-
 <p>Where relative paths point to parent&rsquo;s appropriate directories.</p>
-
 <h2 id="bonus-level-dmg-creation">Bonus level: DMG creation</h2>
-
 <p>Of course it would be too easy if bundling an <code>.app</code> was everything that you needed to ship your application. In Apple world applications are usually shipped in <code>.dmg</code> files which are Apple Disk Image files. Good news is that if you only want to compress <code>.app</code> to <code>.dmg</code> you need pretty much one command:</p>
-
 <pre><code>&gt; hdiutil create -srcfolder &quot;/path/to/HelloWorld.app&quot; -volname &quot;HelloWorld&quot; -fs HFS+ \
 -fsargs &quot;-c c=64,a=16,e=16&quot; -format UDRW -size ${SIZE}m &quot;HelloWorld.dmg&quot;
 </code></pre>
-
 <p>Bad news is that it will lead to bad user experience. Imagine you open an installer and what you see is just ugly white background and some <code>HelloWorld.app</code> in top left corner left totally at your disposal. You should guess yourself what you want to do with it. Probably just close or trash immediately.</p>
-
-<p><img src="https://intmaker.com/img/bundle-raw.png" alt="Raw DMG" />
+<p><img src="https://intmaker.com/img/bundle-raw.png" alt="Raw DMG">
 <em>Pretty much RAW bundle created with a command above</em></p>
-
 <p>What people usually do is they set a pretty background image with some instructions and place a link to <code>Applications/</code> directory. Instructions usually visually explain to drag the <code>HelloWorld.app</code> to <code>Applications</code> in order to install it.</p>
-
-<p><img src="https://intmaker.com/img/bundle-background.png" alt="Prettified DMG" />
+<p><img src="https://intmaker.com/img/bundle-background.png" alt="Prettified DMG">
 <em>Bundle with set background and link to Applications</em></p>
-
 <p>In order to do so you have to copy background file to <code>.background</code> directory of the DMG, then select it in Finder as background image, resize the window and icons inside to fit it. Mount your first dmg, do these manipulations and then reexport it from <code>Disk Utility</code> to read-only dmg. You can also automate these actions with a Apple Script but that&rsquo;s a topic for another post.</p>
-
 <h2 id="the-end">The end</h2>
-
 <p>As you can see deploying desktop apps on macOS is a total hassle as soon as you have something more complex than <code>HelloWorld.app</code>. XCode/QtCreator can rule many things out to an extent but custom libraries, additional applications and others may require writing custom deployment scripts.</p>
-
 <p>Make sure to read <a href="https://intmaker.com/2019/sign-for-macos/">part 2</a> about signing and notarizing for macOS.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://github.com/ribtoks/xpiks/blob/backports_1.5.3/scripts/deploy/deploy_mac.sh">Xpiks deployment script</a></li>
 <li>There&rsquo;s an awesome article about <a href="https://amir.rachum.com/blog/2016/09/17/shared-libraries/">dynamic loading in Linux</a>. It explains about <code>rpath</code>, <code>runpath</code> and other quirks.</li>

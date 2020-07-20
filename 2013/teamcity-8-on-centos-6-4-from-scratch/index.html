@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,32 +581,28 @@
 
   <div class="entry-content">
     <p>In this post I&rsquo;ll describe whole TeamCity installation process on a fresh CentOS (on the moment I&rsquo;m writing it&rsquo;s 6.4) for your private project or startup.</p>
-
-<p>First, proceed to the <a title="Download CentOS" href="http://www.centos.org/modules/tinycontent/index.php?id=30" target="_blank">CentOS downloads page</a> and download CentOS distro through <em>.iso</em>, <em>.torrent</em> or <em>whatever-you-like</em> and start the installation process. If you&rsquo;re familiar with any  linux distro installation, it won&rsquo;t take you much time to complete the installation. I&rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing <em>iptables, elinks and java (openjdk)</em>.</p>
-
-<p>After the installation is over, login, add a user for yourself with <em>adduser</em> and let&rsquo;s start with TeamCity (maybe you&rsquo;ll also consider adding yourself to the sudoers file).</p>
-
-<p>First, create <em>/opt/jetbrains/</em> directory and <a title="Download teamcity" href="http://www.jetbrains.com/teamcity/download/index.html" target="_blank">download latest TeamCity</a> using <em>wget</em>.</p>
+<p>First, proceed to the <!-- raw HTML omitted -->CentOS downloads page<!-- raw HTML omitted --> and download CentOS distro through <!-- raw HTML omitted -->.iso<!-- raw HTML omitted -->, <!-- raw HTML omitted -->.torrent<!-- raw HTML omitted --> or <!-- raw HTML omitted -->whatever-you-like<!-- raw HTML omitted --> and start the installation process. If you&rsquo;re familiar with any  linux distro installation, it won&rsquo;t take you much time to complete the installation. I&rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing <!-- raw HTML omitted -->iptables, elinks and java (openjdk)<!-- raw HTML omitted -->.</p>
+<p>After the installation is over, login, add a user for yourself with <!-- raw HTML omitted -->adduser<!-- raw HTML omitted --> and let&rsquo;s start with TeamCity (maybe you&rsquo;ll also consider adding yourself to the sudoers file).</p>
+<p>First, create <!-- raw HTML omitted -->/opt/jetbrains/<!-- raw HTML omitted --> directory and <!-- raw HTML omitted -->download latest TeamCity<!-- raw HTML omitted --> using <!-- raw HTML omitted -->wget<!-- raw HTML omitted -->.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir /opt/jetbrains
 cd /opt/jetbrains
 wget http://download.jetbrains.com/teamcity/TeamCity-8.0.5.tar.gz
-tar -xpzf TeamCity-8.0.5.tar.gz</code></pre></div>
-<p>Now lets create a system user (e.g. no home directory) for TeamCity to resolve security issues correctly:</p>
+tar -xpzf TeamCity-8.0.5.tar.gz
+</code></pre></div><p>Now lets create a system user (e.g. no home directory) for TeamCity to resolve security issues correctly:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">adduser -r teamcity
 passwd teamcity
-chown -R teamcity:teamcity TeamCity</code></pre></div>
-<p>We&rsquo;ll use PostgreSQL for the internal database for TeamCity. So let&rsquo;s install postgresql packages (8.4 for CentOS 6.4). For details of the PostgreSQL installation please refer to <a title="PostgreSQL installation" href="http://wiki.postgresql.org/wiki/YUM_Installation" target="_blank">official webpage</a>.</p>
+chown -R teamcity:teamcity TeamCity
+</code></pre></div><p>We&rsquo;ll use PostgreSQL for the internal database for TeamCity. So let&rsquo;s install postgresql packages (8.4 for CentOS 6.4). For details of the PostgreSQL installation please refer to <!-- raw HTML omitted -->official webpage<!-- raw HTML omitted -->.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install postgresql
 service postgresql initdb
-chkconfig postgresql on</code></pre></div>
-<p>Also edit the <em>/var/lib/pgsql/data/pg_hba.conf</em> file to allow authorization from <em>localhost</em>. Go to the end and replace <em>ident</em> to <em>trust</em> for <em>localhost</em> in the configuration for hosts. Now lets create another user for the future TeamCity database and create a database for that user.</p>
+chkconfig postgresql on
+</code></pre></div><p>Also edit the <!-- raw HTML omitted -->/var/lib/pgsql/data/pg_hba.conf<!-- raw HTML omitted --> file to allow authorization from <!-- raw HTML omitted -->localhost<!-- raw HTML omitted -->. Go to the end and replace <!-- raw HTML omitted -->ident<!-- raw HTML omitted --> to <!-- raw HTML omitted -->trust<!-- raw HTML omitted --> for <!-- raw HTML omitted -->localhost<!-- raw HTML omitted --> in the configuration for hosts. Now lets create another user for the future TeamCity database and create a database for that user.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo -u postgres psql postgres
 password postgres
 sudo -u postgres createuser -D -A -P teamcity_user
-sudo -u postgres createdb -O teamcity_user teamcity_db</code></pre></div>
-<p>(D = Cannot create databases, A = Cannot add users, P = Force password prompt)</p>
-
-<p>To start TeamCity as a service in CentOS, you&rsquo;ll have to register it with <em>chkconfig</em> and to do so, let&rsquo;s create startup script in the <em>/etc/init.d/</em> directory and save it with any name (e.g. teamcity-script):</p>
+sudo -u postgres createdb -O teamcity_user teamcity_db
+</code></pre></div><p>(D = Cannot create databases, A = Cannot add users, P = Force password prompt)</p>
+<p>To start TeamCity as a service in CentOS, you&rsquo;ll have to register it with <!-- raw HTML omitted -->chkconfig<!-- raw HTML omitted --> and to do so, let&rsquo;s create startup script in the <!-- raw HTML omitted -->/etc/init.d/<!-- raw HTML omitted --> directory and save it with any name (e.g. teamcity-script):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="">#!/bin/bash
 </span><span style=""></span>#
 <span style="font-style:italic"># chkconfig: 235 10 90</span>
@@ -608,24 +630,19 @@ stop)
     ;;
 <span style="font-weight:bold">esac</span>
 
-exit 0</code></pre></div>
-<p>Note the <em>TEAMCITY_DATA_PATH</em> system variable which is used to overwrite default <em>~/.BuildServer</em> path for the teamcity data. First commented lines exist for <em>chkconfig</em> compatability. Now you&rsquo;re able to register it:</p>
+exit 0
+</code></pre></div><p>Note the <!-- raw HTML omitted -->TEAMCITY_DATA_PATH<!-- raw HTML omitted --> system variable which is used to overwrite default <!-- raw HTML omitted -->~/.BuildServer<!-- raw HTML omitted --> path for the teamcity data. First commented lines exist for <!-- raw HTML omitted -->chkconfig<!-- raw HTML omitted --> compatability. Now you&rsquo;re able to register it:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chkconfig --add teamcity-script
-chkconfig teamcity-script on</code></pre></div>
-<p>Now our script would autostart on system startup in 2, 3 and 5 runlevels.</p>
-
-<p>But what does actually <em>teamcity-server.sh</em> script do? It&rsquo;s located in the <em>bin/</em> directory of the TeamCity installation directory and it launches Tomcat server with initial config (<em>conf/server.xml</em> file). This config can be useful for us, so let&rsquo;s modify it slightly:</p>
-
+chkconfig teamcity-script on
+</code></pre></div><p>Now our script would autostart on system startup in 2, 3 and 5 runlevels.</p>
+<p>But what does actually <!-- raw HTML omitted -->teamcity-server.sh<!-- raw HTML omitted --> script do? It&rsquo;s located in the <!-- raw HTML omitted -->bin/<!-- raw HTML omitted --> directory of the TeamCity installation directory and it launches Tomcat server with initial config (<!-- raw HTML omitted -->conf/server.xml<!-- raw HTML omitted --> file). This config can be useful for us, so let&rsquo;s modify it slightly:</p>
 <ul>
 <li>Find the Connector node and change port to whatever you like (but don&rsquo;t use port 80 - to be discussed later in this post)</li>
-<li>Find the Host node and change <em>name</em> attribute from the <em>localhost</em> to whatever you like host, which also should be duplicated in the <em>/etc/hosts</em> file (e.g. if you host&rsquo;s name is <em>my_server.my_domain</em>, than the <em>/etc/hosts</em> file should also contain <em>&ldquo;127.0.0.1 my_server.my_domain&rdquo;</em>)</li>
-<li>Host element has also one useful child node: Alias. You can add <em><Alias>other_server_name</Alias></em> to use aliasing. See <a title="Tomcat aliasing" href="http://tomcat.apache.org/tomcat-6.0-doc/config/host.html#Host_Name_Aliases" target="_blank">official Tomcat documentation on this topic</a>.</li>
-<li>If your server is being accessed through proxy (or it&rsquo;s running on a virtual machine with forwarding from host), you&rsquo;ll have to uncomment last Valve node in the Host config and change the <em>internalProxies</em> respectively to your proxy.
-<br /></li>
+<li>Find the Host node and change <!-- raw HTML omitted -->name<!-- raw HTML omitted --> attribute from the <!-- raw HTML omitted -->localhost<!-- raw HTML omitted --> to whatever you like host, which also should be duplicated in the <!-- raw HTML omitted -->/etc/hosts<!-- raw HTML omitted --> file (e.g. if you host&rsquo;s name is <!-- raw HTML omitted -->my_server.my_domain<!-- raw HTML omitted -->, than the <!-- raw HTML omitted -->/etc/hosts<!-- raw HTML omitted --> file should also contain <!-- raw HTML omitted -->&quot;127.0.0.1 my_server.my_domain&quot;<!-- raw HTML omitted -->)</li>
+<li>Host element has also one useful child node: Alias. You can add <!-- raw HTML omitted --><!-- raw HTML omitted -->other_server_name<!-- raw HTML omitted --><!-- raw HTML omitted --> to use aliasing. See <!-- raw HTML omitted -->official Tomcat documentation on this topic<!-- raw HTML omitted -->.</li>
+<li>If your server is being accessed through proxy (or it&rsquo;s running on a virtual machine with forwarding from host), you&rsquo;ll have to uncomment last Valve node in the Host config and change the <!-- raw HTML omitted -->internalProxies<!-- raw HTML omitted --> respectively to your proxy.</li>
 </ul>
-
-<p>Another important thing is <em>iptables</em>. This is a server, right? So let&rsquo;s configure a firewall properly. You can paste below config as a working one for a server in the <em>/etc/sysconfig/iptables</em> file:</p>
-
+<p>Another important thing is <!-- raw HTML omitted -->iptables<!-- raw HTML omitted -->. This is a server, right? So let&rsquo;s configure a firewall properly. You can paste below config as a working one for a server in the <!-- raw HTML omitted -->/etc/sysconfig/iptables<!-- raw HTML omitted --> file:</p>
 <pre><code>*filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
@@ -644,46 +661,31 @@ chkconfig teamcity-script on</code></pre></div>
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
-</code></pre>
-
-<p>The most valuable line for us is highlighted and allows packets on <strong>8111</strong> port (the one Tomcat is listening to). You can easily configure Tomcat to listen to another port in the <em>conf/server.xml</em> file on your TeamCity installation. You can also find lots of articles on the web about making a proxy with <em>apache</em> or <em>lighttpd</em> for Tomcat just in order to enter urls like <em><a href="http://my-server/teamcity">http://my-server/teamcity</a></em> instead of <em><a href="http://my-server:8111/teamcity/">http://my-server:8111/teamcity/</a></em>. Believe me, <del>java and tomcat are not worth normal url in your browser! Besides,</del> you&rsquo;ll have to spend your time to deal with several issues:</p>
-
+</code></pre><p>The most valuable line for us is highlighted and allows packets on <!-- raw HTML omitted -->8111<!-- raw HTML omitted --> port (the one Tomcat is listening to). You can easily configure Tomcat to listen to another port in the <!-- raw HTML omitted -->conf/server.xml<!-- raw HTML omitted --> file on your TeamCity installation. You can also find lots of articles on the web about making a proxy with <!-- raw HTML omitted -->apache<!-- raw HTML omitted --> or <!-- raw HTML omitted -->lighttpd<!-- raw HTML omitted --> for Tomcat just in order to enter urls like <!-- raw HTML omitted -->http://my-server/teamcity<!-- raw HTML omitted --> instead of <!-- raw HTML omitted -->http://my-server:8111/teamcity/<!-- raw HTML omitted -->. Believe me, <!-- raw HTML omitted -->java and tomcat are not worth normal url in your browser! Besides,<!-- raw HTML omitted --> you&rsquo;ll have to spend your time to deal with several issues:</p>
 <ul>
-<li>If you want make Tomcat listen to 80 port (in the Connector node in <em>conf/server.xml</em>), you would have to launch <del>TeamCity</del> Tomcat from a <em>root</em> user instead of non-privileged, because only root can listen to 80 port</li>
+<li>If you want make Tomcat listen to 80 port (in the Connector node in <!-- raw HTML omitted -->conf/server.xml<!-- raw HTML omitted -->), you would have to launch <!-- raw HTML omitted -->TeamCity<!-- raw HTML omitted --> Tomcat from a <!-- raw HTML omitted -->root<!-- raw HTML omitted --> user instead of non-privileged, because only root can listen to 80 port</li>
 <li>You&rsquo;ll have to spend plenty of time looking for proper configuration when trying to configure a proxy for Tomcat regarding build agents which would need special configuration too (just like the server)</li>
 </ul>
-
-<p>So, I assume, you have enough reasons to leave the 8111 port as the default one. Let&rsquo;s ensure that <em>iptables</em> function properly:</p>
-
+<p>So, I assume, you have enough reasons to leave the 8111 port as the default one. Let&rsquo;s ensure that <!-- raw HTML omitted -->iptables<!-- raw HTML omitted --> function properly:</p>
 <pre><code># service iptables restart
 # chkconfig iptables on
 # service teamcity-script start
-</code></pre>
-
-<p>Now you can launch a browser and navigate to <em><a href="http://my_server.my_domain:8111">http://my_server.my_domain:8111</a> </em>(TeamCity data is stored in <em>webapps/ROOT</em> directory and you&rsquo;re able to move it to some other like <em>webapps/teamcity</em> but in this case your address would be <em><a href="http://my_server.my_domain:8111/teamcity">http://my_server.my_domain:8111/teamcity</a></em>) and see TeamCity page with a correct DATA_PATH (check if it&rsquo;s same like the one you specified in the <em>/etc/init.d/teamcity-script</em>). Check if user <em>teamcity</em> is able to create a directory DATA_PATH.  If everything is correct, proceed, agree to the license terms and wait while TeamCity will finish with basic installation. Please, note, that for now TeamCity is using internal DB which is not for the production purposes! Let&rsquo;s fix this using the <a title="PostgreSQL for TeamCity" href="http://confluence.jetbrains.com/display/TCD8/Setting+up+an+External+Database" target="_blank">official how-to</a> by downloading proper postgresql jdbc driver (for postgresql version on current CentOS) and configuring PostgreSQL authentication:</p>
+</code></pre><p>Now you can launch a browser and navigate to <!-- raw HTML omitted --><a href="http://my_server.my">http://my_server.my</a>_domain:8111 <!-- raw HTML omitted -->(TeamCity data is stored in <!-- raw HTML omitted -->webapps/ROOT<!-- raw HTML omitted --> directory and you&rsquo;re able to move it to some other like <!-- raw HTML omitted -->webapps/teamcity<!-- raw HTML omitted --> but in this case your address would be <!-- raw HTML omitted --><a href="http://my_server.my">http://my_server.my</a>_domain:8111/teamcity<!-- raw HTML omitted -->) and see TeamCity page with a correct DATA_PATH (check if it&rsquo;s same like the one you specified in the <!-- raw HTML omitted -->/etc/init.d/teamcity-script<!-- raw HTML omitted -->). Check if user <!-- raw HTML omitted -->teamcity<!-- raw HTML omitted --> is able to create a directory DATA_PATH.  If everything is correct, proceed, agree to the license terms and wait while TeamCity will finish with basic installation. Please, note, that for now TeamCity is using internal DB which is not for the production purposes! Let&rsquo;s fix this using the <!-- raw HTML omitted -->official how-to<!-- raw HTML omitted --> by downloading proper postgresql jdbc driver (for postgresql version on current CentOS) and configuring PostgreSQL authentication:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">service teamcity-script stop
 cd YOUR_DATA_PATH
 cd lib/jdbc
 su - teamcity
 wget jdbc.postgresql.org/download/postgresql-8.4-703.jdbc4.jar
 cd ../../config/
-cp database.postgresql.properties.dist database.properties</code></pre></div>
-<p>Now edit <em>database.properties</em> with you favorite editor (say, <em>vi</em>) and replace placeholder credentials with those you&rsquo;ve specified in the PostgreSQL post-installation configuration.</p>
-
+cp database.postgresql.properties.dist database.properties
+</code></pre></div><p>Now edit <!-- raw HTML omitted -->database.properties<!-- raw HTML omitted --> with you favorite editor (say, <!-- raw HTML omitted -->vi<!-- raw HTML omitted -->) and replace placeholder credentials with those you&rsquo;ve specified in the PostgreSQL post-installation configuration.</p>
 <pre><code>connectionUrl=jdbc:postgresql://&lt;host&gt;/&lt;database name&gt;
 connectionProperties.user=&lt;user&gt;
 connectionProperties.password=&lt;password&gt;
-</code></pre>
-
-<p>After you&rsquo;re done, relaunch TeamCity:</p>
-
+</code></pre><p>After you&rsquo;re done, relaunch TeamCity:</p>
 <pre><code>service teamcity-script start
-</code></pre>
-
-<p>Open your browser, go to the teamcity page and you should see TeamCity complaining about missing database. You&rsquo;ll have only one-button choice, so proceed. Now teamcity will try to create another database (many thanks to <a title="TeamCity and YouTrack on Ubuntu" href="http://jerryemilo.com/2012/12/29/teamcity-and-youtrack-on-ubuntu-12-10-quantal-quetzal/" target="_blank">this tutorial</a>) but it will require an authorization key, which can be found at the end of <em>logs/teamcity-server.log</em> file in your TeamCity main directory. Copy it and paste in the browser textbox, press <em>Next</em> and now TeamCity should launch correctly with PostgreSQL in the backend.</p>
-
+</code></pre><p>Open your browser, go to the teamcity page and you should see TeamCity complaining about missing database. You&rsquo;ll have only one-button choice, so proceed. Now teamcity will try to create another database (many thanks to <!-- raw HTML omitted -->this tutorial<!-- raw HTML omitted -->) but it will require an authorization key, which can be found at the end of <!-- raw HTML omitted -->logs/teamcity-server.log<!-- raw HTML omitted --> file in your TeamCity main directory. Copy it and paste in the browser textbox, press <!-- raw HTML omitted -->Next<!-- raw HTML omitted --> and now TeamCity should launch correctly with PostgreSQL in the backend.</p>
 <p>A plenty of useful links:</p>
-
 <ul>
 <li><a href="http://jerryemilo.com/2012/12/29/teamcity-and-youtrack-on-ubuntu-12-10-quantal-quetzal">http://jerryemilo.com/2012/12/29/teamcity-and-youtrack-on-ubuntu-12-10-quantal-quetzal</a></li>
 <li><a href="http://kogentadono.com/category/teamcity/">http://kogentadono.com/category/teamcity/</a></li>

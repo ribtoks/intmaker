@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -554,17 +580,12 @@
   
 
   <div class="entry-content">
-    <p>Ok, you considered to build Hedgewars by yourself. To be clear, I&rsquo;m going to build 0.9.21 on 10.10 Yosemite on MacBook Pro with Retina. First of all, read <a href="https://code.google.com/p/hedgewars/wiki/BuildingOnMac" target="_blank">official manual</a>. After source code pull from Mercurial failed via <em>hg</em> command I considered downloading source on the <a href="http://www.hedgewars.org/download.html" target="_blank">Downloads page</a>.</p>
-
-<p>As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&rsquo;t resolve <em>u_int16_t</em> type and after some googling I&rsquo;ve found it was a known issue and you should replace <em>#include <inttypes.h></em> with <em>#include <sys/types.h></em> under <em>#elfif (defined(__APPLE__) &amp;&amp; defined(__MACH__))</em> in file _ogg/os<em>types.h</em>. Then everything goes more or less ok until you&rsquo;re trying to generate makefile with Cmake. I had to turn off video recording feature, screenshots in PNG (BMPs instead) and no local server. Finally, I came up with</p>
-
+    <p>Ok, you considered to build Hedgewars by yourself. To be clear, I&rsquo;m going to build 0.9.21 on 10.10 Yosemite on MacBook Pro with Retina. First of all, read <!-- raw HTML omitted -->official manual<!-- raw HTML omitted -->. After source code pull from Mercurial failed via <em>hg</em> command I considered downloading source on the <!-- raw HTML omitted -->Downloads page<!-- raw HTML omitted -->.</p>
+<p>As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&rsquo;t resolve <em>u_int16_t</em> type and after some googling I&rsquo;ve found it was a known issue and you should replace <em>#include &lt;inttypes.h&gt;</em> with <em>#include &lt;sys/types.h&gt;</em> under <em>#elfif (defined(__APPLE__) &amp;&amp; defined(__MACH__))</em> in file <em>ogg/os_types.h</em>. Then everything goes more or less ok until you&rsquo;re trying to generate makefile with Cmake. I had to turn off video recording feature, screenshots in PNG (BMPs instead) and no local server. Finally, I came up with</p>
 <p>cmake . -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake -DNOPNG=1 -DNOVIDEOREC=1 -DNOSERVER=1 -DCMAKE_BUILD_TYPE=Release</p>
-
-<p>After successful build you still can&rsquo;t play, because <em>hwengine</em> fails to launch. It looks for <em>libfreetype.6.dylib</em> in <em>/usr/X11</em>, but you might even don&rsquo;t have X11 installed. If yes, proceed to <a href="http://xquartz.macosforge.org/trac/wiki" target="_blank">Quartz/X11</a>, download and install it. Don&rsquo;t forget after all make symlink to original X11 directory using <em>sudo ln -s /opt/X11 /usr/X11</em>.</p>
-
+<p>After successful build you still can&rsquo;t play, because <em>hwengine</em> fails to launch. It looks for <em>libfreetype.6.dylib</em> in <em>/usr/X11</em>, but you might even don&rsquo;t have X11 installed. If yes, proceed to <!-- raw HTML omitted -->Quartz/X11<!-- raw HTML omitted -->, download and install it. Don&rsquo;t forget after all make symlink to original X11 directory using <em>sudo ln -s /opt/X11 /usr/X11</em>.</p>
 <p>And still, after everything is done, Hedgewars fail to run in fullscreen mode so you might consider running it via VirtualBox and some Linux distro instead.</p>
-
-<p>By the way, you can <a href="http://ge.tt/2eynVr72" target="_blank">download my build of Hedgewars 0.9.21 for OS X Yosemite 10.10 here</a>.</p>
+<p>By the way, you can <!-- raw HTML omitted -->download my build of Hedgewars 0.9.21 for OS X Yosemite 10.10 here<!-- raw HTML omitted -->.</p>
 
   </div>
 

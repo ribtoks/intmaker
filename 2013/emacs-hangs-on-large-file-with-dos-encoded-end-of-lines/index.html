@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,14 +581,10 @@
 
   <div class="entry-content">
     <p>I&rsquo;ve had a quite big C++ source file, copied from Windows with <em>^M</em> symbol after each line. After any scrolling downside Emacs 24.2 hanged up and the only option was to kill it.</p>
-
 <p>Due to the fact that my <em>.emacs</em> configuration is quite big, I started with binary search, commenting out parts of lisp code. After few minutes I&rsquo;ve figured out, that the problem lies in <em>.gnu-emacs</em> file, so I moved with binary search to that file.</p>
-
 <p>Within 5 minutes, source of the problem was found:</p>
-
 <pre><code>(setq-default inhibit-eol-conversion t)
 </code></pre>
-
 <p>After commenting this line, Emacs was resurrected!</p>
 
   </div>

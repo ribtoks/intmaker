@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,15 +581,12 @@
 
   <div class="entry-content">
     <p>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:</p>
-
 <pre><code>1  2  3  4  5
 16 17 18 19 6
 15 24 25 20 7
 14 23 22 21 8
 13 12 11 10 9
-</code></pre>
-
-<p>After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp; down row and left &amp; right) I&rsquo;ve written a working ruby snippet (just for fun):</p>
+</code></pre><p>After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp; down row and left &amp; right) I&rsquo;ve written a working ruby snippet (just for fun):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="font-weight:bold">def</span> spiral(n)
     arr = Array.new(n){Array.new(n){0}}
     diff = [[0, 1], [1, 0], [0, -1], [-1, 0]]
@@ -597,8 +620,8 @@
 <span style="font-weight:bold">end</span>
 
 arr = spiral(10)
-puts arr.map{|ia| ia.join(<span style="font-style:italic">&#39; &#39;</span>)}.join(<span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>)</code></pre></div>
-<p>You can find code about on <a href="https://gist.github.com/Ribtoks/8712591" target="_blank">Gist</a>.</p>
+puts arr.map{|ia| ia.join(<span style="font-style:italic">&#39; &#39;</span>)}.join(<span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>)
+</code></pre></div><p>You can find code about on <!-- raw HTML omitted -->Gist<!-- raw HTML omitted -->.</p>
 
   </div>
 

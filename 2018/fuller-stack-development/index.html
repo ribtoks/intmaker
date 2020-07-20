@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,29 +587,20 @@
 
   <div class="entry-content">
     <p>That&rsquo;s awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different &ldquo;stack&rdquo;.</p>
-
 <p>I truly believe that software-only engineers somewhere deep inside are always dreaming of pilgrimage to the sacred temples of Hardware and Electronics. All those wires, volts, chips and firmware are just too interesting to avoid them when you only deal with computers above the Transport layer. Basically that&rsquo;s how I was seduced to the dark side, on my own.</p>
-
 <p>I has already been looking for a possibility to do something &ldquo;forbidden&rdquo; for quite some time. Words like soldering, Arduino, IO pins, &ldquo;10K resistor before LED&rdquo; were constantly spinning in my head but I didn&rsquo;t have just any time for it. Luckily, this month my brother was going to visit me for a week so I decided it would be a perfect time to do some hacking together.</p>
-
 <p>Apparently it was hard to come up with an idea of what exactly to do. Of course, I wanted to do something &ldquo;special&rdquo; right ahead but I had to admit I didn&rsquo;t have any basic knowledge about that stuff. After some research I decided to start with something simple: to create first iteration of &ldquo;smart home&rdquo;. Particularly I wanted to know <strong>what temperature is in every room of the apartment I live in</strong>. And plan to implement that was the following:</p>
-
 <ul>
 <li>Arduino will read temperature with sensor DHT22 and send data with 433MHz module</li>
 <li>Raspberry Pi will receive data with 433MHz module and save it to DB</li>
 <li>Raspberry Pi will serve simple website where you can see the data</li>
 <li>once that will work, create &ldquo;real&rdquo; sensor based on Arduino Mini</li>
 </ul>
-
-<h3 id="hardware-firmware">Hardware/Firmware</h3>
-
-<p>First part to implement was transmitter-receiver with Arduino-RaspberryPi respectively. After reading manuals to 433MHz module I brought in the local shop, this simple prototype has been assembled with Raspberry Pi:<figure id="attachment_1493" class="thumbnail wp-caption aligncenter" style="width: 707px"></p>
-
-<p><img src="https://intmaker.com/img/20180122_125214.jpg" alt="Raspberry Pi setup" />
+<h3 id="hardwarefirmware">Hardware/Firmware</h3>
+<p>First part to implement was transmitter-receiver with Arduino-RaspberryPi respectively. After reading manuals to 433MHz module I brought in the local shop, this simple prototype has been assembled with Raspberry Pi:<!-- raw HTML omitted --></p>
+<p><img src="https://intmaker.com/img/20180122_125214.jpg" alt="Raspberry Pi setup">
 <em>Yes, you have to solder antenna on your own</em></p>
-
 <p>In order to check if radio channel is working at all we chose <a href="https://github.com/ninjablocks/433Utils">433-Utils</a>. They provide an app which just prints everything it receives via 433MHz receiver to <code>stdout</code>. Please keep in mind that you only need to connect input pin to Raspberry Pi&rsquo;s Pin 21 on model B (27 on newer models) since <em>433MHz receiver only generates interrupts, not GPIO inputs</em>.</p>
-
 <p>As for the Arduino - connecting transmitter was a lot easier and there&rsquo;re many examples with <a href="https://github.com/sui77/rc-switch">RC-switch</a> library to do that.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// just send &#34;42&#34; each 5 seconds
 </span><span style="font-style:italic">// and blink with LED when we send
@@ -609,26 +626,16 @@ RCSwitch tempSwitch = RCSwitch();
 
   delay(5000);
 }
-</code></pre></div>
-<p>&nbsp;</p>
-
-<p><img src="https://intmaker.com/img/20180122_125103.jpg" alt="Arduino setup" />
+</code></pre></div><p> </p>
+<p><img src="https://intmaker.com/img/20180122_125103.jpg" alt="Arduino setup">
 <em>Yes, and you have to solder another antenna to transmitter as well</em></p>
-
 <h4 id="protocol">Protocol</h4>
-
 <p>After verifying that messaging over 433MHz works, now it&rsquo;s time to send useful information. To get temperature reading we will use sensor DHT22, which is very easy to add to the Arduino. You have also to include DHT library of version <code>1.2.3</code> since <code>1.3.0</code> is broken for some reason. Now the time has come to come up with some sort of protocol to transmit temperatures to Raspberry Pi. We needed to know ID of the sensor and temperature it reports. We operate on 32-bit integers for sending so I came up with the following simple protocol:</p>
-
-<p><img src="https://intmaker.com/img/temperature-protocol.png" alt="Temperature protocol" /></p>
-
+<p><img src="https://intmaker.com/img/temperature-protocol.png" alt="Temperature protocol"></p>
 <p>So we will be sending 6-bit header, specifying that it&rsquo;s our protocol, 6-bit sensor ID (having maximum 64 sensors in our apartment) 14-bit temperature and 6-bit checksum to verify everything arrived correctly. To encode temperature we can use only integer values. We know that sensor operates from -40 to 80 degrees so we can do fixed-point encoding where data that we send will be just number of steps from <code>TEMP_MIN + TEMP_STEP * value</code>. Using such encoding we could send temperature readings with quite decent resolution of <code>0.0073852539</code> degree.</p>
-
 <p>Last step to polish the firmware was to add a delay of 10 minutes instead of 5 seconds, because temperature in the apartment does not change that often and we need to save power for Arduino if it will be autonomous.</p>
-
 <h3 id="temperature-server">Temperature Server</h3>
-
 <p>Next thing to work on was our own server on Raspberry Pi which will save those temperatures. Just 433-Utils app which prints raw data to <code>stdout</code> was no longer enough. Of course, we needed a database for that as well. I chose <strong>SQLite</strong>: for an application on C++ which was receiving data from sensor and needed to save it somewhere this was the easiest option in my opinion. Of course it does not have <em>delta encoding</em> and it&rsquo;s probably bad for saving time series but for the load arriving from 64 sensors at maximum it is probably more than OK.</p>
-
 <p><code>main()</code> was only about reading data from RCswitch library and trying to parse integers out of it:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-weight:bold">const</span> <span style="">int</span> IO_PIN = 2;
 tempSwitch = RCSwitch();
@@ -657,15 +664,10 @@ insertStatement = prepareInsertTempStmt(db);
         handleReading(db, insertStatement, (<span style="">unsigned</span> <span style="">int</span>)value);
     }
 }
-</code></pre></div>
-<p>where <code>handleReading()</code> is parsing the message and saving temperature to the database.</p>
-
+</code></pre></div><p>where <code>handleReading()</code> is parsing the message and saving temperature to the database.</p>
 <h3 id="web-server">Web server</h3>
-
 <p>The other piece of software to write was a web server to show the temperature through local website. I had many options for language for such a task - Ruby, Python, Go would easily fit. The point was to do as little work as possible so we choose Go.</p>
-
 <p>The webserver was supposed to do 2 main functions: to produce json replies for REST API (GET request) and to serve static webpage with some javascript which fetches the readings and renders them.</p>
-
 <p>The former requirement was implemented using custom type with prepared SQLite statement which implemented <code>http.Handler</code> interface. The latter requirement - just with default <code>http.FileServer</code> call. Main function looked like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">handler := &amp;TempHandler{}
 err = handler.initDatabase()
@@ -674,9 +676,8 @@ err = handler.initDatabase()
 http.Handle(<span style="font-style:italic">&#34;/&#34;</span>, http.FileServer(http.Dir(<span style="font-style:italic">&#34;./www&#34;</span>))) 
 http.Handle(<span style="font-style:italic">&#34;/temps&#34;</span>, handler) 
 
-err = http.ListenAndServe(<span style="font-style:italic">&#34;:8080&#34;</span>, <span style="font-weight:bold">nil</span>)</code></pre></div>
-<h3 id="front-end">Front End</h3>
-
+err = http.ListenAndServe(<span style="font-style:italic">&#34;:8080&#34;</span>, <span style="font-weight:bold">nil</span>)
+</code></pre></div><h3 id="front-end">Front End</h3>
 <p>Directory <code>www</code> contained 2 files: <code>index.html</code> and <code>homeinsights.js</code>. Html page only had a bare skeleton with one <code>div</code> element with an ID for charts. We chose <strong>D3.js</strong> for plotting and javascript file only requested json with reading from Go webserver and rendered them on a chart.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.onload = <span style="font-weight:bold">function</span> () {
     <span style="font-weight:bold">var</span> url = document.URL + <span style="font-style:italic">&#39;temps?lastn=150&#39;</span>;
@@ -700,27 +701,17 @@ err = http.ListenAndServe(<span style="font-style:italic">&#34;:8080&#34;</span>
         }
     });
 };
-</code></pre></div>
-<p>&nbsp;</p>
-
-<p><img src="https://intmaker.com/img/temps-website.png" alt="Screenshot of the website" />
+</code></pre></div><p> </p>
+<p><img src="https://intmaker.com/img/temps-website.png" alt="Screenshot of the website">
 <em>Screenshot of the website</em></p>
-
 <h3 id="production-prototype">&ldquo;Production&rdquo; prototype</h3>
-
 <p>Now, when everything was sort of working, the time has come to create a first &ldquo;prototype&rdquo;. In other words, replace huge and bulky Arduino UNO with Arduino Mini. The latter does not have convenient usb port to flush the firmware through so you need something more fancy. Luckily, if you have Arduino UNO everything you need to do is just to remove ATmega328P chip and you can flush Mini straight ahead if you will connect power, ground, TX, RX and Reset pins from UNO to Mini.</p>
-
-<p>The other thing to consider is that if you have few prototypes, you will need to change <code>SENSOR_ID</code> in the firmware each time you flush in order to distinguish the sensors you put in different rooms/floors/etc.<figure id="attachment_1503" class="thumbnail wp-caption aligncenter" style="width: 707px"></p>
-
-<p><img src="https://intmaker.com/img/arduino-mini-dht-433.jpg" alt="Sort-of production prototype" />
+<p>The other thing to consider is that if you have few prototypes, you will need to change <code>SENSOR_ID</code> in the firmware each time you flush in order to distinguish the sensors you put in different rooms/floors/etc.<!-- raw HTML omitted --></p>
+<p><img src="https://intmaker.com/img/arduino-mini-dht-433.jpg" alt="Sort-of production prototype">
 <em>First prototype ready to be connected to the power source</em></p>
-
 <h3 id="the-end">The end</h3>
-
 <p>So this is how embedded programming stack of this project looks like: from IO Pins, volts and radio signals to backends, databases, servers and frontend which displays it. <em>A little bit fuller than just full.</em></p>
-
 <p>The system described is currently working in my home. It&rsquo;s very interesting to observe the temperature trends at night or after opening a window (it&rsquo;s winter right now). It was very interesting experience building it from scratch to a working prototype which is at least somehow useful.</p>
-
 <p>All code is available in the <a href="https://github.com/ribtoks/homeinsights">repository at GitHub</a>. You can find detailed instruction in the README. Feel free to make use of it or contribute. Code is in the <code>temperature/</code> directory since I plan to add more applications of Arduino for my home.</p>
   </div>
 

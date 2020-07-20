@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -555,7 +581,6 @@
 
   <div class="entry-content">
     <p>Everybody who wanted to customize UI of <code>ComboBox</code> in QML knows that it is only possible though crutches and hacks. Usually that&rsquo;s not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.</p>
-
 <pre><code>Item {
     id: comboBox
     property alias model: dropDownItems.model
@@ -618,18 +643,11 @@
         }
     }
 }
-</code></pre>
-
-<p>This approach has 2 big flaws.</p>
-
+</code></pre><p>This approach has 2 big flaws.</p>
 <p>The very first problem with this approach is <code>z-index</code> management. You have to make sure that owner of your custom <code>ComboBox</code> is on top of everything possible so I set <code>z: 100500</code> every time I instantiated my object. But what if you have several instances which can overlap? Correct, you have to assign <code>z-index</code> dynamically every time..</p>
-
 <p>The other problem with this way is the focus management in QML apps which I personally find quite clumsy and raw (but of course it could be just my lack of skill). Simple enough, you want to click outside to close the dropdown and .. usually that&rsquo;s just not possible without hacks. I&rsquo;ve done horrible things to workaround this. I used to put huge <code>MouseArea</code> elements everywhere to emit <code>closeComboBoxes()</code> signal when it get&rsquo;s clicked and all the <code>ComboBox</code> in the area were subscribed to that signal.</p>
-
 <p>So is there anything better?</p>
-
 <p>What I did is that I created 2 controls <code>ComboBoxHeader</code> and <code>ComboBoxDropdown</code>. The first one was the control I used to put in the QML here and there where I needed the <code>ComboBox</code> functionality. It&rsquo;s code is pretty simple:</p>
-
 <pre><code>/* ComboBoxHeader.qml */
 
 Item {
@@ -658,9 +676,7 @@ Item {
         }
     }
 }
-</code></pre>
-
-<p>The important part there is <code>property var globalParent</code>. You should set this to some top-most <code>Item</code>-derived component which will serve as the <em>invisible background</em>. The dropdown is instantiated in relative to this root component with the following code:</p>
+</code></pre><p>The important part there is <code>property var globalParent</code>. You should set this to some top-most <code>Item</code>-derived component which will serve as the <em>invisible background</em>. The dropdown is instantiated in relative to this root component with the following code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">function</span> openPopup() {
     <span style="font-style:italic">// MAGIC:
 </span><span style="font-style:italic"></span>    <span style="font-weight:bold">var</span> marginPoint = comboBox.mapToItem(globalParent, 0, comboBox.height)
@@ -676,9 +692,7 @@ Item {
      <span style="font-weight:bold">var</span> instance = component.createObject(globalParent, options)        
      instance.comboItemSelected.connect(comboBox.comboItemSelected)
 }
-</code></pre></div>
-<p>And the other control (in file <em>ComboBoxDropdown.qml</em>) is a dropdown control with an <code>Item</code> root element (<code>globalParent</code>) filling everything on background. This root element intercepts all the mouse activity outside and correctly closes the popup if clicked.</p>
-
+</code></pre></div><p>And the other control (in file <em>ComboBoxDropdown.qml</em>) is a dropdown control with an <code>Item</code> root element (<code>globalParent</code>) filling everything on background. This root element intercepts all the mouse activity outside and correctly closes the popup if clicked.</p>
 <pre><code>/* ComboBoxDropdown.qml */
 
 Item {
@@ -748,10 +762,7 @@ Item {
         }
     }
 }
-</code></pre>
-
-<p>Now to use it you just go</p>
-
+</code></pre><p>Now to use it you just go</p>
 <pre><code>ComboBoxHeader {
     globalParent: someTopMostItem
     model: [&quot;Some&quot;, &quot;data&quot;, &quot;for&quot;, &quot;the&quot;, &quot;test&quot;, &quot;here&quot;]
@@ -760,9 +771,7 @@ Item {
 
     onComboItemSelected: { console.log(index) }
 }
-</code></pre>
-
-<p>With this you can guarantee natural behavior of <code>ComboBox</code> and it is absolutely custom: you can style it as you want. So far this is the best option of customizable <code>ComboBox</code> I&rsquo;ve seen anywhere.</p>
+</code></pre><p>With this you can guarantee natural behavior of <code>ComboBox</code> and it is absolutely custom: you can style it as you want. So far this is the best option of customizable <code>ComboBox</code> I&rsquo;ve seen anywhere.</p>
   </div>
 
   

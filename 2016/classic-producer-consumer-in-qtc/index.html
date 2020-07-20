@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,18 +587,13 @@
 
   <div class="entry-content">
     <p>Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&rsquo;ve invented my own wheel and I invite you to take a look at it.</p>
-
 <p>For the synchronization in Producer-Consumer it&rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.</p>
-
 <p>Let&rsquo;s suppose we have following data structures:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QWaitCondition m_WaitAnyItem;
 QMutex m_QueueMutex;
 QVector&lt;T*&gt; m_Queue;
-</code></pre></div>
-<p>where T is type of messages we&rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.</p>
-
+</code></pre></div><p>where T is type of messages we&rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.</p>
 <p>For Producer-Consumer usually we need methods <code>produce()</code> and <code>consume()</code>. Let&rsquo;s see how we can implement them.</p>
-
 <p>For consuming we will run a loop where we would check if queue has any item available and if yes - we will process it. Also NULL item will stop processing.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// consuming is an infinite loop
 </span><span style="font-style:italic"></span><span style="">void</span> consume() {
@@ -593,9 +614,7 @@ QVector&lt;T*&gt; m_Queue;
     processOneItem(item);
   }
 }
-</code></pre></div>
-<p>If queue is not empty then first item is extracted and processed using <code>processOneItem()</code> method. If queue is empty then we&rsquo;re waiting for any item to be added to the queue using <code>WaitCondition</code>. Waiting itself is put into the while loop because of &ldquo;spurious wakeups&rdquo;. It&rsquo;s the situation when kernel object responsible for wait condition was signaled after timeout (quite big one) in order not to block calling thread forever.</p>
-
+</code></pre></div><p>If queue is not empty then first item is extracted and processed using <code>processOneItem()</code> method. If queue is empty then we&rsquo;re waiting for any item to be added to the queue using <code>WaitCondition</code>. Waiting itself is put into the while loop because of &ldquo;spurious wakeups&rdquo;. It&rsquo;s the situation when kernel object responsible for wait condition was signaled after timeout (quite big one) in order not to block calling thread forever.</p>
 <p>To add an item for processing, we call <code>produce()</code> method:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// producer is another thread
 </span><span style="font-style:italic"></span><span style="">void</span> produce(T *item) {
@@ -610,12 +629,9 @@ QVector&lt;T*&gt; m_Queue;
   }
   m_QueueMutex.unlock();
 }
-</code></pre></div>
-<p>This method acquires the mutex, adds an element into the queue and signals a WaitCondition if the queue was empty before.</p>
-
+</code></pre></div><p>This method acquires the mutex, adds an element into the queue and signals a WaitCondition if the queue was empty before.</p>
 <p>To get actually working example one can add more logic like cancelling processing from the outside, notification about emptiness of the queue and some memory management for items of type <code>T*</code>.</p>
-
-<p>You can check out full example of Producer-Consumer implementation, used in <a href="https://github.com/Ribtoks/xpiks/blob/master/src/xpiks-qt/Common/itemprocessingworker.h" target="_blank">Xpiks at GitHub</a>. Feel free to ask any questions in case something is not clear.</p>
+<p>You can check out full example of Producer-Consumer implementation, used in <!-- raw HTML omitted -->Xpiks at GitHub<!-- raw HTML omitted -->. Feel free to ask any questions in case something is not clear.</p>
   </div>
 
   

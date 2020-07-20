@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Int Maker</title>
@@ -76,7 +76,6 @@ Xpiks is a keywording and uploading tool for microstock photographers, illustrat
       
       <guid>https://intmaker.com/2019/how-to-return-to-flow/</guid>
       <description>&lt;p&gt;Hobby projects are very important for me. They give me the freedom to do what I want, how I want it and also they help me to develop quite solid expertise in various fields. Some smaller, some bigger, they always require unattended focus and precious time to work on them. It&amp;rsquo;s always hard to find that time. During the weekend I try to get outside, my evenings are busy with sports or family and during the night I prefer sleeping to coding. &lt;strong&gt;The only time left is 1-2 hours in the early morning before I go to work.&lt;/strong&gt;&lt;/p&gt;
-
 &lt;p&gt;I&amp;rsquo;ve always struggled to use this time as efficiently as possible. &lt;strong&gt;It&amp;rsquo;s hard to open the laptop and continue where you stopped yesterday or before the weekend right away.&lt;/strong&gt; It takes time to remember how to proceed from the last stop. I tried various ways and in this post I&amp;rsquo;d like to share the setup I&amp;rsquo;m using right now that helps me minimize this catch-up time significantly.&lt;/p&gt;</description>
     </item>
     
@@ -87,9 +86,7 @@ Xpiks is a keywording and uploading tool for microstock photographers, illustrat
       
       <guid>https://intmaker.com/2019/tensorflow-inference/</guid>
       <description>&lt;p&gt;Training of machine learning models is fun, but it&amp;rsquo;s a useless waste of energy if you are not going to use them afterwards. Usage patterns can be very different. In some case you are creating Software-as-a-Service where you run inference on your or somebodies cloud and return customers only the results. In others - you need to have the model itself on consumer devices (e.g. mobile phones) and run inference there.&lt;/p&gt;
-
 &lt;p&gt;If you were training model using popular framework &lt;a href=&#34;https://tensorflow.org&#34;&gt;TensorFlow&lt;/a&gt; you&amp;rsquo;re covered in a sense that there are number of options you can stick to. To name just a few: inference with Tensorflow from Python, C++ inference with native library (TensorFlow is written in C++ after all), C++ inference with Tensorflow Lite (inference on mobile phones and/or Raspberry Pi) with bindings to Java&amp;amp;co, TensorFlow Serving (production-quality C++ HTTP server for inference using TF native library).&lt;/p&gt;
-
 &lt;p&gt;When running on a server you can use whatever is more convenient so in this article I&amp;rsquo;m mostly concerned about second use-case where you need to run inference on consumer devices.&lt;/p&gt;</description>
     </item>
     
@@ -128,13 +125,9 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
       
       <guid>https://intmaker.com/2018/fuller-stack-development/</guid>
       <description>&lt;p&gt;That&amp;rsquo;s awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different &amp;ldquo;stack&amp;rdquo;.&lt;/p&gt;
-
 &lt;p&gt;I truly believe that software-only engineers somewhere deep inside are always dreaming of pilgrimage to the sacred temples of Hardware and Electronics. All those wires, volts, chips and firmware are just too interesting to avoid them when you only deal with computers above the Transport layer. Basically that&amp;rsquo;s how I was seduced to the dark side, on my own.&lt;/p&gt;
-
 &lt;p&gt;I has already been looking for a possibility to do something &amp;ldquo;forbidden&amp;rdquo; for quite some time. Words like soldering, Arduino, IO pins, &amp;ldquo;10K resistor before LED&amp;rdquo; were constantly spinning in my head but I didn&amp;rsquo;t have just any time for it. Luckily, this month my brother was going to visit me for a week so I decided it would be a perfect time to do some hacking together.&lt;/p&gt;
-
 &lt;p&gt;Apparently it was hard to come up with an idea of what exactly to do. Of course, I wanted to do something &amp;ldquo;special&amp;rdquo; right ahead but I had to admit I didn&amp;rsquo;t have any basic knowledge about that stuff. After some research I decided to start with something simple: to create first iteration of &amp;ldquo;smart home&amp;rdquo;. Particularly I wanted to know &lt;strong&gt;what temperature is in every room of the apartment I live in&lt;/strong&gt;. And plan to implement that was the following:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Arduino will read temperature with sensor DHT22 and send data with 433MHz module&lt;/li&gt;
 &lt;li&gt;Raspberry Pi will receive data with 433MHz module and save it to DB&lt;/li&gt;
@@ -150,7 +143,6 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
       
       <guid>https://intmaker.com/2017/ultimate-combobox-in-qml/</guid>
       <description>&lt;p&gt;Everybody who wanted to customize UI of &lt;code&gt;ComboBox&lt;/code&gt; in QML knows that it is only possible though crutches and hacks. Usually that&amp;rsquo;s not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;Item {
     id: comboBox
     property alias model: dropDownItems.model
@@ -213,14 +205,9 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
         }
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This approach has 2 big flaws.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This approach has 2 big flaws.&lt;/p&gt;
 &lt;p&gt;The very first problem with this approach is &lt;code&gt;z-index&lt;/code&gt; management. You have to make sure that owner of your custom &lt;code&gt;ComboBox&lt;/code&gt; is on top of everything possible so I set &lt;code&gt;z: 100500&lt;/code&gt; every time I instantiated my object. But what if you have several instances which can overlap? Correct, you have to assign &lt;code&gt;z-index&lt;/code&gt; dynamically every time..&lt;/p&gt;
-
 &lt;p&gt;The other problem with this way is the focus management in QML apps which I personally find quite clumsy and raw (but of course it could be just my lack of skill). Simple enough, you want to click outside to close the dropdown and .. usually that&amp;rsquo;s just not possible without hacks. I&amp;rsquo;ve done horrible things to workaround this. I used to put huge &lt;code&gt;MouseArea&lt;/code&gt; elements everywhere to emit &lt;code&gt;closeComboBoxes()&lt;/code&gt; signal when it get&amp;rsquo;s clicked and all the &lt;code&gt;ComboBox&lt;/code&gt; in the area were subscribed to that signal.&lt;/p&gt;
-
 &lt;p&gt;So is there anything better?&lt;/p&gt;</description>
     </item>
     
@@ -241,9 +228,7 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
       
       <guid>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</guid>
       <description>&lt;p&gt;It is such a relief when you app just works. Moreover, when it is open. My pet project &lt;a href=&#34;https://github.com/ribtoks/xpiks&#34;&gt;Xpiks&lt;/a&gt; is not only an open-source project itself, but it also uses a lot of the other open-source technologies inside. Qt framework, zlib, hunspell - to name just a few. A big deal is to make them work together. A much bigger deal to make them work together across different platforms (Xpiks is announced as cross-platform for Windows, OS X and Linux). The least problems you can expect - is a tricky build process or somebody&amp;rsquo;s typo in the Makefile which breaks the-other-system&amp;rsquo;s build.&lt;/p&gt;
-
 &lt;p&gt;More often what you&amp;rsquo;ll encounter - is people building a huge pile of code working &lt;strong&gt;only&lt;/strong&gt; for their needs. Only for their server. Only for their version if libcurl. Only for x86 operating system. And then they open-source it to GitHub - much like a cemetery for projects with 1 star and 0 forks, decaying there until forgotten forever.&lt;/p&gt;
-
 &lt;p&gt;This is how the initial joy of finding an open-source technology you needed is being replaced by a constant frustration of not just a need to slightly tweak some header file or Makefile, but to go the sources, read them, understand everything inside and fix. This is what I have encountered many times and what I did as well.&lt;/p&gt;</description>
     </item>
     
@@ -289,9 +274,7 @@ QEventLoop loop;
 QNetworkReply *netReply = networkManager.get(resource);
 connect(netReply, SIGNAL(finished()), &amp;amp;loop, SLOT(quit()));
 loop.exec();    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This is overkill and overengineering of course. This inconveniency strikes also when you try to use it from background thread for downloading something - &lt;code&gt;QNetworkAccessManager&lt;/code&gt; needs an event loop and it will launch one more thread - it&amp;rsquo;s own to do all the operations required.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is overkill and overengineering of course. This inconveniency strikes also when you try to use it from background thread for downloading something - &lt;code&gt;QNetworkAccessManager&lt;/code&gt; needs an event loop and it will launch one more thread - it&amp;rsquo;s own to do all the operations required.&lt;/p&gt;
 &lt;p&gt;Also it has a lot of data, methods and abilities not needed for &amp;ldquo;everyday simple network operations&amp;rdquo; like querying some API or downloading files. I don&amp;rsquo;t know anybody who wasn&amp;rsquo;t looking for a substitude for it at least once. But fortunately the solution exists.&lt;/p&gt;</description>
     </item>
     
@@ -302,13 +285,10 @@ loop.exec();
       
       <guid>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;There&amp;rsquo;s no way other than the hard way. &amp;copy;&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s no way other than the hard way. (c)&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;Parallel programming is considered as not easy or even advanced topic by many programmers. It&amp;rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.&lt;/p&gt;
-
 &lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
-
 &lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
     </item>
     
@@ -328,16 +308,12 @@ loop.exec();
       
       <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
       <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
-
 &lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
-
 &lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QWaitCondition m_WaitAnyItem;
 QMutex m_QueueMutex;
 QVector&amp;lt;T*&amp;gt; m_Queue;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;where T is type of messages we&amp;rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;where T is type of messages we&amp;rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.&lt;/p&gt;
 &lt;p&gt;For Producer-Consumer usually we need methods &lt;code&gt;produce()&lt;/code&gt; and &lt;code&gt;consume()&lt;/code&gt;. Let&amp;rsquo;s see how we can implement them.&lt;/p&gt;</description>
     </item>
     
@@ -348,9 +324,7 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
       
       <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
       <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
-
-&lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;a href=&#34;http://dhruvbird.blogspot.com.ee/2010/09/very-fast-approach-to-search.html&#34; target=&#34;_blank&#34;&gt;good article&lt;/a&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;a href=&#34;https://github.com/duckduckgo/cpp-libface&#34; target=&#34;_blank&#34;&gt;on GitHub&lt;/a&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
-
+&lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;!-- raw HTML omitted --&gt;good article&lt;!-- raw HTML omitted --&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;!-- raw HTML omitted --&gt;on GitHub&lt;!-- raw HTML omitted --&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
 &lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
     </item>
     
@@ -361,9 +335,7 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
       
       <guid>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</guid>
       <description>&lt;p&gt;If you ever tried to handle drag&amp;rsquo;n&amp;rsquo;drop files in your Qt application, you would usually come up with the code like the following.&lt;/p&gt;
-
 &lt;p&gt;First of all you will need a Drop Area somewhere in your application, which will handle drops&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;DropArea {
   anchors.fill: parent
   onDropped: {
@@ -373,14 +345,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     }
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Where &lt;em&gt;yourCppModel&lt;/em&gt; is a model exposed to Qml in main.cpp or wherever like this:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where &lt;em&gt;yourCppModel&lt;/em&gt; is a model exposed to Qml in main.cpp or wherever like this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QQmlContext *rootContext = engine.rootContext();
 rootContext-&amp;gt;setContextProperty(&lt;span style=&#34;font-style:italic&#34;&gt;&amp;#34;yourCppModel&amp;#34;&lt;/span&gt;, &amp;amp;myCppModel);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;and &lt;code&gt;int dropFiles(const QList&amp;lt;QUrl&amp;gt; &amp;amp;urls)&lt;/code&gt; is just an ordinary method exposed to QML via &lt;em&gt;&lt;code&gt;Q_INVOKABLE&lt;/code&gt;&lt;/em&gt; attribute.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and &lt;code&gt;int dropFiles(const QList&amp;lt;QUrl&amp;gt; &amp;amp;urls)&lt;/code&gt; is just an ordinary method exposed to QML via &lt;em&gt;&lt;code&gt;Q_INVOKABLE&lt;/code&gt;&lt;/em&gt; attribute.&lt;/p&gt;
 &lt;p&gt;You will sure notice everything works fine unless you&amp;rsquo;re working under OS X. In OS X instead of QUrls to local files you will get something like this: _ &lt;code&gt;file:///.file/id=6571367.2773272/&lt;/code&gt;_. There&amp;rsquo;s a bug in Qt for that and it even looks closed, but it still doesn&amp;rsquo;t work for me that&amp;rsquo;s why I&amp;rsquo;ve implemented my own helper using mixing of Objective-C and Qt-C++ code.&lt;/p&gt;</description>
     </item>
     
@@ -420,7 +388,7 @@ I opened javascript console and extracted all links from the folder. Then I repl
       <pubDate>Thu, 16 Jul 2015 16:17:35 +0000</pubDate>
       
       <guid>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</guid>
-      <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.4 5.6)
+      <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.45.6)
 18.02 - QSettings interface in Qml transformed bool to string and was always true on deserialization
 18.02 - QByteArray returned from local scope crashed with heap corruption on return of function (destructor of QByteArray)
 Qt can delete your object in it&amp;rsquo;s gui loop. QObject should have CppManaged attribute and it should be set before returning object to UI code.</description>
@@ -444,9 +412,7 @@ Then you can add a User in appropriate Security object of your database, also se
       
       <guid>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</guid>
       <description>&lt;p&gt;Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&amp;hellip; What if you just &lt;strong&gt;need&lt;/strong&gt; to do it and the size is so much critical for you?&lt;/p&gt;
-
-&lt;p&gt;There&amp;rsquo;re &lt;a href=&#34;https://www.openssl.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;openSSL&lt;/a&gt; library and &lt;a href=&#34;http://www.cryptopp.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crypto++&lt;/a&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;a href=&#34;https://github.com/kokke/tiny-AES128-C&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tiny-AES.&lt;/a&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;a href=&#34;https://en.wikipedia.org/wiki/Block_cipher_modes_of_operation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CBC and ECB modes&lt;/a&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
-
+&lt;p&gt;There&amp;rsquo;re &lt;!-- raw HTML omitted --&gt;openSSL&lt;!-- raw HTML omitted --&gt; library and &lt;!-- raw HTML omitted --&gt;Crypto++&lt;!-- raw HTML omitted --&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;!-- raw HTML omitted --&gt;tiny-AES.&lt;!-- raw HTML omitted --&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;!-- raw HTML omitted --&gt;CBC and ECB modes&lt;!-- raw HTML omitted --&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
 &lt;p&gt;You can find example under the hood.&lt;/p&gt;</description>
     </item>
     
@@ -457,9 +423,7 @@ Then you can add a User in appropriate Security object of your database, also se
       
       <guid>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</guid>
       <description>&lt;p&gt;I had a simple task to map a collection of objects with string property. Map function should replace one string property to another from set of 5-6 strings. Existing solution used Dictionary initialized with those hard-coded values. Once upon a time I tried to compare Dictionary with &lt;em&gt;int&lt;/em&gt; keys to &lt;em&gt;int&lt;/em&gt; switch and int switch was FAR better. It was chess engine so performance mattered.&lt;/p&gt;
-
-&lt;p&gt;Now it&amp;rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&amp;rsquo;ed. You can find &lt;a href=&#34;https://github.com/Ribtoks/heap/blob/master/PerformanceTests/StringSwitchTest/StringSwitchTest/Program.cs&#34; target=&#34;_blank&#34;&gt;source code at Github&lt;/a&gt;.&lt;/p&gt;
-
+&lt;p&gt;Now it&amp;rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&amp;rsquo;ed. You can find &lt;!-- raw HTML omitted --&gt;source code at Github&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;p&gt;Details below..&lt;/p&gt;</description>
     </item>
     
@@ -469,8 +433,7 @@ Then you can add a User in appropriate Security object of your database, also se
       <pubDate>Thu, 08 Jan 2015 19:30:48 +0000</pubDate>
       
       <guid>https://intmaker.com/2015/how-to-copy-data-from-excel-to-sql/</guid>
-      <description>Just an elegant and &amp;ldquo;hacky&amp;rdquo; way
-http://tgrignon.wordpress.com/2007/03/07/using-excel-to-generate-inserts-for-sql-server/</description>
+      <description>Just an elegant and &amp;ldquo;hacky&amp;rdquo; way</description>
     </item>
     
     <item>
@@ -480,7 +443,7 @@ http://tgrignon.wordpress.com/2007/03/07/using-excel-to-generate-inserts-for-sql
       
       <guid>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</guid>
       <description>Ok, you considered to build Hedgewars by yourself. To be clear, I&amp;rsquo;m going to build 0.9.21 on 10.10 Yosemite on MacBook Pro with Retina. First of all, read official manual. After source code pull from Mercurial failed via hg command I considered downloading source on the Downloads page.
-As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&amp;rsquo;t resolve u_int16_t type and after some googling I&amp;rsquo;ve found it was a known issue and you should replace #include  with #include  under #elfif (defined(__APPLE__) &amp;amp;&amp;amp; defined(__MACH__)) in file _ogg/ostypes.</description>
+As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&amp;rsquo;t resolve u_int16_t type and after some googling I&amp;rsquo;ve found it was a known issue and you should replace #include &amp;lt;inttypes.</description>
     </item>
     
     <item>
@@ -490,8 +453,7 @@ As original HowTo says, you should build Ogg and Vorbis, but while Ogg build suc
       
       <guid>https://intmaker.com/2014/simple-gimp-plugin-for-batch-processing-in-python/</guid>
       <description>&lt;p&gt;Not so far ago I needed to batch-process some images. The task was to resize them so they fit to given smallest resolution. Although Gimp has some batch-processing plugins, I wasn&amp;rsquo;t able to solve my problem with them. That&amp;rsquo;s why I&amp;rsquo;ve invented small little bike and I&amp;rsquo;d like to share with you workarounds and explanations of some Gimp plug-in development issues.&lt;/p&gt;
-
-&lt;p&gt;Your plugin can take as little as just one python file with call to function &lt;em&gt;register&lt;/em&gt; (&lt;em&gt;from gimpfu&lt;/em&gt;) and passing to it some metadata and actual method of plugin. You can read more about parameters to register on &lt;a title=&#34;Official python Gimp API&#34; href=&#34;http://www.gimp.org/docs/python/index.html&#34; target=&#34;_blank&#34;&gt;official docs website&lt;/a&gt;. But a few moments still need clarifications.&lt;/p&gt;</description>
+&lt;p&gt;Your plugin can take as little as just one python file with call to function &lt;em&gt;register&lt;/em&gt; (&lt;em&gt;from gimpfu&lt;/em&gt;) and passing to it some metadata and actual method of plugin. You can read more about parameters to register on &lt;!-- raw HTML omitted --&gt;official docs website&lt;!-- raw HTML omitted --&gt;. But a few moments still need clarifications.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -500,7 +462,7 @@ As original HowTo says, you should build Ogg and Vorbis, but while Ogg build suc
       <pubDate>Tue, 09 Sep 2014 12:26:07 +0000</pubDate>
       
       <guid>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</guid>
-      <description>My favorite tool, Darktable, does not support new Nikon D5300 NEF format and, obviously, a lot of other RAW formats due to proprietary software for them. But there is a solution. There is a free tool from Adobe for Windows and Mac: DNG converter, which is free and converts a lot (almost all, I guess) of proprietary RAW formats to DNG (Digital NeGative - open lossless raw format. Complete list of supported RAW formats for DNG Converter.</description>
+      <description>My favorite tool, Darktable, does not support new Nikon D5300 NEF format and, obviously, a lot of other RAW formats due to proprietary software for them. But there is a solution. There is a free tool from Adobe for Windowsand Mac: DNG converter, which is free and converts a lot (almost all, I guess) of proprietary RAW formats to DNG (Digital NeGative - open lossless raw format. Complete list of supported RAW formatsfor DNG Converter.</description>
     </item>
     
     <item>
@@ -510,7 +472,7 @@ As original HowTo says, you should build Ogg and Vorbis, but while Ogg build suc
       
       <guid>https://intmaker.com/2014/generating-spiral-matrices/</guid>
       <description>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
-1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9  After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
+1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9 After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
     </item>
     
     <item>
@@ -520,30 +482,27 @@ As original HowTo says, you should build Ogg and Vorbis, but while Ogg build suc
       
       <guid>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</guid>
       <description>&lt;p&gt;In this post I&amp;rsquo;ll describe whole TeamCity installation process on a fresh CentOS (on the moment I&amp;rsquo;m writing it&amp;rsquo;s 6.4) for your private project or startup.&lt;/p&gt;
-
-&lt;p&gt;First, proceed to the &lt;a title=&#34;Download CentOS&#34; href=&#34;http://www.centos.org/modules/tinycontent/index.php?id=30&#34; target=&#34;_blank&#34;&gt;CentOS downloads page&lt;/a&gt; and download CentOS distro through &lt;em&gt;.iso&lt;/em&gt;, &lt;em&gt;.torrent&lt;/em&gt; or &lt;em&gt;whatever-you-like&lt;/em&gt; and start the installation process. If you&amp;rsquo;re familiar with any  linux distro installation, it won&amp;rsquo;t take you much time to complete the installation. I&amp;rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing &lt;em&gt;iptables, elinks and java (openjdk)&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;After the installation is over, login, add a user for yourself with &lt;em&gt;adduser&lt;/em&gt; and let&amp;rsquo;s start with TeamCity (maybe you&amp;rsquo;ll also consider adding yourself to the sudoers file).&lt;/p&gt;
-
-&lt;p&gt;First, create &lt;em&gt;/opt/jetbrains/&lt;/em&gt; directory and &lt;a title=&#34;Download teamcity&#34; href=&#34;http://www.jetbrains.com/teamcity/download/index.html&#34; target=&#34;_blank&#34;&gt;download latest TeamCity&lt;/a&gt; using &lt;em&gt;wget&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;First, proceed to the &lt;!-- raw HTML omitted --&gt;CentOS downloads page&lt;!-- raw HTML omitted --&gt; and download CentOS distro through &lt;!-- raw HTML omitted --&gt;.iso&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;.torrent&lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt;whatever-you-like&lt;!-- raw HTML omitted --&gt; and start the installation process. If you&amp;rsquo;re familiar with any  linux distro installation, it won&amp;rsquo;t take you much time to complete the installation. I&amp;rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing &lt;!-- raw HTML omitted --&gt;iptables, elinks and java (openjdk)&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
+&lt;p&gt;After the installation is over, login, add a user for yourself with &lt;!-- raw HTML omitted --&gt;adduser&lt;!-- raw HTML omitted --&gt; and let&amp;rsquo;s start with TeamCity (maybe you&amp;rsquo;ll also consider adding yourself to the sudoers file).&lt;/p&gt;
+&lt;p&gt;First, create &lt;!-- raw HTML omitted --&gt;/opt/jetbrains/&lt;!-- raw HTML omitted --&gt; directory and &lt;!-- raw HTML omitted --&gt;download latest TeamCity&lt;!-- raw HTML omitted --&gt; using &lt;!-- raw HTML omitted --&gt;wget&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir /opt/jetbrains
 cd /opt/jetbrains
 wget http://download.jetbrains.com/teamcity/TeamCity-8.0.5.tar.gz
-tar -xpzf TeamCity-8.0.5.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now lets create a system user (e.g. no home directory) for TeamCity to resolve security issues correctly:&lt;/p&gt;
+tar -xpzf TeamCity-8.0.5.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now lets create a system user (e.g. no home directory) for TeamCity to resolve security issues correctly:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;adduser -r teamcity
 passwd teamcity
-chown -R teamcity:teamcity TeamCity&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We&amp;rsquo;ll use PostgreSQL for the internal database for TeamCity. So let&amp;rsquo;s install postgresql packages (8.4 for CentOS 6.4). For details of the PostgreSQL installation please refer to &lt;a title=&#34;PostgreSQL installation&#34; href=&#34;http://wiki.postgresql.org/wiki/YUM_Installation&#34; target=&#34;_blank&#34;&gt;official webpage&lt;/a&gt;.&lt;/p&gt;
+chown -R teamcity:teamcity TeamCity
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We&amp;rsquo;ll use PostgreSQL for the internal database for TeamCity. So let&amp;rsquo;s install postgresql packages (8.4 for CentOS 6.4). For details of the PostgreSQL installation please refer to &lt;!-- raw HTML omitted --&gt;official webpage&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum install postgresql
 service postgresql initdb
-chkconfig postgresql on&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Also edit the &lt;em&gt;/var/lib/pgsql/data/pg_hba.conf&lt;/em&gt; file to allow authorization from &lt;em&gt;localhost&lt;/em&gt;. Go to the end and replace &lt;em&gt;ident&lt;/em&gt; to &lt;em&gt;trust&lt;/em&gt; for &lt;em&gt;localhost&lt;/em&gt; in the configuration for hosts. Now lets create another user for the future TeamCity database and create a database for that user.&lt;/p&gt;
+chkconfig postgresql on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Also edit the &lt;!-- raw HTML omitted --&gt;/var/lib/pgsql/data/pg_hba.conf&lt;!-- raw HTML omitted --&gt; file to allow authorization from &lt;!-- raw HTML omitted --&gt;localhost&lt;!-- raw HTML omitted --&gt;. Go to the end and replace &lt;!-- raw HTML omitted --&gt;ident&lt;!-- raw HTML omitted --&gt; to &lt;!-- raw HTML omitted --&gt;trust&lt;!-- raw HTML omitted --&gt; for &lt;!-- raw HTML omitted --&gt;localhost&lt;!-- raw HTML omitted --&gt; in the configuration for hosts. Now lets create another user for the future TeamCity database and create a database for that user.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo -u postgres psql postgres
 password postgres
 sudo -u postgres createuser -D -A -P teamcity_user
-sudo -u postgres createdb -O teamcity_user teamcity_db&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;(D = Cannot create databases, A = Cannot add users, P = Force password prompt)&lt;/p&gt;</description>
+sudo -u postgres createdb -O teamcity_user teamcity_db
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(D = Cannot create databases, A = Cannot add users, P = Force password prompt)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -553,7 +512,6 @@ sudo -u postgres createdb -O teamcity_user teamcity_db&lt;/code&gt;&lt;/pre&gt;&
       
       <guid>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve spend half of a day trying to get MediaWiki working on a VirtualBox for the internal project in the internal network. Looks like it&amp;rsquo;s done now and I want to share tips to help someone to spend less time in the future.&lt;/p&gt;
-
 &lt;p&gt;I&amp;rsquo;ve been installing and configuring MediaWiki 1.21 on the OpenSUSE 12.3, but all tips are valuable for any linux distro.&lt;/p&gt;</description>
     </item>
     
@@ -564,33 +522,19 @@ sudo -u postgres createdb -O teamcity_user teamcity_db&lt;/code&gt;&lt;/pre&gt;&
       
       <guid>https://intmaker.com/2013/rails-development-environment-in-emacs-on-opensuse-linux/</guid>
       <description>&lt;p&gt;Today we&amp;rsquo;ll set up a complete Ruby On Rails development environment on Linux. For an IDE we&amp;rsquo;ll use Emacs and for host system - OpenSUSE.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s install latest Ruby+Rails bundle before configuring Emacs. You can refer to &lt;a title=&#34;Rails on OpenSUSE 12.1&#34; href=&#34;http://alphacluster.wordpress.com/2012/03/29/rails-on-opensuse-12-1/&#34; target=&#34;_blank&#34;&gt;nice article&lt;/a&gt; on that. In short, you need get RVM and follow through script steps in terminal:&lt;/p&gt;
-
-&lt;pre&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&gt;&lt;/span&gt; bash&lt;/span&gt; -s stable &lt; &lt;(&lt;span style=&#34;color: #0000ff;&#34;&gt;curl&lt;/span&gt; -s &lt;span style=&#34;color: #808000;&#34;&gt;https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer&lt;/span&gt;)&lt;/pre&gt;
-
+&lt;p&gt;Let&amp;rsquo;s install latest Ruby+Rails bundle before configuring Emacs. You can refer to &lt;!-- raw HTML omitted --&gt;nice article&lt;!-- raw HTML omitted --&gt; on that. In short, you need get RVM and follow through script steps in terminal:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Then load path to installed RVM in current bash session:&lt;/p&gt;
-
-&lt;pre&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&gt;&lt;/span&gt; . ~/.bash_profile&lt;/pre&gt;
-
-&lt;p&gt;It&amp;rsquo;s a bit frustrating that if bash finds a _.bash&lt;em&gt;profile&lt;/em&gt; file, it ignores &lt;em&gt;.bashrc&lt;/em&gt;, so be careful. Usually, I just move this one line from _.bash&lt;em&gt;profile&lt;/em&gt; to &lt;em&gt;.profile&lt;/em&gt; or &lt;em&gt;.bashrc&lt;/em&gt;.&lt;/p&gt;
-
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;It&amp;rsquo;s a bit frustrating that if bash finds a &lt;em&gt;.bash_profile&lt;/em&gt; file, it ignores &lt;em&gt;.bashrc&lt;/em&gt;, so be careful. Usually, I just move this one line from &lt;em&gt;.bash_profile&lt;/em&gt; to &lt;em&gt;.profile&lt;/em&gt; or &lt;em&gt;.bashrc&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Then check requirements and install everything what is needed&lt;/p&gt;
-
-&lt;pre&gt;&gt; rvm requirements&lt;/pre&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Now let&amp;rsquo;s set ruby version to 2.0 and install rails (4):&lt;/p&gt;
-
-&lt;pre&gt;&gt; rvm install 2.0
-&gt; rvm use 2.0
-&gt; gem install rails
-&gt; gem install sqlite3&lt;/pre&gt;
-
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Now, when everything is ready, we can configure Emacs installation. I assume you&amp;rsquo;ve already installed emacs package via your favorite package manager.&lt;/p&gt;
-
 &lt;p&gt;Then lets add some custom configuration file for ruby configs in the &lt;em&gt;.emacs.d&lt;/em&gt; directory, say &lt;em&gt;ruby-configuration.el&lt;/em&gt; and add it to your .emacs file using&lt;/p&gt;
-
-&lt;pre&gt;(&lt;span style=&#34;color: #0000ff;&#34;&gt;load&lt;/span&gt; &lt;span style=&#34;color: #339966;&#34;&gt;&#34;~/.emacs.d/ruby-configuration.el&#34;&lt;/span&gt;)&lt;/pre&gt;</description>
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -608,7 +552,7 @@ sudo -u postgres createdb -O teamcity_user teamcity_db&lt;/code&gt;&lt;/pre&gt;&
       <pubDate>Mon, 26 Aug 2013 22:00:52 +0000</pubDate>
       
       <guid>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</guid>
-      <description>I had an interview long time ago when I was young and just started programming. I had been showing my badly written battleship game to a skilled guy in his office. It was written in Delphi but with Pascal one-big-function style and it wasn&amp;rsquo;t double buffered so it has known rendering problems. I said then &amp;ldquo;You see, it is not a chess, but..&amp;rdquo;.
+      <description>I had an interview long time ago when I was young and just started programming. I had been showing my badly written battleship game to a skilled guy in his office. It was written in Delphi but with Pascal one-big-function style and it wasn&amp;rsquo;t double buffered so it has known rendering problems. I said then &amp;ldquo;You see, it is not a chess, but..&amp;quot;.
 In a few weeks I started writing my own chess.</description>
     </item>
     
@@ -618,9 +562,8 @@ In a few weeks I started writing my own chess.</description>
       <pubDate>Wed, 19 Jun 2013 23:12:44 +0000</pubDate>
       
       <guid>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</guid>
-      <description>&lt;p&gt;Today I&amp;rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&amp;rsquo;re going to get something like this:&lt;figure id=&#34;attachment_1031&#34; class=&#34;thumbnail wp-caption aligncenter&#34; style=&#34;width: 310px&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png&#34;&gt;&lt;img class=&#34; wp-image-1031 &#34; src=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png?w=300&#34; alt=&#34;OpenTK Game Window&#34; width=&#34;300&#34; height=&#34;241&#34; srcset=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png 400w, http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test-300x242.png 300w&#34; sizes=&#34;(max-width: 300px) 100vw, 300px&#34; /&gt;&lt;/a&gt;&lt;figcaption class=&#34;caption wp-caption-text&#34;&gt;Result of OpenGL app&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today I&amp;rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&amp;rsquo;re going to get something like this:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;Result of OpenGL app&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -630,15 +573,10 @@ In a few weeks I started writing my own chess.</description>
       
       <guid>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</guid>
       <description>&lt;p&gt;&lt;em&gt;Problem&lt;/em&gt;:&lt;/p&gt;
-
 &lt;p&gt;write type-independent data structure (say, red-black tree, dynamic array etc.) in pure C (which means you cannot use templates and any other features)&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Solution&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;First of all, lets create an interface of our &amp;ldquo;&lt;em&gt;generic&lt;/em&gt;&amp;rdquo; (or &amp;ldquo;&lt;em&gt;template&lt;/em&gt;&amp;rdquo;) type. We can interpret &lt;code&gt;void*&lt;/code&gt; as this unknown type and build some interface functions. It definitely has to have a &lt;code&gt;constructor&lt;/code&gt; and &lt;code&gt;destructor&lt;/code&gt;. Also, it can have a &lt;code&gt;comparator&lt;/code&gt; and kind of &lt;code&gt;print&lt;/code&gt; function.&lt;/p&gt;
-
+&lt;p&gt;First of all, lets create an interface of our &amp;ldquo;&lt;em&gt;generic&lt;/em&gt;&amp;rdquo; (or &amp;ldquo;&lt;em&gt;template&lt;/em&gt;&amp;quot;) type. We can interpret &lt;code&gt;void*&lt;/code&gt; as this unknown type and build some interface functions. It definitely has to have a &lt;code&gt;constructor&lt;/code&gt; and &lt;code&gt;destructor&lt;/code&gt;. Also, it can have a &lt;code&gt;comparator&lt;/code&gt; and kind of &lt;code&gt;print&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;So, we can define it like this:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;* (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;ConstructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
 &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;DestructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
 &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;int&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;CompareFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*, &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
@@ -655,7 +593,6 @@ In a few weeks I started writing my own chess.</description>
 &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;#define&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;FuncFactory&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;struct&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;FuncFactory_struct
 &amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;And about implementation details..&lt;/p&gt;</description>
     </item>
     
@@ -665,7 +602,7 @@ In a few weeks I started writing my own chess.</description>
       <pubDate>Wed, 19 Jun 2013 19:57:42 +0000</pubDate>
       
       <guid>https://intmaker.com/2013/use-emacs-for-remote-compilation/</guid>
-      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;rdquo;, I use a _buildremote.sh script with following contents
+      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;quot;, I use a build_remote.sh script with following contents
 #!&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;/bin/bash&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;ssh&amp;lt;/span&amp;gt; my_remote_machine &amp;quot;&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;source&amp;lt;/span&amp;gt; my_environment_file; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;cd&amp;lt;/span&amp;gt; my_build_directory; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;make&amp;lt;/span&amp;gt; my_target&amp;quot;  Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
     </item>
     
@@ -698,7 +635,6 @@ But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve 
       
       <guid>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Emacs 24.2 for Windows&lt;/li&gt;
 &lt;li&gt;CEDET-1.1&lt;/li&gt;
@@ -718,7 +654,6 @@ But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve 
       
       <guid>https://intmaker.com/2012/ruby-style-loops-in-c/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://blog.naiznoiz.com/2009/03/c-loops-ruby-style&#34; title=&#34;Ruby style loops in C#&#34;&gt;Ruby style loops in C#&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;Simple and useful solution to use ruby-like loops in C#. Also, you can add extensions&lt;/p&gt;</description>
     </item>
     
@@ -729,8 +664,7 @@ But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve 
       
       <guid>https://intmaker.com/2012/android-development-materials/</guid>
       <description>Some great websites to learn android programming
-Five great websites for android developers
-And russian materials</description>
+Five great websites for android developersAnd russian materials</description>
     </item>
     
     <item>
@@ -740,19 +674,12 @@ And russian materials</description>
       
       <guid>https://intmaker.com/2012/developer-competencies-list/</guid>
       <description>&lt;p&gt;Starting short training before competency test at my current work. You can find list of things you have to know. And comparison to those from Amazon. Below you can find advices what or where to read to be ready to interview or smth like this&lt;/p&gt;
-
 &lt;p&gt;Needed materials and topics can be found here:&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;Data Structures&lt;/strong&gt; - array, linked list, stack, queue, dictionary, hash table, tree, binary search tree, hashtable, heap, AVL/RB tree, B-tree, skip list, segment tree&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&#34;text-decoration: underline;&#34;&gt;Useful links:&lt;/span&gt; &lt;a title=&#34;Arrays article&#34; href=&#34;http://zoo.cs.yale.edu/classes/cs427/2011a/resources/Chapter_09.pdf&#34; target=&#34;_blank&#34;&gt;Arrays article, &lt;/a&gt; &lt;a title=&#34;Comparison of structures, used to implement dictionary&#34; href=&#34;http://www.cs.unc.edu/~plaisted/comp750/Neyer%20paper.pdf&#34; target=&#34;_blank&#34;&gt;Article about structures, used to implement dictionaries&lt;/a&gt;, &lt;a title=&#34;Skip list implementation&#34; href=&#34;https://github.com/Ribtoks/heap/blob/master/FreeLancerProjects/c/SkipList/SkipList.c&#34; target=&#34;_blank&#34;&gt;Skip list implementation&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Useful links:&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;Arrays article, &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;Article about structures, used to implement dictionaries&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;Skip list implementation&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Algorithms&lt;/strong&gt; - sorting, searching, data structure traversal algorithms, algorithm complexity, O() notation, space/time complexity, greedy and dynamics algorithms, tree, graph algorithms, N-logN sorting&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&#34;text-decoration: underline;&#34;&gt;Useful links&lt;/span&gt;: &lt;a title=&#34;Several sorting implementations&#34; href=&#34;https://github.com/Ribtoks/learning/tree/master/algorithms/sorting&#34; target=&#34;_blank&#34;&gt;Several O(N*logN) sorting implementations&lt;/a&gt;, quite good &lt;a title=&#34;Binary search&#34; href=&#34;http://en.wikipedia.org/wiki/Binary_search_algorithm&#34; target=&#34;_blank&#34;&gt;Wiki article about Binary search&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Useful links&lt;!-- raw HTML omitted --&gt;: &lt;!-- raw HTML omitted --&gt;Several O(N*logN) sorting implementations&lt;!-- raw HTML omitted --&gt;, quite good &lt;!-- raw HTML omitted --&gt;Wiki article about Binary search&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;Graph algorithms - dfs, bfs, loops (usual and Euler&amp;rsquo;s), Floyd-Warshall, Kruskal&amp;rsquo;s algorithm&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;Concurency&lt;/strong&gt; - shared state and synchronization problems, sync primitives, basic parallel algorithms, sync primitives efficiency, data and task parallelism patterns, deadlocks, race conditions, thread scheduling details, GUI threading models&lt;/p&gt;</description>
     </item>
     
@@ -762,9 +689,9 @@ And russian materials</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://intmaker.com/about/</guid>
-      <description>&amp;nbsp; Welcome to the Int Maker!
-This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
-My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.</description>
+      <description>This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
+My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.
+Occasionally I blog about my experience (or lack of one) with machine learning, cloud, desktop software, electonics, vim vs emacs, orchestrating distributed computations and handling highload.</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emacs on Int Maker</title>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Jun 2013 19:57:42 +0000</pubDate>
       
       <guid>https://intmaker.com/2013/use-emacs-for-remote-compilation/</guid>
-      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;rdquo;, I use a _buildremote.sh script with following contents
+      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;quot;, I use a build_remote.sh script with following contents
 #!&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;/bin/bash&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;ssh&amp;lt;/span&amp;gt; my_remote_machine &amp;quot;&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;source&amp;lt;/span&amp;gt; my_environment_file; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;cd&amp;lt;/span&amp;gt; my_build_directory; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;make&amp;lt;/span&amp;gt; my_target&amp;quot;  Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
     </item>
     
@@ -50,7 +50,6 @@ But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve 
       
       <guid>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Emacs 24.2 for Windows&lt;/li&gt;
 &lt;li&gt;CEDET-1.1&lt;/li&gt;

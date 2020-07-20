@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,11 +587,8 @@
 
   <div class="entry-content">
     <p>Sometimes you want to quickly switch to a specific window or two from a dozen. What I usually do is I hit Alt+Tab and cycle through windows to find the one. Today I decided that it&rsquo;s enough and wrote a simple productivity tool to switch to the needed windows with a hotkey.</p>
-
 <p>It reads a config file and gets patterns to find the needed windows and once you hit a hotkey - it brings them to front. It is especially useful when you have those &ldquo;5 minutes of procrastination&rdquo; and then you want to switch back to the development routine, but you need to find your IDE among windows you have opened before.</p>
-
 <p>Config currently looks like this:</p>
-
 <pre><code># trigger combination
 hotkey = Shift+Ctrl+0
 
@@ -581,9 +604,7 @@ app = code
 # activate minimum 2 windows (e.g. if you have 2 monitors)
 min_windows = 2
 </code></pre>
-
 <p><a href="https://github.com/ribtoks/BackToWork">BackToWork at GitHub</a> - just download the binaries (built for x86), edit config and you&rsquo;re done.</p>
-
 <p>Enjoy!</p>
 
   </div>

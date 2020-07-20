@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on Int Maker</title>
@@ -18,7 +18,7 @@
       
       <guid>https://intmaker.com/2014/generating-spiral-matrices/</guid>
       <description>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
-1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9  After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
+1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9 After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
     </item>
     
   </channel>

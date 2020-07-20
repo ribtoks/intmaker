@@ -518,6 +518,32 @@
   .related-posts {
       margin-top: 70px;
   }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
 </style>
 
 
@@ -561,25 +587,15 @@
 
   <div class="entry-content">
     <p>Living in the modern age of 0-day vulnerabilities is complicated when you have a Wordpress blog. Since I didn&rsquo;t have anything fancy in there I decided to migrate it to static pages. Sounds easy? I&rsquo;m sure it does. See what it takes to migrate an average blog with images and crosslinks. I&rsquo;ve organized my process in a sort of a step by step manual.</p>
-
 <h2 id="step-1-export-all-wordpress-data">Step 1. Export all Wordpress data</h2>
-
 <p>Go to Wordpress admin panel, find there &ldquo;Export everything to XML&rdquo; and download it to your computer. &ldquo;Everything&rdquo; for sure should <em>not include images</em>. If you have many of them, your server will timeout especially if you bought a cheap hosting.</p>
-
 <p>Download your media using FTP client like <a href="https://filezilla-project.org/">FileZilla</a> to a location on your computer.</p>
-
 <h2 id="step-2-initial-import">Step 2. Initial import</h2>
-
 <p>Jekyll provides you with rubygem which allows to do import of Wordpress website. This gem is not very nice but at least it&rsquo;s something. The problem with it that it tries literally to replicate your Wordpress website in static pages, but what we actually need is raw data (posts, pages). But we&rsquo;ll get to that as well.</p>
-
 <p>As for now, go to <a href="http://import.jekyllrb.com/docs/wordpressdotcom/">official page of wordpress importer</a> and proceed with instructions there.</p>
-
 <h2 id="step-3-posts-and-metadata-cleanup">Step 3. Posts and metadata cleanup</h2>
-
 <p>All posts imported with Jekyll plugin are pretty &ldquo;dirty&rdquo;. They contain tons of useless metadata in post header which should definitely be pruned. Also many if not all links are broken along with gallery media references.</p>
-
 <p>It will be a damn good idea to use source control and commit all the original (&ldquo;dirty&rdquo;) files in there so you will be sure you will not screw them.</p>
-
 <p>In order to clean them up, I wrote a <a href="https://github.com/ribtoks/heap/blob/master/scripts/fix_jekyll_post.rb">simple script</a> in Ruby, but it is very specific for my needs for you to use it as is. The main idea is that I just go through each post and fix it with my script line by line:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">filepath = ARGV[0]
 
@@ -613,9 +629,8 @@ text.each_line <span style="font-weight:bold">do</span> |line|
   out.puts line
 <span style="font-weight:bold">end</span>
 
-puts <span style="font-style:italic">&#34;Done&#34;</span></code></pre></div>
-<p>As you can see I&rsquo;m just moving data from input file to output file letting all lines through some filtering and fixing.</p>
-
+puts <span style="font-style:italic">&#34;Done&#34;</span>
+</code></pre></div><p>As you can see I&rsquo;m just moving data from input file to output file letting all lines through some filtering and fixing.</p>
 <p>For example, here&rsquo;s a code of <code>fix_caption_images()</code> routine</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="font-weight:bold">def</span> fix_caption_images(str)
   <span style="font-style:italic"># image with caption</span>
@@ -626,53 +641,34 @@ puts <span style="font-style:italic">&#34;Done&#34;</span></code></pre></div>
 
     <span style="font-style:italic">&#34;![</span><span style="font-weight:bold;font-style:italic">#{</span>img_title<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">]({{ site.baseurl }}/assets/images/posts/</span><span style="font-weight:bold;font-style:italic">#{</span>img_path<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">)</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">*</span><span style="font-weight:bold;font-style:italic">#{</span>img_title<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">*&#34;</span>
   }
-<span style="font-weight:bold">end</span></code></pre></div>
-<p>Typical Ruby/Perl regex style: you debug it, it works and you forget how it works in a month. Nevertheless, it worked flawlessly. Now all bad links, galleries and images are normalized. You just launch a script like that on every file in <code>_posts/</code> directory.</p>
-
+<span style="font-weight:bold">end</span>
+</code></pre></div><p>Typical Ruby/Perl regex style: you debug it, it works and you forget how it works in a month. Nevertheless, it worked flawlessly. Now all bad links, galleries and images are normalized. You just launch a script like that on every file in <code>_posts/</code> directory.</p>
 <pre><code>for file in *.md ; do /path/to/your/script.rb &quot;$file&quot; ; done
-</code></pre>
-
-<p>Also if you have non-latin characters, Jekyll importer will make all links and filenames url-encoded. In order to fix that, just use <code>URI.decode()</code> method for links and filenames.</p>
-
+</code></pre><p>Also if you have non-latin characters, Jekyll importer will make all links and filenames url-encoded. In order to fix that, just use <code>URI.decode()</code> method for links and filenames.</p>
 <h2 id="step-4-images-cleanup">Step 4. Images cleanup</h2>
-
 <p>If you will look though what you have download using FTP client, you will see tons of garbage like pregenerated all sorts of thumbnails of different sizes of your images. Of course you want to remove them:</p>
-
 <pre><code>find -E . -type f -regex '.*-.*[0-9]+x[0-9]+\.jpg' -exec rm -rf {} \;
-</code></pre>
-
-<p>Also if your blog contains some worthy images, somebody can use them to sell at microstocks. You might want to use watermarks, but it&rsquo;s much easier just to scale them below 4 Megapixels so they will be useless for selling. I personally chose second option hence another <code>find</code> call:</p>
-
+</code></pre><p>Also if your blog contains some worthy images, somebody can use them to sell at microstocks. You might want to use watermarks, but it&rsquo;s much easier just to scale them below 4 Megapixels so they will be useless for selling. I personally chose second option hence another <code>find</code> call:</p>
 <pre><code>find . -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \) -exec mogrify -resize 1500x1500\&gt; -quality 90 {} \;
-</code></pre>
-
-<p>I used <code>mogrify</code> command from <a href="https://www.imagemagick.org">ImageMagic</a> in order to scale down images and reduce their quality to 90% which is more than enough for web, but renders them useless for microstocks and saves lots of space. Also you can host images on Flickr or any other external source.</p>
-
+</code></pre><p>I used <code>mogrify</code> command from <a href="https://www.imagemagick.org">ImageMagic</a> in order to scale down images and reduce their quality to 90% which is more than enough for web, but renders them useless for microstocks and saves lots of space. Also you can host images on Flickr or any other external source.</p>
 <h2 id="step-5-new-blog-setup">Step 5. New blog setup</h2>
-
 <p>Well, now you&rsquo;re kind of good to go with your own style/template. All data is properly imported and cleaned up. Just move it to your shiny template into <code>_posts</code> and <code>assets/</code> directories.</p>
-
-<p>Edit your <code>_config.yml</code>:
-* set production <code>url</code> of your website
-* set <code>permalink</code> style
-* set <code>gems</code> , <code>title</code> and other important properties</p>
-
+<p>Edit your <code>_config.yml</code>:</p>
+<ul>
+<li>set production <code>url</code> of your website</li>
+<li>set <code>permalink</code> style</li>
+<li>set <code>gems</code> , <code>title</code> and other important properties</li>
+</ul>
 <h2 id="step-6-prettifying-urls">Step 6. Prettifying URLs</h2>
-
-<p>In case you rely on url style &ldquo;<a href="http://myblog.com/mypost.html&quot;">http://myblog.com/mypost.html&quot;</a> and it looks a little bit ugly for you, I have good news. <em>It looks ugly for me as well</em>. I would prefer &ldquo;<a href="http://myblog.com/mypost&quot;">http://myblog.com/mypost&quot;</a> much more without that nasty &ldquo;.html&rdquo; in the end. And if you cannot do that in Jekyll&rsquo;s <code>_config.yml</code> for any reason, it can be easily achieved using URL Rewrite in Apache with the following rules added to your website&rsquo;s root <code>.htaccess</code> file:</p>
-
+<p>In case you rely on url style &ldquo;<a href="http://myblog.com/mypost.html%22">http://myblog.com/mypost.html&quot;</a> and it looks a little bit ugly for you, I have good news. <em>It looks ugly for me as well</em>. I would prefer &ldquo;<a href="http://myblog.com/mypost%22">http://myblog.com/mypost&quot;</a> much more without that nasty &ldquo;.html&rdquo; in the end. And if you cannot do that in Jekyll&rsquo;s <code>_config.yml</code> for any reason, it can be easily achieved using URL Rewrite in Apache with the following rules added to your website&rsquo;s root <code>.htaccess</code> file:</p>
 <pre><code>RewriteEngine On
 RewriteCond %{REQUEST_URI} !^.*\.html$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ %{REQUEST_FILENAME}.html
-</code></pre>
-
-<p>Which means that if we go to url without &ldquo;.html&rdquo; and we have a file with same name and extension &ldquo;.html&rdquo; we should serve it instead of 404 page.</p>
-
+</code></pre><p>Which means that if we go to url without &ldquo;.html&rdquo; and we have a file with same name and extension &ldquo;.html&rdquo; we should serve it instead of 404 page.</p>
 <h2 id="enjoy-your-new-blog">Enjoy your new blog</h2>
-
 <p>Now it&rsquo;s time to check your blog locally with <code>bundle exec jekyll serve</code> if everything works as expected. When all the minor issues are fixed would be a great time to finally publish it to GitHub Pages or just to generate static pages and upload them to your hosting (probably the same one which used to run Wordpress).</p>
   </div>
 
