@@ -13,10 +13,10 @@
     
     <item>
       <title>Ultimate ComboBox in QML</title>
-      <link>https://intmaker.com/2017/ultimate-combobox-in-qml/</link>
+      <link>https://intmaker.com/ultimate-combobox-in-qml/</link>
       <pubDate>Wed, 22 Nov 2017 23:28:25 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/ultimate-combobox-in-qml/</guid>
+      <guid>https://intmaker.com/ultimate-combobox-in-qml/</guid>
       <description>&lt;p&gt;Everybody who wanted to customize UI of &lt;code&gt;ComboBox&lt;/code&gt; in QML knows that it is only possible though crutches and hacks. Usually that&amp;rsquo;s not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Item {
     id: comboBox
@@ -88,10 +88,10 @@
     
     <item>
       <title>Replacing QNetworkAccessManager for the great good</title>
-      <link>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</link>
+      <link>https://intmaker.com/replacing-qnetworkaccessmanager/</link>
       <pubDate>Fri, 23 Sep 2016 10:49:55 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</guid>
+      <guid>https://intmaker.com/replacing-qnetworkaccessmanager/</guid>
       <description>&lt;p&gt;Everybody using Qt for networking for small tasks will sometimes face oddities of &lt;code&gt;QNetworkAccessManager&lt;/code&gt;. This class aims to be useful and convenient while having few quite sensible drawbacks. First one of couse is inability to use it in blocking way. What you should do instead is to create instance of &lt;code&gt;QEventLoop&lt;/code&gt; and connect it&amp;rsquo;s &lt;code&gt;quit()&lt;/code&gt; signal with network manager.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QNetworkAccessManager networkManager;
 QEventLoop loop;
@@ -104,19 +104,19 @@ loop.exec();
     
     <item>
       <title>Implementing spellchecking in desktop application in C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</link>
+      <link>https://intmaker.com/spellchecking-desktop-application-in-c/</link>
       <pubDate>Sun, 05 Jun 2016 12:24:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</guid>
+      <guid>https://intmaker.com/spellchecking-desktop-application-in-c/</guid>
       <description>&lt;p&gt;When user is supposed to enter significant amount of text in your application, it&amp;rsquo;s better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where &lt;a href=&#34;https://hunspell.github.io/&#34;&gt;Hunspell&lt;/a&gt; comes handy. It&amp;rsquo;s an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I&amp;rsquo;ll discuss how to integrate it to C++/Qt project.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Classic Producer-Consumer in Qt/C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</link>
+      <link>https://intmaker.com/classic-producer-consumer-in-qtc/</link>
       <pubDate>Mon, 28 Mar 2016 15:44:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
+      <guid>https://intmaker.com/classic-producer-consumer-in-qtc/</guid>
       <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
 &lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
@@ -129,10 +129,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     
     <item>
       <title>Handling drag&#39;n&#39;drop of files in Qt under OS X</title>
-      <link>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</link>
+      <link>https://intmaker.com/dragndrop-qt-macos/</link>
       <pubDate>Wed, 25 Nov 2015 18:00:02 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</guid>
+      <guid>https://intmaker.com/dragndrop-qt-macos/</guid>
       <description>&lt;p&gt;If you ever tried to handle drag&amp;rsquo;n&amp;rsquo;drop files in your Qt application, you would usually come up with the code like the following.&lt;/p&gt;
 &lt;p&gt;First of all you will need a Drop Area somewhere in your application, which will handle drops&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;DropArea {
@@ -153,10 +153,10 @@ rootContext-&amp;gt;setContextProperty(&lt;span style=&#34;font-style:italic&#34
     
     <item>
       <title>Interesting issues and features of Qt programming</title>
-      <link>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</link>
+      <link>https://intmaker.com/issues-qt-framework/</link>
       <pubDate>Thu, 16 Jul 2015 16:17:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</guid>
+      <guid>https://intmaker.com/issues-qt-framework/</guid>
       <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.45.6)
 18.02 - QSettings interface in Qml transformed bool to string and was always true on deserialization
 18.02 - QByteArray returned from local scope crashed with heap corruption on return of function (destructor of QByteArray)
@@ -165,10 +165,10 @@ Qt can delete your object in it&amp;rsquo;s gui loop. QObject should have CppMan
     
     <item>
       <title>Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</title>
-      <link>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</link>
+      <link>https://intmaker.com/text-encryption-in-qt-tiny-aes/</link>
       <pubDate>Tue, 24 Feb 2015 15:12:39 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</guid>
+      <guid>https://intmaker.com/text-encryption-in-qt-tiny-aes/</guid>
       <description>&lt;p&gt;Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&amp;hellip; What if you just &lt;strong&gt;need&lt;/strong&gt; to do it and the size is so much critical for you?&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;re &lt;!-- raw HTML omitted --&gt;openSSL&lt;!-- raw HTML omitted --&gt; library and &lt;!-- raw HTML omitted --&gt;Crypto++&lt;!-- raw HTML omitted --&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;!-- raw HTML omitted --&gt;tiny-AES.&lt;!-- raw HTML omitted --&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;!-- raw HTML omitted --&gt;CBC and ECB modes&lt;!-- raw HTML omitted --&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
 &lt;p&gt;You can find example under the hood.&lt;/p&gt;</description>

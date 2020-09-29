@@ -13,10 +13,10 @@
     
     <item>
       <title>Generation of spiral matrices</title>
-      <link>https://intmaker.com/2014/generating-spiral-matrices/</link>
+      <link>https://intmaker.com/generating-spiral-matrices/</link>
       <pubDate>Thu, 30 Jan 2014 20:55:20 +0000</pubDate>
       
-      <guid>https://intmaker.com/2014/generating-spiral-matrices/</guid>
+      <guid>https://intmaker.com/generating-spiral-matrices/</guid>
       <description>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
 1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9 After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
     </item>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <meta property="og:title" content="Implementing spellchecking in desktop application in C&#43;&#43;" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="When user is supposed to enter significant amount of text in your application, it’s better to help him/her to control it with checking spelling. Basically, to" />
+    <meta property="og:url" content="https://intmaker.com/spellchecking-desktop-application-in-c/" />
+    <meta property="og:site_name" content="Xpiks" />
+    
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         Implementing spellchecking in desktop application in C&#43;&#43; 
+      
+    </title>
+    <link rel="canonical" href="https://intmaker.com/spellchecking-desktop-application-in-c/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+    margin-bottom:25px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, time {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
+  .sharing-icons {
+      padding-left: 10px;
+      margin-bottom: 20px;
+  }
+
+  section.disqus {
+      margin-top: 100px;
+  }
+
+  .social-icons {
+      float: right;
+  }
+
+  .social-icons a {
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  @media (max-width: 30em) {
+      .social-icons {
+          float: left;
+          padding-top: 0px;
+      }
+  }
+
+  .bmc-button img {
+      width: 27px !important;
+      margin: 0 0 10px 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      vertical-align: middle !important;
+      display: inline !important;
+  }
+
+  .bmc-button {
+      line-height: 36px !important;
+      height:37px !important;
+      text-decoration: none !important;
+      display:inline-block !important;
+      color:#000000 !important;
+      background-color:#FFFFFF !important;
+      border-radius: 3px !important;
+      border: 1px solid transparent !important;
+      padding: 1px 9px !important;
+      font-size: 23px !important;
+      letter-spacing: 0.6px !important;
+      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      margin: 0 auto !important;
+      font-family:'Cookie', cursive !important;
+      -webkit-box-sizing: border-box !important;
+      box-sizing: border-box !important;
+      -o-transition: 0.3s all linear !important;
+      -webkit-transition: 0.3s all linear !important;
+      -moz-transition: 0.3s all linear !important;
+      -ms-transition: 0.3s all linear !important;
+      transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      text-decoration: none !important;
+      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      opacity: 0.85 !important;
+      color:#000000 !important;
+  }
+
+  #avatar {
+    background-image: url('/img/168_1.jpg');
+    
+     
+    width: 150px;
+    height: 150px;
+
+     
+    background-size: cover;
+
+     
+    background-position: top center;
+
+     
+    border-radius: 50%;
+
+	-webkit-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+
+	float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
+  }
+
+  .related-posts {
+      margin-top: 70px;
+  }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
+</style>
+
+
+    
+
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-10412407-11', 'auto');  ga('send', 'pageview');  ga('set', 'anonymizeIp', true); </script>
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://intmaker.com/">Int Maker</a></h1>
+      <ul>
+        
+          <li><a href="https://intmaker.com/about/">About</a></li>
+        
+          <li><a href="https://intmaker.com/">Posts</a></li>
+        
+          <li><a href="https://intmaker.com/projects/">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  
+
+  <h1> Implementing spellchecking in desktop application in C&#43;&#43; </h1>
+  
+    <div id=sub-header>
+      June 2016 · 3 minute read
+    </div>
+  
+
+  
+  <div class="thumbnail-container">
+      <a href="https://intmaker.com/spellchecking-desktop-application-in-c/">
+          <img src="https://intmaker.com/img/spellcheck-503898.jpg">
+      </a>
+  </div>
+  
+
+  <div class="entry-content">
+    <p>When user is supposed to enter significant amount of text in your application, it&rsquo;s better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where <a href="https://hunspell.github.io/">Hunspell</a> comes handy. It&rsquo;s an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I&rsquo;ll discuss how to integrate it to C++/Qt project.</p>
+<p>First of all, you should download Hunspell source code and try to build it for your platform. You can take a look at README for the instructions. Once you&rsquo;re done, it&rsquo;s time to link just built library with your project. Also you should add Hunspell include files to your include path in order to use the API.</p>
+<p>After you&rsquo;re done, let&rsquo;s include C++ Hunspell API to your header and add following variable to your class</p>
+<p><code>Hunspell *m_Hunspell;</code></p>
+<p>Constructor of Hunspell class takes paths to DIC and AFF files (wordlist and affix files). If you&rsquo;re building cross-platform solution, it will be useful to know, that to handle utf-8 paths in Windows, you need to prefix paths to DIC and AFF files with &ldquo;\?&quot;. Loading code in my Qt project looks like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">#ifdef Q_OS_WIN
+</span><span style=""></span><span style="font-style:italic">// specific Hunspell handling of UTF-8 encoded pathes
+</span><span style="font-style:italic"></span>affPath = <span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\\\\</span><span style="font-style:italic">?</span><span style="font-weight:bold;font-style:italic">\\</span><span style="font-style:italic">&#34;</span> + QDir::toNativeSeparators(affPath);
+dicPath = <span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">\\\\</span><span style="font-style:italic">?</span><span style="font-weight:bold;font-style:italic">\\</span><span style="font-style:italic">&#34;</span> + QDir::toNativeSeparators(dicPath);
+<span style="">#endif
+</span><span style=""></span>
+<span style="font-weight:bold">try</span> {
+    m_Hunspell = <span style="font-weight:bold">new</span> Hunspell(affPath.toUtf8().constData(),
+                              dicPath.toUtf8().constData());
+    LOG_DEBUG &lt;&lt; <span style="font-style:italic">&#34;Hunspell with AFF&#34;</span> &lt;&lt; affPath &lt;&lt; <span style="font-style:italic">&#34;and DIC&#34;</span> &lt;&lt; dicPath; 
+    m_Encoding = QString::fromLatin1(m_Hunspell-&gt;get_dic_encoding());
+    m_Codec = QTextCodec::codecForName(m_Encoding.toLatin1().constData());
+}
+<span style="font-weight:bold">catch</span>(...) {
+    LOG_DEBUG &lt;&lt; <span style="font-style:italic">&#34;Error in Hunspell with AFF&#34;</span> &lt;&lt; affPath &lt;&lt; <span style="font-style:italic">&#34;and DIC&#34;</span> &lt;&lt; dicPath;
+    m_Hunspell = NULL;
+}
+</code></pre></div><p>In this code except of instantiating Hunspell class we also get right Codec to query the dictionary. Now you can use API&rsquo;s of <code>Hunspell</code> class to access spellchecking API. To get real AFF and DIC files, you can check out a number of open source projects which use spellchecking and hunspell - e.g. OpenOffice.</p>
+<p>The most common operation is, of course, to check if particular word is spelled OK or not:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="">bool</span> isSpellingCorrect(<span style="font-weight:bold">const</span> QString &amp;word) <span style="font-weight:bold">const</span> {
+<span style="">bool</span> isOk = false;
+<span style="font-weight:bold">try</span> {
+    isOk = m_Hunspell-&gt;spell(m_Codec-&gt;fromUnicode(word).constData()) != 0;
+}
+<span style="font-weight:bold">catch</span> (...) {
+    isOk = false;
+}
+<span style="font-weight:bold">return</span> isOk;
+}
+</code></pre></div><p>This demonstrates also usage of <code>Codec</code> retrieved before.</p>
+<p>Besides of checking spelling, it&rsquo;s useful to provide user with corrections for the particular word. <code>Hunspell</code> class has API for this and it can be used like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QStringList suggestCorrections(<span style="font-weight:bold">const</span> QString &amp;word) {
+    QStringList suggestions;
+    <span style="">char</span> **suggestWordList = NULL;
+
+    <span style="font-weight:bold">try</span> {
+        <span style="font-style:italic">// Encode from Unicode to the encoding used by current dictionary
+</span><span style="font-style:italic"></span>        <span style="">int</span> count = m_Hunspell-&gt;suggest(&amp;suggestWordList, m_Codec-&gt;fromUnicode(word).constData());
+        QString lowerWord = word.toLower();
+
+        <span style="font-weight:bold">for</span> (<span style="">int</span> i = 0; i &lt; count; ++i) { 
+            QString suggestion = m_Codec-&gt;toUnicode(suggestWordList[i]);
+            suggestions &lt;&lt; suggestion;
+            free(suggestWordList[i]);
+        }
+    }
+    <span style="font-weight:bold">catch</span> (...) {
+        LOG_WARNING &lt;&lt; <span style="font-style:italic">&#34;Error for keyword:&#34;</span> &lt;&lt; word;
+    }
+
+    <span style="font-weight:bold">return</span> suggestions;
+}
+</code></pre></div><p>This code demonstrates usage of <code>suggest()</code> API of Hunspell object. Also useful tip would be to check case of the suggestion, since Hunspell can correct you word like &ldquo;europe&rdquo; with &ldquo;Europe&rdquo; and stuff like that.</p>
+<p>If you&rsquo;re going to check spelling on the fly it might be a good idea to combine this approach with <a href="http://code.jamming.com.ua/classic-producer-consumer-in-qtc/">producer-consumer implemented in Qt</a>. So your app&rsquo;s UI will be responsive while background worker will serve spelling requests.</p>
+<p>That&rsquo;s all folks.</p>
+  </div>
+
+  
+  <div class="sharing-icons">
+    Share:&nbsp;
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+  <div style="margin-bottom: 20px;">
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+
+  </div>
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://intmaker.com/classic-producer-consumer-in-qtc/">&laquo; Classic Producer-Consumer in Qt/C&#43;&#43;</a>
+    
+    
+      <a class="basic-alignment left" href="https://intmaker.com/learn-parallel-programming-hard-way/">Resources to learn and understand parallel programming. The hard way &raquo;</a>
+    
+  </div>
+
+  
+
+<div class="related-posts">
+<h2>See Also</h2>
+<ul>
+	
+	<li><a href="https://intmaker.com/classic-producer-consumer-in-qtc/">Classic Producer-Consumer in Qt/C&#43;&#43;</a></li>
+	
+	<li><a href="https://intmaker.com/dragndrop-qt-macos/">Handling drag&#39;n&#39;drop of files in Qt under OS X</a></li>
+	
+	<li><a href="https://intmaker.com/issues-qt-framework/">Interesting issues and features of Qt programming</a></li>
+	
+	<li><a href="https://intmaker.com/text-encryption-in-qt-tiny-aes/">Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</a></li>
+	
+</ul>
+</div>
+
+
+
+
+  
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+  
+  
+</section>
+
+  
+</body>
+</html>
+
+

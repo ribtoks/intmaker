@@ -13,19 +13,19 @@
     
     <item>
       <title>How to self-host email marketing list if you are a developer</title>
-      <link>https://intmaker.com/2020/self-host-email-marketing/</link>
+      <link>https://intmaker.com/self-host-email-marketing/</link>
       <pubDate>Thu, 20 Feb 2020 18:22:19 -0800</pubDate>
       
-      <guid>https://intmaker.com/2020/self-host-email-marketing/</guid>
+      <guid>https://intmaker.com/self-host-email-marketing/</guid>
       <description>Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I&amp;rsquo;m running few side projects and always wanted them to have their own subscribers list, but I&amp;rsquo;m not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever.</description>
     </item>
     
     <item>
       <title>Notarizing native apps for macOS: step by step guide</title>
-      <link>https://intmaker.com/2019/sign-for-macos/</link>
+      <link>https://intmaker.com/sign-for-macos/</link>
       <pubDate>Thu, 28 Nov 2019 07:45:49 -0800</pubDate>
       
-      <guid>https://intmaker.com/2019/sign-for-macos/</guid>
+      <guid>https://intmaker.com/sign-for-macos/</guid>
       <description>This is a part 2 of the journey started in part 1.
 When you download an app from the internet on macOS, it adds an attribute com.apple.quarantine (you can see that using command xattr /path/to/MyApp.app). When you open such app, you will see a Gatekeeper greeting:
 Apple announced that all new software for macOS Catalina will need to be notarized. And that you won&amp;rsquo;t be able to open unnotarized software even bypassing Gatekeeper selecting &amp;ldquo;Open&amp;rdquo; from context menu.</description>
@@ -33,38 +33,38 @@ Apple announced that all new software for macOS Catalina will need to be notariz
     
     <item>
       <title>Command-line SEO alternative to Screaming Frog Spider</title>
-      <link>https://intmaker.com/2019/command-line-seo/</link>
+      <link>https://intmaker.com/command-line-seo/</link>
       <pubDate>Wed, 27 Nov 2019 08:19:03 -0800</pubDate>
       
-      <guid>https://intmaker.com/2019/command-line-seo/</guid>
+      <guid>https://intmaker.com/command-line-seo/</guid>
       <description>&lt;p&gt;Did you ever wanted to crawl a list of URLs and figure out which of them are alive? Or what number of external links any of them has? If you did, most probably &lt;a href=&#34;https://www.screamingfrog.co.uk/seo-spider/&#34;&gt;Screaming Frog SEO Spider&lt;/a&gt; was one of the popular choices. Bad news is that free version has a limitation to 500 URLs and paid version costs lots of money (around $150 per year). And worst is that 80% of that crawling functionality can be done in pure Bash.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>How do I setup Raspberry Pi</title>
-      <link>https://intmaker.com/2019/raspberrypi-setup/</link>
+      <link>https://intmaker.com/raspberrypi-setup/</link>
       <pubDate>Wed, 25 Sep 2019 20:55:23 +0000</pubDate>
       
-      <guid>https://intmaker.com/2019/raspberrypi-setup/</guid>
+      <guid>https://intmaker.com/raspberrypi-setup/</guid>
       <description>&lt;p&gt;Somehow I end up breaking my Raspberry Pi all of the time. Today it was the sudoers file that I modified using &lt;code&gt;nano&lt;/code&gt; instead of &lt;code&gt;visudo&lt;/code&gt; and voila - I cannot be root anymore. Another time I simply forgot my user&amp;rsquo;s password and apparently it&amp;rsquo;s impossible to login via ssh anymore (I don&amp;rsquo;t have spare physical screen and keyboard). So somehow it happens all of the time and I need to reimage SD card and setup everything from scratch. That&amp;rsquo;s the reason I&amp;rsquo;m writing this note - to future myself.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>How to return to the flow faster</title>
-      <link>https://intmaker.com/2019/how-to-return-to-flow/</link>
+      <link>https://intmaker.com/how-to-return-to-flow/</link>
       <pubDate>Thu, 22 Aug 2019 21:34:29 -0800</pubDate>
       
-      <guid>https://intmaker.com/2019/how-to-return-to-flow/</guid>
+      <guid>https://intmaker.com/how-to-return-to-flow/</guid>
       <description>&lt;p&gt;Hobby projects are very important for me. They give me the freedom to do what I want, how I want it and also they help me to develop quite solid expertise in various fields. Some smaller, some bigger, they always require unattended focus and precious time to work on them. It&amp;rsquo;s always hard to find that time. During the weekend I try to get outside, my evenings are busy with sports or family and during the night I prefer sleeping to coding. &lt;strong&gt;The only time left is 1-2 hours in the early morning before I go to work.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve always struggled to use this time as efficiently as possible. &lt;strong&gt;It&amp;rsquo;s hard to open the laptop and continue where you stopped yesterday or before the weekend right away.&lt;/strong&gt; It takes time to remember how to proceed from the last stop. I tried various ways and in this post I&amp;rsquo;d like to share the setup I&amp;rsquo;m using right now that helps me minimize this catch-up time significantly.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Inference of TensorFlow model without TensorFlow</title>
-      <link>https://intmaker.com/2019/tensorflow-inference/</link>
+      <link>https://intmaker.com/tensorflow-inference/</link>
       <pubDate>Fri, 01 Mar 2019 00:16:27 +0300</pubDate>
       
-      <guid>https://intmaker.com/2019/tensorflow-inference/</guid>
+      <guid>https://intmaker.com/tensorflow-inference/</guid>
       <description>&lt;p&gt;Training of machine learning models is fun, but it&amp;rsquo;s a useless waste of energy if you are not going to use them afterwards. Usage patterns can be very different. In some case you are creating Software-as-a-Service where you run inference on your or somebodies cloud and return customers only the results. In others - you need to have the model itself on consumer devices (e.g. mobile phones) and run inference there.&lt;/p&gt;
 &lt;p&gt;If you were training model using popular framework &lt;a href=&#34;https://tensorflow.org&#34;&gt;TensorFlow&lt;/a&gt; you&amp;rsquo;re covered in a sense that there are number of options you can stick to. To name just a few: inference with Tensorflow from Python, C++ inference with native library (TensorFlow is written in C++ after all), C++ inference with Tensorflow Lite (inference on mobile phones and/or Raspberry Pi) with bindings to Java&amp;amp;co, TensorFlow Serving (production-quality C++ HTTP server for inference using TF native library).&lt;/p&gt;
 &lt;p&gt;When running on a server you can use whatever is more convenient so in this article I&amp;rsquo;m mostly concerned about second use-case where you need to run inference on consumer devices.&lt;/p&gt;</description>
@@ -72,38 +72,38 @@ Apple announced that all new software for macOS Catalina will need to be notariz
     
     <item>
       <title>Dependency management in classes</title>
-      <link>https://intmaker.com/2018/dependency-management/</link>
+      <link>https://intmaker.com/classes-dependency-management/</link>
       <pubDate>Tue, 31 Jul 2018 00:19:43 +0300</pubDate>
       
-      <guid>https://intmaker.com/2018/dependency-management/</guid>
+      <guid>https://intmaker.com/classes-dependency-management/</guid>
       <description>Object-oriented languages like Ruby, C++ or Java tend to have one common problem among others: dependency injection. It is very rare for a class to be fully self-contained and never depend on anything else in your code. Usually there&amp;rsquo;re multiple connections between them: simple, transitive or even circular. And designing good dependency injection often makes a huge difference in terms of maintainability and testability of your code. This is the thing that should be done properly rather sooner than later.</description>
     </item>
     
     <item>
       <title>Deploying native apps to macOS</title>
-      <link>https://intmaker.com/2018/deploy-to-macos/</link>
+      <link>https://intmaker.com/deploy-to-macos/</link>
       <pubDate>Sat, 09 Jun 2018 00:23:10 +0000</pubDate>
       
-      <guid>https://intmaker.com/2018/deploy-to-macos/</guid>
+      <guid>https://intmaker.com/deploy-to-macos/</guid>
       <description>This is part 1 of the deployment process overview. Part 2 will cover code signing and notarization.
 Level 0: warming up Deploying anything anywhere has never been easy business. Deploying applications to desktop computers is no different. OS X (now macOS) had its own solution of &amp;ldquo;dll hell&amp;rdquo;: each application should be absolutely self contained. All the dependencies and dependencies of dependencies should be distributed within the &amp;ldquo;bundle&amp;rdquo; so apps won&amp;rsquo;t conflict with other apps because of missing or outdated libraries.</description>
     </item>
     
     <item>
       <title>Migrating blog from Wordpress to Jekyll</title>
-      <link>https://intmaker.com/2018/migrate-wordpress-to-jekyll/</link>
+      <link>https://intmaker.com/migrate-wordpress-to-jekyll/</link>
       <pubDate>Thu, 01 Mar 2018 00:23:10 +0000</pubDate>
       
-      <guid>https://intmaker.com/2018/migrate-wordpress-to-jekyll/</guid>
+      <guid>https://intmaker.com/migrate-wordpress-to-jekyll/</guid>
       <description>&lt;p&gt;Living in the modern age of 0-day vulnerabilities is complicated when you have a Wordpress blog. Since I didn&amp;rsquo;t have anything fancy in there I decided to migrate it to static pages. Sounds easy? I&amp;rsquo;m sure it does. See what it takes to migrate an average blog with images and crosslinks. I&amp;rsquo;ve organized my process in a sort of a step by step manual.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Fuller Stack Development</title>
-      <link>https://intmaker.com/2018/fuller-stack-development/</link>
+      <link>https://intmaker.com/fuller-stack-development/</link>
       <pubDate>Fri, 02 Feb 2018 00:21:09 +0000</pubDate>
       
-      <guid>https://intmaker.com/2018/fuller-stack-development/</guid>
+      <guid>https://intmaker.com/fuller-stack-development/</guid>
       <description>&lt;p&gt;That&amp;rsquo;s awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different &amp;ldquo;stack&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;I truly believe that software-only engineers somewhere deep inside are always dreaming of pilgrimage to the sacred temples of Hardware and Electronics. All those wires, volts, chips and firmware are just too interesting to avoid them when you only deal with computers above the Transport layer. Basically that&amp;rsquo;s how I was seduced to the dark side, on my own.&lt;/p&gt;
 &lt;p&gt;I has already been looking for a possibility to do something &amp;ldquo;forbidden&amp;rdquo; for quite some time. Words like soldering, Arduino, IO pins, &amp;ldquo;10K resistor before LED&amp;rdquo; were constantly spinning in my head but I didn&amp;rsquo;t have just any time for it. Luckily, this month my brother was going to visit me for a week so I decided it would be a perfect time to do some hacking together.&lt;/p&gt;
@@ -118,10 +118,10 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
     
     <item>
       <title>Ultimate ComboBox in QML</title>
-      <link>https://intmaker.com/2017/ultimate-combobox-in-qml/</link>
+      <link>https://intmaker.com/ultimate-combobox-in-qml/</link>
       <pubDate>Wed, 22 Nov 2017 23:28:25 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/ultimate-combobox-in-qml/</guid>
+      <guid>https://intmaker.com/ultimate-combobox-in-qml/</guid>
       <description>&lt;p&gt;Everybody who wanted to customize UI of &lt;code&gt;ComboBox&lt;/code&gt; in QML knows that it is only possible though crutches and hacks. Usually that&amp;rsquo;s not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Item {
     id: comboBox
@@ -193,20 +193,20 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
     
     <item>
       <title>Key-Value storage for poor</title>
-      <link>https://intmaker.com/2017/key-value-storage-for-poor/</link>
+      <link>https://intmaker.com/key-value-storage-for-poor/</link>
       <pubDate>Fri, 01 Sep 2017 11:30:44 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/key-value-storage-for-poor/</guid>
+      <guid>https://intmaker.com/key-value-storage-for-poor/</guid>
       <description>Despite the hype about NoSql databases, sometimes it&amp;rsquo;s nice to have an embedded key-value storage available in your app. For example, I&amp;rsquo;m maintaining a cache of metadata of images in my cross-platform desktop app Xpiks and anyway I have to search by filepath to find the metadata. Besides that I have few more requirements specific to my project:
  the database should be possible to embed directly into your app the license should allow linking with proprietary code (so to be either permissive MIT, BSD-like or LGPL) it should be cross-platform in a sense of Windows, macOS and Linux it should have a history of being used across various projects (sort of to be 5+ years old) it should be affordable to get, since I&amp;rsquo;m not a big company or any sort of company  So when I started looking for this sort of databases, first thing I found was Berkeley DB.</description>
     </item>
     
     <item>
       <title>Dependency-driven development: forced OSS contributions</title>
-      <link>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</link>
+      <link>https://intmaker.com/forced-oss-contributions/</link>
       <pubDate>Sun, 04 Jun 2017 13:26:08 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</guid>
+      <guid>https://intmaker.com/forced-oss-contributions/</guid>
       <description>&lt;p&gt;It is such a relief when you app just works. Moreover, when it is open. My pet project &lt;a href=&#34;https://github.com/ribtoks/xpiks&#34;&gt;Xpiks&lt;/a&gt; is not only an open-source project itself, but it also uses a lot of the other open-source technologies inside. Qt framework, zlib, hunspell - to name just a few. A big deal is to make them work together. A much bigger deal to make them work together across different platforms (Xpiks is announced as cross-platform for Windows, OS X and Linux). The least problems you can expect - is a tricky build process or somebody&amp;rsquo;s typo in the Makefile which breaks the-other-system&amp;rsquo;s build.&lt;/p&gt;
 &lt;p&gt;More often what you&amp;rsquo;ll encounter - is people building a huge pile of code working &lt;strong&gt;only&lt;/strong&gt; for their needs. Only for their server. Only for their version if libcurl. Only for x86 operating system. And then they open-source it to GitHub - much like a cemetery for projects with 1 star and 0 forks, decaying there until forgotten forever.&lt;/p&gt;
 &lt;p&gt;This is how the initial joy of finding an open-source technology you needed is being replaced by a constant frustration of not just a need to slightly tweak some header file or Makefile, but to go the sources, read them, understand everything inside and fix. This is what I have encountered many times and what I did as well.&lt;/p&gt;</description>
@@ -214,40 +214,30 @@ Level 0: warming up Deploying anything anywhere has never been easy business. De
     
     <item>
       <title>BackToWork - smarter Alt&#43;Tab for Windows</title>
-      <link>https://intmaker.com/2017/backtowork-smart-alttab-for-windows/</link>
+      <link>https://intmaker.com/backtowork-alttab-for-windows/</link>
       <pubDate>Wed, 03 May 2017 17:44:32 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/backtowork-smart-alttab-for-windows/</guid>
+      <guid>https://intmaker.com/backtowork-alttab-for-windows/</guid>
       <description>Sometimes you want to quickly switch to a specific window or two from a dozen. What I usually do is I hit Alt+Tab and cycle through windows to find the one. Today I decided that it&amp;rsquo;s enough and wrote a simple productivity tool to switch to the needed windows with a hotkey.
 It reads a config file and gets patterns to find the needed windows and once you hit a hotkey - it brings them to front.</description>
     </item>
     
     <item>
       <title>Unicode support for avformat_open_input in Windows</title>
-      <link>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</link>
+      <link>https://intmaker.com/unicode-support-for-avformat-in-windows/</link>
       <pubDate>Fri, 31 Mar 2017 13:59:09 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</guid>
+      <guid>https://intmaker.com/unicode-support-for-avformat-in-windows/</guid>
       <description>For those of us ever writing cross-platform application there has always been enough quires and quests to accomplish. Typical one is to correctly handle multibyte/unicode filepaths in Windows. And though they are handled pretty good in Qt, when you write your own library you have to do it yourself.
 Another level of quests is using third-party libraries which were not designed for cross-platform usage. For example if you wanted to use ffmpeg / libav libraries in Windows, you have to deal with lack of support of std::wstring parameters in the API.</description>
     </item>
     
     <item>
-      <title>How to pass Amazon SDE interview</title>
-      <link>https://intmaker.com/2016/how-to-pass-amazon-sde-interview/</link>
-      <pubDate>Sat, 24 Dec 2016 19:45:06 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2016/how-to-pass-amazon-sde-interview/</guid>
-      <description>Amazon is considered to be one for the most wanted employers among software engineers who don&amp;rsquo;t work for any of the tech giants. Standing in one line with Google, Microsoft, Facebook and maybe some smaller like Twitter, Uber, Dropbox etc., it has unstoppable flow of CV&amp;rsquo;s from people passionate of working on big scale.
-But is it really that cool, demanding and, in the end, rewarding? A lot of people would disagree with that, others will be neutral and there will be only few of those who will agree.</description>
-    </item>
-    
-    <item>
       <title>Replacing QNetworkAccessManager for the great good</title>
-      <link>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</link>
+      <link>https://intmaker.com/replacing-qnetworkaccessmanager/</link>
       <pubDate>Fri, 23 Sep 2016 10:49:55 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</guid>
+      <guid>https://intmaker.com/replacing-qnetworkaccessmanager/</guid>
       <description>&lt;p&gt;Everybody using Qt for networking for small tasks will sometimes face oddities of &lt;code&gt;QNetworkAccessManager&lt;/code&gt;. This class aims to be useful and convenient while having few quite sensible drawbacks. First one of couse is inability to use it in blocking way. What you should do instead is to create instance of &lt;code&gt;QEventLoop&lt;/code&gt; and connect it&amp;rsquo;s &lt;code&gt;quit()&lt;/code&gt; signal with network manager.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QNetworkAccessManager networkManager;
 QEventLoop loop;
@@ -260,33 +250,33 @@ loop.exec();
     
     <item>
       <title>Resources to learn and understand parallel programming. The hard way</title>
-      <link>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</link>
+      <link>https://intmaker.com/learn-parallel-programming-hard-way/</link>
       <pubDate>Mon, 29 Aug 2016 12:28:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</guid>
+      <guid>https://intmaker.com/learn-parallel-programming-hard-way/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;There&amp;rsquo;s no way other than the hard way. (c)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Parallel programming is considered as not easy or even advanced topic by many programmers. It&amp;rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.&lt;/p&gt;
-&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
-&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
+&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find materials on CUDA or OpenCL. Similarly you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
+&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m referring to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Implementing spellchecking in desktop application in C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</link>
+      <link>https://intmaker.com/spellchecking-desktop-application-in-c/</link>
       <pubDate>Sun, 05 Jun 2016 12:24:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</guid>
+      <guid>https://intmaker.com/spellchecking-desktop-application-in-c/</guid>
       <description>&lt;p&gt;When user is supposed to enter significant amount of text in your application, it&amp;rsquo;s better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where &lt;a href=&#34;https://hunspell.github.io/&#34;&gt;Hunspell&lt;/a&gt; comes handy. It&amp;rsquo;s an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I&amp;rsquo;ll discuss how to integrate it to C++/Qt project.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Classic Producer-Consumer in Qt/C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</link>
+      <link>https://intmaker.com/classic-producer-consumer-in-qtc/</link>
       <pubDate>Mon, 28 Mar 2016 15:44:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
+      <guid>https://intmaker.com/classic-producer-consumer-in-qtc/</guid>
       <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
 &lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
@@ -299,10 +289,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     
     <item>
       <title>Implementing autocomplete for English in C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</link>
+      <link>https://intmaker.com/autocomplete-for-english-in-c/</link>
       <pubDate>Sun, 27 Mar 2016 22:07:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
+      <guid>https://intmaker.com/autocomplete-for-english-in-c/</guid>
       <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
 &lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;!-- raw HTML omitted --&gt;good article&lt;!-- raw HTML omitted --&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;!-- raw HTML omitted --&gt;on GitHub&lt;!-- raw HTML omitted --&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
 &lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
@@ -310,10 +300,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     
     <item>
       <title>Handling drag&#39;n&#39;drop of files in Qt under OS X</title>
-      <link>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</link>
+      <link>https://intmaker.com/dragndrop-qt-macos/</link>
       <pubDate>Wed, 25 Nov 2015 18:00:02 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</guid>
+      <guid>https://intmaker.com/dragndrop-qt-macos/</guid>
       <description>&lt;p&gt;If you ever tried to handle drag&amp;rsquo;n&amp;rsquo;drop files in your Qt application, you would usually come up with the code like the following.&lt;/p&gt;
 &lt;p&gt;First of all you will need a Drop Area somewhere in your application, which will handle drops&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;DropArea {
@@ -333,20 +323,11 @@ rootContext-&amp;gt;setContextProperty(&lt;span style=&#34;font-style:italic&#34
     </item>
     
     <item>
-      <title>How to keyword and upload photos/illustrations to microstocks</title>
-      <link>https://intmaker.com/2015/how-to-keyword-and-upload-photosillustrations-to-microstocks/</link>
-      <pubDate>Wed, 18 Nov 2015 14:20:07 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2015/how-to-keyword-and-upload-photosillustrations-to-microstocks/</guid>
-      <description>If you&amp;rsquo;re a photographer new to microstock photography, I highly reccomend you to embark this wonderful way of passive earning using your artworks. But I will suppose that you know what is this about and how basically use it. I would even suppose you&amp;rsquo;ve passed an exam on some stock agency and uploaded your first artworks. But did you know there&amp;rsquo;re plenty of stocks? And did you know it&amp;rsquo;s better to work with all major players of this industry?</description>
-    </item>
-    
-    <item>
       <title>How to download huge folder from Dropbox</title>
-      <link>https://intmaker.com/2015/how-to-download-folder-from-dropbox/</link>
+      <link>https://intmaker.com/download-large-folder-dropbox/</link>
       <pubDate>Wed, 14 Oct 2015 15:53:49 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/how-to-download-folder-from-dropbox/</guid>
+      <guid>https://intmaker.com/download-large-folder-dropbox/</guid>
       <description>If you face a problem to download folder from Dropbox which contains tons of files, no known browser extension can help you. Dropbox moves each file download to it&amp;rsquo;s separate page and you can&amp;rsquo;t do it directly.
 When I faced this problem I knew I would need to create my own solution and quick googling just confirmed that.
 I opened javascript console and extracted all links from the folder. Then I replaced &amp;ldquo;dl=0&amp;rdquo; to &amp;ldquo;dl=1&amp;rdquo; to get actual download link.</description>
@@ -354,20 +335,20 @@ I opened javascript console and extracted all links from the folder. Then I repl
     
     <item>
       <title>Tips and tricks to improve performance of your ACM solution</title>
-      <link>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</link>
+      <link>https://intmaker.com/improve-performance-acm-solution/</link>
       <pubDate>Wed, 29 Jul 2015 12:21:32 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</guid>
+      <guid>https://intmaker.com/improve-performance-acm-solution/</guid>
       <description>Here I gathered system-programming tricks that can improve performance of your solution in C++ dramatically!
  Use scanf/printf functions for standard IO instead of cin/cout Memory-align buffers and structures to WORD size of your architecture (4 bytes for 32-bit and 8 bytes for 64-bit) Use arrays instead of linked lists (to use memory block caching) Avoid &amp;ldquo;if&amp;rdquo; stamements in loops If-clause should contain code, which is more likely to execute (if-condition == true) Use inlining for short functions Use objects allocated on stack but not on heap (local objects for functions instead of allocated with malloc/new) Use pre-calculated hardcoded data (e.</description>
     </item>
     
     <item>
       <title>Interesting issues and features of Qt programming</title>
-      <link>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</link>
+      <link>https://intmaker.com/issues-qt-framework/</link>
       <pubDate>Thu, 16 Jul 2015 16:17:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</guid>
+      <guid>https://intmaker.com/issues-qt-framework/</guid>
       <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.45.6)
 18.02 - QSettings interface in Qml transformed bool to string and was always true on deserialization
 18.02 - QByteArray returned from local scope crashed with heap corruption on return of function (destructor of QByteArray)
@@ -375,22 +356,11 @@ Qt can delete your object in it&amp;rsquo;s gui loop. QObject should have CppMan
     </item>
     
     <item>
-      <title>Configuring a user for restored/imported database in MS SQL Server</title>
-      <link>https://intmaker.com/2015/configuring-a-user-for-restoredimported-database-in-ms-sql-server/</link>
-      <pubDate>Thu, 26 Mar 2015 14:09:30 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2015/configuring-a-user-for-restoredimported-database-in-ms-sql-server/</guid>
-      <description>When you import or restore a database from bak file, you can have same problems as I had. Problems with user access and restoration of login schemes.
-First of all, make sure SQL server is in Mixed Authentication mode (right click on SQL server connection and Security tab). Then create a new Login in top Security object, and memorize username and password for your connection string.
-Then you can add a User in appropriate Security object of your database, also setting a Login to one you created just before.</description>
-    </item>
-    
-    <item>
       <title>Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</title>
-      <link>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</link>
+      <link>https://intmaker.com/text-encryption-in-qt-tiny-aes/</link>
       <pubDate>Tue, 24 Feb 2015 15:12:39 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</guid>
+      <guid>https://intmaker.com/text-encryption-in-qt-tiny-aes/</guid>
       <description>&lt;p&gt;Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&amp;hellip; What if you just &lt;strong&gt;need&lt;/strong&gt; to do it and the size is so much critical for you?&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;re &lt;!-- raw HTML omitted --&gt;openSSL&lt;!-- raw HTML omitted --&gt; library and &lt;!-- raw HTML omitted --&gt;Crypto++&lt;!-- raw HTML omitted --&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;!-- raw HTML omitted --&gt;tiny-AES.&lt;!-- raw HTML omitted --&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;!-- raw HTML omitted --&gt;CBC and ECB modes&lt;!-- raw HTML omitted --&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
 &lt;p&gt;You can find example under the hood.&lt;/p&gt;</description>
@@ -398,69 +368,41 @@ Then you can add a User in appropriate Security object of your database, also se
     
     <item>
       <title>.NET String Dictionary vs string switch performance</title>
-      <link>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</link>
+      <link>https://intmaker.com/dotnet-dictionary-vs-switch/</link>
       <pubDate>Wed, 18 Feb 2015 22:11:26 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</guid>
+      <guid>https://intmaker.com/dotnet-dictionary-vs-switch/</guid>
       <description>&lt;p&gt;I had a simple task to map a collection of objects with string property. Map function should replace one string property to another from set of 5-6 strings. Existing solution used Dictionary initialized with those hard-coded values. Once upon a time I tried to compare Dictionary with &lt;em&gt;int&lt;/em&gt; keys to &lt;em&gt;int&lt;/em&gt; switch and int switch was FAR better. It was chess engine so performance mattered.&lt;/p&gt;
 &lt;p&gt;Now it&amp;rsquo;s a web request with thousands of rows of reply, serialized to json, so performance matters again. I wrote simple program, which generated 10 million instances of my simple class with several properties and mapped this list with both methods. Before that I ensured that both methods were JIT&amp;rsquo;ed. You can find &lt;!-- raw HTML omitted --&gt;source code at Github&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;p&gt;Details below..&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>How to copy data from Excel to SQL</title>
-      <link>https://intmaker.com/2015/how-to-copy-data-from-excel-to-sql/</link>
-      <pubDate>Thu, 08 Jan 2015 19:30:48 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2015/how-to-copy-data-from-excel-to-sql/</guid>
-      <description>Just an elegant and &amp;ldquo;hacky&amp;rdquo; way</description>
-    </item>
-    
-    <item>
-      <title>Building Hedgewars under OS X Yosemite</title>
-      <link>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</link>
-      <pubDate>Wed, 31 Dec 2014 13:23:20 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</guid>
-      <description>Ok, you considered to build Hedgewars by yourself. To be clear, I&amp;rsquo;m going to build 0.9.21 on 10.10 Yosemite on MacBook Pro with Retina. First of all, read official manual. After source code pull from Mercurial failed via hg command I considered downloading source on the Downloads page.
-As original HowTo says, you should build Ogg and Vorbis, but while Ogg build succeeded, Vorbis said it can&amp;rsquo;t resolve u_int16_t type and after some googling I&amp;rsquo;ve found it was a known issue and you should replace #include &amp;lt;inttypes.</description>
-    </item>
-    
-    <item>
       <title>Simple Gimp plugin for batch processing in Python</title>
-      <link>https://intmaker.com/2014/simple-gimp-plugin-for-batch-processing-in-python/</link>
+      <link>https://intmaker.com/gimp-plugin-batch-processing/</link>
       <pubDate>Wed, 12 Nov 2014 11:32:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2014/simple-gimp-plugin-for-batch-processing-in-python/</guid>
+      <guid>https://intmaker.com/gimp-plugin-batch-processing/</guid>
       <description>&lt;p&gt;Not so far ago I needed to batch-process some images. The task was to resize them so they fit to given smallest resolution. Although Gimp has some batch-processing plugins, I wasn&amp;rsquo;t able to solve my problem with them. That&amp;rsquo;s why I&amp;rsquo;ve invented small little bike and I&amp;rsquo;d like to share with you workarounds and explanations of some Gimp plug-in development issues.&lt;/p&gt;
 &lt;p&gt;Your plugin can take as little as just one python file with call to function &lt;em&gt;register&lt;/em&gt; (&lt;em&gt;from gimpfu&lt;/em&gt;) and passing to it some metadata and actual method of plugin. You can read more about parameters to register on &lt;!-- raw HTML omitted --&gt;official docs website&lt;!-- raw HTML omitted --&gt;. But a few moments still need clarifications.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>How to process Nikon D5300 NEF and other unsupported RAW formats in Darktable</title>
-      <link>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</link>
-      <pubDate>Tue, 09 Sep 2014 12:26:07 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</guid>
-      <description>My favorite tool, Darktable, does not support new Nikon D5300 NEF format and, obviously, a lot of other RAW formats due to proprietary software for them. But there is a solution. There is a free tool from Adobe for Windowsand Mac: DNG converter, which is free and converts a lot (almost all, I guess) of proprietary RAW formats to DNG (Digital NeGative - open lossless raw format. Complete list of supported RAW formatsfor DNG Converter.</description>
-    </item>
-    
-    <item>
       <title>Generation of spiral matrices</title>
-      <link>https://intmaker.com/2014/generating-spiral-matrices/</link>
+      <link>https://intmaker.com/generating-spiral-matrices/</link>
       <pubDate>Thu, 30 Jan 2014 20:55:20 +0000</pubDate>
       
-      <guid>https://intmaker.com/2014/generating-spiral-matrices/</guid>
+      <guid>https://intmaker.com/generating-spiral-matrices/</guid>
       <description>Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
 1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9 After a hour of trying different approaches (except one which consists of 4 loops for filling up &amp;amp; down row and left &amp;amp; right) I&amp;rsquo;ve written a working ruby snippet (just for fun):</description>
     </item>
     
     <item>
       <title>TeamCity 8 on CentOS 6.4 from scratch</title>
-      <link>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</link>
+      <link>https://intmaker.com/teamcity-8-on-centos-from-scratch/</link>
       <pubDate>Tue, 26 Nov 2013 16:22:43 +0000</pubDate>
       
-      <guid>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</guid>
+      <guid>https://intmaker.com/teamcity-8-on-centos-from-scratch/</guid>
       <description>&lt;p&gt;In this post I&amp;rsquo;ll describe whole TeamCity installation process on a fresh CentOS (on the moment I&amp;rsquo;m writing it&amp;rsquo;s 6.4) for your private project or startup.&lt;/p&gt;
 &lt;p&gt;First, proceed to the &lt;!-- raw HTML omitted --&gt;CentOS downloads page&lt;!-- raw HTML omitted --&gt; and download CentOS distro through &lt;!-- raw HTML omitted --&gt;.iso&lt;!-- raw HTML omitted --&gt;, &lt;!-- raw HTML omitted --&gt;.torrent&lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt;whatever-you-like&lt;!-- raw HTML omitted --&gt; and start the installation process. If you&amp;rsquo;re familiar with any  linux distro installation, it won&amp;rsquo;t take you much time to complete the installation. I&amp;rsquo;m using the minimal configuration without any Desktop Environment and with minimum core- and other system utils. Nonetheless, consider installing &lt;!-- raw HTML omitted --&gt;iptables, elinks and java (openjdk)&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;p&gt;After the installation is over, login, add a user for yourself with &lt;!-- raw HTML omitted --&gt;adduser&lt;!-- raw HTML omitted --&gt; and let&amp;rsquo;s start with TeamCity (maybe you&amp;rsquo;ll also consider adding yourself to the sudoers file).&lt;/p&gt;
@@ -487,172 +429,78 @@ sudo -u postgres createdb -O teamcity_user teamcity_db
     
     <item>
       <title>MediaWiki installation on a linux guest in the VirtualBox: how-to, tips &amp; tricks</title>
-      <link>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</link>
+      <link>https://intmaker.com/mediawiki-installation-virtualbox/</link>
       <pubDate>Fri, 22 Nov 2013 18:51:36 +0000</pubDate>
       
-      <guid>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</guid>
+      <guid>https://intmaker.com/mediawiki-installation-virtualbox/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve spend half of a day trying to get MediaWiki working on a VirtualBox for the internal project in the internal network. Looks like it&amp;rsquo;s done now and I want to share tips to help someone to spend less time in the future.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve been installing and configuring MediaWiki 1.21 on the OpenSUSE 12.3, but all tips are valuable for any linux distro.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Rails development environment in Emacs on OpenSuSE Linux</title>
-      <link>https://intmaker.com/2013/rails-development-environment-in-emacs-on-opensuse-linux/</link>
-      <pubDate>Tue, 29 Oct 2013 23:12:15 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/rails-development-environment-in-emacs-on-opensuse-linux/</guid>
-      <description>&lt;p&gt;Today we&amp;rsquo;ll set up a complete Ruby On Rails development environment on Linux. For an IDE we&amp;rsquo;ll use Emacs and for host system - OpenSUSE.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s install latest Ruby+Rails bundle before configuring Emacs. You can refer to &lt;!-- raw HTML omitted --&gt;nice article&lt;!-- raw HTML omitted --&gt; on that. In short, you need get RVM and follow through script steps in terminal:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;Then load path to installed RVM in current bash session:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;It&amp;rsquo;s a bit frustrating that if bash finds a &lt;em&gt;.bash_profile&lt;/em&gt; file, it ignores &lt;em&gt;.bashrc&lt;/em&gt;, so be careful. Usually, I just move this one line from &lt;em&gt;.bash_profile&lt;/em&gt; to &lt;em&gt;.profile&lt;/em&gt; or &lt;em&gt;.bashrc&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Then check requirements and install everything what is needed&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;Now let&amp;rsquo;s set ruby version to 2.0 and install rails (4):&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;Now, when everything is ready, we can configure Emacs installation. I assume you&amp;rsquo;ve already installed emacs package via your favorite package manager.&lt;/p&gt;
-&lt;p&gt;Then lets add some custom configuration file for ruby configs in the &lt;em&gt;.emacs.d&lt;/em&gt; directory, say &lt;em&gt;ruby-configuration.el&lt;/em&gt; and add it to your .emacs file using&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Future of C&#43;&#43; presentation by Herb Sutter</title>
-      <link>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</link>
-      <pubDate>Thu, 10 Oct 2013 10:05:47 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</guid>
-      <description>http://channel9.msdn.com/Events/Build/2013/2-306</description>
-    </item>
-    
-    <item>
-      <title>Queem - open source computer chess in C#</title>
-      <link>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</link>
-      <pubDate>Mon, 26 Aug 2013 22:00:52 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</guid>
-      <description>I had an interview long time ago when I was young and just started programming. I had been showing my badly written battleship game to a skilled guy in his office. It was written in Delphi but with Pascal one-big-function style and it wasn&amp;rsquo;t double buffered so it has known rendering problems. I said then &amp;ldquo;You see, it is not a chess, but..&amp;quot;.
-In a few weeks I started writing my own chess.</description>
-    </item>
-    
-    <item>
       <title>Simple OpenGL program on C# under Linux</title>
-      <link>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</link>
+      <link>https://intmaker.com/opengl-c-under-linux/</link>
       <pubDate>Wed, 19 Jun 2013 23:12:44 +0000</pubDate>
       
-      <guid>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</guid>
+      <guid>https://intmaker.com/opengl-c-under-linux/</guid>
       <description>&lt;p&gt;Today I&amp;rsquo;ll tell you how to write a very simple OpenGL program on C# at Mono platform. Finally we&amp;rsquo;re going to get something like this:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://code.jamming.com.ua/wp-content/uploads/2013/06/opentk_test.png&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;Result of OpenGL app&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>How to write template-like data structure in pure C</title>
-      <link>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</link>
+      <link>https://intmaker.com/template-like-data-structures-c/</link>
       <pubDate>Wed, 19 Jun 2013 20:53:22 +0000</pubDate>
       
-      <guid>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</guid>
+      <guid>https://intmaker.com/template-like-data-structures-c/</guid>
       <description>&lt;p&gt;&lt;em&gt;Problem&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;write type-independent data structure (say, red-black tree, dynamic array etc.) in pure C (which means you cannot use templates and any other features)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Solution&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;First of all, lets create an interface of our &amp;ldquo;&lt;em&gt;generic&lt;/em&gt;&amp;rdquo; (or &amp;ldquo;&lt;em&gt;template&lt;/em&gt;&amp;quot;) type. We can interpret &lt;code&gt;void*&lt;/code&gt; as this unknown type and build some interface functions. It definitely has to have a &lt;code&gt;constructor&lt;/code&gt; and &lt;code&gt;destructor&lt;/code&gt;. Also, it can have a &lt;code&gt;comparator&lt;/code&gt; and kind of &lt;code&gt;print&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;So, we can define it like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;* (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;ConstructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
-&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;DestructorFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
-&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;int&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;CompareFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*, &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
-&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;typedef&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt; (*&amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;PrintFunc&amp;lt;/span&amp;gt;)(&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;const&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008000;&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;*);
+&lt;pre&gt;&lt;code&gt;typedef void* (*ConstructorFunc)(const void*);
+typedef void (*DestructorFunc)(void*);
+typedef int (*CompareFunc)(const void*, const void*);
+typedef void (*PrintFunc)(const void*);
 
-&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;struct&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;FuncFactory_struct&amp;lt;/span&amp;gt;
+struct FuncFactory_struct
 {
-   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;ConstructorFunc&amp;lt;/span&amp;gt; constructor;
-   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;CompareFunc&amp;lt;/span&amp;gt; compareFunc;
-   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;DestructorFunc&amp;lt;/span&amp;gt; destructorFunc;
-   &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;PrintFunc&amp;lt;/span&amp;gt; printFunc;
+   ConstructorFunc constructor;
+   CompareFunc compareFunc;
+   DestructorFunc destructorFunc;
+   PrintFunc printFunc;
 };
 
-&amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;#define&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#008080;&amp;quot;&amp;gt;FuncFactory&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#000080;&amp;quot;&amp;gt;struct&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#3366ff;&amp;quot;&amp;gt;FuncFactory_struct
-&amp;lt;/span&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And about implementation details..&lt;/p&gt;</description>
+#define FuncFactory struct FuncFactory_struct
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And about implementation details..&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Use Emacs for remote compilation and catch output</title>
-      <link>https://intmaker.com/2013/use-emacs-for-remote-compilation/</link>
+      <link>https://intmaker.com/emacs-remote-compilation/</link>
       <pubDate>Wed, 19 Jun 2013 19:57:42 +0000</pubDate>
       
-      <guid>https://intmaker.com/2013/use-emacs-for-remote-compilation/</guid>
-      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;quot;, I use a build_remote.sh script with following contents
-#!&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;/bin/bash&amp;lt;/span&amp;gt; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;ssh&amp;lt;/span&amp;gt; my_remote_machine &amp;quot;&amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;source&amp;lt;/span&amp;gt; my_environment_file; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;cd&amp;lt;/span&amp;gt; my_build_directory; &amp;lt;span style=&amp;quot;color:#003366;&amp;quot;&amp;gt;make&amp;lt;/span&amp;gt; my_target&amp;quot;  Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
-    </item>
-    
-    <item>
-      <title>Emacs hangs on large file with DOS-encoded end of lines</title>
-      <link>https://intmaker.com/2013/emacs-hangs-on-large-file-with-dos-encoded-end-of-lines/</link>
-      <pubDate>Sat, 08 Jun 2013 22:28:16 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/emacs-hangs-on-large-file-with-dos-encoded-end-of-lines/</guid>
-      <description>I&amp;rsquo;ve had a quite big C++ source file, copied from Windows with ^M symbol after each line. After any scrolling downside Emacs 24.2 hanged up and the only option was to kill it.
-Due to the fact that my .emacs configuration is quite big, I started with binary search, commenting out parts of lisp code. After few minutes I&amp;rsquo;ve figured out, that the problem lies in .gnu-emacs file, so I moved with binary search to that file.</description>
-    </item>
-    
-    <item>
-      <title>C&#43;&#43; dev via Emacs 24 in Windows 7 (visual studio includes)</title>
-      <link>https://intmaker.com/2013/c-dev-via-emacs-24-in-windows-7/</link>
-      <pubDate>Wed, 13 Mar 2013 08:23:35 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/c-dev-via-emacs-24-in-windows-7/</guid>
-      <description>Recently I had issue with CEDET 1.1: semantic was not able to parse header files from Visual Studio, when using
-(semantic-add-system-include &amp;ldquo;C:/Program Files/Microsoft Visual Studio 10.0/VS/Include&amp;rdquo; &amp;lsquo;c++-mode)
-But after looking through Visual Stuio headers in Studio itself, I&amp;rsquo;ve found some headers with defines, which are new to semantic, so you have to add them after this system include in your .el files:
-(defun windows-semantic-hook () (setq microsoft-base-dir &amp;quot;C:/Program Files (x86)/Microsoft Visual Studio 14.</description>
-    </item>
-    
-    <item>
-      <title>Emacs 24.2 with Python and C&#43;&#43; bundle for Windows</title>
-      <link>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</link>
-      <pubDate>Sun, 10 Mar 2013 21:36:35 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve managed to put together some interesting things with Emacs for Windows. For now we have:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Emacs 24.2 for Windows&lt;/li&gt;
-&lt;li&gt;CEDET-1.1&lt;/li&gt;
-&lt;li&gt;Auto-Complete 1.3.1&lt;/li&gt;
-&lt;li&gt;Custom themes (using tango in current zip)&lt;/li&gt;
-&lt;li&gt;Ocaml support (ocaml mode, eval and highlighting)&lt;/li&gt;
-&lt;li&gt;Git user interface 1.0 support (with git blame)&lt;/li&gt;
-&lt;li&gt;Ropemacs + Pylint + Flymake (Python IDE + static analysis)&lt;/li&gt;
-&lt;li&gt;Fixes for Cygwin, gnu and git pathes in Windows&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <guid>https://intmaker.com/emacs-remote-compilation/</guid>
+      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;rdquo;, I use a build_remote.sh script with following contents
+#!/bin/bash ssh my_remote_machine &amp;quot;source my_environment_file; cd my_build_directory; make my_target&amp;quot; Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
     </item>
     
     <item>
       <title>Ruby style loops in C#</title>
-      <link>https://intmaker.com/2012/ruby-style-loops-in-c/</link>
+      <link>https://intmaker.com/ruby-style-loops-in-c/</link>
       <pubDate>Wed, 31 Oct 2012 13:44:18 +0000</pubDate>
       
-      <guid>https://intmaker.com/2012/ruby-style-loops-in-c/</guid>
+      <guid>https://intmaker.com/ruby-style-loops-in-c/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://blog.naiznoiz.com/2009/03/c-loops-ruby-style&#34; title=&#34;Ruby style loops in C#&#34;&gt;Ruby style loops in C#&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Simple and useful solution to use ruby-like loops in C#. Also, you can add extensions&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Android development materials</title>
-      <link>https://intmaker.com/2012/android-development-materials/</link>
-      <pubDate>Thu, 25 Oct 2012 19:12:04 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2012/android-development-materials/</guid>
-      <description>Some great websites to learn android programming
-Five great websites for android developersAnd russian materials</description>
-    </item>
-    
-    <item>
       <title>Developer competencies list with useful links (preparing to the interview)</title>
-      <link>https://intmaker.com/2012/developer-competencies-list/</link>
+      <link>https://intmaker.com/developer-competencies-list/</link>
       <pubDate>Sun, 07 Oct 2012 15:39:29 +0000</pubDate>
       
-      <guid>https://intmaker.com/2012/developer-competencies-list/</guid>
+      <guid>https://intmaker.com/developer-competencies-list/</guid>
       <description>&lt;p&gt;Starting short training before competency test at my current work. You can find list of things you have to know. And comparison to those from Amazon. Below you can find advices what or where to read to be ready to interview or smth like this&lt;/p&gt;
 &lt;p&gt;Needed materials and topics can be found here:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Data Structures&lt;/strong&gt; - array, linked list, stack, queue, dictionary, hash table, tree, binary search tree, hashtable, heap, AVL/RB tree, B-tree, skip list, segment tree&lt;/p&gt;

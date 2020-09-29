@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <meta property="og:title" content="Dependency management in classes" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="Object-oriented languages like Ruby, C&#43;&#43; or Java tend to have one common problem among others: dependency injection. It is very rare for a class to be fully" />
+    <meta property="og:url" content="https://intmaker.com/classes-dependency-management/" />
+    <meta property="og:site_name" content="Xpiks" />
+    
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         Dependency management in classes 
+      
+    </title>
+    <link rel="canonical" href="https://intmaker.com/classes-dependency-management/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+    margin-bottom:25px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, time {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
+  .sharing-icons {
+      padding-left: 10px;
+      margin-bottom: 20px;
+  }
+
+  section.disqus {
+      margin-top: 100px;
+  }
+
+  .social-icons {
+      float: right;
+  }
+
+  .social-icons a {
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  @media (max-width: 30em) {
+      .social-icons {
+          float: left;
+          padding-top: 0px;
+      }
+  }
+
+  .bmc-button img {
+      width: 27px !important;
+      margin: 0 0 10px 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      vertical-align: middle !important;
+      display: inline !important;
+  }
+
+  .bmc-button {
+      line-height: 36px !important;
+      height:37px !important;
+      text-decoration: none !important;
+      display:inline-block !important;
+      color:#000000 !important;
+      background-color:#FFFFFF !important;
+      border-radius: 3px !important;
+      border: 1px solid transparent !important;
+      padding: 1px 9px !important;
+      font-size: 23px !important;
+      letter-spacing: 0.6px !important;
+      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      margin: 0 auto !important;
+      font-family:'Cookie', cursive !important;
+      -webkit-box-sizing: border-box !important;
+      box-sizing: border-box !important;
+      -o-transition: 0.3s all linear !important;
+      -webkit-transition: 0.3s all linear !important;
+      -moz-transition: 0.3s all linear !important;
+      -ms-transition: 0.3s all linear !important;
+      transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      text-decoration: none !important;
+      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      opacity: 0.85 !important;
+      color:#000000 !important;
+  }
+
+  #avatar {
+    background-image: url('/img/168_1.jpg');
+    
+     
+    width: 150px;
+    height: 150px;
+
+     
+    background-size: cover;
+
+     
+    background-position: top center;
+
+     
+    border-radius: 50%;
+
+	-webkit-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+
+	float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
+  }
+
+  .related-posts {
+      margin-top: 70px;
+  }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
+</style>
+
+
+    
+
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-10412407-11', 'auto');  ga('send', 'pageview');  ga('set', 'anonymizeIp', true); </script>
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://intmaker.com/">Int Maker</a></h1>
+      <ul>
+        
+          <li><a href="https://intmaker.com/about/">About</a></li>
+        
+          <li><a href="https://intmaker.com/">Posts</a></li>
+        
+          <li><a href="https://intmaker.com/projects/">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  
+
+  <h1> Dependency management in classes </h1>
+  
+    <div id=sub-header>
+      July 2018 · 4 minute read
+    </div>
+  
+
+  
+  <div class="thumbnail-container">
+      <a href="https://intmaker.com/classes-dependency-management/">
+          <img src="https://intmaker.com/img/dependency.jpeg">
+      </a>
+  </div>
+  
+
+  <div class="entry-content">
+    <p>Object-oriented languages like Ruby, C++ or Java tend to have one common problem among others: dependency injection. It is very rare for a class to be fully self-contained and never depend on anything else in your code. Usually there&rsquo;re multiple connections between them: simple, transitive or even circular. And designing good dependency injection often makes a huge difference in terms of maintainability and testability of your code. This is the thing that should be done properly rather sooner than later.</p>
+<p>Let&rsquo;s review our possible options. I&rsquo;d like to start with least maintainable and testable solutions first:</p>
+<h3 id="god-object">God object</h3>
+<p>&ldquo;God object&rdquo; is a class that has all other dependencies accessible from and that all classes in your code depend on. At a first point of view it makes things look simple: all your classes have only one dependency (the god object itself) and this makes their interface simple. God object on the other hand, has all or majority of the classes of your codebase listed as dependency. This approach may work for small projects that do not have many dependencies but on the long run it makes things complicated to test and the god object itself - a huge monster hard to maintain and change.</p>
+<pre><code>class GodObject {
+  public getServiceA() { return serviceA; }
+  public getServiceB() { return serviceB; }
+  // ...
+
+  private ServiceA serviceA;
+  private ServiceB serviceB;
+  // ...
+}
+
+class A {
+  public A (GodObject obj) {
+    this.serviceA = obj.getServiceA();
+    this.serviceB = obj.getServiceB();
+  }
+}
+</code></pre><h3 id="dependency-injection-containers">Dependency injection containers</h3>
+<p>This is a very popular way of managing the dependencies but on the inside this is a dynamic variation of a god object. It is slightly more generic in a way that it doesn&rsquo;t depend on classes of your codebase directly, but instead lets you build dependencies &ldquo;on the fly&rdquo;.</p>
+<pre><code>container.inject&lt;ServiceA&gt;(new ServiceA());
+container.inejct&lt;ServiceB&gt;(new ServiceB());
+
+class A {
+  public A (DIContainer container) {
+    this.serviceA = container.resolve&lt;ServiceA&gt;();
+    this.serviceB = container.resolve&lt;ServiceB&gt;();
+  }
+}
+</code></pre><p>Dependencies of the class A now are implicit: it&rsquo;s hard to tell them without reading it&rsquo;s whole code. Also it&rsquo;s very easy to make a mistake of bringing new dependency to the class which your will forget to satisfy and it will not be checked by the compiler.</p>
+<h3 id="messaging-systems">Messaging systems</h3>
+<p>In this case you can make use of technique used in distributed systems to reduce complecity and make use of dependencies: messages. A message is a self-contained piece of &ldquo;parameters pack&rdquo; (or data transfer object) passed to the unknown at a compile time target. Your class accepts &ldquo;message hub&rdquo; as a depedency. Message hub is a class that connects senders with receivers of the messages. Arbitrary entity can sign up for certain messages as a receiver and when anybody will produce messages of this kind, message hub will notify all interested receivers.</p>
+<pre><code>source.addListener(target);
+source.emit(new Message());
+
+class Target {
+  public handleMessage(Message msg) {
+    // do something
+  }
+}
+</code></pre><p>This sounds pretty much as slightly inverted dependency injection container. Instead of requesting known services to call them directly, you send known messages (parameters) to unknown APIs. Learning dependencies of your class would require to read it&rsquo;s source code completely. If you will not satisfly the dependency the compiler will not let you know about it.</p>
+<h3 id="dependency-setters">Dependency setters</h3>
+<p>A step aside from dependency injection containers are public setters that inject the dependencies directly. They make interface of a class more explicit but tend to bloat it significantly.</p>
+<pre><code>class A {
+  public void setServiceA(ServiceA serviceA) {
+    this.serviceA = serviceA;
+  }
+  
+  public void setServiceB(ServiceB serviceB) {
+    this.serviceB = serviceB;
+  }
+  
+  // ...
+}
+</code></pre><p>Also this approach makes you check if you have injected services A and B in places where you want to make use of them.</p>
+<h3 id="construction-time-injection">Construction time injection</h3>
+<p>Injecting the dependencies at construction time is very clean and maintainable way to manage dependencies. A class constructor that accepts generic interfaces of dependencies is very easy to test.</p>
+<pre><code>class A {
+  public A (IServiceA serviceA, IServiceB serviceB) {
+    this.serviceA = serviceA;
+    this.serviceB = serviceB;
+  }
+}
+</code></pre><p>A contract of this class is explicit, immutable and known on the compile time. You cannot introduce new implicit dependency somewhere inside your class. It is easy to inject fake objects for testing purposes. Also it introduces single place where you check validity of the injected dependencies so you don&rsquo;t have to do it all over your code of class A. If your construction time dependencies begin to overflow one line of code you know it&rsquo;s time to refactor your classes into smaller ones.</p>
+<h2 id="bottom-line">Bottom line</h2>
+<p>I would say it&rsquo;s obvious why construction time injection should be preffered among others: strict API and compile-time checks. Of course this is not a silver bullet but if you don&rsquo;t have strong arguments for anything else - make yourself a favor and use it.</p>
+
+  </div>
+
+  
+  <div class="sharing-icons">
+    Share:&nbsp;
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+  <div style="margin-bottom: 20px;">
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+
+  </div>
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://intmaker.com/deploy-to-macos/">&laquo; Deploying native apps to macOS</a>
+    
+    
+      <a class="basic-alignment left" href="https://intmaker.com/tensorflow-inference/">Inference of TensorFlow model without TensorFlow &raquo;</a>
+    
+  </div>
+
+  
+
+
+
+
+  
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+  
+  
+</section>
+
+  
+</body>
+</html>
+
+

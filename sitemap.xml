@@ -8,7 +8,7 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2020/self-host-email-marketing/</loc>
+    <loc>https://intmaker.com/self-host-email-marketing/</loc>
     <lastmod>2020-02-20T18:22:19-08:00</lastmod>
   </url>
   
@@ -28,12 +28,12 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2019/sign-for-macos/</loc>
+    <loc>https://intmaker.com/sign-for-macos/</loc>
     <lastmod>2019-11-28T07:45:49-08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2019/command-line-seo/</loc>
+    <loc>https://intmaker.com/command-line-seo/</loc>
     <lastmod>2019-11-27T08:19:03-08:00</lastmod>
   </url>
   
@@ -58,32 +58,32 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2019/raspberrypi-setup/</loc>
+    <loc>https://intmaker.com/raspberrypi-setup/</loc>
     <lastmod>2019-09-25T20:55:23+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2019/how-to-return-to-flow/</loc>
+    <loc>https://intmaker.com/how-to-return-to-flow/</loc>
     <lastmod>2019-08-22T21:34:29-08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2019/tensorflow-inference/</loc>
+    <loc>https://intmaker.com/tensorflow-inference/</loc>
     <lastmod>2019-03-01T00:16:27+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2018/dependency-management/</loc>
+    <loc>https://intmaker.com/classes-dependency-management/</loc>
     <lastmod>2018-07-31T00:19:43+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2018/deploy-to-macos/</loc>
+    <loc>https://intmaker.com/deploy-to-macos/</loc>
     <lastmod>2018-06-09T00:23:10+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2018/migrate-wordpress-to-jekyll/</loc>
+    <loc>https://intmaker.com/migrate-wordpress-to-jekyll/</loc>
     <lastmod>2018-03-01T00:23:10+00:00</lastmod>
   </url>
   
@@ -98,7 +98,7 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2018/fuller-stack-development/</loc>
+    <loc>https://intmaker.com/fuller-stack-development/</loc>
     <lastmod>2018-02-02T00:21:09+00:00</lastmod>
   </url>
   
@@ -108,17 +108,17 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2017/ultimate-combobox-in-qml/</loc>
+    <loc>https://intmaker.com/ultimate-combobox-in-qml/</loc>
     <lastmod>2017-11-22T23:28:25+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2017/key-value-storage-for-poor/</loc>
+    <loc>https://intmaker.com/key-value-storage-for-poor/</loc>
     <lastmod>2017-09-01T11:30:44+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</loc>
+    <loc>https://intmaker.com/forced-oss-contributions/</loc>
     <lastmod>2017-06-04T13:26:08+00:00</lastmod>
   </url>
   
@@ -128,112 +128,77 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2017/backtowork-smart-alttab-for-windows/</loc>
+    <loc>https://intmaker.com/backtowork-alttab-for-windows/</loc>
     <lastmod>2017-05-03T17:44:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</loc>
+    <loc>https://intmaker.com/unicode-support-for-avformat-in-windows/</loc>
     <lastmod>2017-03-31T13:59:09+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2016/how-to-pass-amazon-sde-interview/</loc>
-    <lastmod>2016-12-24T19:45:06+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</loc>
+    <loc>https://intmaker.com/replacing-qnetworkaccessmanager/</loc>
     <lastmod>2016-09-23T10:49:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</loc>
+    <loc>https://intmaker.com/learn-parallel-programming-hard-way/</loc>
     <lastmod>2016-08-29T12:28:38+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</loc>
+    <loc>https://intmaker.com/spellchecking-desktop-application-in-c/</loc>
     <lastmod>2016-06-05T12:24:38+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</loc>
+    <loc>https://intmaker.com/classic-producer-consumer-in-qtc/</loc>
     <lastmod>2016-03-28T15:44:38+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</loc>
+    <loc>https://intmaker.com/autocomplete-for-english-in-c/</loc>
     <lastmod>2016-03-27T22:07:35+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</loc>
+    <loc>https://intmaker.com/dragndrop-qt-macos/</loc>
     <lastmod>2015-11-25T18:00:02+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/how-to-keyword-and-upload-photosillustrations-to-microstocks/</loc>
-    <lastmod>2015-11-18T14:20:07+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/categories/uncategorized/</loc>
-    <lastmod>2015-11-18T14:20:07+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2015/how-to-download-folder-from-dropbox/</loc>
+    <loc>https://intmaker.com/download-large-folder-dropbox/</loc>
     <lastmod>2015-10-14T15:53:49+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</loc>
+    <loc>https://intmaker.com/improve-performance-acm-solution/</loc>
     <lastmod>2015-07-29T12:21:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</loc>
+    <loc>https://intmaker.com/issues-qt-framework/</loc>
     <lastmod>2015-07-16T16:17:35+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/configuring-a-user-for-restoredimported-database-in-ms-sql-server/</loc>
-    <lastmod>2015-03-26T14:09:30+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</loc>
+    <loc>https://intmaker.com/text-encryption-in-qt-tiny-aes/</loc>
     <lastmod>2015-02-24T15:12:39+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/net-string-dictionary-vs-string-switch-performance/</loc>
+    <loc>https://intmaker.com/dotnet-dictionary-vs-switch/</loc>
     <lastmod>2015-02-18T22:11:26+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2015/how-to-copy-data-from-excel-to-sql/</loc>
-    <lastmod>2015-01-08T19:30:48+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2014/building-hedgewars-under-os-x-yosemite/</loc>
-    <lastmod>2014-12-31T13:23:20+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2014/simple-gimp-plugin-for-batch-processing-in-python/</loc>
+    <loc>https://intmaker.com/gimp-plugin-batch-processing/</loc>
     <lastmod>2014-11-12T11:32:35+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2014/how-to-process-nikon-d5300-nef-and-other-unsupported-raw-formats-in-darktable/</loc>
-    <lastmod>2014-09-09T12:26:07+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2014/generating-spiral-matrices/</loc>
+    <loc>https://intmaker.com/generating-spiral-matrices/</loc>
     <lastmod>2014-01-30T20:55:20+00:00</lastmod>
   </url>
   
@@ -243,37 +208,22 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/teamcity-8-on-centos-6-4-from-scratch/</loc>
+    <loc>https://intmaker.com/teamcity-8-on-centos-from-scratch/</loc>
     <lastmod>2013-11-26T16:22:43+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/</loc>
+    <loc>https://intmaker.com/mediawiki-installation-virtualbox/</loc>
     <lastmod>2013-11-22T18:51:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/rails-development-environment-in-emacs-on-opensuse-linux/</loc>
-    <lastmod>2013-10-29T23:12:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</loc>
-    <lastmod>2013-10-10T10:05:47+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2013/queem-open-source-computer-chess-in-c/</loc>
-    <lastmod>2013-08-26T22:00:52+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2013/simple-opengl-program-on-c-under-linux/</loc>
+    <loc>https://intmaker.com/opengl-c-under-linux/</loc>
     <lastmod>2013-06-19T23:12:44+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/write-template-like-data-structures-in-pure-c/</loc>
+    <loc>https://intmaker.com/template-like-data-structures-c/</loc>
     <lastmod>2013-06-19T20:53:22+00:00</lastmod>
   </url>
   
@@ -283,42 +233,17 @@
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/use-emacs-for-remote-compilation/</loc>
+    <loc>https://intmaker.com/emacs-remote-compilation/</loc>
     <lastmod>2013-06-19T19:57:42+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/2013/emacs-hangs-on-large-file-with-dos-encoded-end-of-lines/</loc>
-    <lastmod>2013-06-08T22:28:16+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2013/c-dev-via-emacs-24-in-windows-7/</loc>
-    <lastmod>2013-03-13T08:23:35+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2013/emacs-24-2-with-python-and-c-bundle-for-windows/</loc>
-    <lastmod>2013-03-10T21:36:35+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2012/ruby-style-loops-in-c/</loc>
+    <loc>https://intmaker.com/ruby-style-loops-in-c/</loc>
     <lastmod>2012-10-31T13:44:18+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://intmaker.com/categories/android/</loc>
-    <lastmod>2012-10-25T19:12:04+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2012/android-development-materials/</loc>
-    <lastmod>2012-10-25T19:12:04+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://intmaker.com/2012/developer-competencies-list/</loc>
+    <loc>https://intmaker.com/developer-competencies-list/</loc>
     <lastmod>2012-10-07T15:39:29+00:00</lastmod>
   </url>
   

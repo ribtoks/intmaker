@@ -13,10 +13,10 @@
     
     <item>
       <title>Fuller Stack Development</title>
-      <link>https://intmaker.com/2018/fuller-stack-development/</link>
+      <link>https://intmaker.com/fuller-stack-development/</link>
       <pubDate>Fri, 02 Feb 2018 00:21:09 +0000</pubDate>
       
-      <guid>https://intmaker.com/2018/fuller-stack-development/</guid>
+      <guid>https://intmaker.com/fuller-stack-development/</guid>
       <description>&lt;p&gt;That&amp;rsquo;s awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different &amp;ldquo;stack&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;I truly believe that software-only engineers somewhere deep inside are always dreaming of pilgrimage to the sacred temples of Hardware and Electronics. All those wires, volts, chips and firmware are just too interesting to avoid them when you only deal with computers above the Transport layer. Basically that&amp;rsquo;s how I was seduced to the dark side, on my own.&lt;/p&gt;
 &lt;p&gt;I has already been looking for a possibility to do something &amp;ldquo;forbidden&amp;rdquo; for quite some time. Words like soldering, Arduino, IO pins, &amp;ldquo;10K resistor before LED&amp;rdquo; were constantly spinning in my head but I didn&amp;rsquo;t have just any time for it. Luckily, this month my brother was going to visit me for a week so I decided it would be a perfect time to do some hacking together.&lt;/p&gt;
@@ -31,10 +31,10 @@
     
     <item>
       <title>Dependency-driven development: forced OSS contributions</title>
-      <link>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</link>
+      <link>https://intmaker.com/forced-oss-contributions/</link>
       <pubDate>Sun, 04 Jun 2017 13:26:08 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/dependency-driven-development-forced-oss-contributions/</guid>
+      <guid>https://intmaker.com/forced-oss-contributions/</guid>
       <description>&lt;p&gt;It is such a relief when you app just works. Moreover, when it is open. My pet project &lt;a href=&#34;https://github.com/ribtoks/xpiks&#34;&gt;Xpiks&lt;/a&gt; is not only an open-source project itself, but it also uses a lot of the other open-source technologies inside. Qt framework, zlib, hunspell - to name just a few. A big deal is to make them work together. A much bigger deal to make them work together across different platforms (Xpiks is announced as cross-platform for Windows, OS X and Linux). The least problems you can expect - is a tricky build process or somebody&amp;rsquo;s typo in the Makefile which breaks the-other-system&amp;rsquo;s build.&lt;/p&gt;
 &lt;p&gt;More often what you&amp;rsquo;ll encounter - is people building a huge pile of code working &lt;strong&gt;only&lt;/strong&gt; for their needs. Only for their server. Only for their version if libcurl. Only for x86 operating system. And then they open-source it to GitHub - much like a cemetery for projects with 1 star and 0 forks, decaying there until forgotten forever.&lt;/p&gt;
 &lt;p&gt;This is how the initial joy of finding an open-source technology you needed is being replaced by a constant frustration of not just a need to slightly tweak some header file or Makefile, but to go the sources, read them, understand everything inside and fix. This is what I have encountered many times and what I did as well.&lt;/p&gt;</description>
@@ -42,20 +42,20 @@
     
     <item>
       <title>Unicode support for avformat_open_input in Windows</title>
-      <link>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</link>
+      <link>https://intmaker.com/unicode-support-for-avformat-in-windows/</link>
       <pubDate>Fri, 31 Mar 2017 13:59:09 +0000</pubDate>
       
-      <guid>https://intmaker.com/2017/unicode-support-for-avformat_open_input-in-windows/</guid>
+      <guid>https://intmaker.com/unicode-support-for-avformat-in-windows/</guid>
       <description>For those of us ever writing cross-platform application there has always been enough quires and quests to accomplish. Typical one is to correctly handle multibyte/unicode filepaths in Windows. And though they are handled pretty good in Qt, when you write your own library you have to do it yourself.
 Another level of quests is using third-party libraries which were not designed for cross-platform usage. For example if you wanted to use ffmpeg / libav libraries in Windows, you have to deal with lack of support of std::wstring parameters in the API.</description>
     </item>
     
     <item>
       <title>Replacing QNetworkAccessManager for the great good</title>
-      <link>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</link>
+      <link>https://intmaker.com/replacing-qnetworkaccessmanager/</link>
       <pubDate>Fri, 23 Sep 2016 10:49:55 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/replacing-qnetworkaccessmanager-for-the-great-good/</guid>
+      <guid>https://intmaker.com/replacing-qnetworkaccessmanager/</guid>
       <description>&lt;p&gt;Everybody using Qt for networking for small tasks will sometimes face oddities of &lt;code&gt;QNetworkAccessManager&lt;/code&gt;. This class aims to be useful and convenient while having few quite sensible drawbacks. First one of couse is inability to use it in blocking way. What you should do instead is to create instance of &lt;code&gt;QEventLoop&lt;/code&gt; and connect it&amp;rsquo;s &lt;code&gt;quit()&lt;/code&gt; signal with network manager.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;QNetworkAccessManager networkManager;
 QEventLoop loop;
@@ -68,33 +68,33 @@ loop.exec();
     
     <item>
       <title>Resources to learn and understand parallel programming. The hard way</title>
-      <link>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</link>
+      <link>https://intmaker.com/learn-parallel-programming-hard-way/</link>
       <pubDate>Mon, 29 Aug 2016 12:28:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/resources-to-learn-and-understand-parallel-programming-the-hard-way/</guid>
+      <guid>https://intmaker.com/learn-parallel-programming-hard-way/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;There&amp;rsquo;s no way other than the hard way. (c)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Parallel programming is considered as not easy or even advanced topic by many programmers. It&amp;rsquo;s the starting point for even more advanced stuff like distributed computations, reliability, CAP theorem, consensus problems and much more. Besides, deep understanding of how CPU and operating system works can help you to write less buggy software and parallel programming can help you with that too.&lt;/p&gt;
-&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find matterials on CUDA or OpenCL. Similary you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
-&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m refering to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
+&lt;p&gt;In this post I will focus on books describing parallel programming using 1 computer and 1 CPU using classical approaches. Neither they contain SSE instructions guides nor you will find materials on CUDA or OpenCL. Similarly you will find no resourced about Hadoop and/or MapReduce technologies and nothing about technologies supporting parallel programming out of the box like Go or Erlang.&lt;/p&gt;
+&lt;p&gt;So I will go now through all the resources which I find more or less useful. I&amp;rsquo;m not going to stick to any technology in general - the point is to understand the topic from different perspectives. The materials I&amp;rsquo;m referring to in general should not be considered as entry-level -  they require fair amount of knowledge, but nevertheless, list goes sorted starting from &amp;ldquo;easier&amp;rdquo; things.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Implementing spellchecking in desktop application in C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</link>
+      <link>https://intmaker.com/spellchecking-desktop-application-in-c/</link>
       <pubDate>Sun, 05 Jun 2016 12:24:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/implementing-spellchecking-in-desktop-application-in-c/</guid>
+      <guid>https://intmaker.com/spellchecking-desktop-application-in-c/</guid>
       <description>&lt;p&gt;When user is supposed to enter significant amount of text in your application, it&amp;rsquo;s better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where &lt;a href=&#34;https://hunspell.github.io/&#34;&gt;Hunspell&lt;/a&gt; comes handy. It&amp;rsquo;s an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I&amp;rsquo;ll discuss how to integrate it to C++/Qt project.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Classic Producer-Consumer in Qt/C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</link>
+      <link>https://intmaker.com/classic-producer-consumer-in-qtc/</link>
       <pubDate>Mon, 28 Mar 2016 15:44:38 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/classic-producer-consumer-in-qtc/</guid>
+      <guid>https://intmaker.com/classic-producer-consumer-in-qtc/</guid>
       <description>&lt;p&gt;Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&amp;rsquo;ve invented my own wheel and I invite you to take a look at it.&lt;/p&gt;
 &lt;p&gt;For the synchronization in Producer-Consumer it&amp;rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s suppose we have following data structures:&lt;/p&gt;
@@ -107,10 +107,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     
     <item>
       <title>Implementing autocomplete for English in C&#43;&#43;</title>
-      <link>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</link>
+      <link>https://intmaker.com/autocomplete-for-english-in-c/</link>
       <pubDate>Sun, 27 Mar 2016 22:07:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2016/implementing-autocomplete-for-english-in-c/</guid>
+      <guid>https://intmaker.com/autocomplete-for-english-in-c/</guid>
       <description>&lt;p&gt;When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I&amp;rsquo;ll try to answer both questions.&lt;/p&gt;
 &lt;p&gt;As for the algorithm, SO gives us hints about tries, segment trees and others. You can find &lt;!-- raw HTML omitted --&gt;good article&lt;!-- raw HTML omitted --&gt; about them. Author has implemented some of them in a repository called FACE (fastest auto-complete in the east). You can easily find it &lt;!-- raw HTML omitted --&gt;on GitHub&lt;!-- raw HTML omitted --&gt;. This solution is used for the autocompletion in search engine Duck-Duck-Go which should tell you how good it is. Unfortunately their solution requires dependencies on &lt;code&gt;libuv&lt;/code&gt; and joyent &lt;code&gt;http-parser&lt;/code&gt;, which is not good in case you need just to integrate autocompletion functionality into your C++ application, but not build auto-complete server and send queries to it. Another drawback - &lt;code&gt;libuv&lt;/code&gt; and &lt;code&gt;cpp-libface&lt;/code&gt; itself fails to compile in Windows which is bad in case you&amp;rsquo;re building cross-platform solution.&lt;/p&gt;
 &lt;p&gt;You can find out how to built FACE into your cross-platform C++ application below.&lt;/p&gt;</description>
@@ -118,10 +118,10 @@ QVector&amp;lt;T*&amp;gt; m_Queue;
     
     <item>
       <title>Handling drag&#39;n&#39;drop of files in Qt under OS X</title>
-      <link>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</link>
+      <link>https://intmaker.com/dragndrop-qt-macos/</link>
       <pubDate>Wed, 25 Nov 2015 18:00:02 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/handling-dragndrop-of-files-in-qt-under-os-x/</guid>
+      <guid>https://intmaker.com/dragndrop-qt-macos/</guid>
       <description>&lt;p&gt;If you ever tried to handle drag&amp;rsquo;n&amp;rsquo;drop files in your Qt application, you would usually come up with the code like the following.&lt;/p&gt;
 &lt;p&gt;First of all you will need a Drop Area somewhere in your application, which will handle drops&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;DropArea {
@@ -142,20 +142,20 @@ rootContext-&amp;gt;setContextProperty(&lt;span style=&#34;font-style:italic&#34
     
     <item>
       <title>Tips and tricks to improve performance of your ACM solution</title>
-      <link>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</link>
+      <link>https://intmaker.com/improve-performance-acm-solution/</link>
       <pubDate>Wed, 29 Jul 2015 12:21:32 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/tips-and-tricks-to-improve-performance-of-your-acm-solution/</guid>
+      <guid>https://intmaker.com/improve-performance-acm-solution/</guid>
       <description>Here I gathered system-programming tricks that can improve performance of your solution in C++ dramatically!
  Use scanf/printf functions for standard IO instead of cin/cout Memory-align buffers and structures to WORD size of your architecture (4 bytes for 32-bit and 8 bytes for 64-bit) Use arrays instead of linked lists (to use memory block caching) Avoid &amp;ldquo;if&amp;rdquo; stamements in loops If-clause should contain code, which is more likely to execute (if-condition == true) Use inlining for short functions Use objects allocated on stack but not on heap (local objects for functions instead of allocated with malloc/new) Use pre-calculated hardcoded data (e.</description>
     </item>
     
     <item>
       <title>Interesting issues and features of Qt programming</title>
-      <link>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</link>
+      <link>https://intmaker.com/issues-qt-framework/</link>
       <pubDate>Thu, 16 Jul 2015 16:17:35 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/interesting-issues-and-features-of-qt-programming/</guid>
+      <guid>https://intmaker.com/issues-qt-framework/</guid>
       <description>In this post I enlist all interesting facts and issues I&amp;rsquo;ve experienced while developing my first project in Qt (from 5.3 to 5.45.6)
 18.02 - QSettings interface in Qml transformed bool to string and was always true on deserialization
 18.02 - QByteArray returned from local scope crashed with heap corruption on return of function (destructor of QByteArray)
@@ -164,22 +164,13 @@ Qt can delete your object in it&amp;rsquo;s gui loop. QObject should have CppMan
     
     <item>
       <title>Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</title>
-      <link>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</link>
+      <link>https://intmaker.com/text-encryption-in-qt-tiny-aes/</link>
       <pubDate>Tue, 24 Feb 2015 15:12:39 +0000</pubDate>
       
-      <guid>https://intmaker.com/2015/text-encryption-in-qtc-with-tiny-aes-128bit/</guid>
+      <guid>https://intmaker.com/text-encryption-in-qt-tiny-aes/</guid>
       <description>&lt;p&gt;Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but&amp;hellip; What if you just &lt;strong&gt;need&lt;/strong&gt; to do it and the size is so much critical for you?&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;re &lt;!-- raw HTML omitted --&gt;openSSL&lt;!-- raw HTML omitted --&gt; library and &lt;!-- raw HTML omitted --&gt;Crypto++&lt;!-- raw HTML omitted --&gt; library which are monsters with tons of encryption algorithms, used in a number of solid projects etc. But.. they are big! I don&amp;rsquo;t want 30Mb library in my tiny project, which weights 10 Mb with high-resolution icons for OS X which weight by itself 5Mb. So I don&amp;rsquo;t want to sacrifice the size but still need encryption. Meet &lt;!-- raw HTML omitted --&gt;tiny-AES.&lt;!-- raw HTML omitted --&gt; It&amp;rsquo;s really small AES 128-bit library which does encryption in &lt;!-- raw HTML omitted --&gt;CBC and ECB modes&lt;!-- raw HTML omitted --&gt;. It really contains everything you needed just to encrypt and decrypt your sensitive data and forget about it.&lt;/p&gt;
 &lt;p&gt;You can find example under the hood.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Future of C&#43;&#43; presentation by Herb Sutter</title>
-      <link>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</link>
-      <pubDate>Thu, 10 Oct 2013 10:05:47 +0000</pubDate>
-      
-      <guid>https://intmaker.com/2013/the-future-of-c-presentation-by-herb-sutter/</guid>
-      <description>http://channel9.msdn.com/Events/Build/2013/2-306</description>
     </item>
     
   </channel>

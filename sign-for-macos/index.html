@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <meta property="og:title" content="Notarizing native apps for macOS: step by step guide" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="This is a part 2 of the journey started in part 1. When you download an app from the internet on macOS, it adds an attribute com.apple.quarantine (you can see" />
+    <meta property="og:url" content="https://intmaker.com/sign-for-macos/" />
+    <meta property="og:site_name" content="Xpiks" />
+    
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         Notarizing native apps for macOS: step by step guide 
+      
+    </title>
+    <link rel="canonical" href="https://intmaker.com/sign-for-macos/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+    margin-bottom:25px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, time {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
+  .sharing-icons {
+      padding-left: 10px;
+      margin-bottom: 20px;
+  }
+
+  section.disqus {
+      margin-top: 100px;
+  }
+
+  .social-icons {
+      float: right;
+  }
+
+  .social-icons a {
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  @media (max-width: 30em) {
+      .social-icons {
+          float: left;
+          padding-top: 0px;
+      }
+  }
+
+  .bmc-button img {
+      width: 27px !important;
+      margin: 0 0 10px 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      vertical-align: middle !important;
+      display: inline !important;
+  }
+
+  .bmc-button {
+      line-height: 36px !important;
+      height:37px !important;
+      text-decoration: none !important;
+      display:inline-block !important;
+      color:#000000 !important;
+      background-color:#FFFFFF !important;
+      border-radius: 3px !important;
+      border: 1px solid transparent !important;
+      padding: 1px 9px !important;
+      font-size: 23px !important;
+      letter-spacing: 0.6px !important;
+      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      margin: 0 auto !important;
+      font-family:'Cookie', cursive !important;
+      -webkit-box-sizing: border-box !important;
+      box-sizing: border-box !important;
+      -o-transition: 0.3s all linear !important;
+      -webkit-transition: 0.3s all linear !important;
+      -moz-transition: 0.3s all linear !important;
+      -ms-transition: 0.3s all linear !important;
+      transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      text-decoration: none !important;
+      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      opacity: 0.85 !important;
+      color:#000000 !important;
+  }
+
+  #avatar {
+    background-image: url('/img/168_1.jpg');
+    
+     
+    width: 150px;
+    height: 150px;
+
+     
+    background-size: cover;
+
+     
+    background-position: top center;
+
+     
+    border-radius: 50%;
+
+	-webkit-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+
+	float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
+  }
+
+  .related-posts {
+      margin-top: 70px;
+  }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
+</style>
+
+
+    
+
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-10412407-11', 'auto');  ga('send', 'pageview');  ga('set', 'anonymizeIp', true); </script>
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://intmaker.com/">Int Maker</a></h1>
+      <ul>
+        
+          <li><a href="https://intmaker.com/about/">About</a></li>
+        
+          <li><a href="https://intmaker.com/">Posts</a></li>
+        
+          <li><a href="https://intmaker.com/projects/">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  
+
+  <h1> Notarizing native apps for macOS: step by step guide </h1>
+  
+    <div id=sub-header>
+      November 2019 · 6 minute read
+    </div>
+  
+
+  
+  <div class="thumbnail-container">
+      <a href="https://intmaker.com/sign-for-macos/">
+          <img src="https://intmaker.com/img/deploy-mac.jpg">
+      </a>
+  </div>
+  
+
+  <div class="entry-content">
+    <p>This is a part 2 of the journey started in <a href="https://intmaker.com/deploy-to-macos/">part 1</a>.</p>
+<p>When you download an app from the internet on macOS, it adds an attribute <code>com.apple.quarantine</code> (you can see that using command <code>xattr /path/to/MyApp.app</code>). When you open such app, you will see a Gatekeeper greeting:</p>
+<p><img src="https://intmaker.com/img/gatekeeper-promt.png" alt="Gatekeeper promt"></p>
+<p>Apple <a href="https://developer.apple.com/news/?id=04102019a">announced</a> that all new software for macOS Catalina will need to be notarized. And that you won&rsquo;t be able to open unnotarized software even bypassing Gatekeeper selecting &ldquo;Open&rdquo; from context menu. Now every developer should pay $99 per year to get Apple Developer certificate and therefore - making there apps paid too. But this is a topic for a different discussion.</p>
+<h2 id="so-what-is-notarization">So what is notarization?</h2>
+<p>Notarization is a virus scan of your app done by Apple. After the scan Apple creates a &ldquo;report&rdquo; (also called ticket) that your app is safe (that&rsquo;s only when you passed notarization). After that you can distribute your app with the report and Gatekeeper will let you through.</p>
+<h2 id="how-to-notarize-an-app">How to notarize an app?</h2>
+<p>First of all, I recommend to read a bunch of <a href="https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution">official</a> <a href="https://developer.apple.com/library/archive/technotes/tn2206/_index.html">Apple</a> <a href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html">documentation</a>. You will need to codesign your app bundle with enabled hardened runtime, with correct entitelments file and then upload it to Apple and wait for the notarization to finish.</p>
+<p>Secondly, after you finished docs reading, here&rsquo;s the procedure I use (I will assume you already signed up for Developer program itself).</p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="1-registration-usually-done-once">1. Registration (usually done once)</h3>
+<p>Go to <a href="https://developer.apple.com">Apple Developer Portal</a> and create a new Bundle ID for your application. This should look like a reverse url (e.g. &ldquo;com.mydomain.MyApp&rdquo;).</p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="2-preparation-usually-done-once">2. Preparation (usually done once)</h3>
+<ol>
+<li>Create a <a href="https://help.apple.com/developer-account/#/devbfa00fef7">certificate signing request</a>: for Developer ID Application using <code>Keychain Access -&gt; Certificate Assistant -&gt; Request a certificate from certificate authority</code></li>
+<li>In the &ldquo;Common Name&rdquo; enter &ldquo;Name Surname Dev Cert&rdquo; etc. and in the email - apple id</li>
+<li>Go to <a href="https://developer.apple.com">Apple Developer Portal</a> and create a certificate using appropriate signing request</li>
+<li>Install certificates locally (double-click <code>.cer</code> file) but verify that it is installed in <code>Keychain Access -&gt; Certificates</code></li>
+<li>On the <a href="https://appleid.apple.com">Apple ID website</a> create new app-specific password for notarization submission tool</li>
+<li>Create an item in Keychain with name &ldquo;AC_PASSWORD&rdquo; where login is iCloud ID and password is &ldquo;app-specific password&rdquo; from (5). This is done in order not to have an app-specific password in a plain-text in deploy script.</li>
+</ol>
+<p><!-- raw HTML omitted --></p>
+<h3 id="3-signing">3. Signing</h3>
+<p>As for the Build part of your C++ app, you need to build for <code>release</code> and <code>x86_64</code> architecture. Also you need to include correct debug symbols: add <code>CFLAGS += -gdwarf-2</code> and <code>CXXFLAGS += -gdwarf-2</code> to your favorite build/project tool.</p>
+<p>Then after the app is built, you need to create a <code>.app</code> bundle, including all dependent libraries and frameworks. You can read more about it in the <a href="https://intmaker.com/deploy-to-macos/">previous part</a>.</p>
+<p>After you have the bundle, you need to codesign all libraries, plugins and frameworks.
+In the script below <code>${DEVELOPER_ID}</code> is your Apple Developer ID e.g. &ldquo;Developer ID Application: Name Surname (QWERTY123)&rdquo;.</p>
+<pre><code>CODESIGN_OPTIONS=&quot;-f --timestamp --verbose=4 --options=runtime -i ${BUNDLE_ID} --entitlements ${ENTITLEMENTS_PATH}&quot;
+echo &quot;Signing the frameworks...&quot;
+for FRAMEWORK in $(ls &quot;${APP_BUNDLE}&quot;/Contents/Frameworks | grep framework | sed 's/\.framework//')
+do
+    echo &quot;About to sign $FRAMEWORK&quot;
+    codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${APP_BUNDLE}&quot;/Contents/Frameworks/$FRAMEWORK.framework
+done
+
+echo &quot;Signing the dylibs...&quot;
+find &quot;${APP_BUNDLE}&quot;/Contents/Frameworks -name &quot;*.dylib&quot; -exec codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; '{}' \;
+
+echo &quot;Signing the plugins...&quot;
+find &quot;${APP_BUNDLE}&quot;/Contents/PlugIns -name &quot;*.dylib&quot; -exec codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; '{}' \;
+</code></pre><p>Only after this is done you can codesign main executable.</p>
+<pre><code>codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${APP_BUNDLE}&quot;
+</code></pre><p>Also I recommend to verify that your bundle is correctly signed:</p>
+<pre><code>codesign --verbose --verify &quot;${APP_BUNDLE}&quot;
+</code></pre><p><!-- raw HTML omitted --></p>
+<h3 id="4-notarize-the-bundle">4. Notarize the bundle</h3>
+<p>Now you need to notarize the bundle. Apple provides you with <code>altool</code> that is capable of sending a notarization request, but it cannot send a directory (remember that <code>.app</code> is just a suffix, in reality your bundle is a simple directory). So first you need to create a zip archive.</p>
+<p>Also <code>altool</code> will access your app-specific password in the keychain using a special syntax.</p>
+<pre><code>NOTARIZE_APP_PATH=&quot;${APP_NAME}.app&quot;
+NOTARIZE_ZIP_PATH=&quot;${APP_NAME}.zip&quot;
+
+/usr/bin/ditto -c -k --keepParent &quot;$NOTARIZE_APP_PATH&quot; &quot;$NOTARIZE_ZIP_PATH&quot;
+
+echo &quot;Sending notarization request to Apple...&quot;
+xcrun altool --notarize-app \
+               -t osx \
+               --primary-bundle-id &quot;${BUNDLE_ID}&quot; \
+               --username &quot;${APPLE_ID}&quot; \
+               --password &quot;@keychain:AC_PASSWORD&quot; \
+               --file &quot;${NOTARIZE_ZIP_PATH}&quot;
+</code></pre><p>Last command, if completed successfully, will print you out a UUID of your notarization request. You can check it&rsquo;s status using another command:</p>
+<pre><code>xcrun altool --notarization-info &quot;${REQUEST_UUID}&quot; -u &quot;${APPLE_ID}&quot; --password &quot;@keychain:AC_PASSWORD&quot;
+</code></pre><p>After you verified that Apple notarized your app, you need to stapple the notarization ticket to your app.</p>
+<pre><code>xcrun stapler staple &quot;${APP_BUNDLE}&quot;
+</code></pre><p><del>From now on</del> As long as you pay Apple for the Developer Certififcate, this particular Bundle should pass Gatekeeper. You can actually verify that:</p>
+<pre><code>spctl --assess --verbose --type execute --ignore-cache --no-cache &quot;${APP_BUNDLE}&quot;
+
+xcrun stapler validate &quot;${APP_BUNDLE}&quot;
+</code></pre><p>And even besides of that you should send your app to yourself in the email and check that it passes Gatekeeper.</p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="5-rinse-and-repeat-for-dmg">5. Rinse and repeat for .dmg</h3>
+<p>Previous steps are good if you&rsquo;re distibuting your app in a zip archive. But the odds are you&rsquo;re using <code>.pkg</code> or <code>.dmg</code>. If you put your app into a <code>.dmg</code>, it will again become unsafe! So you need to repeat the previous exercise with the <code>.dmg</code>: sign it and notarize.</p>
+<p>If you don&rsquo;t know how to create a <code>.dmg</code>, check out <a href="https://intmaker.com/deploy-to-macos/">part 1</a>.</p>
+<p>To sign the dmg use:</p>
+<pre><code>CODESIGN_OPTIONS=&quot;-f --verbose=4 --options=runtime&quot;
+
+codesign ${CODESIGN_OPTIONS} --sign &quot;${DEVELOPER_ID}&quot; &quot;${DMG_PATH}&quot;
+</code></pre><p>However, you don&rsquo;t need to archive it since <code>.dmg</code> is a single file, not a directory. So you can notarize it as is:</p>
+<pre><code>xcrun altool --notarize-app \
+               -t osx \
+               --primary-bundle-id &quot;${BUNDLE_ID}&quot; \
+               --username &quot;${APPLE_ID}&quot; \
+               --password &quot;@keychain:AC_PASSWORD&quot; \
+               --file &quot;${DMG_PATH}&quot;
+</code></pre><p>After it&rsquo;s done you need to staple the notarization ticket too:</p>
+<pre><code>xcrun stapler staple &quot;${DMG_PATH}&quot;
+</code></pre><p>Don&rsquo;t forget to verify everything:</p>
+<pre><code>spctl -a -t open --context context:primary-signature -v &quot;${DMG_PATH}&quot;
+
+xcrun stapler validate &quot;${DMG_PATH}&quot;
+</code></pre><p><!-- raw HTML omitted --></p>
+<h3 id="pitfalls">Pitfalls</h3>
+<p>It is possible that even after <code>spctl</code> and <code>xcrun</code> will report that your app is signed and notarized it still will be rejected by Gatekeeper. <a href="https://developer.apple.com/library/content/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG207">It can happen</a> if an app uses an absolute @rpath or absolute path to link to a dynamic library.</p>
+<p>In order to see which path it is, run <code>otool -L /path/to/binary</code> and <code>otool -l /path/to/binary</code>. If you find any non-system library with absolute path, check for more details about how to fix this in <a href="https://intmaker.com/deploy-to-macos/">part 1</a> (you need to use <code>install_name_tool</code>).</p>
+<h3 id="the-end">The end</h3>
+<p>Notarization process is definitely a pain the ass to already non-trivial deployment procedures and there&rsquo;s no workaround. The only way is to master it and create some automation around.</p>
+<p>Please let me know if you were able to repeat this guide and create your notarized apps.</p>
+
+  </div>
+
+  
+  <div class="sharing-icons">
+    Share:&nbsp;
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+  <div style="margin-bottom: 20px;">
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+
+  </div>
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://intmaker.com/command-line-seo/">&laquo; Command-line SEO alternative to Screaming Frog Spider</a>
+    
+    
+      <a class="basic-alignment left" href="https://intmaker.com/self-host-email-marketing/">How to self-host email marketing list if you are a developer &raquo;</a>
+    
+  </div>
+
+  
+
+<div class="related-posts">
+<h2>See Also</h2>
+<ul>
+	
+	<li><a href="https://intmaker.com/deploy-to-macos/">Deploying native apps to macOS</a></li>
+	
+	<li><a href="https://intmaker.com/ultimate-combobox-in-qml/">Ultimate ComboBox in QML</a></li>
+	
+	<li><a href="https://intmaker.com/spellchecking-desktop-application-in-c/">Implementing spellchecking in desktop application in C&#43;&#43;</a></li>
+	
+	<li><a href="https://intmaker.com/classic-producer-consumer-in-qtc/">Classic Producer-Consumer in Qt/C&#43;&#43;</a></li>
+	
+	<li><a href="https://intmaker.com/dragndrop-qt-macos/">Handling drag&#39;n&#39;drop of files in Qt under OS X</a></li>
+	
+</ul>
+</div>
+
+
+
+
+  
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+  
+  
+</section>
+
+  
+</body>
+</html>
+
+
