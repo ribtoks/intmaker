@@ -2,9 +2,10 @@
 title: Developer competencies list with useful links (preparing to the interview)
 date: 2012-10-07T15:39:29+00:00
 author: "Taras Kushnir"
-permalink: /developer-competencies-list/
 categories:
   - Programming
+aliases:
+  - /2012/developer-competencies-list
 ---
 Starting short training before competency test at my current work. You can find list of things you have to know. And comparison to those from Amazon. Below you can find advices what or where to read to be ready to interview or smth like this
 

@@ -2,7 +2,6 @@
 title: Generation of spiral matrices
 date: 2014-01-30T20:55:20+00:00
 author: "Taras Kushnir"
-permalink: /generating-spiral-matrices/
 categories:
   - Programming
   - Ruby
@@ -12,6 +11,8 @@ keywords:
   - numbers
   - ruby
   - spiral
+aliases:
+  - /2014/generating-spiral-matrices
 ---
 Have you ever heard about this simple problem? Generating spiral matrices. The one like this:
 

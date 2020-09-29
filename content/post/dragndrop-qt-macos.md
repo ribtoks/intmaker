@@ -2,7 +2,6 @@
 title: "Handling drag'n'drop of files in Qt under OS X"
 date: 2015-11-25T18:00:02+00:00
 author: "Taras Kushnir"
-permalink: /handling-dragndrop-of-files-in-qt-under-os-x/
 categories:
   - C++
   - Qt
@@ -15,6 +14,8 @@ keywords:
   - qml
   - qt
   - url
+aliases:
+  - /2015/handling-dragndrop-of-files-in-qt-under-os-x
 ---
 If you ever tried to handle drag'n'drop files in your Qt application, you would usually come up with the code like the following.
   

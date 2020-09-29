@@ -2,7 +2,6 @@
 title: 'Dependency-driven development: forced OSS contributions'
 date: 2017-06-04T13:26:08+00:00
 author: "Taras Kushnir"
-permalink: /dependency-driven-development-forced-oss-contributions/
 image: snail-167054.jpeg
 categories:
   - C++
@@ -20,6 +19,8 @@ keywords:
   - software
   - stardict
   - wstring
+aliases:
+  - /2017/dependency-driven-development-forced-oss-contributions/
 ---
 It is such a relief when you app just works. Moreover, when it is open. My pet project [Xpiks](https://github.com/ribtoks/xpiks) is not only an open-source project itself, but it also uses a lot of the other open-source technologies inside. Qt framework, zlib, hunspell - to name just a few. A big deal is to make them work together. A much bigger deal to make them work together across different platforms (Xpiks is announced as cross-platform for Windows, OS X and Linux). The least problems you can expect - is a tricky build process or somebody's typo in the Makefile which breaks the-other-system's build.
 

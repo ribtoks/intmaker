@@ -10,6 +10,8 @@ keywords:
   - ml
   - tensorflow
   - cpp
+aliases:
+  - /2019/tensorflow-inference
 ---
 
 Training of machine learning models is fun, but it's a useless waste of energy if you are not going to use them afterwards. Usage patterns can be very different. In some case you are creating Software-as-a-Service where you run inference on your or somebodies cloud and return customers only the results. In others - you need to have the model itself on consumer devices (e.g. mobile phones) and run inference there.

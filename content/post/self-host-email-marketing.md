@@ -10,6 +10,8 @@ keywords:
   - marketing
   - aws
   - lambda
+aliases:
+  - /2020/self-host-email-marketing
 ---
 
 Do you know how expensitve is to have email marketing list? Most of the providers have a 1000 subscribers free tier, but the more subscribers you have, the more you have to pay. I'm running few side projects and always wanted them to have their own subscribers list, but I'm not ready to pay $30-70 per month to MailChimp or others. Instead I would more prefer something like $0 per month and unlimited number of subscribers forever. If you want to know how I achieved that, read on.
@@ -139,10 +141,10 @@ I keep all campaigns and subscriber lists in Git so every campaign is actually r
 
 ## Afterword
 
-It was a great fun building [listing](https://github.com/ribtoks/listing) and actually using it. Now my side-project Xpiks [has it's own marketing list](https://xpiksapp.com/blog/2020/newsletter/) and I already sent my first newsletter to the first 100 subscribers! Except of the templates, I didn't pay a penny to this point and even though it looked like a bit of "not-invented-here" syndrome, it worked out well and paid off.
+It was a great fun building [listing](https://gitlab.com/ribtoks/listing) and actually using it. Now my side-project Xpiks [has it's own marketing list](https://xpiksapp.com/blog/2020/newsletter/) and I already sent my first newsletter to the first 100 subscribers! Except of the templates, I didn't pay a penny to this point and even though it looked like a bit of "not-invented-here" syndrome, it worked out well and paid off.
 
 Links:
 
-* [listing source code](https://github.com/ribtoks/listing)
-* [Endpoints docs](https://github.com/ribtoks/listing/blob/master/docs/ENDPOINTS.md)
-* [Deployment docs](https://github.com/ribtoks/listing/blob/master/docs/DEPLOYMENT.md)
+* [listing source code](https://gitlab.com/ribtoks/listing)
+* [Endpoints docs](https://gitlab.com/ribtoks/listing/blob/master/docs/ENDPOINTS.md)
+* [Deployment docs](https://gitlab.com/ribtoks/listing/blob/master/docs/DEPLOYMENT.md)

@@ -2,7 +2,6 @@
 title: How to download huge folder from Dropbox
 date: 2015-10-14T15:53:49+00:00
 author: "Taras Kushnir"
-permalink: /how-to-download-folder-from-dropbox/
 image: heavy.jpg
 categories:
   - Programming
@@ -12,6 +11,8 @@ keywords:
   - javascript
   - parse
   - wget
+aliases:
+  - /2015/how-to-download-folder-from-dropbox
 ---
 If you face a problem to download folder from Dropbox which contains tons of files, no known browser extension can help you. Dropbox moves each file download to it's separate page and you can't do it directly.
 

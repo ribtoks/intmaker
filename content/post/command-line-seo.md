@@ -10,6 +10,8 @@ keywords:
   - go
   - command
   - line
+aliases:
+  - /2019/command-line-seo
 ---
 
 Did you ever wanted to crawl a list of URLs and figure out which of them are alive? Or what number of external links any of them has? If you did, most probably [Screaming Frog SEO Spider](https://www.screamingfrog.co.uk/seo-spider/) was one of the popular choices. Bad news is that free version has a limitation to 500 URLs and paid version costs lots of money (around $150 per year). And worst is that 80% of that crawling functionality can be done in pure Bash.

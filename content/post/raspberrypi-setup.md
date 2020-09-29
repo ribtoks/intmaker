@@ -10,6 +10,8 @@ keywords:
   - raspberry
   - diy
   - pihole
+aliases:
+  - /2019/raspberrypi-setup
 ---
 
 Somehow I end up breaking my Raspberry Pi all of the time. Today it was the sudoers file that I modified using `nano` instead of `visudo` and voila - I cannot be root anymore. Another time I simply forgot my user's password and apparently it's impossible to login via ssh anymore (I don't have spare physical screen and keyboard). So somehow it happens all of the time and I need to reimage SD card and setup everything from scratch. That's the reason I'm writing this note - to future myself.

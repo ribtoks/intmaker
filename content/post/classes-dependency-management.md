@@ -10,6 +10,8 @@ keywords:
   - architecture
   - classes
   - code
+aliases:
+  - /2018/dependency-management
 ---
 
 Object-oriented languages like Ruby, C++ or Java tend to have one common problem among others: dependency injection. It is very rare for a class to be fully self-contained and never depend on anything else in your code. Usually there're multiple connections between them: simple, transitive or even circular. And designing good dependency injection often makes a huge difference in terms of maintainability and testability of your code. This is the thing that should be done properly rather sooner than later.

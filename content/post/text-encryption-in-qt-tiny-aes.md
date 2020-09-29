@@ -2,7 +2,6 @@
 title: Text encryption in Qt/C++ with tiny AES 128bit
 date: 2015-02-24T15:12:39+00:00
 author: "Taras Kushnir"
-permalink: /text-encryption-in-qtc-with-tiny-aes-128bit/
 image: lock-411227.jpeg
 categories:
   - C++
@@ -15,6 +14,8 @@ keywords:
   - encryption
   - qt
   - text
+aliases:
+  - /2015/text-encryption-in-qtc-with-tiny-aes-128bit
 ---
 Have you ever needed a small, really small encryption in your C++ project for some piece of text? Say, credentials, login details or any other sensitive data? Of course, the best way is to keep just hash of salted password, but... What if you just **need** to do it and the size is so much critical for you?
 

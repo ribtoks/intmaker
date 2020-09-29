@@ -2,7 +2,6 @@
 title: Implementing autocomplete for English in C++
 date: 2016-03-27T22:07:35+00:00
 author: "Taras Kushnir"
-permalink: /implementing-autocomplete-for-english-in-c/
 image: letters-heap.jpeg
 categories:
   - C++
@@ -18,6 +17,8 @@ keywords:
   - ruby
   - tsv
   - windows
+aliases:
+  - /2016/implementing-autocomplete-for-english-in-c
 ---
 When it comes to implementing autocompletion in C++ in some type of input field, the question is which algorithm to choose and where to get the source for completion. In this post I'll try to answer both questions.
 

@@ -2,7 +2,6 @@
 title: .NET String Dictionary vs string switch performance
 date: 2015-02-18T22:11:26+00:00
 author: "Taras Kushnir"
-permalink: /net-string-dictionary-vs-string-switch-performance/
 image: goats-competition-dispute.jpg
 categories:
   - Programming
@@ -14,6 +13,8 @@ keywords:
   - programming
   - string
   - switch
+aliases:
+  - /2015/net-string-dictionary-vs-string-switch-performance
 ---
 I had a simple task to map a collection of objects with string property. Map function should replace one string property to another from set of 5-6 strings. Existing solution used Dictionary initialized with those hard-coded values. Once upon a time I tried to compare Dictionary with _int_ keys to _int_ switch and int switch was FAR better. It was chess engine so performance mattered.
 

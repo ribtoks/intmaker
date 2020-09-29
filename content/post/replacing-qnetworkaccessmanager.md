@@ -2,7 +2,6 @@
 title: Replacing QNetworkAccessManager for the great good
 date: 2016-09-23T10:49:55+00:00
 author: "Taras Kushnir"
-permalink: /replacing-qnetworkaccessmanager-for-the-great-good/
 categories:
   - C++
   - Programming
@@ -14,6 +13,8 @@ keywords:
   - libcurl
   - qnetworkaccessmanager
   - replacement
+aliases:
+  - /2016/replacing-qnetworkaccessmanager-for-the-great-good
 ---
 Everybody using Qt for networking for small tasks will sometimes face oddities of `QNetworkAccessManager`. This class aims to be useful and convenient while having few quite sensible drawbacks. First one of couse is inability to use it in blocking way. What you should do instead is to create instance of `QEventLoop` and connect it's `quit()` signal with network manager.
 

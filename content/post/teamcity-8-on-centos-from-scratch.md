@@ -2,7 +2,6 @@
 title: TeamCity 8 on CentOS 6.4 from scratch
 date: 2013-11-26T16:22:43+00:00
 author: "Taras Kushnir"
-permalink: /teamcity-8-on-centos-6-4-from-scratch/
 categories:
   - Linux
   - Programming
@@ -26,6 +25,8 @@ keywords:
   - teamcity
   - tomcat
   - tutorial
+aliases:
+  - /2013/teamcity-8-on-centos-6-4-from-scratch
 ---
 In this post I'll describe whole TeamCity installation process on a fresh CentOS (on the moment I'm writing it's 6.4) for your private project or startup.
 

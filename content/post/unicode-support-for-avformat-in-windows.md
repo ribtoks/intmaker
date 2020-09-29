@@ -2,7 +2,6 @@
 title: Unicode support for avformat_open_input in Windows
 date: 2017-03-31T13:59:09+00:00
 author: "Taras Kushnir"
-permalink: /unicode-support-for-avformat_open_input-in-windows/
 image: hieroglyphs-590663.jpeg
 categories:
   - C++
@@ -15,6 +14,8 @@ keywords:
   - unicode
   - video
   - windows
+aliases:
+  - /2017/unicode-support-for-avformat_open_input-in-windows
 ---
 For those of us ever writing cross-platform application there has always been enough quires and quests to accomplish. Typical one is to correctly handle multibyte/unicode filepaths in Windows. And though they are handled pretty good in Qt, when you write your own library you have to do it yourself.
 

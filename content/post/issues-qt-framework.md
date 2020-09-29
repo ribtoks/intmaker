@@ -2,7 +2,6 @@
 title: Interesting issues and features of Qt programming
 date: 2015-07-16T16:17:35+00:00
 author: "Taras Kushnir"
-permalink: /interesting-issues-and-features-of-qt-programming/
 image: man-person-street-shoes.jpg
 categories:
   - C++
@@ -15,6 +14,8 @@ keywords:
   - qt
   - solution
   - tip
+aliases:
+  - /2015/interesting-issues-and-features-of-qt-programming
 ---
 In this post I enlist all interesting facts and issues I've experienced while developing my first project in Qt (from 5.3 to <del>5.4</del> 5.6)
 

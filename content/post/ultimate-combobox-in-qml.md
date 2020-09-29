@@ -2,7 +2,6 @@
 title: Ultimate ComboBox in QML
 date: 2017-11-22T23:28:25+00:00
 author: "Taras Kushnir"
-permalink: /ultimate-combobox-in-qml/
 categories:
   - Programming
   - Qt
@@ -13,6 +12,8 @@ keywords:
   - qt
   - quick
   - ui
+aliases:
+  - /2017/ultimate-combobox-in-qml
 ---
 Everybody who wanted to customize UI of `ComboBox` in QML knows that it is only possible though crutches and hacks. Usually that's not a problem and people start implementing their own custom ComboBoxes that are docked to somewhere. You can see an example of such implementation below (the code is simplified). These sort of implementations have few big problems which I will cover afterwards.
 

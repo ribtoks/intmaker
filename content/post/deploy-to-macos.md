@@ -12,6 +12,8 @@ keywords:
   - package
   - deploy
   - dynamic
+aliases:
+  - /2018/deploy-to-macos
 ---
 
 This is part 1 of the deployment process overview. [Part 2]({{< relref "sign-for-macos" >}}) will cover code signing and notarization.

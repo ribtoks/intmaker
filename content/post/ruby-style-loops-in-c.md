@@ -2,7 +2,6 @@
 title: 'Ruby style loops in C#'
 date: 2012-10-31T13:44:18+00:00
 author: "Taras Kushnir"
-permalink: /ruby-style-loops-in-c/
 categories:
   - Programming
 keywords:
@@ -15,6 +14,8 @@ keywords:
   - step
   - times
   - upto
+aliases:
+  - /2012/ruby-style-loops-in-c
 ---
 [Ruby style loops in C#](http://blog.naiznoiz.com/2009/03/c-loops-ruby-style "Ruby style loops in C#")
 

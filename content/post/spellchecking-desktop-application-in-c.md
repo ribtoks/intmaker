@@ -2,7 +2,6 @@
 title: Implementing spellchecking in desktop application in C++
 date: 2016-06-05T12:24:38+00:00
 author: "Taras Kushnir"
-permalink: /implementing-spellchecking-in-desktop-application-in-c/
 image: spellcheck-503898.jpg
 categories:
   - C++
@@ -17,6 +16,8 @@ keywords:
   - producer
   - qt
   - spelling
+aliases:
+  - /2016/implementing-spellchecking-in-desktop-application-in-c
 ---
 When user is supposed to enter significant amount of text in your application, it's better to help him/her to control it with checking spelling. Basically, to check spelling you need a dictionary with words and algorithm to order these words. Also it might be useful to provide user with possible corrections for any spelling error. Here where [Hunspell](https://hunspell.github.io/) comes handy. It's an open source library built on top of MySpell library and used in a significant number of projects varying from open source projects like Firefox to proprietary like OS X. It contains bindings to a number of platforms (.NET, Ruby etc.) and should be fairly easy to integrate to your project. In this post I'll discuss how to integrate it to C++/Qt project.
 

@@ -2,7 +2,6 @@
 title: 'MediaWiki installation on a linux guest in the VirtualBox: how-to, tips & tricks'
 date: 2013-11-22T18:51:36+00:00
 author: "Taras Kushnir"
-permalink: /mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks/
 categories:
   - Linux
 keywords:
@@ -16,6 +15,8 @@ keywords:
   - virtualbox
   - virtualhost
   - wiki
+aliases:
+  - /2013/mediawiki-installation-on-guest-in-virtualbox-how-to-tips-tricks
 ---
 I've spend half of a day trying to get MediaWiki working on a VirtualBox for the internal project in the internal network. Looks like it's done now and I want to share tips to help someone to spend less time in the future.
 

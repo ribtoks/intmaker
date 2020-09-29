@@ -2,7 +2,6 @@
 title: Tips and tricks to improve performance of your ACM solution
 date: 2015-07-29T12:21:32+00:00
 author: "Taras Kushnir"
-permalink: /tips-and-tricks-to-improve-performance-of-your-acm-solution/
 image: speed-flights.jpeg
 categories:
   - C++
@@ -14,6 +13,8 @@ keywords:
   - hack
   - problem
   - solution
+aliases:
+  - /2015/tips-and-tricks-to-improve-performance-of-your-acm-solution
 ---
 Here I gathered system-programming tricks that can improve performance of your solution in C++ dramatically!
 

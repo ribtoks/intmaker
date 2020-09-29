@@ -11,6 +11,8 @@ keywords:
   - native
   - deploy
   - notarize
+aliases:
+  - /2019/sign-for-macos
 ---
 
 This is a part 2 of the journey started in [part 1]({{< relref "deploy-to-macos" >}}).

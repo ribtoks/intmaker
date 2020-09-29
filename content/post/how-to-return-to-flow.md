@@ -8,6 +8,8 @@ categories:
 keywords:
   - gtd
   - time management
+aliases:
+  - /2019/how-to-return-to-flow
 ---
 
 Hobby projects are very important for me. They give me the freedom to do what I want, how I want it and also they help me to develop quite solid expertise in various fields. Some smaller, some bigger, they always require unattended focus and precious time to work on them. It's always hard to find that time. During the weekend I try to get outside, my evenings are busy with sports or family and during the night I prefer sleeping to coding. **The only time left is 1-2 hours in the early morning before I go to work.**

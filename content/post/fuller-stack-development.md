@@ -2,7 +2,6 @@
 title: Fuller Stack Development
 date: 2018-02-02T00:21:09+00:00
 author: "Taras Kushnir"
-permalink: /fuller-stack-development/
 image: water-2296444_1920.jpg
 categories:
   - C++
@@ -19,6 +18,8 @@ keywords:
   - sensor
   - sqlite
   - temperature
+aliases:
+  - /2018/fuller-stack-development
 ---
 That's awesome how many Full-Stack Developers are out there nowadays: full Node.js stack or ASP.NET or what not is popular. However, this is a story of a completely different "stack".
 

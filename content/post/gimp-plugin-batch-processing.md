@@ -2,7 +2,6 @@
 title: Simple Gimp plugin for batch processing in Python
 date: 2014-11-12T11:32:35+00:00
 author: "Taras Kushnir"
-permalink: /simple-gimp-plugin-for-batch-processing-in-python/
 categories:
   - Linux
   - Programming
@@ -12,6 +11,8 @@ keywords:
   - plug-in
   - plugin
   - python
+aliases:
+  - /2014/simple-gimp-plugin-for-batch-processing-in-python
 ---
 Not so far ago I needed to batch-process some images. The task was to resize them so they fit to given smallest resolution. Although Gimp has some batch-processing plugins, I wasn't able to solve my problem with them. That's why I've invented small little bike and I'd like to share with you workarounds and explanations of some Gimp plug-in development issues.
 

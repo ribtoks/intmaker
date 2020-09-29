@@ -2,7 +2,6 @@
 title: Migrating blog from Wordpress to Jekyll
 date: 2018-03-01T00:23:10+00:00
 author: "Taras Kushnir"
-permalink: /migrate-wordpress-to-jekyll/
 image: carry.jpeg
 categories:
   - Programming
@@ -11,6 +10,8 @@ keywords:
   - jekyll
   - ruby
   - bash
+aliases:
+  - /2018/migrate-wordpress-to-jekyll
 ---
 
 Living in the modern age of 0-day vulnerabilities is complicated when you have a Wordpress blog. Since I didn't have anything fancy in there I decided to migrate it to static pages. Sounds easy? I'm sure it does. See what it takes to migrate an average blog with images and crosslinks. I've organized my process in a sort of a step by step manual.

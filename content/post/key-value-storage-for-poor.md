@@ -2,7 +2,6 @@
 title: Key-Value storage for poor
 date: 2017-09-01T11:30:44+00:00
 author: "Taras Kushnir"
-permalink: /key-value-storage-for-poor/
 image: poor-761144.jpeg
 categories:
   - Programming
@@ -17,6 +16,8 @@ keywords:
   - rocksdb
   - sqlite
   - storage
+aliases:
+  - /2017/key-value-storage-for-poor
 ---
 Despite the hype about NoSql databases, sometimes it's nice to have an embedded key-value storage available in your app. For example, I'm maintaining a cache of metadata of images in my cross-platform desktop app [Xpiks](https://github.com/ribtoks/xpiks) and anyway I have to search by filepath to find the metadata. Besides that I have few more requirements specific to my project:
 

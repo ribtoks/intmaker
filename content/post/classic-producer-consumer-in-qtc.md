@@ -2,7 +2,6 @@
 title: Classic Producer-Consumer in Qt/C++
 date: 2016-03-28T15:44:38+00:00
 author: "Taras Kushnir"
-permalink: /classic-producer-consumer-in-qtc/
 image: exchange-95425.jpeg
 categories:
   - C++
@@ -17,6 +16,8 @@ keywords:
   - producer
   - qt
   - spurious wakeup
+aliases:
+  - /2016/classic-producer-consumer-in-qtc
 ---
 Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I've invented my own wheel and I invite you to take a look at it.
 
