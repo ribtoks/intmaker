@@ -5,7 +5,7 @@ author: "Taras Kushnir"
 hidden: true
 ---
 
-I'm is looking for an intern to help with [Xpiks](https://xpiksapp.com) project. Xpiks is a swiss-army knife for people who prepare photos, vectors and videos for sales on microstock agencies. It is a great opportunity if you want to work with a C++/Qt project, get experience with cross-platform development, first-class development practices and be mentored by an ex-Microsoft/ex-Starship veteran.
+I'm looking for an intern to help with [Xpiks](https://xpiksapp.com) project. Xpiks is a swiss-army knife for people who prepare photos, vectors and videos for sales on microstock agencies. It is a great opportunity if you want to work with a C++/Qt project, get experience with cross-platform development, first-class development practices and be mentored by an ex-Microsoft/ex-Starship veteran.
 
 ## Qualifications
 
