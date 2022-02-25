@@ -447,7 +447,7 @@ struct FuncFactory_struct
       <pubDate>Wed, 19 Jun 2013 19:57:42 +0000</pubDate>
       
       <guid>https://intmaker.com/emacs-remote-compilation/</guid>
-      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;rdquo;, I use a build_remote.sh script with following contents
+      <description>Just a small tip. I have souced and makefile on remote machine and I&amp;rsquo;m trying to compile it on my local machine, but I don&amp;rsquo;t have the compiler and environment. So when I run &amp;ldquo;M-x compile&amp;quot;, I use a build_remote.sh script with following contents
 #!/bin/bash ssh my_remote_machine &amp;quot;source my_environment_file; cd my_build_directory; make my_target&amp;quot; Remember, that ssh command are executed not in your common environment, so you have to import it before execution of main commands (I use source command with some script to configure environment)</description>
     </item>
     

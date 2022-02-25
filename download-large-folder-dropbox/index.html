@@ -12,7 +12,8 @@
     <meta property="og:locale" content="en" />
     <meta property="og:description" content="If you face a problem to download folder from Dropbox which contains tons of files, no known browser extension can help you. Dropbox moves each file download to" />
     <meta property="og:url" content="https://intmaker.com/download-large-folder-dropbox/" />
-    <meta property="og:site_name" content="Xpiks" />
+    <meta property="og:site_name" content="Intmaker" />
+    
     
     
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
@@ -598,7 +599,7 @@ console.log(processed.join(<span style="font-style:italic">&#34;\n&#34;</span>))
 </code></pre></div><p>After I copied those to file <em>links_to_download</em>. If your <em>processed</em> array is too big, you can print it to console by chunks, using <code>slice(start, end)</code> method from Javascript. Now the problem is to download them.</p>
 <p>I came up with <em>wget</em> for such problem. Linux and OS X users should have wget available (OS X users can install it via e.g. homebrew). Windows users have to download it separately, install and add to the <em>PATH</em> environmental variable. Additionaly I used <em>-trust-server-names</em> and <em>-content-disposition</em> parameters to save real filenames instead of dropbox hashed url. Then I faced a problem that it fails to download a file on first request and request timeout is quite big so I&rsquo;ve set it to 5 seconds. Now it makes several timed-out requests, but they quickly resolve to the successful one.</p>
 <pre><code>wget --content-disposition --trust-server-names --timeout=5 -i links_to_download
-</code></pre><p>Also in order to download via https in Windows you probably will need to use &ldquo;<em>-no-check-certificate</em>&rdquo;.</p>
+</code></pre><p>Also in order to download via https in Windows you probably will need to use &ldquo;<em>-no-check-certificate</em>&quot;.</p>
 
   </div>
 

@@ -6,10 +6,20 @@
     <description>Recent content in Pages on Int Maker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Nov 2019 09:07:11 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Feb 2022 18:00:38 +0000</lastBuildDate>
     
 	<atom:link href="https://intmaker.com/page/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Internship</title>
+      <link>https://intmaker.com/internship/</link>
+      <pubDate>Wed, 23 Feb 2022 18:00:38 +0000</pubDate>
+      
+      <guid>https://intmaker.com/internship/</guid>
+      <description>I&amp;rsquo;m is looking for an intern to help with Xpiks project. Xpiks is a swiss-army knife for people who prepare photos, vectors and videos for sales on microstock agencies. It is a great opportunity if you want to work with a C++/Qt project, get experience with cross-platform development, first-class development practices and be mentored by an ex-Microsoft/ex-Starship veteran.
+Qualifications  you think that you like C++ you have a basic understanding of Git Qt experience is not necessary, but welcome  What you will work on First of all, I&amp;rsquo;d like to note that despite Xpiks seems like a small project, it has a surprising amount of hard problems to work on.</description>
+    </item>
     
     <item>
       <title>Projects</title>
@@ -38,8 +48,8 @@ Xpiks is a keywording and uploading tool for microstock photographers, illustrat
       
       <guid>https://intmaker.com/about/</guid>
       <description>This website is another iteration of developing my personal website, engineering blog and my CV, this time combined in one.
-My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.
-Occasionally I blog about my experience (or lack of one) with machine learning, cloud, desktop software, electonics, vim vs emacs, orchestrating distributed computations and handling highload.</description>
+My name is Taras Kushnir, originally I&amp;rsquo;m from Ukraine but I called &amp;ldquo;home&amp;rdquo; many countries. I&amp;rsquo;m a software engineer, architect and mentor. Companies where I worked include Starship, Microsoft, Skype, Sybenetix (acquired by Nasdaq) and Eleks. In my free time I climb mountains and take pictures.
+Occasionally I blog about my experience (or lack of one) with machine learning, cloud, desktop software, electronics, Vim vs Emacs, orchestrating distributed computations and handling highload on a budget.</description>
     </item>
     
   </channel>

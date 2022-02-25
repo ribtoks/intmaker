@@ -12,7 +12,8 @@
     <meta property="og:locale" content="en" />
     <meta property="og:description" content="This is a part 2 of the journey started in part 1. When you download an app from the internet on macOS, it adds an attribute com.apple.quarantine (you can see" />
     <meta property="og:url" content="https://intmaker.com/sign-for-macos/" />
-    <meta property="og:site_name" content="Xpiks" />
+    <meta property="og:site_name" content="Intmaker" />
+    
     
     
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
@@ -613,7 +614,7 @@
 <p>As for the Build part of your C++ app, you need to build for <code>release</code> and <code>x86_64</code> architecture. Also you need to include correct debug symbols: add <code>CFLAGS += -gdwarf-2</code> and <code>CXXFLAGS += -gdwarf-2</code> to your favorite build/project tool.</p>
 <p>Then after the app is built, you need to create a <code>.app</code> bundle, including all dependent libraries and frameworks. You can read more about it in the <a href="https://intmaker.com/deploy-to-macos/">previous part</a>.</p>
 <p>After you have the bundle, you need to codesign all libraries, plugins and frameworks.
-In the script below <code>${DEVELOPER_ID}</code> is your Apple Developer ID e.g. &ldquo;Developer ID Application: Name Surname (QWERTY123)&rdquo;.</p>
+In the script below <code>${DEVELOPER_ID}</code> is your Apple Developer ID e.g. &ldquo;Developer ID Application: Name Surname (QWERTY123)&quot;.</p>
 <pre><code>CODESIGN_OPTIONS=&quot;-f --timestamp --verbose=4 --options=runtime -i ${BUNDLE_ID} --entitlements ${ENTITLEMENTS_PATH}&quot;
 echo &quot;Signing the frameworks...&quot;
 for FRAMEWORK in $(ls &quot;${APP_BUNDLE}&quot;/Contents/Frameworks | grep framework | sed 's/\.framework//')

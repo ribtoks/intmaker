@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     
-    <meta property="og:title" content="Classic Producer-Consumer in Qt/C&#43;&#43;" />
+    <meta property="og:title" content="Internship" />
     <meta property="og:locale" content="en" />
-    <meta property="og:description" content="Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came" />
-    <meta property="og:url" content="https://intmaker.com/classic-producer-consumer-in-qtc/" />
+    <meta property="og:description" content="I’m is looking for an intern to help with Xpiks project. Xpiks is a swiss-army knife for people who prepare photos, vectors and videos for sales on microstock" />
+    <meta property="og:url" content="https://intmaker.com/internship/" />
     <meta property="og:site_name" content="Intmaker" />
+    
+    <meta name="robots" content="noindex" />
     
     
     
@@ -28,10 +30,10 @@
     <title>
       
       
-         Classic Producer-Consumer in Qt/C&#43;&#43; 
+         Internship 
       
     </title>
-    <link rel="canonical" href="https://intmaker.com/classic-producer-consumer-in-qtc/">
+    <link rel="canonical" href="https://intmaker.com/internship/">
 
     <style>
   * {
@@ -571,127 +573,55 @@
 <section id=content>
   
 
-  <h1> Classic Producer-Consumer in Qt/C&#43;&#43; </h1>
+  <h1> Internship </h1>
   
     <div id=sub-header>
-      March 2016 · 2 minute read
+      February 2022 · 2 minute read
     </div>
   
 
   
-  <div class="thumbnail-container">
-      <a href="https://intmaker.com/classic-producer-consumer-in-qtc/">
-          <img src="https://intmaker.com/img/exchange-95425.jpeg">
-      </a>
-  </div>
-  
 
   <div class="entry-content">
-    <p>Producer-Consumer is a classic pattern of interaction between two or more threads which share common tasks queue and workers who process that queue. When I came to similar task first I googled for standard approaches in Qt to solve this problem, but they were based on signals/slots plus synchronization primitives while I wanted simple and clear solution. Of course, in the end I&rsquo;ve invented my own wheel and I invite you to take a look at it.</p>
-<p>For the synchronization in Producer-Consumer it&rsquo;s useful to use Mutex and some kind of WaitingEvent for synchronous waiting until mutex is acquired. In Qt you have QMutex and QWaitCondition which are all that we need.</p>
-<p>Let&rsquo;s suppose we have following data structures:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QWaitCondition m_WaitAnyItem;
-QMutex m_QueueMutex;
-QVector&lt;T*&gt; m_Queue;
-</code></pre></div><p>where T is type of messages we&rsquo;re producing/consuming. So we have queue of elements being processed, mutex to secure access to the queue and wait condition to wait if the queue is empty.</p>
-<p>For Producer-Consumer usually we need methods <code>produce()</code> and <code>consume()</code>. Let&rsquo;s see how we can implement them.</p>
-<p>For consuming we will run a loop where we would check if queue has any item available and if yes - we will process it. Also NULL item will stop processing.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// consuming is an infinite loop
-</span><span style="font-style:italic"></span><span style="">void</span> consume() {
-  <span style="font-weight:bold">for</span> (;;) {
-    m_QueueMutex.lock();
-
-    <span style="font-weight:bold">while</span> (m_Queue.isEmpty()) {
-      m_WaitAnyItem.wait(&amp;m_QueueMutex);
-    }
-
-    T *item = m_Queue.first();
-    m_Queue.removeFirst();
-
-    m_QueueMutex.unlock();
-
-    <span style="font-weight:bold">if</span> (item == NULL) { <span style="font-weight:bold">break</span>; }
-		
-    processOneItem(item);
-  }
-}
-</code></pre></div><p>If queue is not empty then first item is extracted and processed using <code>processOneItem()</code> method. If queue is empty then we&rsquo;re waiting for any item to be added to the queue using <code>WaitCondition</code>. Waiting itself is put into the while loop because of &ldquo;spurious wakeups&rdquo;. It&rsquo;s the situation when kernel object responsible for wait condition was signaled after timeout (quite big one) in order not to block calling thread forever.</p>
-<p>To add an item for processing, we call <code>produce()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// producer is another thread
-</span><span style="font-style:italic"></span><span style="">void</span> produce(T *item) {
-  m_QueueMutex.lock();
-  {
-    <span style="">bool</span> wasEmpty = m_Queue.isEmpty();
-    m_Queue.append(item);
-
-    <span style="font-weight:bold">if</span> (wasEmpty) {
-      m_WaitAnyItem.wakeOne();
-    }
-  }
-  m_QueueMutex.unlock();
-}
-</code></pre></div><p>This method acquires the mutex, adds an element into the queue and signals a WaitCondition if the queue was empty before.</p>
-<p>To get actually working example one can add more logic like cancelling processing from the outside, notification about emptiness of the queue and some memory management for items of type <code>T*</code>.</p>
-<p>You can check out full example of Producer-Consumer implementation, used in <!-- raw HTML omitted -->Xpiks at GitHub<!-- raw HTML omitted -->. Feel free to ask any questions in case something is not clear.</p>
-  </div>
-
-  
-  <div class="sharing-icons">
-    Share:&nbsp;
-    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-</div>
-
-  <div style="margin-bottom: 20px;">
-      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-
-  </div>
-  <div id=links>
-    
-      <a class="basic-alignment left" href="https://intmaker.com/autocomplete-for-english-in-c/">&laquo; Implementing autocomplete for English in C&#43;&#43;</a>
-    
-    
-      <a class="basic-alignment left" href="https://intmaker.com/spellchecking-desktop-application-in-c/">Implementing spellchecking in desktop application in C&#43;&#43; &raquo;</a>
-    
-  </div>
-
-  
-
-<div class="related-posts">
-<h2>See Also</h2>
+    <p>I&rsquo;m is looking for an intern to help with <a href="https://xpiksapp.com">Xpiks</a> project. Xpiks is a swiss-army knife for people who prepare photos, vectors and videos for sales on microstock agencies. It is a great opportunity if you want to work with a C++/Qt project, get experience with cross-platform development, first-class development practices and be mentored by an ex-Microsoft/ex-Starship veteran.</p>
+<h2 id="qualifications">Qualifications</h2>
 <ul>
-	
-	<li><a href="https://intmaker.com/autocomplete-for-english-in-c/">Implementing autocomplete for English in C&#43;&#43;</a></li>
-	
-	<li><a href="https://intmaker.com/issues-qt-framework/">Interesting issues and features of Qt programming</a></li>
-	
-	<li><a href="https://intmaker.com/text-encryption-in-qt-tiny-aes/">Text encryption in Qt/C&#43;&#43; with tiny AES 128bit</a></li>
-	
-	<li><a href="https://intmaker.com/dragndrop-qt-macos/">Handling drag&#39;n&#39;drop of files in Qt under OS X</a></li>
-	
-	<li><a href="https://intmaker.com/improve-performance-acm-solution/">Tips and tricks to improve performance of your ACM solution</a></li>
-	
+<li>you think that you like C++</li>
+<li>you have a basic understanding of Git</li>
+<li>Qt experience is not necessary, but welcome</li>
 </ul>
-</div>
+<h2 id="what-you-will-work-on">What you will work on</h2>
+<p>First of all, I&rsquo;d like to note that despite Xpiks seems like a small project, it has a surprising amount of hard problems to work on. What you will learn is that any most basic problem multiplied by a certain amount of usage becomes a very complicated problem.</p>
+<p>From real-world things: (that nobody teaches you)</p>
+<ul>
+<li>user experience (onboarding, accessibility, usability)</li>
+<li>monitoring (desktop/backend)</li>
+<li>deployment (various hardware and software stacks)</li>
+</ul>
+<p>And technical:</p>
+<ul>
+<li>media files and in-file metadata (EXIF/IPTC/XMP)</li>
+<li>networking (massive FTP upload, HTTP API requests)</li>
+<li>databases (namely, SQLite)</li>
+<li>machine learning (namely, NLP)</li>
+<li>modern UI/UX patterns</li>
+<li>desktop application architecture</li>
+</ul>
+<h2 id="will-you-get-paid">Will you get paid</h2>
+<p>You get paid on per-task basis. Each Xpiks feature has a detailed list of issues on GitHub and each of them has a pay marker assigned to it. When a pull request that addresses the given issue is accepted (merged to the main branch), the system will mark this issue as a pending payment for you. All pending payments are processed with some cadence that we can agree on.</p>
+<h2 id="how-to-apply">How to apply</h2>
+<p>Send me an email at <a href="#" class="decorrated"
+data-s="."
+data-d="intmaker"
+data-n="internship"
+data-t="com"
+data-m="xxmxaxixlxtoxx:x"
+data-a="&#x40;"
+onclick="window.location.href = this.dataset.m.replace(/x/g,'') + this.dataset.n + this.dataset.a + this.dataset.d + this.dataset.s + this.dataset.t; return false;"><span class="upped">contact@intmaker.com</span></a>
+ and tell me why this is interesting to you and a bit about your experience.</p>
 
+  </div>
 
-
-
-  
-  <section class="disqus">
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</section>
-
-  
   
 </section>
 

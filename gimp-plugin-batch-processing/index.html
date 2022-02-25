@@ -12,7 +12,8 @@
     <meta property="og:locale" content="en" />
     <meta property="og:description" content="Not so far ago I needed to batch-process some images. The task was to resize them so they fit to given smallest resolution. Although Gimp has some" />
     <meta property="og:url" content="https://intmaker.com/gimp-plugin-batch-processing/" />
-    <meta property="og:site_name" content="Xpiks" />
+    <meta property="og:site_name" content="Intmaker" />
+    
     
     
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
@@ -584,7 +585,7 @@
 <p>Your plugin can take as little as just one python file with call to function <em>register</em> (<em>from gimpfu</em>) and passing to it some metadata and actual method of plugin. You can read more about parameters to register on <!-- raw HTML omitted -->official docs website<!-- raw HTML omitted -->. But a few moments still need clarifications.</p>
 <p>As official documentation says,</p>
 <!-- raw HTML omitted -->
-<p> And if you&rsquo;ll not change one of the parameters of <em>register</em> function, which is called <em>image_types</em>, your plugin will be disabled without an image opened in GIMP. If you don&rsquo;t know what to write there, just leave it blank (other possible values are &ldquo;RGB*&rdquo;, &ldquo;GRAY*&quot;).</p>
+<p> And if you&rsquo;ll not change one of the parameters of <em>register</em> function, which is called <em>image_types</em>, your plugin will be disabled without an image opened in GIMP. If you don&rsquo;t know what to write there, just leave it blank (other possible values are &ldquo;RGB*&quot;, &ldquo;GRAY*&quot;).</p>
 <p>Other parameters of <em>register</em> function set actual parameters of you plugin main method with default values.</p>
 <p>Sample call to register (you can find tons of them on the internet):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">register(
