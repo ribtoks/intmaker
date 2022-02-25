@@ -32,7 +32,7 @@ And technical:
 - modern UI/UX patterns
 - desktop application architecture
 
-## Will you get paid
+## Will you get paid?
 
 You get paid on per-task basis. Each Xpiks feature has a detailed list of issues on GitHub and each of them has a pay marker assigned to it. When a pull request that addresses the given issue is accepted (merged to the main branch), the system will mark this issue as a pending payment for you. All pending payments are processed with some cadence that we can agree on.
 
