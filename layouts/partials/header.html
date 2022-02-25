@@ -24,7 +24,10 @@
     <meta property="og:locale" content="{{ $.Site.LanguageCode | default "en" }}" />
     <meta property="og:description" content="{{$about}}" />
     <meta property="og:url" content="{{$.Permalink}}" />
-    <meta property="og:site_name" content="Xpiks" />
+    <meta property="og:site_name" content="Intmaker" />
+    {{ if .Params.hidden }}
+    <meta name="robots" content="noindex" />
+    {{ end }}
     
     {{ if not .Site.Params.disableWebFonts }}
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
