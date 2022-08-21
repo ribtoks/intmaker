@@ -631,7 +631,7 @@
 <p>You can configure the regexp to match the log groups and the search query to use, as well as the cadence you want to receive the reports with. And it&rsquo;s almost completely <em>free</em>! Depending on the volume of your CloudWatch logs and the interval that the search query needs to scan, you might end up paying some cents (sending an AWS email costs <code>$0.01</code> at the moment).</p>
 <h2 id="aftermath">Aftermath</h2>
 <p>This small lambda function that sends error reports, proved to be <strong>immensely useful</strong> for me. Backend of my services consists mostly of few dozens of lambda functions and thanks to the log reports, I found and fixed few important bugs! Given the 2 mornings I spent creating this function, the payoff absolutely exceeded my expectations.</p>
-<p>And how satisfying it is to receive reports that contains <code>&quot;0 logs were found&quot;</code>!</p>
+<p>And how satisfying it is to receive a report that contains <code>&quot;0 logs were found&quot;</code>!</p>
 
   </div>
 
