@@ -574,7 +574,7 @@
   <h1> Monitoring tiny lambdas </h1>
   
     <div id=sub-header>
-      August 2022 · 5 minute read
+      August 2022 · 6 minute read
     </div>
   
 
@@ -630,6 +630,7 @@
 <p>Now I&rsquo;m getting error logs report to my email and no errors get unnoticed!</p>
 <p>You can configure the regexp to match the log groups and the search query to use, as well as the cadence you want to receive the reports with. And it&rsquo;s almost completely <em>free</em>! Depending on the volume of your CloudWatch logs and the interval that the search query needs to scan, you might end up paying some cents (sending an AWS email costs <code>$0.01</code> at the moment).</p>
 <h2 id="aftermath">Aftermath</h2>
+<p>Using this system, first of all, requires some discipline with logging. You will need to define what is <em>an error</em> and what is not. It actually took me couple of reports to downgrade certain logging types to <em>&ldquo;warning&rdquo;</em> level, knowing that I actually do not want to be notified about them.</p>
 <p>This small lambda function that sends error reports, proved to be <strong>immensely useful</strong> for me. Backend of my services consists mostly of few dozens of lambda functions and thanks to the log reports, I found and fixed few important bugs! Given the 2 mornings I spent creating this function, the payoff absolutely exceeded my expectations.</p>
 <p>And how satisfying it is to receive a report that contains <code>&quot;0 logs were found&quot;</code>!</p>
 
