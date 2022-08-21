@@ -106,6 +106,8 @@ You can configure the regexp to match the log groups and the search query to use
 
 ## Aftermath
 
+Using this system, first of all, requires some discipline with logging. You will need to define what is _an error_ and what is not. It actually took me couple of reports to downgrade certain logging types to _"warning"_ level, knowing that I actually do not want to be notified about them.
+
 This small lambda function that sends error reports, proved to be **immensely useful** for me. Backend of my services consists mostly of few dozens of lambda functions and thanks to the log reports, I found and fixed few important bugs! Given the 2 mornings I spent creating this function, the payoff absolutely exceeded my expectations.
 
 And how satisfying it is to receive a report that contains `"0 logs were found"`!
