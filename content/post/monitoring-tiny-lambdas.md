@@ -108,4 +108,4 @@ You can configure the regexp to match the log groups and the search query to use
 
 This small lambda function that sends error reports, proved to be **immensely useful** for me. Backend of my services consists mostly of few dozens of lambda functions and thanks to the log reports, I found and fixed few important bugs! Given the 2 mornings I spent creating this function, the payoff absolutely exceeded my expectations.
 
-And how satisfying it is to receive reports that contains `"0 logs were found"`!
+And how satisfying it is to receive a report that contains `"0 logs were found"`!
