@@ -6,10 +6,21 @@
     <description>Recent content in Programming on Int Maker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Feb 2020 18:22:19 -0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2022 09:36:25 +0300</lastBuildDate>
     
 	<atom:link href="https://intmaker.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Monitoring tiny lambdas</title>
+      <link>https://intmaker.com/monitoring-tiny-lambdas/</link>
+      <pubDate>Sun, 21 Aug 2022 09:36:25 +0300</pubDate>
+      
+      <guid>https://intmaker.com/monitoring-tiny-lambdas/</guid>
+      <description>After reading Julia Evan&amp;rsquo;s blogpost &amp;ldquo;Monitoring tiny web services&amp;rdquo;, I got inspired to show others how I monitor my web services, which are, in fact, a bunch of AWS Lambda functions.
+I came up with a simple and free solution that has helped me tremendously to fix many bugs already.
+Scream-driven development It&amp;rsquo;s easy to neglect monitoring, especially in the beginning. In fact, this is what I did for a long time.</description>
+    </item>
     
     <item>
       <title>How to self-host email marketing list if you are a developer</title>

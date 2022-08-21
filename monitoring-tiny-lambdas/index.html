@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <meta property="og:title" content="Monitoring tiny lambdas" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="After reading Julia Evan’s blogpost “Monitoring tiny web services”, I got inspired to show others how I monitor my web services, which are, in fact, a bunch of" />
+    <meta property="og:url" content="https://intmaker.com/monitoring-tiny-lambdas/" />
+    <meta property="og:site_name" content="Intmaker" />
+    
+    
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://intmaker.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         Monitoring tiny lambdas 
+      
+    </title>
+    <link rel="canonical" href="https://intmaker.com/monitoring-tiny-lambdas/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+    margin-bottom:25px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, time {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+
+  .decorrated .upped {
+      display: none;
+  }
+
+  .decorrated:after {
+    content: attr(data-n) "@" attr(data-d) "." attr(data-t); 
+  }
+
+  .sharing-icons {
+      padding-left: 10px;
+      margin-bottom: 20px;
+  }
+
+  section.disqus {
+      margin-top: 100px;
+  }
+
+  .social-icons {
+      float: right;
+  }
+
+  .social-icons a {
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  @media (max-width: 30em) {
+      .social-icons {
+          float: left;
+          padding-top: 0px;
+      }
+  }
+
+  .bmc-button img {
+      width: 27px !important;
+      margin: 0 0 10px 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      vertical-align: middle !important;
+      display: inline !important;
+  }
+
+  .bmc-button {
+      line-height: 36px !important;
+      height:37px !important;
+      text-decoration: none !important;
+      display:inline-block !important;
+      color:#000000 !important;
+      background-color:#FFFFFF !important;
+      border-radius: 3px !important;
+      border: 1px solid transparent !important;
+      padding: 1px 9px !important;
+      font-size: 23px !important;
+      letter-spacing: 0.6px !important;
+      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      margin: 0 auto !important;
+      font-family:'Cookie', cursive !important;
+      -webkit-box-sizing: border-box !important;
+      box-sizing: border-box !important;
+      -o-transition: 0.3s all linear !important;
+      -webkit-transition: 0.3s all linear !important;
+      -moz-transition: 0.3s all linear !important;
+      -ms-transition: 0.3s all linear !important;
+      transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+      -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      text-decoration: none !important;
+      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+      opacity: 0.85 !important;
+      color:#000000 !important;
+  }
+
+  #avatar {
+    background-image: url('/img/168_1.jpg');
+    
+     
+    width: 150px;
+    height: 150px;
+
+     
+    background-size: cover;
+
+     
+    background-position: top center;
+
+     
+    border-radius: 50%;
+
+	-webkit-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.1);
+
+	float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
+  }
+
+  .related-posts {
+      margin-top: 70px;
+  }
+
+  #content table {
+      border-collapse: collapse;
+  }
+
+  #content table td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #content table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #content table tr:hover {
+      background-color: #ddd;
+  }
+
+  #content table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #ccc;
+      color: white;
+  }
+
+</style>
+
+
+    
+
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-10412407-11', 'auto');  ga('send', 'pageview');  ga('set', 'anonymizeIp', true); </script>
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://intmaker.com/">Int Maker</a></h1>
+      <ul>
+        
+          <li><a href="https://intmaker.com/about/">About</a></li>
+        
+          <li><a href="https://intmaker.com/">Posts</a></li>
+        
+          <li><a href="https://intmaker.com/projects/">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  
+
+  <h1> Monitoring tiny lambdas </h1>
+  
+    <div id=sub-header>
+      August 2022 · 5 minute read
+    </div>
+  
+
+  
+
+  <div class="entry-content">
+    <p>After reading Julia Evan&rsquo;s blogpost <a href="https://jvns.ca/blog/2022/07/09/monitoring-small-web-services/">&ldquo;Monitoring tiny web services&rdquo;</a>, I got inspired to show others how I monitor my web services, which are, in fact, a bunch of AWS Lambda functions.</p>
+<p>I came up with a simple and free solution that has helped me tremendously to fix many bugs already.</p>
+<h2 id="scream-driven-development">Scream-driven development</h2>
+<p>It&rsquo;s easy to neglect monitoring, especially in the beginning. In fact, this is what I did for a long time. I offloaded monitoring to a &ldquo;Scream-driven development&rdquo;. That is you are fixing a problem only when users are &ldquo;screaming&rdquo; about it. This works up to a certain amount of impact which bugs in your services make. You can even survive with it long enough if the web services&rsquo; clients have some smart client-side logic, like retrying on errors with exponential backoff etc. But, after some time, I realized that I&rsquo;d like to know about the problems faster.</p>
+<h2 id="monitoring--alerting">Monitoring != alerting</h2>
+<p>One important caveat, though, is that by &ldquo;having monitoring&rdquo; I do not mean that I want to wake up during the night because some of my services crashed. What I want is to know that some of the services misbehaving. If it&rsquo;s misbehaving &ldquo;too much&rdquo;, the users will anyway contact me. So in the end I&rsquo;m interested only in &ldquo;subtle&rdquo; mishaps, that get otherwise unnoticed.</p>
+<p>Therefore, I figured that reading logs of my services was the best way for me to figure out if something went wrong. The only thing that was to be done is to figure out how to do it.</p>
+<h2 id="logs-in-aws">Logs in AWS</h2>
+<p>Overall, if you would be doing things &ldquo;the AWS way&rdquo;, logs of your services will eventually end up in the <a href="https://aws.amazon.com/cloudwatch/">CloudWatch</a>. CloudWatch is an AWS service used for monitoring and alerting. It can monitor all other AWS services, such as EC2, Lambda, Kubernetes etc. Your application can emit metrics, write logs and you can later build dashboards and configure alerting in the AWS Console.</p>
+<p>In my case, simply writing to <code>STDOUT</code> from AWS Lambda, caused a log group to be created.</p>
+<p><img src="https://intmaker.com/img/posts/monitoring-lambdas/cloudwatch-logs-original.png" alt="CloudWatch original logs">
+<em>CloudWatch log group</em></p>
+<h2 id="alerting-in-aws">Alerting in AWS</h2>
+<p>If you&rsquo;d want to configure alerting on these logs, let&rsquo;s say if you have string <code>&quot;err=&quot;</code> present in the log line, you would need to create a <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html">metric from the log using a filter</a>. Then you would create alerting based on metric value, configure a SNS topic for notifications about alerts and <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-email-notifications.html">subscribe to that topic via email or SMS</a>.</p>
+<p>Now, it does not seem so bad at a first glance, until you know that you have only 10 free metrics allowed and you need to create a metric <em>per log group</em>. AWS want&rsquo;s you to pay for every sub-sub-feature of any feature you might ever use.</p>
+<p>However, it is also simply inconvenient for me. I have many log groups in different stages so that it would be quite annoying to create all these metrics and then configuring monitoring for all of them in the first place.</p>
+<h2 id="solving-the-problem">Solving the problem</h2>
+<p>After being frustrated with the built-in way to configure alerting, I stopped to think what I actually wanted. And that was <strong>to know when errors were in the logs</strong>, what were they and how many of those were present. It sounds simple, but I couldn&rsquo;t find a way to get a holistic picture across all of my log groups in CloudWatch.</p>
+<p>After the problem was defined in such way, I knew where should I look for a solution.</p>
+<h3 id="structuring-the-logs">Structuring the logs</h3>
+<p>It became quickly obvious that it&rsquo;s hard to find all the error messages in CloudWatch, without the &ldquo;garbage&rdquo;. The problem was that my logging looked like this:</p>
+<pre><code>if value, err := doStuff(); err != nil {
+    log.Printf(&quot;doStuff() failed! err=%v&quot;, err)
+}
+</code></pre><p>Now since <code>err</code> could have all sorts of symbols like spaces, quotes etc., there was no standard way to get the full error message when searching in CloudWatch for error messages.</p>
+<p><img src="https://intmaker.com/img/posts/monitoring-lambdas/unstructured-log.png" alt="Unstructured log">
+<em>Example of the unstructured error log</em></p>
+<p>However, CloudWatch natively understands few formats of structured logs, namely JSON. Therefore I switched to a structured logging library for Go, like <a href="https://github.com/Sirupsen/logrus">logrus</a> and changed my logging to:</p>
+<pre><code>if value, err := doStuff(); err != nil {
+    log.WithError(err).Error(&quot;doStuff() failed!&quot;)
+}
+</code></pre><p>What I&rsquo;d see now in CloudWatch, would be field-by-field parsed logs:</p>
+<p><img src="https://intmaker.com/img/posts/monitoring-lambdas/structured-log.png" alt="Structured log">
+<em>Example of the structured log</em></p>
+<p>Note that this log has a <code>level=&quot;debug&quot;</code>, <code>msg=&quot;ProcessingRequest&quot;</code> and all the custom fields that I cared to add. Now if the <code>level</code> was <code>error</code>, that would mean I&rsquo;d be able to find all the error messages simply filtering by the <code>level</code>.</p>
+<h3 id="searching-the-logs">Searching the logs</h3>
+<p>Having structured CloudWatch logs, you can indeed filter and aggregate them using CloudWatch <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html">Log Insights</a>.</p>
+<p>For example, if I was to find all error logs, I&rsquo;d go to <em>CloudWatch -&gt; Log Insights</em> and simply run a query <code>filter level = 'error'</code>.</p>
+<p><img src="https://intmaker.com/img/posts/monitoring-lambdas/searching-logs.png" alt="Searching logs">
+<em>Searching all the error logs</em></p>
+<p>Now we are talking! All error logs right here, at my disposal. Just save the query to the sidebar and don&rsquo;t forget to log-in to AWS Console every now and again and run it. Right&hellip;</p>
+<h3 id="automating-the-search">Automating the search</h3>
+<p>Although the search works as intended, what is missing is the automatic notification. Of course I do not have time to login to AWS Console and run the search manually. However, I have time to automate it. Meet <a href="https://gitlab.com/ribtoks/cloudwatch-logs-report/">CloudWatch Logs Report</a> - yet another small lambda function that does that for you.</p>
+<p>It searches through all the log groups using a query and sends an aggregated report to your email:</p>
+<p><img src="https://intmaker.com/img/posts/monitoring-lambdas/logs-report.png" alt="Logs report">
+<em>Logs report</em></p>
+<p>Now I&rsquo;m getting error logs report to my email and no errors get unnoticed!</p>
+<p>You can configure the regexp to match the log groups and the search query to use, as well as the cadence you want to receive the reports with. And it&rsquo;s almost completely <em>free</em>! Depending on the volume of your CloudWatch logs and the interval that the search query needs to scan, you might end up paying some cents (sending an AWS email costs <code>$0.01</code> at the moment).</p>
+<h2 id="aftermath">Aftermath</h2>
+<p>This small lambda function that sends error reports, proved to be <strong>immensely useful</strong> for me. Backend of my services consists mostly of few dozens of lambda functions and thanks to the log reports, I found and fixed few important bugs! Given the 2 mornings I spent creating this function, the payoff absolutely exceeded my expectations.</p>
+<p>And how satisfying it is to receive reports that contains <code>&quot;0 logs were found&quot;</code>!</p>
+
+  </div>
+
+  
+  <div class="sharing-icons">
+    Share:&nbsp;
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=&amp;title=" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+  <div style="margin-bottom: 20px;">
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/TQOwEld1x"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+
+  </div>
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://intmaker.com/self-host-email-marketing/">&laquo; How to self-host email marketing list if you are a developer</a>
+    
+    
+  </div>
+
+  
+
+<div class="related-posts">
+<h2>See Also</h2>
+<ul>
+	
+	<li><a href="https://intmaker.com/self-host-email-marketing/">How to self-host email marketing list if you are a developer</a></li>
+	
+</ul>
+</div>
+
+
+
+
+  
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + 'codejamming' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+  
+  
+</section>
+
+  
+</body>
+</html>
+
+
